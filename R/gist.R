@@ -20,7 +20,6 @@
 #' @return Posts your file as a gist on your account, and prints out the url for the
 #' gist itself in the console.
 #' @keywords internal
-#' }
 
 gist <- function(gist, description = "", public = TRUE) {
   dat <- create_gist(gist, description = description, public = public)
