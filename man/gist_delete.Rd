@@ -8,7 +8,7 @@ gist_delete(id, verbose = TRUE)
 \arguments{
 \item{id}{Gist id}
 
-\item{verbose}{Print messages (default TRUE)}
+\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Delete a gist

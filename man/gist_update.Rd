@@ -3,12 +3,19 @@
 \alias{gist_update}
 \title{Update/modify a gist}
 \usage{
-gist_update(gist, id, description = "", public = TRUE)
+gist_update(id, gist = NULL, description = "", public = TRUE,
+  verbose = TRUE)
 }
 \arguments{
 \item{id}{Gist id}
 
-\item{verbose}{Print messages (default TRUE)}
+\item{gist}{(character) Path to one or more files.}
+
+\item{description}{(character) Brief description of gist (optional)}
+
+\item{public}{(logical) Whether gist is public (default: TRUE)}
+
+\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Update/modify a gist

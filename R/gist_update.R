@@ -1,12 +1,13 @@
 #' Update/modify a gist
 #' 
-#' @param id Gist id
-#' @param verbose Print messages (default TRUE)
 #' @export
+#' @param id Gist id
+#' @template gistargs
+#' @template all
 #' @examples \dontrun{
 #' gist_update(id='42095d9a661b0eefc694')
 #' }
-gist_update <- function(gist, id, description = "", public = TRUE){
+gist_update <- function(id, gist=NULL, description = "", public = TRUE, verbose=TRUE){
   dat <- create_gist(gist, description = description, public = public)
   credentials = get_credentials()
   url <- sprintf('https://api.github.com/gists/%s', id)

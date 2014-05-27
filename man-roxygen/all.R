@@ -1,0 +1,1 @@
+#' @param verbose Print informative messages (default TRUE)

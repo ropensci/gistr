@@ -1,7 +1,7 @@
 #' Star a gist
 #' 
 #' @param id Gist id
-#' @param verbose Print messages (default TRUE)
+#' @template all
 #' @export
 #' @examples \dontrun{
 #' gist_star(id='2f9eb6b72730fed2f061')

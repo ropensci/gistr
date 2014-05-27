@@ -1,10 +1,8 @@
 #' Post a file as a Github gist
 #'
-#' @import httr RJSONIO
+#' @import httr RJSONIO assertthat
 #' @export
-#' @param gist An object
-#' @param description brief description of gist (optional)
-#' @param public whether gist is public (default: TRUE)
+#' @template gistargs
 #' @description
 #' You will be asked ot enter you Github credentials (username, password) during
 #' each session, but only once for each session. Alternatively, you could enter
@@ -17,14 +15,13 @@
 #'
 #' then \code{gist} will simply read those options.
 #'
-#' \code{gist} was modified from code in the rCharts package by Ramnath Vaidyanathan
 #' @return Posts your file as a gist on your account, and prints out the url for the
-#' gist itself in the console.
+#' gist and for embedding the gist in the console.
 #' @examples \dontrun{
 #' gist_create(files="stuff.md", description='My gist!', public=TRUE)
 #' }
 
-gist_create <- function(gist, description = "", public = TRUE) {
+gist_create <- function(gist, description = "", public = TRUE, verbose=TRUE) {
   dat <- create_gist(gist, description = description, public = public)
   credentials <- get_credentials()
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')

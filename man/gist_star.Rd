@@ -8,7 +8,7 @@ gist_star(id, verbose = TRUE)
 \arguments{
 \item{id}{Gist id}
 
-\item{verbose}{Print messages (default TRUE)}
+\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Star a gist

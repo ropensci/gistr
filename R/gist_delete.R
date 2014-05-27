@@ -1,7 +1,7 @@
 #' Delete a gist
 #' 
 #' @param id Gist id
-#' @param verbose Print messages (default TRUE)
+#' @template all
 #' @export
 #' @examples \dontrun{
 #' gist_delete(id='42095d9a661b0eefc694')

@@ -3,18 +3,18 @@
 \alias{gist_create}
 \title{Post a file as a Github gist}
 \usage{
-gist_create(gist, description = "", public = TRUE)
+gist_create(gist, description = "", public = TRUE, verbose = TRUE)
 }
 \arguments{
-\item{gist}{An object}
+\item{gist}{(character) Path to one or more files.}
 
-\item{description}{brief description of gist (optional)}
+\item{description}{(character) Brief description of gist (optional)}
 
-\item{public}{whether gist is public (default: TRUE)}
+\item{public}{(logical) Whether gist is public (default: TRUE)}
 }
 \value{
 Posts your file as a gist on your account, and prints out the url for the
-gist itself in the console.
+gist and for embedding the gist in the console.
 }
 \description{
 You will be asked ot enter you Github credentials (username, password) during
@@ -27,8 +27,6 @@ your credentials into your .Rprofile file with the entries
 }
 
 then \code{gist} will simply read those options.
-
-\code{gist} was modified from code in the rCharts package by Ramnath Vaidyanathan
 }
 \examples{
 \dontrun{
