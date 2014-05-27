@@ -11,35 +11,69 @@ gistr
 
 ## Quick start
 
-Install
+### Install
 
 ```coffee
 devtools::install_github("ropensci/gistr")
 library("gistr")
 ```
 
-XXXX
+### List commits
 
 ```coffee
-asdf
+gist_get(per_page=1)
 ```
 
-XXXX
-
 ```coffee
-asdf
+[[1]]
+[[1]]$url
+[1] "https://api.github.com/gists/d443c0e066f45530430a"
+
+[[1]]$forks_url
+[1] "https://api.github.com/gists/d443c0e066f45530430a/forks"
+
+[[1]]$commits_url
+[1] "https://api.github.com/gists/d443c0e066f45530430a/commits"
+
+[[1]]$id
+[1] "d443c0e066f45530430a"
+
+[[1]]$git_pull_url
+[1] "https://gist.github.com/d443c0e066f45530430a.git"
+...cutoff
 ```
 
-XXXX
+### Create gist
 
 ```coffee
-asdf
+gist_create(files="stuff.md", description='My gist!', public=TRUE)
 ```
 
-XXXX
+```coffee
+Your gist has been published
+View gist at https://gist.github.com/sckott/5c1bde5c36984d808bf3
+Embed gist with <script src="https://gist.github.com/sckott/5c1bde5c36984d808bf3.js"></script>
+[1] "https://gist.github.com/sckott/5c1bde5c36984d808bf3"
+```
+
+### List commits on a gist
 
 ```coffee
-asdf
+gist_commits(id='cf5d2e572faafb4c6d5f', per_page=1)
+```
+
+```coffee
+[[1]]
+[[1]]$user
+[[1]]$user$login
+[1] "sckott"
+
+[[1]]$user$id
+[1] 577668
+
+[[1]]$user$avatar_url
+[1] "https://avatars.githubusercontent.com/u/577668?"
+...cutoff
 ```
 
 

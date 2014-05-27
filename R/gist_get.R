@@ -2,6 +2,7 @@
 #' 
 #' You can list public gists, your public gists, or all your gists
 #' 
+#' @importFrom RJSONIO fromJSON
 #' @export
 #' @param id Gist id.
 #' @param what (character) What gists to return. One of public, minepublic, mineall, or starred. 
