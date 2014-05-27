@@ -7,8 +7,8 @@
 #' @examples \dontrun{
 #' gist_update(id='42095d9a661b0eefc694')
 #' }
-gist_update <- function(id, gist=NULL, description = "", public = TRUE, verbose=TRUE){
-  dat <- create_gist(gist, description = description, public = public)
+gist_update <- function(id, files=NULL, description = "", public = TRUE, verbose=TRUE){
+  dat <- create_gist(files, description = description, public = public)
   credentials = get_credentials()
   url <- sprintf('https://api.github.com/gists/%s', id)
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')

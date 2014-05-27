@@ -3,21 +3,26 @@
 \alias{gist_create}
 \title{Post a file as a Github gist}
 \usage{
-gist_create(gist, description = "", public = TRUE, verbose = TRUE)
+gist_create(files, description = "", public = TRUE, verbose = TRUE,
+  browse = TRUE)
 }
 \arguments{
-\item{gist}{(character) Path to one or more files.}
+\item{files}{(character) Path to one or more files.}
 
 \item{description}{(character) Brief description of gist (optional)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
+
+\item{verbose}{Print informative messages (default TRUE)}
+
+\item{browse}{(logical) If TRUE, created gist opens in your default browser.}
 }
 \value{
 Posts your file as a gist on your account, and prints out the url for the
 gist and for embedding the gist in the console.
 }
 \description{
-You will be asked ot enter you Github credentials (username, password) during
+You will be asked to enter you Github credentials (username, password) during
 each session, but only once for each session. Alternatively, you could enter
 your credentials into your .Rprofile file with the entries
 
@@ -26,11 +31,12 @@ your credentials into your .Rprofile file with the entries
  \item options(github.password = 'your_github_password')
 }
 
-then \code{gist} will simply read those options.
+then \code{gist} will simply read those options internally.
 }
 \examples{
 \dontrun{
 gist_create(files="stuff.md", description='My gist!', public=TRUE)
+gist_create(files=c("spocc_sp.Rmd","spocc_sp.md"), description='spocc demo files', public=TRUE)
 }
 }
 

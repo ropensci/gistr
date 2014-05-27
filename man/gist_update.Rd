@@ -3,13 +3,13 @@
 \alias{gist_update}
 \title{Update/modify a gist}
 \usage{
-gist_update(id, gist = NULL, description = "", public = TRUE,
+gist_update(id, files = NULL, description = "", public = TRUE,
   verbose = TRUE)
 }
 \arguments{
 \item{id}{Gist id}
 
-\item{gist}{(character) Path to one or more files.}
+\item{files}{(character) Path to one or more files.}
 
 \item{description}{(character) Brief description of gist (optional)}
 

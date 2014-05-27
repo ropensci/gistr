@@ -3,8 +3,10 @@
 #' @import httr RJSONIO assertthat
 #' @export
 #' @template gistargs
+#' @template all
+#' @param browse (logical) If TRUE, created gist opens in your default browser.
 #' @description
-#' You will be asked ot enter you Github credentials (username, password) during
+#' You will be asked to enter you Github credentials (username, password) during
 #' each session, but only once for each session. Alternatively, you could enter
 #' your credentials into your .Rprofile file with the entries
 #'
@@ -13,16 +15,18 @@
 #'  \item options(github.password = 'your_github_password')
 #' }
 #'
-#' then \code{gist} will simply read those options.
+#' then \code{gist} will simply read those options internally.
 #'
 #' @return Posts your file as a gist on your account, and prints out the url for the
 #' gist and for embedding the gist in the console.
+#' 
 #' @examples \dontrun{
 #' gist_create(files="stuff.md", description='My gist!', public=TRUE)
+#' gist_create(files=c("spocc_sp.Rmd","spocc_sp.md"), description='spocc demo files', public=TRUE)
 #' }
 
-gist_create <- function(gist, description = "", public = TRUE, verbose=TRUE) {
-  dat <- create_gist(gist, description = description, public = public)
+gist_create <- function(files, description = "", public = TRUE, verbose=TRUE, browse=TRUE) {
+  dat <- create_gist(files, description = description, public = public)
   credentials <- get_credentials()
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
@@ -30,11 +34,13 @@ gist_create <- function(gist, description = "", public = TRUE, verbose=TRUE) {
   warn_for_status(response)
   assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
   html_url <- content(response)$html_url
+  gisturl <- paste("https://gist.github.com/", getOption("github.username"), "/", 
+                   basename(html_url), sep = "")
+  embedurl <- paste("<script src=\"https://gist.github.com/", getOption("github.username"),
+                    "/", basename(html_url), ".js\"></script>", sep = "")
   message("Your gist has been published")
-  message("View gist at ", paste("https://gist.github.com/", getOption("github.username"),
-                                 "/", basename(html_url), sep = ""))
-  message("Embed gist with ", paste("<script src=\"https://gist.github.com/", getOption("github.username"),
-                                    "/", basename(html_url), ".js\"></script>", sep = ""))
-  return(paste("https://gist.github.com/", getOption("github.username"), "/", basename(html_url),
-               sep = ""))
+  message("View gist at ", gisturl)
+  message("Embed gist with ", embedurl)
+  browseURL(gisturl)
+  return( gisturl )
 }
