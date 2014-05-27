@@ -1,19 +1,31 @@
 #' Star a gist
 #' 
 #' @param id Gist id
+#' @param what (character) One of star (default), unstar, or check.
 #' @template all
 #' @export
 #' @examples \dontrun{
-#' gist_star(id='2f9eb6b72730fed2f061')
+#' gist_star(id='7698648')
+#' gist_star(id='7698648', what='check')
+#' gist_star(id='7698648', what='unstar')
+#' gist_star(id='7698648', what='check')
 #' }
-gist_star <- function(id, verbose=TRUE){
-  credentials = get_credentials()
+gist_star <- function(id, what='star', verbose=TRUE){
+  credentials <- get_credentials()
   url <- sprintf('https://api.github.com/gists/%s/star', id)
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
-  response <- PUT(url, config = c(auth, headers))
-  if(!response$status_code == 204){ message(response$headers$statusmessage) } else {
-    assert_that(response$headers$statusmessage == 'No Content')
-    mssg(verbose, 'Your gist has been deleted')
+  what <- match.arg(what, c('star','unstar','check'))
+  fxn <- switch(what, star='PUT', unstar='DELETE', check='GET')
+  response <- eval(parse(text = fxn))(url, config = c(auth, headers))
+#   assert_that(response$headers$statusmessage == 'No Content')
+  if(what=='check'){
+    if(response$status_code == 204) TRUE else FALSE
+  } else {
+    if(response$status_code == 204){ 
+      switch(what, star='Success, gist starred', unstar='Success, gist unstarred')
+    } else {
+      warn_for_status(response)
+    }
   }
 }

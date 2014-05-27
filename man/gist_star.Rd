@@ -3,10 +3,12 @@
 \alias{gist_star}
 \title{Star a gist}
 \usage{
-gist_star(id, verbose = TRUE)
+gist_star(id, what = "star", verbose = TRUE)
 }
 \arguments{
 \item{id}{Gist id}
+
+\item{what}{(character) One of star (default), unstar, or check.}
 
 \item{verbose}{Print informative messages (default TRUE)}
 }
@@ -15,7 +17,10 @@ Star a gist
 }
 \examples{
 \dontrun{
-gist_star(id='2f9eb6b72730fed2f061')
+gist_star(id='7698648')
+gist_star(id='7698648', what='check')
+gist_star(id='7698648', what='unstar')
+gist_star(id='7698648', what='check')
 }
 }
 
