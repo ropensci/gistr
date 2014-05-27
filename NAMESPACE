@@ -2,6 +2,7 @@
 
 export(gist_create)
 export(gist_delete)
+export(gist_get)
 export(gist_star)
 export(gist_update)
 import(assertthat)

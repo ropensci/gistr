@@ -19,10 +19,16 @@ create_gist <- function(filenames, description = "", public = TRUE) {
 get_credentials <- function() {
   if (is.null(getOption("github.username"))) {
     username <- readline("Please enter your github username: ")
+    if(nchar(username) == 0){
+      stop("Authentication failed - you can't have a blank username")
+    }
     options(github.username = username)
   }
   if (is.null(getOption("github.password"))) {
     password <- readline("Please enter your github password: ")
+    if(nchar(password) == 0){
+      stop("Authentication failed - you can't have a blank password")
+    }
     options(github.password = password)
   }
 }
@@ -30,6 +36,10 @@ get_credentials <- function() {
 #' Handler to print messages or not via verbose parameter in all fxns
 #' @keywords internal
 mssg <- function(x, y) if(x) message(y)
+
+#' Compact fxn
+#' @keywords internal
+gist_compact <- function(l) Filter(Negate(is.null), l)
 
 # #' Response handler
 # #' @keywords internal
