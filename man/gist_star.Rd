@@ -3,7 +3,7 @@
 \alias{gist_star}
 \title{Star a gist}
 \usage{
-gist_star(id, what = "star", verbose = TRUE)
+gist_star(id, what = "star", verbose = TRUE, callopts = list())
 }
 \arguments{
 \item{id}{Gist id}
@@ -11,6 +11,8 @@ gist_star(id, what = "star", verbose = TRUE)
 \item{what}{(character) One of star (default), unstar, or check.}
 
 \item{verbose}{Print informative messages (default TRUE)}
+
+\item{callopts}{Curl options passed on to httr::GET}
 }
 \description{
 Star a gist

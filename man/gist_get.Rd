@@ -4,7 +4,7 @@
 \title{List gists}
 \usage{
 gist_get(id = NULL, what = "public", since = NULL, page = NULL,
-  per_page = 30, verbose = TRUE)
+  per_page = 30, verbose = TRUE, callopts = list())
 }
 \arguments{
 \item{id}{Gist id.}
@@ -20,6 +20,8 @@ updated at or after this time are returned.}
 \item{per_page}{(integer) Number of items to return per page. Default 30. Max 100.}
 
 \item{verbose}{Print informative messages (default TRUE)}
+
+\item{callopts}{Curl options passed on to httr::GET}
 }
 \description{
 You can list public gists, your public gists, or all your gists
@@ -41,6 +43,9 @@ gist_get(what='mineall')
 gist_get(id='cf5d2e572faafb4c6d5f')
 # Your starred gists
 gist_get(what='starred')
+# pass in curl options
+gist_get(per_page=1, callopts=verbose())
+gist_get(per_page=1, callopts=timeout(seconds = 0.5))
 }
 }
 

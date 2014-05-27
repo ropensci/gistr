@@ -27,9 +27,13 @@
 #' gist_get(id='cf5d2e572faafb4c6d5f')
 #' # Your starred gists
 #' gist_get(what='starred') 
+#' # pass in curl options
+#' gist_get(per_page=1, callopts=verbose())
+#' gist_get(per_page=1, callopts=timeout(seconds = 0.5))
 #' }
 
-gist_get <- function(id=NULL, what='public', since=NULL, page=NULL, per_page=30, verbose=TRUE)
+gist_get <- function(id=NULL, what='public', since=NULL, page=NULL, per_page=30, 
+                     verbose=TRUE, callopts=list())
 {  
   credentials <- get_credentials()
   if(!is.null(id)) what <- "id"
@@ -42,7 +46,7 @@ gist_get <- function(id=NULL, what='public', since=NULL, page=NULL, per_page=30,
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
   args <- gist_compact(list(since=since, page=page, per_page=per_page))
-  response <- GET(url, query=args, config = c(auth, headers))
+  response <- GET(url, query=args, config = c(auth, headers), callopts)
   assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
   warn_for_status(response)
   temp <- content(response, as = "text")

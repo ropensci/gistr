@@ -25,12 +25,14 @@
 #' gist_create(files=c("spocc_sp.Rmd","spocc_sp.md"), description='spocc demo files', public=TRUE)
 #' }
 
-gist_create <- function(files, description = "", public = TRUE, verbose=TRUE, browse=TRUE) {
+gist_create <- function(files, description = "", public = TRUE, verbose=TRUE, browse=TRUE, 
+                        callopts=list())
+{
   dat <- create_gist(files, description = description, public = public)
   credentials <- get_credentials()
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
-  response <- POST(url = "https://api.github.com/gists", body = dat, config = c(auth, headers))
+  response <- POST(url = "https://api.github.com/gists", body = dat, config = c(auth, headers), callopts)
   warn_for_status(response)
   assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
   html_url <- content(response)$html_url

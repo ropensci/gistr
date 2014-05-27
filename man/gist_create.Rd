@@ -4,7 +4,7 @@
 \title{Post a file as a Github gist}
 \usage{
 gist_create(files, description = "", public = TRUE, verbose = TRUE,
-  browse = TRUE)
+  browse = TRUE, callopts = list())
 }
 \arguments{
 \item{files}{(character) Path to one or more files.}
@@ -14,6 +14,8 @@ gist_create(files, description = "", public = TRUE, verbose = TRUE,
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
 \item{verbose}{Print informative messages (default TRUE)}
+
+\item{callopts}{Curl options passed on to httr::GET}
 
 \item{browse}{(logical) If TRUE, created gist opens in your default browser.}
 }

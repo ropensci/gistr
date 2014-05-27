@@ -3,7 +3,8 @@
 \alias{gist_commits}
 \title{List gist commits}
 \usage{
-gist_commits(id = NULL, page = NULL, per_page = 30, verbose = TRUE)
+gist_commits(id = NULL, page = NULL, per_page = 30, verbose = TRUE,
+  callopts = list())
 }
 \arguments{
 \item{id}{Gist id.}
@@ -13,6 +14,8 @@ gist_commits(id = NULL, page = NULL, per_page = 30, verbose = TRUE)
 \item{per_page}{(integer) Number of items to return per page. Default 30. Max 100.}
 
 \item{verbose}{Print informative messages (default TRUE)}
+
+\item{callopts}{Curl options passed on to httr::GET}
 }
 \description{
 List gist commits

@@ -4,7 +4,7 @@
 \title{Update/modify a gist}
 \usage{
 gist_update(id, files = NULL, description = "", public = TRUE,
-  verbose = TRUE)
+  verbose = TRUE, callopts = list())
 }
 \arguments{
 \item{id}{Gist id}
@@ -16,6 +16,8 @@ gist_update(id, files = NULL, description = "", public = TRUE,
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
 \item{verbose}{Print informative messages (default TRUE)}
+
+\item{callopts}{Curl options passed on to httr::GET}
 }
 \description{
 Update/modify a gist
