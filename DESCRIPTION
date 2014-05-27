@@ -16,4 +16,5 @@ Imports:
     assertthat
 Suggests:
     roxygen2,
-    testthat
+    testthat,
+    jsonlite

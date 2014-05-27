@@ -1,6 +1,6 @@
 #' Post a file as a Github gist
 #'
-#' @import httr RJSONIO assertthat
+#' @import httr assertthat
 #' @export
 #' @template gistargs
 #' @template all

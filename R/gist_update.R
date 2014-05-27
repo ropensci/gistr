@@ -13,7 +13,7 @@ gist_update <- function(id, files=NULL, description = "", public = TRUE, verbose
   url <- sprintf('https://api.github.com/gists/%s', id)
   headers <- add_headers(`User-Agent` = "Dummy", `Accept` = 'application/vnd.github.v3+json')
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
-  response <- PATCH(url, body = gist, config = c(auth, headers))
+  response <- PATCH(url, body = dat, config = c(auth, headers))
   warn_for_status(response)
   assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
   html_url = content(response)$html_url
