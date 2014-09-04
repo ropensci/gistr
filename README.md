@@ -79,7 +79,7 @@ gist_commits(id='cf5d2e572faafb4c6d5f', per_page=1)
 
 ## Meta
 
-Please report any issues or bugs](https://github.com/ropensci/gistr/issues).
+Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
 
 License: MIT
 
