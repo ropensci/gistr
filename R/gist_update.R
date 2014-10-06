@@ -17,7 +17,7 @@ gist_update <- function(id, files=NULL, description = "", public = TRUE,
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
   response <- PATCH(url, body = dat, config = c(auth, headers), callopts)
   warn_for_status(response)
-  assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
+  stopifnot(response$headers$`content-type` == 'application/json; charset=utf-8')
   html_url = content(response)$html_url
   message('Your gist has been updated')
   invisible(basename(html_url))

@@ -11,26 +11,7 @@ create_gist <- function(filenames, description = "", public = TRUE) {
   })
   names(files) <- basename(filenames)
   body <- list(description = description, public = public, files = files)
-  RJSONIO::toJSON(body)
-}
-
-#' Get Github credentials from use in console
-#' @keywords internal
-get_credentials <- function() {
-  if (is.null(getOption("github.username"))) {
-    username <- readline("Please enter your github username: ")
-    if(nchar(username) == 0){
-      stop("Authentication failed - you can't have a blank username")
-    }
-    options(github.username = username)
-  }
-  if (is.null(getOption("github.password"))) {
-    password <- readline("Please enter your github password: ")
-    if(nchar(password) == 0){
-      stop("Authentication failed - you can't have a blank password")
-    }
-    options(github.password = password)
-  }
+  jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
 #' Handler to print messages or not via verbose parameter in all fxns
@@ -40,6 +21,22 @@ mssg <- function(x, y) if(x) message(y)
 #' Compact fxn
 #' @keywords internal
 gist_compact <- function(l) Filter(Negate(is.null), l)
+
+ghbase <- function() 'https://api.github.com'
+
+gist_header <- function(){
+  add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
+}
+
+gist_GET <- function(url, auth, headers, args=list(), ...){
+  response <- GET(url, auth, headers, query=args, ...)
+  stopifnot(response$headers$`content-type` == 'application/json; charset=utf-8')
+  warn_for_status(response)
+  temp <- content(response, as = "text")
+  jsonlite::fromJSON(temp)
+}
+
+check_auth <- function(x) if(!missing(x)) x else gist_oauth()
 
 # #' Response handler
 # #' @keywords internal
@@ -53,7 +50,7 @@ gist_compact <- function(l) Filter(Negate(is.null), l)
 #       } else { warning(sprintf("Error: (%s)", x$status_code)) }
 #     } else { warn_for_status(x) }
 #   } else {
-#     assert_that(x$headers$`content-type`=='application/json;charset=UTF-8')
+#     stopifnot(x$headers$`content-type`=='application/json;charset=UTF-8')
 #     res <- content(x, as = 'text', encoding = "UTF-8")
 #     out <- jsonlite::fromJSON(res, simplifyVector = FALSE)
 #     if(!'results' %in% names(out)){
@@ -63,5 +60,24 @@ gist_compact <- function(l) Filter(Negate(is.null), l)
 #         warning("Sorry, no data found")
 #     }
 #     return( out )
+#   }
+# }
+
+# #' Get Github credentials from use in console
+# #' @keywords internal
+# get_credentials <- function() {
+#   if (is.null(getOption("github.username"))) {
+#     username <- readline("Please enter your github username: ")
+#     if(nchar(username) == 0){
+#       stop("Authentication failed - you can't have a blank username")
+#     }
+#     options(github.username = username)
+#   }
+#   if (is.null(getOption("github.password"))) {
+#     password <- readline("Please enter your github password: ")
+#     if(nchar(password) == 0){
+#       stop("Authentication failed - you can't have a blank password")
+#     }
+#     options(github.password = password)
 #   }
 # }

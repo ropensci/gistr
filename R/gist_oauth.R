@@ -6,7 +6,7 @@
 #' There are two ways to authorise gistr to work with your GitHub account:
 #' \itemize{
 #' \item Generate a personal access token at 
-#'   \url{https://cloud.digitalocean.com/settings/tokens/new} and 
+#'   \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and 
 #'   record in the \code{DO_PAT} envar.
 #'   
 #' \item Interactively login into your DO account and authorise with
@@ -30,15 +30,14 @@ gist_oauth <- function(app = gistr_app, reauth = FALSE) {
   }
   pat <- Sys.getenv("GITHUB_PAT", "")
   if (!identical(pat, "")) {
-    auth_config <- httr::add_headers(Authorization = paste0("Bearer ", pat))
+    auth_config <- httr::add_headers(Authorization = paste0("token ", pat))
   } else if (!interactive()) {
     stop("In non-interactive environments, please set GITHUB_PAT env to a GitHug",
          " access token (https://help.github.com/articles/creating-an-access-token-for-command-line-use)",
          call. = FALSE)
   } else  {
-    endpt <- httr::oauth_endpoint(NULL, "authorize", "token",
-                                  base_url = "https://github.com/login/oauth")
-    token <- httr::oauth2.0_token(endpt, app, scope = c("read", "write"), cache = !reauth)
+    endpt <- httr::oauth_endpoints("github")
+    token <- httr::oauth2.0_token(endpt, app, scope = "gist", cache = !reauth)
     auth_config <- httr::config(token = token)
   }  
   cache$auth_config <- auth_config

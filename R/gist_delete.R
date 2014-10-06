@@ -14,7 +14,7 @@ gist_delete <- function(id, verbose=TRUE, callopts=list())
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
   response <- DELETE(url, config = c(auth, headers), callopts)
   if(!response$status_code == 204){ message(response$headers$statusmessage) } else {
-    assert_that(response$headers$statusmessage == 'No Content')
+    stopifnot(response$headers$statusmessage == 'No Content')
     mssg(verbose, 'Your gist has been deleted')
   }
 }

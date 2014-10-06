@@ -34,7 +34,7 @@ gist_create <- function(files, description = "", public = TRUE, verbose=TRUE, br
   auth  <- authenticate(getOption("github.username"), getOption("github.password"), type = "basic")
   response <- POST(url = "https://api.github.com/gists", body = dat, config = c(auth, headers), callopts)
   warn_for_status(response)
-  assert_that(response$headers$`content-type` == 'application/json; charset=utf-8')
+  stopifnot(response$headers$`content-type` == 'application/json; charset=utf-8')
   html_url <- content(response)$html_url
   gisturl <- paste("https://gist.github.com/", getOption("github.username"), "/", 
                    basename(html_url), sep = "")

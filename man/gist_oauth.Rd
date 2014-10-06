@@ -19,7 +19,7 @@ GitHub account.
 There are two ways to authorise gistr to work with your GitHub account:
 \itemize{
 \item Generate a personal access token at
-  \url{https://cloud.digitalocean.com/settings/tokens/new} and
+  \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and
   record in the \code{DO_PAT} envar.
 
 \item Interactively login into your DO account and authorise with
