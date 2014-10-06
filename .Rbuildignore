@@ -1,1 +1,3 @@
 man-roxygen
+^.*\.Rproj$
+^\.Rproj\.user$
