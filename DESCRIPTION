@@ -1,8 +1,8 @@
 Package: gistr
 Title: Work with gists from R.
 Description: description...
-Version: 0.0.2
-Date: 2014-05-27
+Version: 0.0.3
+Date: 2014-10-05
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = c("aut", "cre"),
     email = "ramnath.vaidya@gmail.com"),
     person("Karthik", "Ram", role = "aut",
@@ -15,7 +15,8 @@ BugReports: http://www.github.com/ropensci/gistr/issues
 Imports:
     RJSONIO,
     httr,
-    assertthat
+    assertthat,
+    magrittr
 Suggests:
     roxygen2,
     testthat,
