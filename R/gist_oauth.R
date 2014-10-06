@@ -1,4 +1,4 @@
-#' Authorize with Digital Ocean.
+#' Authorize with GitHub.
 #'
 #' This function is run automatically to allow analogsea to access your
 #' GitHub account.
