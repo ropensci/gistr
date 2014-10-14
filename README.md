@@ -1,6 +1,9 @@
 gistr
 =======
 
+[![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
+[![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
+
 `gistr` is a light interface to GitHub's gists for R.
 
 ## Seealso:
