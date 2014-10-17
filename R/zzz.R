@@ -24,6 +24,16 @@ payload <- function(filenames, description = "") {
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
+creategist <- function(filenames, description = "", public = TRUE) {
+  filenames <- files_exist(filenames)
+  files <- lapply(filenames, function(file) {
+    list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
+  })
+  names(files) <- basename(filenames)
+  body <- list(description = description, public = public, files = files)
+  jsonlite::toJSON(body, auto_unbox = TRUE)
+}
+
 unl <- function(x) if(!is.null(x)) do.call(c, x) else NULL
 unr <- function(x) if(!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 

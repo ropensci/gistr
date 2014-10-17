@@ -1,12 +1,11 @@
-#' Update/modify a gist
-#' 
-#' @export
-#' @param id Gist id
-#' @template gistargs
-#' @template all
-#' @examples \dontrun{
-#' gist_update(id='42095d9a661b0eefc694')
-#' }
+# Update/modify a gist
+# 
+# @param id Gist id
+# @template gistargs
+# @template all
+# @examples \dontrun{
+# gist_update(id='42095d9a661b0eefc694')
+# }
 gist_update <- function(id, files=NULL, description = "", public = TRUE, 
                         verbose=TRUE, callopts=list())
 {

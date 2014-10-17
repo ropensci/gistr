@@ -1,5 +1,6 @@
 #' Get a gist 
 #' 
+#' @import httr
 #' @export
 #' @param id (character) A gist id
 #' @template all
