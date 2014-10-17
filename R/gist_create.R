@@ -17,9 +17,3 @@ gist_create <- function(files, description = "", public = TRUE, browse = TRUE, .
   browse(gist)
   return( gist )
 }
-
-embed <- function(gist){
-  gist <- as.gist(gist)
-  paste("<script src=\"https://gist.github.com/", gist$owner$login,
-        "/", basename(gist$html_url), ".js\"></script>", sep = "")
-}
