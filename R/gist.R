@@ -34,7 +34,7 @@ as.gist.list <- function(x) list2gist(x)
 list2gist <- function(x){
   nmz <- c('url','forks_url','commits_url','id','git_pull_url','git_push_url','html_url',
            'files','public','created_at','updated_at','description','comments','user',
-           'comments_url','owner','forks','history')
+           'comments_url','owner','fork_of','forks','history')
   if(!all(names(x) %in% nmz)) stop("Not coerceable to a gist")
   structure(x, class="gist")
 }
