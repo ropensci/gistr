@@ -19,4 +19,5 @@ Imports:
     httr,
     magrittr
 Suggests:
-    roxygen2
+    roxygen2,
+    testthat
