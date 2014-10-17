@@ -3,6 +3,8 @@
 #' @import httr
 #' @export
 #' @param id (character) A gist id
+#' @param x Object to coerce. Can be an integer (gist id), string
+#'   (gist id), a gist, or an list that can be coerced to a gist.
 #' @template all
 #' @examples \donttest{
 #' gist(id = 'f1403260eb92f5dfa7e1')
@@ -25,10 +27,20 @@ gist <- function(id, ...){
   as.gist(res)
 }
 
+#' @export
+#' @rdname gist
 as.gist <- function(x) UseMethod("as.gist")
+
+#' @export
 as.gist.gist <- function(x) x
+
+#' @export
 as.gist.numeric <- function(x) gist(x)
+
+#' @export
 as.gist.character <- function(x) gist(x)
+
+#' @export
 as.gist.list <- function(x) list2gist(x)
 
 list2gist <- function(x){
