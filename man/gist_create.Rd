@@ -17,7 +17,7 @@ gist_create(files, description = "", public = TRUE, verbose = TRUE,
 
 \item{browse}{(logical) If TRUE, created gist opens in your default browser.}
 
-\item{callopts}{Curl options passed on to httr::GET}
+\item{...}{Curl options passed on to httr::GET}
 }
 \value{
 Posts your file as a gist on your account, and prints out the url for the

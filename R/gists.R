@@ -33,14 +33,12 @@
 #' gists(per_page=1, config=timeout(seconds = 0.5))
 #' }
 
-gists <- function(.gist, id=NULL, what='public', since=NULL, page=NULL, per_page=NULL, verbose=TRUE, ...)
+gists <- function(id=NULL, what='public', since=NULL, page=NULL, per_page=NULL, verbose=TRUE, ...)
 {
-  auth <- if(!missing(.gist)) .gist$auth else gist_oauth()
   if(!is.null(id)) what <- "id"
-  url <- switch_url(what, id)
-  headers <- add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
   args <- gist_compact(list(since=since, page=page, per_page=per_page))
-  gist_GET(url, auth, headers, args, ...)
+  res <- gist_GET(switch_url(what, id), gist_oauth(), ghead(), args, ...)
+  lapply(res, structure, class = "gist")
 }
 
 switch_url <- function(x, id){
@@ -50,4 +48,8 @@ switch_url <- function(x, id){
          mineall = sprintf('%s/users/%s/gists', ghbase(), getOption("github.username")),
          starred = paste0(ghbase(), '/gists/starred'),
          id = sprintf('%s/gists/%s', ghbase(), id))
+}
+
+ghead <- function(){
+  add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
 }

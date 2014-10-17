@@ -3,7 +3,7 @@
 \alias{gists}
 \title{List gists}
 \usage{
-gists(.gist, id = NULL, what = "public", since = NULL, page = NULL,
+gists(id = NULL, what = "public", since = NULL, page = NULL,
   per_page = NULL, verbose = TRUE, ...)
 }
 \arguments{
@@ -21,7 +21,7 @@ updated at or after this time are returned.}
 
 \item{verbose}{Print informative messages (default TRUE)}
 
-\item{callopts}{Curl options passed on to httr::GET}
+\item{...}{Curl options passed on to httr::GET}
 }
 \description{
 You can list public gists, your public gists, or all your gists

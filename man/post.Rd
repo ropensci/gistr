@@ -3,7 +3,7 @@
 \alias{post}
 \title{Post a gist object}
 \usage{
-post(.gist, description = "", public = TRUE, verbose = TRUE,
+post(gist, description = "", public = TRUE, verbose = TRUE,
   browse = TRUE, ...)
 }
 \description{

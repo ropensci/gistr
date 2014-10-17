@@ -17,7 +17,7 @@ gist_update(id, files = NULL, description = "", public = TRUE,
 
 \item{verbose}{Print informative messages (default TRUE)}
 
-\item{callopts}{Curl options passed on to httr::GET}
+\item{...}{Curl options passed on to httr::GET}
 }
 \description{
 Update/modify a gist

@@ -10,7 +10,7 @@ gist_delete(id, verbose = TRUE, callopts = list())
 
 \item{verbose}{Print informative messages (default TRUE)}
 
-\item{callopts}{Curl options passed on to httr::GET}
+\item{...}{Curl options passed on to httr::GET}
 }
 \description{
 Delete a gist
