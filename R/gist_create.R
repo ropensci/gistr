@@ -1,6 +1,6 @@
 #' Post a file as a Github gist
 #'
-#' @import httr assertthat
+#' @import httr
 #' @export
 #' @template gistargs
 #' @template all
