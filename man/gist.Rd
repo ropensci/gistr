@@ -3,7 +3,7 @@
 \alias{gist}
 \title{Get a gist}
 \usage{
-gist(id = NULL, ...)
+gist(id, ...)
 }
 \arguments{
 \item{id}{(character) A gist id}
@@ -21,7 +21,7 @@ as.gist('f1403260eb92f5dfa7e1')
 as.gist(10)
 as.gist(gist('f1403260eb92f5dfa7e1'))
 
-ids <- sapply(gists()$data, "[[", "id")
+ids <- sapply(gists(), "[[", "id")
 gist(ids[1])
 gist(ids[2])
 gist(ids[3])

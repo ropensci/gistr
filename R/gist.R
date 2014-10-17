@@ -10,7 +10,7 @@
 #' as.gist(10)
 #' as.gist(gist('f1403260eb92f5dfa7e1'))
 #' 
-#' ids <- sapply(gists()$data, "[[", "id")
+#' ids <- sapply(gists(), "[[", "id")
 #' gist(ids[1])
 #' gist(ids[2])
 #' gist(ids[3])
@@ -19,11 +19,9 @@
 #' gist(ids[1]) %>% browse()
 #' }
 
-gist <- function(id=NULL, ...){
-  res <- gists(id = id, ...)
-  structure(res$data, class="gist")
-#   auth <- if(!missing(.gist)) .gist$auth else gist_oauth()
-#   structure(list(auth = auth, files = NULL), class="gist")
+gist <- function(id, ...){
+  res <- gist_GET(switch_url('id', id), gist_oauth(), ghead(), ...)
+  as.gist(res)
 }
 
 as.gist <- function(x) UseMethod("as.gist")
