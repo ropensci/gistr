@@ -1,6 +1,15 @@
 gistr
 =======
 
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
 
@@ -25,32 +34,70 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
 * Interactively login into your GitHub account and authorise with OAuth.
 
-Using the personal access token is recommended.
+Using the PAT is recommended.
 
-```{r}
+Using the `gist_auth()` function you can authenticate seperately first, or if you're not authenticated, this function will run internally with each functionn call. If you have a PAT, that will be used, if not, OAuth will be used.
+
+```{r eval=FALSE}
 gist_auth()
 ```
 
-### List commits
+### List gists
+
+Limiting to a few results here to keep it brief
 
 ```{r}
-gist_get(per_page=1)
+gists(per_page = 2)
+```
+
+Since a certain date/time
+
+```{r}
+gists(since='2014-05-26T00:00:00Z', per_page = 2)
+```
+
+Request different types of gists, one of public, minepublic, mineall, or starred.
+
+```{r}
+gists('minepublic', per_page = 2)
+```
+
+
+### List a single commit
+
+```{r}
+gist(id = 'f1403260eb92f5dfa7e1')
 ```
 
 ### Create gist
 
 ```{r}
-gist_create(files="stuff.md", description='My gist!', public=TRUE)
+gist_create(files="~/stuff.md", description='a new cool gist')
 ```
 
 ### List commits on a gist
 
 ```{r}
-gist_commits(id='cf5d2e572faafb4c6d5f', per_page=1)
+gists()[[1]] %>% commits()
 ```
+
+### Star a gist
+
+Star
+
+```{r}
+gist('7ddb9810fc99c84c65ec') %>% star()
+```
+
+Unstar
+
+```{r}
+gist('7ddb9810fc99c84c65ec') %>% unstar()
+```
+
 
 ## Meta
 

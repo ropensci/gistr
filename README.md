@@ -1,6 +1,8 @@
 gistr
 =======
 
+
+
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
 
@@ -16,94 +18,168 @@ gistr
 
 ### Install
 
-```coffee
+
+```r
 devtools::install_github("ropensci/gistr")
 library("gistr")
 ```
 
-### List commits
+### Authentication
 
-```coffee
-gist_get(per_page=1)
+There are two ways to authorise gistr to work with your GitHub account:
+
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
+* Interactively login into your GitHub account and authorise with OAuth.
+
+Using the PAT is recommended.
+
+Using the `gist_auth()` function you can authenticate seperately first, or if you're not authenticated, this function will run internally with each functionn call. If you have a PAT, that will be used, if not, OAuth will be used.
+
+
+```r
+gist_auth()
 ```
 
-```coffee
-[[1]]
-[[1]]$url
-[1] "https://api.github.com/gists/d443c0e066f45530430a"
+### List gists
 
-[[1]]$forks_url
-[1] "https://api.github.com/gists/d443c0e066f45530430a/forks"
+Limiting to a few results here to keep it brief
 
-[[1]]$commits_url
-[1] "https://api.github.com/gists/d443c0e066f45530430a/commits"
 
-[[1]]$id
-[1] "d443c0e066f45530430a"
+```r
+gists(per_page = 2)
+#> [[1]]
+#> <gist>4fea481b009899421a6d
+#>   URL: https://gist.github.com/4fea481b009899421a6d
+#>   Description: Lodz - Warta River-1
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:02:35Z / 2014-10-17T21:02:35Z
+#>   Files: openpanzer-save.json
+#> 
+#> [[2]]
+#> <gist>38dbc3b4900b8aba2a43
+#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
+#>   Files: stuff.md
+```
 
-[[1]]$git_pull_url
-[1] "https://gist.github.com/d443c0e066f45530430a.git"
-...cutoff
+Since a certain date/time
+
+
+```r
+gists(since='2014-05-26T00:00:00Z', per_page = 2)
+#> [[1]]
+#> <gist>4fea481b009899421a6d
+#>   URL: https://gist.github.com/4fea481b009899421a6d
+#>   Description: Lodz - Warta River-1
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:02:35Z / 2014-10-17T21:02:35Z
+#>   Files: openpanzer-save.json
+#> 
+#> [[2]]
+#> <gist>38dbc3b4900b8aba2a43
+#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
+#>   Files: stuff.md
+```
+
+Request different types of gists, one of public, minepublic, mineall, or starred.
+
+
+```r
+gists('minepublic', per_page = 2)
+#> [[1]]
+#> <gist>38dbc3b4900b8aba2a43
+#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
+#>   Files: stuff.md
+#> 
+#> [[2]]
+#> <gist>09e76b91f508907fbfeb
+#>   URL: https://gist.github.com/09e76b91f508907fbfeb
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:00:05Z / 2014-10-17T21:00:05Z
+#>   Files: stuff.md
+```
+
+
+### List a single commit
+
+
+```r
+gist(id = 'f1403260eb92f5dfa7e1')
+#> <gist>f1403260eb92f5dfa7e1
+#>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
+#>   Description: Querying bitly from R 
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-15T20:40:12Z / 2014-10-15T21:54:29Z
+#>   Files: bitly_r.md
 ```
 
 ### Create gist
 
-```coffee
-gist_create(files="stuff.md", description='My gist!', public=TRUE)
-```
 
-```coffee
-Your gist has been published
-View gist at https://gist.github.com/sckott/5c1bde5c36984d808bf3
-Embed gist with <script src="https://gist.github.com/sckott/5c1bde5c36984d808bf3.js"></script>
-[1] "https://gist.github.com/sckott/5c1bde5c36984d808bf3"
+```r
+gist_create(files="~/stuff.md", description='a new cool gist')
+#> <gist>ee18bf2920194d63d74a
+#>   URL: https://gist.github.com/ee18bf2920194d63d74a
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:02:44Z / 2014-10-17T21:02:44Z
+#>   Files: stuff.md
 ```
 
 ### List commits on a gist
 
-```coffee
-gist_commits(id='cf5d2e572faafb4c6d5f', per_page=1)
+
+```r
+gists()[[1]] %>% commits()
+#> [[1]]
+#> <commit>
+#>   Version: 0565f6d47a2bc39e49256c10aff2daa905825ce7
+#>   Commited: 2014-10-17T21:02:44Z
+#>   Commits [total, additions, deletions]: [19,19,0]
 ```
 
-```coffee
-[[1]]
-[[1]]$user
-[[1]]$user$login
-[1] "sckott"
+### Star a gist
 
-[[1]]$user$id
-[1] 577668
+Star
 
-[[1]]$user$avatar_url
-[1] "https://avatars.githubusercontent.com/u/577668?"
-...cutoff
+
+```r
+gist('7ddb9810fc99c84c65ec') %>% star()
+#> <gist>7ddb9810fc99c84c65ec
+#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Files: code.R, manifest.yml, rrt_manifest.yml
+```
+
+Unstar
+
+
+```r
+gist('7ddb9810fc99c84c65ec') %>% unstar()
+#> <gist>7ddb9810fc99c84c65ec
+#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Files: code.R, manifest.yml, rrt_manifest.yml
 ```
 
 
 ## Meta
 
-Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
-
-License: MIT
-
-This package is part of the [rOpenSci](http://ropensci.org/packages) project.
-
-To cite package ‘gistr’ in publications use:
-
-> Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2014). gistr: Work with gists from R.. R package version 0.0.2. https://github.com/ropensci/gistr
-
-A BibTeX entry for LaTeX users is
-
-```coffee
-  @Manual{,
-    title = {gistr: Work with gists from R.},
-    author = {Ramnath Vaidyanathan and Karthik Ram and Scott Chamberlain},
-    year = {2014},
-    note = {R package version 0.0.2},
-    url = {https://github.com/ropensci/gistr},
-  }
-```
-
-Get citation information for `gistr` in R doing `citation(package = 'gistr')`
+* Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
+* License: MIT
+* Get citation information for `gistr` in R doing `citation(package = 'gistr')`
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
