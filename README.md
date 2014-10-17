@@ -48,20 +48,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>4fea481b009899421a6d
-#>   URL: https://gist.github.com/4fea481b009899421a6d
-#>   Description: Lodz - Warta River-1
+#> <gist>7cc8d1295e1d2b298c68
+#>   URL: https://gist.github.com/7cc8d1295e1d2b298c68
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:02:35Z / 2014-10-17T21:02:35Z
-#>   Files: openpanzer-save.json
+#>   Created/Edited: 2014-10-17T21:30:47Z / 2014-10-17T21:30:48Z
+#>   Files: gistfile1.rb
 #> 
 #> [[2]]
-#> <gist>38dbc3b4900b8aba2a43
-#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
-#>   Description: a new cool gist
+#> <gist>8191f8a6b1113d80b8dd
+#>   URL: https://gist.github.com/8191f8a6b1113d80b8dd
+#>   Description: Illustration of how to use the R sp, raster, and ncdf packages to output GCAM data in netCDF format
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-17T21:30:36Z / 2014-10-17T21:30:37Z
+#>   Files: gcam2nc.R
 ```
 
 Since a certain date/time
@@ -70,20 +70,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>4fea481b009899421a6d
-#>   URL: https://gist.github.com/4fea481b009899421a6d
-#>   Description: Lodz - Warta River-1
+#> <gist>7cc8d1295e1d2b298c68
+#>   URL: https://gist.github.com/7cc8d1295e1d2b298c68
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:02:35Z / 2014-10-17T21:02:35Z
-#>   Files: openpanzer-save.json
+#>   Created/Edited: 2014-10-17T21:30:47Z / 2014-10-17T21:30:48Z
+#>   Files: gistfile1.rb
 #> 
 #> [[2]]
-#> <gist>38dbc3b4900b8aba2a43
-#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
-#>   Description: a new cool gist
+#> <gist>8191f8a6b1113d80b8dd
+#>   URL: https://gist.github.com/8191f8a6b1113d80b8dd
+#>   Description: Illustration of how to use the R sp, raster, and ncdf packages to output GCAM data in netCDF format
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-17T21:30:36Z / 2014-10-17T21:30:37Z
+#>   Files: gcam2nc.R
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -92,19 +92,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
+#> <gist>ee18bf2920194d63d74a
+#>   URL: https://gist.github.com/ee18bf2920194d63d74a
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:02:44Z / 2014-10-17T21:30:08Z
+#>   Files: stuff.md
+#> 
+#> [[2]]
 #> <gist>38dbc3b4900b8aba2a43
 #>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
 #>   Description: a new cool gist
 #>   Public: TRUE
 #>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
-#>   Files: stuff.md
-#> 
-#> [[2]]
-#> <gist>09e76b91f508907fbfeb
-#>   URL: https://gist.github.com/09e76b91f508907fbfeb
-#>   Description: a new cool gist
-#>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:00:05Z / 2014-10-17T21:00:05Z
 #>   Files: stuff.md
 ```
 
@@ -127,11 +127,11 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist')
-#> <gist>ee18bf2920194d63d74a
-#>   URL: https://gist.github.com/ee18bf2920194d63d74a
+#> <gist>bfa698a2ca0314936af7
+#>   URL: https://gist.github.com/bfa698a2ca0314936af7
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:02:44Z / 2014-10-17T21:02:44Z
+#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:42Z
 #>   Files: stuff.md
 ```
 
@@ -142,8 +142,8 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 0565f6d47a2bc39e49256c10aff2daa905825ce7
-#>   Commited: 2014-10-17T21:02:44Z
+#>   Version: f485d42a142f9cd83215048697376966d5e1ae0a
+#>   Commited: 2014-10-17T21:31:42Z
 #>   Commits [total, additions, deletions]: [19,19,0]
 ```
 
@@ -173,6 +173,55 @@ gist('7ddb9810fc99c84c65ec') %>% unstar()
 #>   Public: TRUE
 #>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
+```
+
+### Edit a gist
+
+Add files
+
+
+```r
+gists(what = "minepublic")[[1]] %>%
+  add_files("~/alm_othersources.md") %>%
+  edit()
+#> <gist>bfa698a2ca0314936af7
+#>   URL: https://gist.github.com/bfa698a2ca0314936af7
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:44Z
+#>   Files: alm_othersources.md, stuff.md
+```
+
+Delete files
+
+
+```r
+gists(what = "minepublic")[[1]] %>%
+  delete_files("~/alm_othersources.md") %>%
+  edit()
+#> <gist>bfa698a2ca0314936af7
+#>   URL: https://gist.github.com/bfa698a2ca0314936af7
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:44Z
+#>   Files: stuff.md
+```
+
+### Open a gist in your default browser
+
+
+```r
+gists()[[1]] %>% browse()
+```
+
+> Opens the gist in your default browser
+
+### Get embed script
+
+
+```r
+gists()[[1]] %>% embed()
+#> [1] "<script src=\"https://gist.github.com/sckott/bfa698a2ca0314936af7.js\"></script>"
 ```
 
 

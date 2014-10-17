@@ -98,6 +98,38 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 ```
 
+### Edit a gist
+
+Add files
+
+```{r}
+gists(what = "minepublic")[[1]] %>%
+  add_files("~/alm_othersources.md") %>%
+  edit()
+```
+
+Delete files
+
+```{r}
+gists(what = "minepublic")[[1]] %>%
+  delete_files("~/alm_othersources.md") %>%
+  edit()
+```
+
+### Open a gist in your default browser
+
+```{r eval=FALSE}
+gists()[[1]] %>% browse()
+```
+
+> Opens the gist in your default browser
+
+### Get embed script
+
+```{r}
+gists()[[1]] %>% embed()
+```
+
 
 ## Meta
 
