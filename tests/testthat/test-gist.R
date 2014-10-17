@@ -13,5 +13,5 @@ test_that("as.gist works", {
 
 test_that("config options work", {
   library('httr')
-  expect_error(gist(10, config=timeout(0.1)))
+  expect_error(gist(10, config=timeout(0.001)))
 })
