@@ -38,6 +38,6 @@ edit <- function(gist, files=NULL, description = gist$description, ...)
 {
   files <- list(edit=gist$edit_files, add=gist$add_files, delete=gist$delete_files, rename=gist$rename_files)
   body <- payload(filenames = files, description)
-  res <- gist_PATCH(gist$id, gist_oauth(), ghead(), body, ...)
+  res <- gist_PATCH(gist$id, gist_auth(), ghead(), body, ...)
   as.gist(res)
 }

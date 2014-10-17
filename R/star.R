@@ -18,7 +18,7 @@
 
 star <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- gist_PUT(url_star(gist$id), gist_oauth(), ghead(), add_headers(`Content-Length` = 0), ...)
+  res <- gist_PUT(url_star(gist$id), gist_auth(), ghead(), add_headers(`Content-Length` = 0), ...)
   star_mssg(res, 'Success, gist starred!')
   gist
 }
@@ -27,7 +27,7 @@ star <- function(gist, ...){
 #' @rdname star
 unstar <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- gist_DELETE(url_star(gist$id), gist_oauth(), ghead(), ...)
+  res <- gist_DELETE(url_star(gist$id), gist_auth(), ghead(), ...)
   star_mssg(res, 'Success, gist unstarred!')
   gist
 }
@@ -36,7 +36,7 @@ unstar <- function(gist, ...){
 #' @rdname star
 star_check <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- GET(url_star(gist$id), gist_oauth(), ghead(), ...)
+  res <- GET(url_star(gist$id), gist_auth(), ghead(), ...)
   msg <- if(res$status_code == 204) TRUE else FALSE
   message(msg)
   gist

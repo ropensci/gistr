@@ -18,10 +18,10 @@
 #'    \code{gistr_oauth} created by Scott Chamberlain.
 #' @param reauth (logical) Force re-authorization? 
 #' @examples \donttest{
-#' gist_oauth()
+#' gist_auth()
 #' }
 
-gist_oauth <- function(app = gistr_app, reauth = FALSE) {
+gist_auth <- function(app = gistr_app, reauth = FALSE) {
   
   if (exists("auth_config", envir = cache) && !reauth) {
     return(cache$auth_config)

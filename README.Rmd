@@ -1,0 +1,61 @@
+gistr
+=======
+
+[![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
+[![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
+
+`gistr` is a light interface to GitHub's gists for R.
+
+## Seealso:
+
+* [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
+* [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+
+
+## Quick start
+
+### Install
+
+```{r eval=FALSE}
+devtools::install_github("ropensci/gistr")
+library("gistr")
+```
+
+### Authentication
+
+There are two ways to authorise gistr to work with your GitHub account:
+
+* Generate a personal access token at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
+* Interactively login into your GitHub account and authorise with OAuth.
+
+Using the personal access token is recommended.
+
+```{r}
+gist_auth()
+```
+
+### List commits
+
+```{r}
+gist_get(per_page=1)
+```
+
+### Create gist
+
+```{r}
+gist_create(files="stuff.md", description='My gist!', public=TRUE)
+```
+
+### List commits on a gist
+
+```{r}
+gist_commits(id='cf5d2e572faafb4c6d5f', per_page=1)
+```
+
+## Meta
+
+* Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
+* License: MIT
+* Get citation information for `gistr` in R doing `citation(package = 'gistr')`
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

@@ -11,7 +11,7 @@
 
 rate_limit <- function(.gist, ...)
 {
-  auth <- if(!missing(.gist)) .gist$auth else gist_oauth()
+  auth <- if(!missing(.gist)) .gist$auth else gist_auth()
   tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), auth, ghead(), list(), ...)
   structure(tmp, class="gist_rate")
 }

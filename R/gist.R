@@ -23,7 +23,7 @@
 #' }
 
 gist <- function(id, ...){
-  res <- gist_GET(switch_url('id', id), gist_oauth(), ghead(), ...)
+  res <- gist_GET(switch_url('id', id), gist_auth(), ghead(), ...)
   as.gist(res)
 }
 

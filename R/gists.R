@@ -32,7 +32,7 @@
 gists <- function(what='public', since=NULL, page=NULL, per_page=NULL, ...)
 {
   args <- gist_compact(list(since=since, page=page, per_page=per_page))
-  res <- gist_GET(switch_url(what), gist_oauth(), ghead(), args, ...)
+  res <- gist_GET(switch_url(what), gist_auth(), ghead(), args, ...)
   lapply(res, structure, class = "gist")
 }
 

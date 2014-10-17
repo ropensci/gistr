@@ -14,7 +14,7 @@
 gist_create <- function(files, description = "", public = TRUE, browse = TRUE, ...)
 {
   body <- creategist(files, description, public)
-  res <- gist_POST(gist_oauth(), ghead(), body, ...)
+  res <- gist_POST(gist_auth(), ghead(), body, ...)
   gist <- as.gist(res)
   browse(gist)
   return( gist )

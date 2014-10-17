@@ -78,4 +78,4 @@ process <- function(x){
   jsonlite::fromJSON(temp, FALSE)
 }
 
-check_auth <- function(x) if(!missing(x)) x else gist_oauth()
+check_auth <- function(x) if(!missing(x)) x else gist_auth()
