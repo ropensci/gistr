@@ -44,7 +44,3 @@ switch_url <- function(x, id){
          starred = paste0(ghbase(), '/gists/starred'),
          id = sprintf('%s/gists/%s', ghbase(), id))
 }
-
-ghead <- function(){
-  add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
-}

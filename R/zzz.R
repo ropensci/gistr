@@ -43,9 +43,10 @@ gist_compact <- function(l) Filter(Negate(is.null), l)
 
 ghbase <- function() 'https://api.github.com'
 
-gist_header <- function(){
+ghead <- function(){
   add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
 }
+
 
 gist_GET <- function(url, auth, headers, args=list(), ...){
   response <- GET(url, auth, headers, query=args, ...)
@@ -62,8 +63,12 @@ gist_POST <- function(auth, headers, body, ...){
   process(response)
 }
 
-gist_DELETE <- function(id, auth, headers, ...){
-  DELETE(paste0(ghbase(), '/gists/', id), auth, headers, ...)
+gist_PUT <- function(url, auth, headers, ...){
+  PUT(url, auth, headers, ...)
+}
+
+gist_DELETE <- function(url, auth, headers, ...){
+  DELETE(url, auth, headers, ...)
 }
 
 process <- function(x){

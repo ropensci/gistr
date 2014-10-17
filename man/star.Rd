@@ -5,18 +5,19 @@
 \alias{unstar}
 \title{Star a gist}
 \usage{
-star(.gist, id, ...)
+star(gist, ...)
 
-unstar(.gist, id, ...)
+unstar(gist, ...)
 
-star_check(.gist, id, ...)
+star_check(gist, ...)
 }
 \arguments{
-\item{.gist}{gist object}
-
-\item{id}{Gist id}
+\item{gist}{A gist object or something that can be coerced to a gist object.}
 
 \item{...}{Curl options passed on to httr::GET}
+}
+\value{
+A message, and a gist object, the same one input to the function.
 }
 \description{
 Star a gist
@@ -24,13 +25,14 @@ Star a gist
 \examples{
 \dontrun{
 id <- '7ddb9810fc99c84c65ec'
-gist() \%>\% star(id = id)
-gist() \%>\% star_check(id = id)
-gist() \%>\% unstar(id = id)
-gist() \%>\% star_check(id = id)
-gist() \%>\%
-  star(id = id) \%>\%
-  star_check(id = id)
+gist(id) \%>\% star()
+gist(id) \%>\% star_check()
+gist(id) \%>\% unstar()
+gist(id) \%>\% unstar() \%>\% star()
+gist(id) \%>\% star_check()
+gist(id) \%>\%
+  star() \%>\%
+  star_check()
 }
 }
 

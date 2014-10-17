@@ -1,42 +1,45 @@
 #' Star a gist
 #' 
 #' @export
-#' 
-#' @param .gist gist object
-#' @param id Gist id
+#' @param gist A gist object or something that can be coerced to a gist object.
 #' @template all
+#' @return A message, and a gist object, the same one input to the function.
 #' @examples \dontrun{
 #' id <- '7ddb9810fc99c84c65ec'
-#' gist() %>% star(id = id)
-#' gist() %>% star_check(id = id)
-#' gist() %>% unstar(id = id)
-#' gist() %>% star_check(id = id)
-#' gist() %>%
-#'   star(id = id) %>%
-#'   star_check(id = id)
+#' gist(id) %>% star()
+#' gist(id) %>% star_check()
+#' gist(id) %>% unstar()
+#' gist(id) %>% unstar() %>% star()
+#' gist(id) %>% star_check()
+#' gist(id) %>%
+#'   star() %>%
+#'   star_check()
 #' }
 
-star <- function(.gist, id, ...){
-  auth <- check_auth(.gist)
-  response <- PUT(url_star(id), auth$auth, c(gist_header(), add_headers(`Content-Length` = 0)), ...)
-  star_mssg(response, 'Success, gist starred!')
-  structure(c(.gist$auth, gist_id=id, gist_star=star_action(response, "star")), class="gist")
+star <- function(gist, ...){
+  gist <- as.gist(gist)
+  res <- gist_PUT(url_star(gist$id), gist_oauth(), ghead(), add_headers(`Content-Length` = 0), ...)
+  star_mssg(res, 'Success, gist starred!')
+  gist
 }
 
 #' @export
 #' @rdname star
-unstar <- function(.gist, id, ...){
-  auth <- check_auth(.gist)
-  response <- DELETE(url_star(id), auth$auth, gist_header(), ...)
-  star_mssg(response, 'Success, gist unstarred!')
+unstar <- function(gist, ...){
+  gist <- as.gist(gist)
+  res <- gist_DELETE(url_star(gist$id), gist_oauth(), ghead(), ...)
+  star_mssg(res, 'Success, gist unstarred!')
+  gist
 }
 
 #' @export
 #' @rdname star
-star_check <- function(.gist, id, ...){
-  auth <- check_auth(.gist)
-  response <- GET(url_star(id), auth$auth, gist_header())
-  if(response$status_code == 204) TRUE else FALSE
+star_check <- function(gist, ...){
+  gist <- as.gist(gist)
+  res <- GET(url_star(gist$id), gist_oauth(), ghead(), ...)
+  msg <- if(res$status_code == 204) TRUE else FALSE
+  message(msg)
+  gist
 }
 
 url_star <- function(x) sprintf('%s/gists/%s/star', ghbase(), x)
