@@ -6,27 +6,24 @@
 gist_oauth(app = gistr_app, reauth = FALSE)
 }
 \arguments{
-\item{app}{An \code{\link[httr]{oauth_app}} for DO. The default uses the
-standard ROpenSci application.}
+\item{app}{An \code{\link[httr]{oauth_app}} for GitHub. The default uses an application
+\code{gistr_oauth} created by Scott Chamberlain.}
 
 \item{reauth}{(logical) Force re-authorization?}
 }
 \description{
-This function is run automatically to allow analogsea to access your
-GitHub account.
+This function is run automatically to allow gistr to access your GitHub account.
 }
 \details{
 There are two ways to authorise gistr to work with your GitHub account:
 \itemize{
-\item Generate a personal access token at
-  \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and
-  record in the \code{DO_PAT} envar.
-
-\item Interactively login into your DO account and authorise with
-  OAuth.
+ \item Generate a personal access token at
+   \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and
+   record in the \code{GITHUB_PAT} envar.
+ \item Interactively login into your GitHub account and authorise with OAuth.
 }
 
-Using \code{DO_PAT} is recommended.
+Using \code{GITHUB_PAT} is recommended.
 }
 \examples{
 \donttest{

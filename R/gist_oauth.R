@@ -1,23 +1,21 @@
 #' Authorize with GitHub.
 #'
-#' This function is run automatically to allow analogsea to access your
-#' GitHub account.
+#' 
+#' This function is run automatically to allow gistr to access your GitHub account.
 #'
 #' There are two ways to authorise gistr to work with your GitHub account:
 #' \itemize{
-#' \item Generate a personal access token at 
-#'   \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and 
-#'   record in the \code{DO_PAT} envar.
-#'   
-#' \item Interactively login into your DO account and authorise with
-#'   OAuth.
+#'  \item Generate a personal access token at 
+#'    \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} and 
+#'    record in the \code{GITHUB_PAT} envar.
+#'  \item Interactively login into your GitHub account and authorise with OAuth.
 #' }
 #'
-#' Using \code{DO_PAT} is recommended.
+#' Using \code{GITHUB_PAT} is recommended.
 #'
 #' @export
-#' @param app An \code{\link[httr]{oauth_app}} for DO. The default uses the 
-#'   standard ROpenSci application. 
+#' @param app An \code{\link[httr]{oauth_app}} for GitHub. The default uses an application
+#'    \code{gistr_oauth} created by Scott Chamberlain.
 #' @param reauth (logical) Force re-authorization? 
 #' @examples \donttest{
 #' gist_oauth()
@@ -32,7 +30,7 @@ gist_oauth <- function(app = gistr_app, reauth = FALSE) {
   if (!identical(pat, "")) {
     auth_config <- httr::add_headers(Authorization = paste0("token ", pat))
   } else if (!interactive()) {
-    stop("In non-interactive environments, please set GITHUB_PAT env to a GitHug",
+    stop("In non-interactive environments, please set GITHUB_PAT env to a GitHub",
          " access token (https://help.github.com/articles/creating-an-access-token-for-command-line-use)",
          call. = FALSE)
   } else  {
@@ -47,7 +45,7 @@ gist_oauth <- function(app = gistr_app, reauth = FALSE) {
 cache <- new.env(parent = emptyenv())
 
 gistr_app <- httr::oauth_app(
-  "gist_oauth", 
+  "gistr_oauth", 
   "89ecf04527f70e0f9730",
   "77b5970cdeda925513b2cdec40c309ea384b74b7"
 )
