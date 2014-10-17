@@ -52,6 +52,10 @@ gist_POST <- function(auth, headers, body, ...){
   process(response)
 }
 
+gist_DELETE <- function(id, auth, headers, ...){
+  DELETE(paste0(ghbase(), '/gists', id), auth, headers, ...)
+}
+
 process <- function(x){
   stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
   warn_for_status(x)

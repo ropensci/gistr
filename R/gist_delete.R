@@ -1,11 +1,10 @@
-#' Delete a gist
-#' 
-#' @param id Gist id
-#' @template all
-#' @export
-#' @examples \dontrun{
-#' gist_delete(id='42095d9a661b0eefc694')
-#' }
+# Delete a gist
+# 
+# @param id Gist id
+# @template all
+# @examples \dontrun{
+# gist_delete(id='42095d9a661b0eefc694')
+# }
 gist_delete <- function(id, verbose=TRUE, callopts=list())
 {
   credentials = get_credentials()
