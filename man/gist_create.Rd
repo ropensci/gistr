@@ -11,6 +11,10 @@ gist_create(files, description = "", public = TRUE, browse = TRUE, ...)
 \item{description}{(character) Brief description of gist (optional)}
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
+
+\item{browse}{(logical) To open newly create gist in default browser (default: TRUE)}
+
+\item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
 \description{
 Create a gist
