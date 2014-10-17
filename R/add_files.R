@@ -2,6 +2,9 @@
 #'
 #' @export
 #' @rdname files
+#' 
+#' @param gist A gist object or something coerceable to a gist
+#' @template all
 #' @examples \donttest{
 #' add_files("~/stuff.Rmd")
 #' edit_files()

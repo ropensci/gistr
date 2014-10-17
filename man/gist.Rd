@@ -8,7 +8,7 @@ gist(id, ...)
 \arguments{
 \item{id}{(character) A gist id}
 
-\item{...}{Params passed to \code{gist_oauth}}
+\item{...}{Curl options passed on to httr::GET}
 }
 \description{
 Get a gist

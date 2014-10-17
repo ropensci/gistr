@@ -13,8 +13,6 @@ gist_create(files, description = "", public = TRUE, verbose = TRUE,
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
-\item{verbose}{Print informative messages (default TRUE)}
-
 \item{browse}{(logical) If TRUE, created gist opens in your default browser.}
 
 \item{...}{Curl options passed on to httr::GET}

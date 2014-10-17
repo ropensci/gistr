@@ -15,8 +15,6 @@ gist_update(id, files = NULL, description = "", public = TRUE,
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
-\item{verbose}{Print informative messages (default TRUE)}
-
 \item{...}{Curl options passed on to httr::GET}
 }
 \description{

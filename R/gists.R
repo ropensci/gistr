@@ -1,10 +1,8 @@
 #' List gists
 #'
-#' You can list public gists, your public gists, or all your gists
+#' List public gists, your own public gists, all your gists, by gist id, or query by date.
 #'
-#' @importFrom RJSONIO fromJSON
 #' @export
-#' @param id Gist id.
 #' @param what (character) What gists to return. One of public, minepublic, mineall, or starred.
 #' If an id is given for a gist, this parameter is ignored.
 #' @param since (character) A timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ. Only gists
@@ -15,29 +13,26 @@
 #' @examples \dontrun{
 #' # Public gists
 #' gists()
-#' gists(per_page=1)
+#' gists(per_page=2)
 #' gists(page=3)
 #' # Public gists created since X time
 #' gists(since='2014-05-26T00:00:00Z')
 #' # Your public gists
-#' gists(what='minepublic')
-#' gists(what='minepublic', per_page=2)
+#' gists('minepublic')
+#' gists('minepublic', per_page=2)
 #' # Your private and public gists
-#' gists(what='mineall')
-#' # A single gist
-#' gists(id='cf5d2e572faafb4c6d5f')
+#' gists('mineall')
 #' # Your starred gists
-#' gists(what='starred')
+#' gists('starred')
 #' # pass in curl options
 #' gists(per_page=1, config=verbose())
 #' gists(per_page=1, config=timeout(seconds = 0.5))
 #' }
 
-gists <- function(id=NULL, what='public', since=NULL, page=NULL, per_page=NULL, verbose=TRUE, ...)
+gists <- function(what='public', since=NULL, page=NULL, per_page=NULL, ...)
 {
-  if(!is.null(id)) what <- "id"
   args <- gist_compact(list(since=since, page=page, per_page=per_page))
-  res <- gist_GET(switch_url(what, id), gist_oauth(), ghead(), args, ...)
+  res <- gist_GET(switch_url(what), gist_oauth(), ghead(), args, ...)
   lapply(res, structure, class = "gist")
 }
 

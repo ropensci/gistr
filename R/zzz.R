@@ -53,7 +53,7 @@ gist_POST <- function(auth, headers, body, ...){
 }
 
 gist_DELETE <- function(id, auth, headers, ...){
-  DELETE(paste0(ghbase(), '/gists', id), auth, headers, ...)
+  DELETE(paste0(ghbase(), '/gists/', id), auth, headers, ...)
 }
 
 process <- function(x){

@@ -3,12 +3,9 @@
 \alias{gists}
 \title{List gists}
 \usage{
-gists(id = NULL, what = "public", since = NULL, page = NULL,
-  per_page = NULL, verbose = TRUE, ...)
+gists(what = "public", since = NULL, page = NULL, per_page = NULL, ...)
 }
 \arguments{
-\item{id}{Gist id.}
-
 \item{what}{(character) What gists to return. One of public, minepublic, mineall, or starred.
 If an id is given for a gist, this parameter is ignored.}
 
@@ -19,30 +16,26 @@ updated at or after this time are returned.}
 
 \item{per_page}{(integer) Number of items to return per page. Default 30. Max 100.}
 
-\item{verbose}{Print informative messages (default TRUE)}
-
 \item{...}{Curl options passed on to httr::GET}
 }
 \description{
-You can list public gists, your public gists, or all your gists
+List public gists, your own public gists, all your gists, by gist id, or query by date.
 }
 \examples{
 \dontrun{
 # Public gists
 gists()
-gists(per_page=1)
+gists(per_page=2)
 gists(page=3)
 # Public gists created since X time
 gists(since='2014-05-26T00:00:00Z')
 # Your public gists
-gists(what='minepublic')
-gists(what='minepublic', per_page=2)
+gists('minepublic')
+gists('minepublic', per_page=2)
 # Your private and public gists
-gists(what='mineall')
-# A single gist
-gists(id='cf5d2e572faafb4c6d5f')
+gists('mineall')
 # Your starred gists
-gists(what='starred')
+gists('starred')
 # pass in curl options
 gists(per_page=1, config=verbose())
 gists(per_page=1, config=timeout(seconds = 0.5))

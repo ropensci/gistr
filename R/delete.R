@@ -1,18 +1,16 @@
 #' Delete a gist
 #' 
-#' @param id Gist id
+#' @param gist A gist object or something coerceable to a gist
 #' @template all
 #' @export
 #' @examples \dontrun{
-#' gists("minepublic")[[1]] %>% delete()
+#' gists("minepublic")[[29]] %>% delete()
 #' }
 
 delete <- function(gist, ...)
 {
   gist <- as.gist(gist)
-  res <- gist_DELETE(gist$id, gist_oauth(), ghead(), ...)
-  if(!res$status_code == 204){ message(res$headers$statusmessage) } else {
-    stopifnot(res$headers$statusmessage == 'No Content')
-    mssg(verbose, 'Your gist has been deleted')
-  }
+  res <- gist_DELETE(id=gist$id, auth = gist_oauth(), headers = ghead(), ...)
+  stop_for_status(res)
+  message('Your gist has been deleted')
 }

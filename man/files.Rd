@@ -14,6 +14,11 @@ delete_files(gist, ...)
 
 rename_files(gist, ...)
 }
+\arguments{
+\item{gist}{A gist object or something coerceable to a gist}
+
+\item{...}{Curl options passed on to httr::GET}
+}
 \description{
 Add files to a gist object
 }

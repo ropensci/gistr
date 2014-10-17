@@ -17,8 +17,6 @@ star_check(.gist, id, ...)
 \item{id}{Gist id}
 
 \item{...}{Curl options passed on to httr::GET}
-
-\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Star a gist

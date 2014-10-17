@@ -2,7 +2,7 @@
 #' 
 #' @export
 #' @param id (character) A gist id
-#' @param ... Params passed to \code{gist_oauth}
+#' @template all
 #' @examples \donttest{
 #' gist(id = 'f1403260eb92f5dfa7e1')
 #' 

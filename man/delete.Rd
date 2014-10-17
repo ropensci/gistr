@@ -6,18 +6,16 @@
 delete(gist, ...)
 }
 \arguments{
+\item{gist}{A gist object or something coerceable to a gist}
+
 \item{...}{Curl options passed on to httr::GET}
-
-\item{id}{Gist id}
-
-\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Delete a gist
 }
 \examples{
 \dontrun{
-gists("minepublic")[[1]] \%>\% delete()
+gists("minepublic")[[29]] \%>\% delete()
 }
 }
 

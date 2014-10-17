@@ -1,8 +1,9 @@
 #' Update/modify a gist
 #' 
 #' @export
-#' @param id Gist id
-#' @template gistargs
+#' @param gist A gist object or something coerceable to a gist
+#' @param files (character) Path to one or more files.
+#' @param description (character) Brief description of gist (optional)
 #' @template all
 #' @examples \dontrun{
 #' # add new files

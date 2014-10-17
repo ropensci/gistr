@@ -6,17 +6,13 @@
 edit(gist, files = NULL, description = gist$description, ...)
 }
 \arguments{
+\item{gist}{A gist object or something coerceable to a gist}
+
 \item{files}{(character) Path to one or more files.}
 
 \item{description}{(character) Brief description of gist (optional)}
 
 \item{...}{Curl options passed on to httr::GET}
-
-\item{id}{Gist id}
-
-\item{public}{(logical) Whether gist is public (default: TRUE)}
-
-\item{verbose}{Print informative messages (default TRUE)}
 }
 \description{
 Update/modify a gist
