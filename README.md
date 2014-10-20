@@ -20,7 +20,7 @@ gistr
 
 
 ```r
-devtools::install_github("ropensci/gistr")
+devtools::install_github("ropensci/gistr@dev")
 ```
 
 
@@ -52,8 +52,8 @@ gist_auth()
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4934
-#> Resets in:  49 minutes
+#> Remaining:  4999
+#> Resets in:  59 minutes
 ```
 
 
@@ -65,20 +65,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>cac11fa98ac4d1422735
-#>   URL: https://gist.github.com/cac11fa98ac4d1422735
-#>   Description: Restructuring with prefix
+#> <gist>fe45fded4eba7eece6e0
+#>   URL: https://gist.github.com/fe45fded4eba7eece6e0
+#>   Description: HMH_rail_step_4
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:10Z / 2014-10-20T21:52:30Z
-#>   Files: gistfile1.clj
+#>   Created/Edited: 2014-10-20T23:00:18Z / 2014-10-20T23:00:19Z
+#>   Files: HMH_rail_step_4
 #> 
 #> [[2]]
-#> <gist>276fa8ed1e7e1ccb1456
-#>   URL: https://gist.github.com/276fa8ed1e7e1ccb1456
-#>   Description: Week 1 Day 1 Homework
+#> <gist>5158836d024d23f683d5
+#>   URL: https://gist.github.com/5158836d024d23f683d5
+#>   Description: HMH_rail_step_3
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:09Z / 2014-10-20T21:52:10Z
-#>   Files: Step1.rb
+#>   Created/Edited: 2014-10-20T22:59:40Z / 2014-10-20T22:59:41Z
+#>   Files: HMH_rail_step_3
 ```
 
 Since a certain date/time
@@ -87,20 +87,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>cac11fa98ac4d1422735
-#>   URL: https://gist.github.com/cac11fa98ac4d1422735
-#>   Description: Restructuring with prefix
+#> <gist>fe45fded4eba7eece6e0
+#>   URL: https://gist.github.com/fe45fded4eba7eece6e0
+#>   Description: HMH_rail_step_4
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:10Z / 2014-10-20T21:52:30Z
-#>   Files: gistfile1.clj
+#>   Created/Edited: 2014-10-20T23:00:18Z / 2014-10-20T23:00:19Z
+#>   Files: HMH_rail_step_4
 #> 
 #> [[2]]
-#> <gist>276fa8ed1e7e1ccb1456
-#>   URL: https://gist.github.com/276fa8ed1e7e1ccb1456
-#>   Description: Week 1 Day 1 Homework
+#> <gist>5158836d024d23f683d5
+#>   URL: https://gist.github.com/5158836d024d23f683d5
+#>   Description: HMH_rail_step_3
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:09Z / 2014-10-20T21:52:10Z
-#>   Files: Step1.rb
+#>   Created/Edited: 2014-10-20T22:59:40Z / 2014-10-20T22:59:41Z
+#>   Files: HMH_rail_step_3
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -109,19 +109,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>160e0530199f5aa65721
-#>   URL: https://gist.github.com/160e0530199f5aa65721
-#>   Description: 
+#> <gist>39acc03034ca2f5c086f
+#>   URL: https://gist.github.com/39acc03034ca2f5c086f
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:49:01Z / 2014-10-20T21:49:03Z
-#>   Files: code.R
+#>   Created/Edited: 2014-10-20T22:19:27Z / 2014-10-20T22:19:27Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>e7939ea8d9bcd5660dd4
-#>   URL: https://gist.github.com/e7939ea8d9bcd5660dd4
-#>   Description: a new cool gist
+#> <gist>bbfc6f14e1a980af9b65
+#>   URL: https://gist.github.com/bbfc6f14e1a980af9b65
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:49:00Z / 2014-10-20T21:49:00Z
+#>   Created/Edited: 2014-10-20T22:11:37Z / 2014-10-20T22:11:37Z
 #>   Files: stuff.md
 ```
 
@@ -146,11 +146,11 @@ You can pass in files
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist')
-#> <gist>3e8fa00a4a7d74f33018
-#>   URL: https://gist.github.com/3e8fa00a4a7d74f33018
+#> <gist>eff5be03f99c3563aa97
+#>   URL: https://gist.github.com/eff5be03f99c3563aa97
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:32Z
+#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:57Z
 #>   Files: stuff.md
 ```
 
@@ -165,11 +165,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '})
-#> <gist>7b413e5eb9b5befd0f95
-#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#> <gist>faaa25e2d1bba1fccef4
+#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:32Z
+#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:57Z
 #>   Files: code.R
 ```
 
@@ -181,9 +181,9 @@ numbers
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 21ad54a1a5ce906e7b6ccfe140dcac1435a9004f
+#>   Version: f1e4fccf7ceebe5604131210f4e24e013ea77a57
 #>   User: sckott
-#>   Commited: 2014-10-20T21:52:32Z
+#>   Commited: 2014-10-20T23:00:57Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -224,11 +224,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>7b413e5eb9b5befd0f95
-#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#> <gist>faaa25e2d1bba1fccef4
+#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:34Z
+#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:59Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -239,11 +239,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>7b413e5eb9b5befd0f95
-#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#> <gist>faaa25e2d1bba1fccef4
+#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:35Z
+#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:59Z
 #>   Files: code.R
 ```
 
@@ -261,7 +261,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/wkkustc/3452967bd07fd504e3c7.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/faaa25e2d1bba1fccef4.js\"></script>"
 ```
 
 
@@ -297,12 +297,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>c6c4e1f8830e1c0b21f9
-#>   URL: https://gist.github.com/c6c4e1f8830e1c0b21f9
-#>   Description: Subset I & II Java
+#> <gist>3c2b3b05af9592bc8dd0
+#>   URL: https://gist.github.com/3c2b3b05af9592bc8dd0
+#>   Description: Installer 1
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T21:52:36Z / 2014-10-20T21:52:36Z
-#>   Files: Subset I with no duplicates
+#>   Created/Edited: 2014-10-20T23:01:01Z / 2014-10-20T23:01:01Z
+#>   Files: gistfile1.txt
 ```
 
 
