@@ -3,7 +3,8 @@
 \alias{gist_create}
 \title{Create a gist}
 \usage{
-gist_create(files, description = "", public = TRUE, browse = TRUE, ...)
+gist_create(files = NULL, description = "", public = TRUE,
+  browse = TRUE, code = NULL, filename = "code.R", ...)
 }
 \arguments{
 \item{files}{Files to upload}
@@ -14,6 +15,11 @@ gist_create(files, description = "", public = TRUE, browse = TRUE, ...)
 
 \item{browse}{(logical) To open newly create gist in default browser (default: TRUE)}
 
+\item{code}{Pass in any set of code}
+
+\item{filename}{Name of the file to create, only used if \code{code} parameter is used. Default
+to \code{code.R}}
+
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
 \description{
@@ -23,6 +29,22 @@ Create a gist
 \donttest{
 gist_create(files="~/stuff.md", description='a new cool gist')
 gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')
+
+# include any code by passing to the code parameter
+gist_create(code={'
+x <- letters
+numbers <- runif(10)
+numbers
+'})
+
+# or include results if you want, and change the filename in this case
+gist_create(code={'
+x <- letters
+numbers <- runif(8)
+numbers
+
+[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
+'}, filename="my_cool_code.R")
 }
 }
 
