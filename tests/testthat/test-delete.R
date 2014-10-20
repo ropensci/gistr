@@ -6,7 +6,7 @@ f <- system.file("examples", "stuff.md", package = "gistr")
 test_that("delete returns NULL", {
   # crate a new gist first, then delete
   g <- gist_create(f, "gist gist gist", TRUE, browse = FALSE)
-  del <- g %>% suppressMessages(delete())
+  del <- suppressMessages(g %>% delete())
   
   expect_null(del)
 })
