@@ -3,20 +3,18 @@
 \alias{rate_limit}
 \title{Get rate limit information}
 \usage{
-rate_limit(.gist, ...)
+rate_limit(...)
 }
 \arguments{
-\item{.gist}{gist object}
-
-\item{...}{Further named args to \code{\link[httr]{GET}}}
+\item{...}{Named args to \code{\link[httr]{GET}}}
 }
 \description{
 Get rate limit information
 }
 \examples{
 \dontrun{
-gist() \%>\% rate_limit
-gist() \%>\% rate_limit(config=verbose())
+rate_limit()
+rate_limit(config=verbose())
 }
 }
 

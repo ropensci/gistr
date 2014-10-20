@@ -1,18 +1,14 @@
 #' Get rate limit information
 #'
 #' @export
-#' 
-#' @param .gist gist object
-#' @param ... Further named args to \code{\link[httr]{GET}}
+#' @param ... Named args to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' gist() %>% rate_limit
-#' gist() %>% rate_limit(config=verbose())
+#' rate_limit()
+#' rate_limit(config=verbose())
 #' }
 
-rate_limit <- function(.gist, ...)
-{
-  auth <- if(!missing(.gist)) .gist$auth else gist_auth()
-  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), auth, ghead(), list(), ...)
+rate_limit <- function(...){
+  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), gist_auth(), ghead(), list(), ...)
   structure(tmp, class="gist_rate")
 }
 
