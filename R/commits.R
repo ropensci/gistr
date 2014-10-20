@@ -22,6 +22,7 @@ commits <- function(gist, page=NULL, per_page=30, ...)
 print.commit <- function(x, ...){
   cat("<commit>\n", sep = "")
   cat("  Version: ", x$version, "\n", sep = "")
+  cat("  User: ", x$user$login, "\n", sep = "")
   cat("  Commited: ", x$committed_at, "\n", sep = "")
   cat("  Commits [total, additions, deletions]: ", 
     sprintf("[%s,%s,%s]", x$change_status$total, x$change_status$additions, x$change_status$deletions), 
