@@ -2,7 +2,6 @@
 #' 
 #' @export
 #' @param gist A gist object or something coerceable to a gist
-#' @param files (character) Path to one or more files.
 #' @param description (character) Brief description of gist (optional)
 #' @template all
 #' @examples \dontrun{
@@ -34,7 +33,7 @@
 #'              list("~/myfile.Rmd", "herfile.Rmd"))
 #' }
 
-edit <- function(gist, files=NULL, description = gist$description, ...)
+edit <- function(gist, description = gist$description, ...)
 {
   files <- list(edit=gist$edit_files, add=gist$add_files, delete=gist$delete_files, rename=gist$rename_files)
   body <- payload(filenames = files, description)

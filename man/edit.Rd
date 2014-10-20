@@ -3,12 +3,10 @@
 \alias{edit}
 \title{Update/modify a gist}
 \usage{
-edit(gist, files = NULL, description = gist$description, ...)
+edit(gist, description = gist$description, ...)
 }
 \arguments{
 \item{gist}{A gist object or something coerceable to a gist}
-
-\item{files}{(character) Path to one or more files.}
 
 \item{description}{(character) Brief description of gist (optional)}
 
