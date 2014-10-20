@@ -29,7 +29,7 @@
 #' gists(per_page=1, config=timeout(seconds = 0.5))
 #' }
 
-gists <- function(what='public', since=NULL, page=NULL, per_page=NULL, ...)
+gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...)
 {
   args <- gist_compact(list(since=since, page=page, per_page=per_page))
   res <- gist_GET(switch_url(what), gist_auth(), ghead(), args, ...)

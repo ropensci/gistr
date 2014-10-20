@@ -58,8 +58,8 @@ gist_PATCH <- function(id, auth, headers, body, ...){
   process(response)
 }
 
-gist_POST <- function(auth, headers, body, ...){
-  response <- POST(paste0(ghbase(), '/gists'), auth, headers, body=body, encode = "json", ...)
+gist_POST <- function(url, auth, headers, body, ...){
+  response <- POST(url, auth, headers, body=body, encode = "json", ...)
   process(response)
 }
 
