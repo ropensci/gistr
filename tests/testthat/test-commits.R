@@ -13,5 +13,5 @@ test_that("commits works", {
 
 test_that("config options work", {
   library('httr')
-  expect_error(gists()[[1]] %>% commits(config=timeout(0.1)))
+  expect_error(gists()[[1]] %>% commits(config=timeout(0.001)))
 })

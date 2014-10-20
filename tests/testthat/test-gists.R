@@ -8,5 +8,5 @@ test_that("listing gists works", {
 
 test_that("config options work", {
   library('httr')
-  expect_error(gists(config=timeout(0.1)))
+  expect_error(gists(config=timeout(0.001)))
 })
