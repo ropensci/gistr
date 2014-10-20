@@ -27,6 +27,9 @@ knitr::opts_chunk$set(
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/gistr")
+```
+
+```{r}
 library("gistr")
 ```
 
@@ -44,6 +47,15 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 ```{r eval=FALSE}
 gist_auth()
 ```
+
+
+
+### Rate limit information
+
+```{r}
+rate_limit()
+```
+
 
 ### List gists
 
@@ -74,9 +86,24 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 ### Create gist
 
+You can pass in files
+
 ```{r}
 gist_create(files="~/stuff.md", description='a new cool gist')
 ```
+
+Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
+
+```{r}
+gist_create(code={'
+x <- letters
+numbers <- runif(8)
+numbers
+
+[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
+'})
+```
+
 
 ### List commits on a gist
 
@@ -128,6 +155,28 @@ gists()[[1]] %>% browse()
 
 ```{r}
 gists()[[1]] %>% embed()
+```
+
+
+### List forks
+
+Returns a list of `gist` objects, just like `gists()`
+
+```{r}
+gist(id='1642874') %>% forks(per_page=2)
+```
+
+### Fork a gist
+
+Returns a `gist` object
+
+```{r}
+g <- gists()
+(forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
+```
+
+```{r echo=FALSE}
+gist(forked$id) %>% delete()
 ```
 
 

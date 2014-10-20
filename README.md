@@ -21,6 +21,10 @@ gistr
 
 ```r
 devtools::install_github("ropensci/gistr")
+```
+
+
+```r
 library("gistr")
 ```
 
@@ -40,6 +44,19 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 gist_auth()
 ```
 
+
+
+### Rate limit information
+
+
+```r
+rate_limit()
+#> Rate limit: 5000
+#> Remaining:  4934
+#> Resets in:  49 minutes
+```
+
+
 ### List gists
 
 Limiting to a few results here to keep it brief
@@ -48,20 +65,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>7cc8d1295e1d2b298c68
-#>   URL: https://gist.github.com/7cc8d1295e1d2b298c68
-#>   Description: 
+#> <gist>cac11fa98ac4d1422735
+#>   URL: https://gist.github.com/cac11fa98ac4d1422735
+#>   Description: Restructuring with prefix
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:30:47Z / 2014-10-17T21:30:48Z
-#>   Files: gistfile1.rb
+#>   Created/Edited: 2014-10-20T21:52:10Z / 2014-10-20T21:52:30Z
+#>   Files: gistfile1.clj
 #> 
 #> [[2]]
-#> <gist>8191f8a6b1113d80b8dd
-#>   URL: https://gist.github.com/8191f8a6b1113d80b8dd
-#>   Description: Illustration of how to use the R sp, raster, and ncdf packages to output GCAM data in netCDF format
+#> <gist>276fa8ed1e7e1ccb1456
+#>   URL: https://gist.github.com/276fa8ed1e7e1ccb1456
+#>   Description: Week 1 Day 1 Homework
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:30:36Z / 2014-10-17T21:30:37Z
-#>   Files: gcam2nc.R
+#>   Created/Edited: 2014-10-20T21:52:09Z / 2014-10-20T21:52:10Z
+#>   Files: Step1.rb
 ```
 
 Since a certain date/time
@@ -70,20 +87,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>7cc8d1295e1d2b298c68
-#>   URL: https://gist.github.com/7cc8d1295e1d2b298c68
-#>   Description: 
+#> <gist>cac11fa98ac4d1422735
+#>   URL: https://gist.github.com/cac11fa98ac4d1422735
+#>   Description: Restructuring with prefix
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:30:47Z / 2014-10-17T21:30:48Z
-#>   Files: gistfile1.rb
+#>   Created/Edited: 2014-10-20T21:52:10Z / 2014-10-20T21:52:30Z
+#>   Files: gistfile1.clj
 #> 
 #> [[2]]
-#> <gist>8191f8a6b1113d80b8dd
-#>   URL: https://gist.github.com/8191f8a6b1113d80b8dd
-#>   Description: Illustration of how to use the R sp, raster, and ncdf packages to output GCAM data in netCDF format
+#> <gist>276fa8ed1e7e1ccb1456
+#>   URL: https://gist.github.com/276fa8ed1e7e1ccb1456
+#>   Description: Week 1 Day 1 Homework
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:30:36Z / 2014-10-17T21:30:37Z
-#>   Files: gcam2nc.R
+#>   Created/Edited: 2014-10-20T21:52:09Z / 2014-10-20T21:52:10Z
+#>   Files: Step1.rb
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -92,19 +109,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>ee18bf2920194d63d74a
-#>   URL: https://gist.github.com/ee18bf2920194d63d74a
-#>   Description: a new cool gist
+#> <gist>160e0530199f5aa65721
+#>   URL: https://gist.github.com/160e0530199f5aa65721
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:02:44Z / 2014-10-17T21:30:08Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-20T21:49:01Z / 2014-10-20T21:49:03Z
+#>   Files: code.R
 #> 
 #> [[2]]
-#> <gist>38dbc3b4900b8aba2a43
-#>   URL: https://gist.github.com/38dbc3b4900b8aba2a43
+#> <gist>e7939ea8d9bcd5660dd4
+#>   URL: https://gist.github.com/e7939ea8d9bcd5660dd4
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:01:31Z / 2014-10-17T21:01:31Z
+#>   Created/Edited: 2014-10-20T21:49:00Z / 2014-10-20T21:49:00Z
 #>   Files: stuff.md
 ```
 
@@ -124,16 +141,38 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 ### Create gist
 
+You can pass in files
+
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist')
-#> <gist>bfa698a2ca0314936af7
-#>   URL: https://gist.github.com/bfa698a2ca0314936af7
+#> <gist>3e8fa00a4a7d74f33018
+#>   URL: https://gist.github.com/3e8fa00a4a7d74f33018
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:42Z
+#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:32Z
 #>   Files: stuff.md
 ```
+
+Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
+
+
+```r
+gist_create(code={'
+x <- letters
+numbers <- runif(8)
+numbers
+
+[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
+'})
+#> <gist>7b413e5eb9b5befd0f95
+#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:32Z
+#>   Files: code.R
+```
+
 
 ### List commits on a gist
 
@@ -142,9 +181,10 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: f485d42a142f9cd83215048697376966d5e1ae0a
-#>   Commited: 2014-10-17T21:31:42Z
-#>   Commits [total, additions, deletions]: [19,19,0]
+#>   Version: 21ad54a1a5ce906e7b6ccfe140dcac1435a9004f
+#>   User: sckott
+#>   Commited: 2014-10-20T21:52:32Z
+#>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
 ### Star a gist
@@ -184,12 +224,12 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>bfa698a2ca0314936af7
-#>   URL: https://gist.github.com/bfa698a2ca0314936af7
-#>   Description: a new cool gist
+#> <gist>7b413e5eb9b5befd0f95
+#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:44Z
-#>   Files: alm_othersources.md, stuff.md
+#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:34Z
+#>   Files: alm_othersources.md, code.R
 ```
 
 Delete files
@@ -199,12 +239,12 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>bfa698a2ca0314936af7
-#>   URL: https://gist.github.com/bfa698a2ca0314936af7
-#>   Description: a new cool gist
+#> <gist>7b413e5eb9b5befd0f95
+#>   URL: https://gist.github.com/7b413e5eb9b5befd0f95
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-17T21:31:42Z / 2014-10-17T21:31:44Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-20T21:52:32Z / 2014-10-20T21:52:35Z
+#>   Files: code.R
 ```
 
 ### Open a gist in your default browser
@@ -221,8 +261,51 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/bfa698a2ca0314936af7.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/wkkustc/3452967bd07fd504e3c7.js\"></script>"
 ```
+
+
+### List forks
+
+Returns a list of `gist` objects, just like `gists()`
+
+
+```r
+gist(id='1642874') %>% forks(per_page=2)
+#> [[1]]
+#> <gist>1642989
+#>   URL: https://gist.github.com/1642989
+#>   Description: Spline Transition
+#>   Public: TRUE
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2014-09-09T02:22:03Z
+#>   Files: 
+#> 
+#> [[2]]
+#> <gist>1643051
+#>   URL: https://gist.github.com/1643051
+#>   Description: Line Transition (Broken)
+#>   Public: TRUE
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2014-04-09T03:11:36Z
+#>   Files:
+```
+
+### Fork a gist
+
+Returns a `gist` object
+
+
+```r
+g <- gists()
+(forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
+#> <gist>c6c4e1f8830e1c0b21f9
+#>   URL: https://gist.github.com/c6c4e1f8830e1c0b21f9
+#>   Description: Subset I & II Java
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-20T21:52:36Z / 2014-10-20T21:52:36Z
+#>   Files: Subset I with no duplicates
+```
+
+
 
 
 ## Meta
