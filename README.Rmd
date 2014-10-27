@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
 
-
 ## Quick start
 
 ### Install
@@ -47,8 +46,6 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 ```{r eval=FALSE}
 gist_auth()
 ```
-
-
 
 ### Rate limit information
 
@@ -88,13 +85,17 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 You can pass in files
 
-```{r}
+```{r eval=FALSE}
 gist_create(files="~/stuff.md", description='a new cool gist')
+```
+
+```{r}
+gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
 
-```{r}
+```{r eval=FALSE}
 gist_create(code={'
 x <- letters
 numbers <- runif(8)
@@ -104,6 +105,43 @@ numbers
 '})
 ```
 
+```{r}
+gist_create(code={'
+x <- letters
+numbers <- runif(8)
+numbers
+
+[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
+'}, browse=FALSE)
+```
+
+You can also knit an input file before posting as a gist:
+
+```{r eval=FALSE}
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+gist_create(file, description='a new cool gist', knit=TRUE)
+#> <gist>4162b9c53479fbc298db
+#>   URL: https://gist.github.com/4162b9c53479fbc298db
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-27T16:07:31Z / 2014-10-27T16:07:31Z
+#>   Files: stuff.md
+```
+
+Or code blocks before (note that code blocks without knitr block demarcations will simply just end up with the unexecuted code):
+
+```{r eval=FALSE}
+gist_create(code={'
+x <- letters
+(numbers <- runif(8))
+'}, knit=TRUE)
+#> <gist>ec45c396dee4aa492139
+#>   URL: https://gist.github.com/ec45c396dee4aa492139
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-27T16:09:09Z / 2014-10-27T16:09:09Z
+#>   Files: file81720d1ceff.md
+```
 
 ### List commits on a gist
 
@@ -156,7 +194,6 @@ gists()[[1]] %>% browse()
 ```{r}
 gists()[[1]] %>% embed()
 ```
-
 
 ### List forks
 

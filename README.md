@@ -13,7 +13,6 @@ gistr
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
 
-
 ## Quick start
 
 ### Install
@@ -32,7 +31,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar.
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -44,16 +43,14 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 gist_auth()
 ```
 
-
-
 ### Rate limit information
 
 
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4999
-#> Resets in:  59 minutes
+#> Remaining:  4829
+#> Resets in:  32 minutes
 ```
 
 
@@ -65,20 +62,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>fe45fded4eba7eece6e0
-#>   URL: https://gist.github.com/fe45fded4eba7eece6e0
-#>   Description: HMH_rail_step_4
+#> <gist>10397b9a07ade5e3e63a
+#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:18Z / 2014-10-20T23:00:19Z
-#>   Files: HMH_rail_step_4
-#> 
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
+#>   Files: alm_othersources.md, code.R
+#>
 #> [[2]]
-#> <gist>5158836d024d23f683d5
-#>   URL: https://gist.github.com/5158836d024d23f683d5
-#>   Description: HMH_rail_step_3
+#> <gist>cecb698c6158cd5f38d0
+#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
+#>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T22:59:40Z / 2014-10-20T22:59:41Z
-#>   Files: HMH_rail_step_3
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
+#>   Files: stuff.md
 ```
 
 Since a certain date/time
@@ -87,20 +84,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>fe45fded4eba7eece6e0
-#>   URL: https://gist.github.com/fe45fded4eba7eece6e0
-#>   Description: HMH_rail_step_4
+#> <gist>10397b9a07ade5e3e63a
+#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:18Z / 2014-10-20T23:00:19Z
-#>   Files: HMH_rail_step_4
-#> 
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
+#>   Files: alm_othersources.md, code.R
+#>
 #> [[2]]
-#> <gist>5158836d024d23f683d5
-#>   URL: https://gist.github.com/5158836d024d23f683d5
-#>   Description: HMH_rail_step_3
+#> <gist>cecb698c6158cd5f38d0
+#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
+#>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T22:59:40Z / 2014-10-20T22:59:41Z
-#>   Files: HMH_rail_step_3
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
+#>   Files: stuff.md
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -109,19 +106,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>39acc03034ca2f5c086f
-#>   URL: https://gist.github.com/39acc03034ca2f5c086f
-#>   Description: gist gist gist
+#> <gist>10397b9a07ade5e3e63a
+#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T22:19:27Z / 2014-10-20T22:19:27Z
-#>   Files: stuff.md
-#> 
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
+#>   Files: alm_othersources.md, code.R
+#>
 #> [[2]]
-#> <gist>bbfc6f14e1a980af9b65
-#>   URL: https://gist.github.com/bbfc6f14e1a980af9b65
-#>   Description: gist gist gist
+#> <gist>cecb698c6158cd5f38d0
+#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
+#>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T22:11:37Z / 2014-10-20T22:11:37Z
+#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
 #>   Files: stuff.md
 ```
 
@@ -133,7 +130,7 @@ gists('minepublic', per_page = 2)
 gist(id = 'f1403260eb92f5dfa7e1')
 #> <gist>f1403260eb92f5dfa7e1
 #>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
-#>   Description: Querying bitly from R 
+#>   Description: Querying bitly from R
 #>   Public: TRUE
 #>   Created/Edited: 2014-10-15T20:40:12Z / 2014-10-15T21:54:29Z
 #>   Files: bitly_r.md
@@ -146,11 +143,16 @@ You can pass in files
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist')
-#> <gist>eff5be03f99c3563aa97
-#>   URL: https://gist.github.com/eff5be03f99c3563aa97
+```
+
+
+```r
+gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
+#> <gist>4db6bb9801bec747bde1
+#>   URL: https://gist.github.com/4db6bb9801bec747bde1
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:57Z
+#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:00Z
 #>   Files: stuff.md
 ```
 
@@ -165,14 +167,51 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '})
-#> <gist>faaa25e2d1bba1fccef4
-#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
-#>   Description: 
+```
+
+
+```r
+gist_create(code={'
+x <- letters
+numbers <- runif(8)
+numbers
+
+[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
+'}, browse=FALSE)
+#> <gist>8f0805ece3e468f4ddee
+#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:57Z
+#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:00Z
 #>   Files: code.R
 ```
 
+You can also knit an input file before posting as a gist:
+
+
+```r
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+gist_create(file, description='a new cool gist', knit=TRUE)
+#> <gist>4162b9c53479fbc298db#>   URL: https://gist.github.com/4162b9c53479fbc298db#>   Description: a new cool gist#>   Public: TRUE
+#>   Created/Edited: 2014-10-27T16:07:31Z / 2014-10-27T16:07:31Z
+#>   Files: stuff.md
+```
+
+Or code blocks before (note that code blocks without knitr block demarcations will simply just end up with the unexecuted code):
+
+
+```r
+gist_create(code={'
+x <- letters
+(numbers <- runif(8))
+'}, knit=TRUE)
+#> <gist>ec45c396dee4aa492139
+#>   URL: https://gist.github.com/ec45c396dee4aa492139
+#>   Description:
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-27T16:09:09Z / 2014-10-27T16:09:09Z
+#>   Files: file81720d1ceff.md
+```
 
 ### List commits on a gist
 
@@ -181,9 +220,9 @@ numbers
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: f1e4fccf7ceebe5604131210f4e24e013ea77a57
+#>   Version: ae58911b57fb56ad9dbdd7acc029462c51915720
 #>   User: sckott
-#>   Commited: 2014-10-20T23:00:57Z
+#>   Commited: 2014-10-27T16:19:00Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -196,7 +235,7 @@ Star
 gist('7ddb9810fc99c84c65ec') %>% star()
 #> <gist>7ddb9810fc99c84c65ec
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
@@ -209,7 +248,7 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 #> <gist>7ddb9810fc99c84c65ec
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
@@ -224,11 +263,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>faaa25e2d1bba1fccef4
-#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
-#>   Description: 
+#> <gist>8f0805ece3e468f4ddee
+#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:59Z
+#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:02Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -239,11 +278,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>faaa25e2d1bba1fccef4
-#>   URL: https://gist.github.com/faaa25e2d1bba1fccef4
-#>   Description: 
+#> <gist>8f0805ece3e468f4ddee
+#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:00:57Z / 2014-10-20T23:00:59Z
+#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:02Z
 #>   Files: code.R
 ```
 
@@ -261,9 +300,8 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/faaa25e2d1bba1fccef4.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/8f0805ece3e468f4ddee.js\"></script>"
 ```
-
 
 ### List forks
 
@@ -278,8 +316,8 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   Description: Spline Transition
 #>   Public: TRUE
 #>   Created/Edited: 2012-01-19T21:45:20Z / 2014-09-09T02:22:03Z
-#>   Files: 
-#> 
+#>   Files:
+#>
 #> [[2]]
 #> <gist>1643051
 #>   URL: https://gist.github.com/1643051
@@ -297,12 +335,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>3c2b3b05af9592bc8dd0
-#>   URL: https://gist.github.com/3c2b3b05af9592bc8dd0
-#>   Description: Installer 1
+#> <gist>9b6e9398bb1b235a66dc
+#>   URL: https://gist.github.com/9b6e9398bb1b235a66dc
+#>   Description: Include a conf directory and a file from the template, chef
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-20T23:01:01Z / 2014-10-20T23:01:01Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2014-10-27T16:19:04Z / 2014-10-27T16:19:04Z
+#>   Files: include_dir_file
 ```
 
 
