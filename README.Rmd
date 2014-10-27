@@ -47,6 +47,30 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 gist_auth()
 ```
 
+### Workflow
+
+In `gistr` you can use pipes, introduced perhaps first in R in the package `magrittr`, to pass outputs from one function to another. If you have used `dplyr` with pipes you can see the difference, and perhaps the utility, of this workflow over the traditional workflow in R. You can use a non-piping or a piping workflow with `gistr`. Examples below use a mix of both workflows. Here is an example of a piping wofklow (with some explanation):
+
+```{r eval=FALSE}
+gists(what = "minepublic")[[1]] %>% # List my public gists, and index to get just the 1st one 
+  add_files("~/alm_othersources.md") %>% # Add a new file to that gist
+  edit() # Edit sends a PATCH command to the Gists API to add the file to your gist online
+```
+
+And a non-piping workflow that does the same exact thing:
+
+```{r eval=FALSE}
+g <- gists(what = "minepublic")[[1]]
+g <- add_files(g, "~/alm_othersources.md")
+edit(g)
+```
+
+Or you could string them all together in one line (but it's rather difficult to follow what's going on because you have to read from the inside out)
+
+```{r eval=FALSE}
+edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
+```
+
 ### Rate limit information
 
 ```{r}

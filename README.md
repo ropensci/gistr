@@ -43,14 +43,41 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 gist_auth()
 ```
 
+### Workflow
+
+In `gistr` you can use pipes, introduced perhaps first in R in the package `magrittr`, to pass outputs from one function to another. If you have used `dplyr` with pipes you can see the difference, and perhaps the utility, of this workflow over the traditional workflow in R. You can use a non-piping or a piping workflow with `gistr`. Examples below use a mix of both workflows. Here is an example of a piping wofklow (with some explanation):
+
+
+```r
+gists(what = "minepublic")[[1]] %>% # List my public gists, and index to get just the 1st one
+  add_files("~/alm_othersources.md") %>% # Add a new file to that gist
+  edit() # Edit sends a PATCH command to the Gists API to add the file to your gist online
+```
+
+And a non-piping workflow that does the same exact thing:
+
+
+```r
+g <- gists(what = "minepublic")[[1]]
+g <- add_files(g, "~/alm_othersources.md")
+edit(g)
+```
+
+Or you could string them all together in one line (but it's rather difficult to follow what's going on because you have to read from the inside out)
+
+
+```r
+edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
+```
+
 ### Rate limit information
 
 
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4829
-#> Resets in:  32 minutes
+#> Remaining:  4732
+#> Resets in:  16 minutes
 ```
 
 
@@ -62,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>10397b9a07ade5e3e63a
-#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#> <gist>3705b8bf42a29fd5a550
+#>   URL: https://gist.github.com/3705b8bf42a29fd5a550
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
-#>   Files: alm_othersources.md, code.R
+#>   Created/Edited: 2014-10-27T16:34:50Z / 2014-10-27T16:34:51Z
+#>   Files: gistfile1.txt
 #>
 #> [[2]]
-#> <gist>cecb698c6158cd5f38d0
-#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
-#>   Description: a new cool gist
+#> <gist>3ec971d349724a2f9a6d
+#>   URL: https://gist.github.com/3ec971d349724a2f9a6d
+#>   Description: Manualy reduced testcase
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-27T16:34:47Z / 2014-10-27T16:34:48Z
+#>   Files: gistfile1.diff
 ```
 
 Since a certain date/time
@@ -84,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>10397b9a07ade5e3e63a
-#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#> <gist>3705b8bf42a29fd5a550
+#>   URL: https://gist.github.com/3705b8bf42a29fd5a550
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
-#>   Files: alm_othersources.md, code.R
+#>   Created/Edited: 2014-10-27T16:34:50Z / 2014-10-27T16:34:51Z
+#>   Files: gistfile1.txt
 #>
 #> [[2]]
-#> <gist>cecb698c6158cd5f38d0
-#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
-#>   Description: a new cool gist
+#> <gist>3ec971d349724a2f9a6d
+#>   URL: https://gist.github.com/3ec971d349724a2f9a6d
+#>   Description: Manualy reduced testcase
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-10-27T16:34:47Z / 2014-10-27T16:34:48Z
+#>   Files: gistfile1.diff
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -106,19 +133,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>10397b9a07ade5e3e63a
-#>   URL: https://gist.github.com/10397b9a07ade5e3e63a
+#> <gist>170f481b6f263b02853f
+#>   URL: https://gist.github.com/170f481b6f263b02853f
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:42Z
+#>   Created/Edited: 2014-10-27T16:29:37Z / 2014-10-27T16:32:03Z
 #>   Files: alm_othersources.md, code.R
 #>
 #> [[2]]
-#> <gist>cecb698c6158cd5f38d0
-#>   URL: https://gist.github.com/cecb698c6158cd5f38d0
+#> <gist>487c691939287ad51816
+#>   URL: https://gist.github.com/487c691939287ad51816
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:18:40Z / 2014-10-27T16:18:40Z
+#>   Created/Edited: 2014-10-27T16:29:37Z / 2014-10-27T16:29:37Z
 #>   Files: stuff.md
 ```
 
@@ -148,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>4db6bb9801bec747bde1
-#>   URL: https://gist.github.com/4db6bb9801bec747bde1
+#> <gist>8d8a1698483f0acd1bfe
+#>   URL: https://gist.github.com/8d8a1698483f0acd1bfe
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:00Z
+#>   Created/Edited: 2014-10-27T16:34:59Z / 2014-10-27T16:34:59Z
 #>   Files: stuff.md
 ```
 
@@ -178,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>8f0805ece3e468f4ddee
-#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#> <gist>ea550b6a8040d66d793c
+#>   URL: https://gist.github.com/ea550b6a8040d66d793c
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:00Z
+#>   Created/Edited: 2014-10-27T16:34:59Z / 2014-10-27T16:34:59Z
 #>   Files: code.R
 ```
 
@@ -192,8 +219,7 @@ You can also knit an input file before posting as a gist:
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 gist_create(file, description='a new cool gist', knit=TRUE)
-#> <gist>4162b9c53479fbc298db#>   URL: https://gist.github.com/4162b9c53479fbc298db#>   Description: a new cool gist#>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:07:31Z / 2014-10-27T16:07:31Z
+#> <gist>4162b9c53479fbc298db#>   URL: https://gist.github.com/4162b9c53479fbc298db#>   Description: a new cool gist#>   Public: TRUE#>   Created/Edited: 2014-10-27T16:07:31Z / 2014-10-27T16:07:31Z
 #>   Files: stuff.md
 ```
 
@@ -220,9 +246,9 @@ x <- letters
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: ae58911b57fb56ad9dbdd7acc029462c51915720
+#>   Version: cb603d582b1dc2039c9eb30c0776bacff084f095
 #>   User: sckott
-#>   Commited: 2014-10-27T16:19:00Z
+#>   Commited: 2014-10-27T16:34:59Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -263,11 +289,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>8f0805ece3e468f4ddee
-#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#> <gist>ea550b6a8040d66d793c
+#>   URL: https://gist.github.com/ea550b6a8040d66d793c
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:02Z
+#>   Created/Edited: 2014-10-27T16:34:59Z / 2014-10-27T16:35:01Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -278,11 +304,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>8f0805ece3e468f4ddee
-#>   URL: https://gist.github.com/8f0805ece3e468f4ddee
+#> <gist>ea550b6a8040d66d793c
+#>   URL: https://gist.github.com/ea550b6a8040d66d793c
 #>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:19:00Z / 2014-10-27T16:19:02Z
+#>   Created/Edited: 2014-10-27T16:34:59Z / 2014-10-27T16:35:02Z
 #>   Files: code.R
 ```
 
@@ -300,7 +326,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/8f0805ece3e468f4ddee.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/ea550b6a8040d66d793c.js\"></script>"
 ```
 
 ### List forks
@@ -335,12 +361,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>9b6e9398bb1b235a66dc
-#>   URL: https://gist.github.com/9b6e9398bb1b235a66dc
-#>   Description: Include a conf directory and a file from the template, chef
+#> <gist>fbb858b17a55cfbf5e12
+#>   URL: https://gist.github.com/fbb858b17a55cfbf5e12
+#>   Description:
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-27T16:19:04Z / 2014-10-27T16:19:04Z
-#>   Files: include_dir_file
+#>   Created/Edited: 2014-10-27T16:35:03Z / 2014-10-27T16:35:03Z
+#>   Files: gistfile1.diff
 ```
 
 
