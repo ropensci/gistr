@@ -3,8 +3,8 @@ Title: Work with GitHub gists from R.
 Description: Work with GitHub gists from R, including create new gists, update
     gists with new files, rename files, delete files, get gists, and more. You
     can authenticate or do unauthenticated requests. more...
-Version: 0.0.7.99
-Date: 2014-10-20
+Version: 0.0.8.99
+Date: 2014-10-26
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = c("aut", "cre"),
     email = "ramnath.vaidya@gmail.com"),
     person("Karthik", "Ram", role = "aut",
@@ -17,7 +17,8 @@ BugReports: http://www.github.com/ropensci/gistr/issues
 Imports:
     jsonlite,
     httr,
-    magrittr
+    magrittr,
+    knitr
 Suggests:
     roxygen2,
     testthat
