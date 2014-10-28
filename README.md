@@ -76,8 +76,8 @@ edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4969
-#> Resets in:  18 minutes
+#> Remaining:  4753
+#> Resets in:  9 minutes
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>6cbe3f815666c6ecb3b1
-#>   URL: https://gist.github.com/6cbe3f815666c6ecb3b1
-#>   Description: BMWM3ろ ＼ SEC15­.­ZZ­.­AM  ＼あBMWM3
+#> <gist>51a5e6188da2685dfcb4
+#>   URL: https://gist.github.com/51a5e6188da2685dfcb4
+#>   Description: Twilio Calls Drupal Module
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:33:57Z / 2014-10-28T14:33:58Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2014-10-28T14:43:35Z / 2014-10-28T14:43:36Z
+#>   Files: gistfile1.php
 #> 
 #> [[2]]
-#> <gist>f73079e56cd7e1edb9fb
-#>   URL: https://gist.github.com/f73079e56cd7e1edb9fb
-#>   Description: 
+#> <gist>0ebe3763389b76365d68
+#>   URL: https://gist.github.com/0ebe3763389b76365d68
+#>   Description: designer
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:33:53Z / 2014-10-28T14:33:54Z
-#>   Files: MSTR API example
+#>   Created/Edited: 2014-10-28T14:43:34Z / 2014-10-28T14:43:34Z
+#>   Files: designer.html
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>6cbe3f815666c6ecb3b1
-#>   URL: https://gist.github.com/6cbe3f815666c6ecb3b1
-#>   Description: BMWM3ろ ＼ SEC15­.­ZZ­.­AM  ＼あBMWM3
+#> <gist>51a5e6188da2685dfcb4
+#>   URL: https://gist.github.com/51a5e6188da2685dfcb4
+#>   Description: Twilio Calls Drupal Module
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:33:57Z / 2014-10-28T14:33:58Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2014-10-28T14:43:35Z / 2014-10-28T14:43:36Z
+#>   Files: gistfile1.php
 #> 
 #> [[2]]
-#> <gist>f73079e56cd7e1edb9fb
-#>   URL: https://gist.github.com/f73079e56cd7e1edb9fb
-#>   Description: 
+#> <gist>0ebe3763389b76365d68
+#>   URL: https://gist.github.com/0ebe3763389b76365d68
+#>   Description: designer
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:33:53Z / 2014-10-28T14:33:54Z
-#>   Files: MSTR API example
+#>   Created/Edited: 2014-10-28T14:43:34Z / 2014-10-28T14:43:34Z
+#>   Files: designer.html
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,20 +133,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>164f15006bbc8d670c43
-#>   URL: https://gist.github.com/164f15006bbc8d670c43
+#> <gist>017214637bcfeb198070
+#>   URL: https://gist.github.com/017214637bcfeb198070
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:32:36Z / 2014-10-28T14:32:36Z
+#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z
 #>   Files: pelias_test.geojson
 #> 
 #> [[2]]
-#> <gist>323c2e7ae4e496892f90
-#>   URL: https://gist.github.com/323c2e7ae4e496892f90
-#>   Description: 
+#> <gist>d4c1ac85a760767dc542
+#>   URL: https://gist.github.com/d4c1ac85a760767dc542
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:32:30Z / 2014-10-28T14:32:32Z
-#>   Files: code.R
+#>   Created/Edited: 2014-10-28T14:42:31Z / 2014-10-28T14:42:34Z
+#>   Files: stuff.md, zoo.json
 ```
 
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>f1035183ddd467706703
-#>   URL: https://gist.github.com/f1035183ddd467706703
+#> <gist>11962bd921daad1e2520
+#>   URL: https://gist.github.com/11962bd921daad1e2520
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:02Z / 2014-10-28T14:34:02Z
+#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:42Z
 #>   Files: stuff.md
 ```
 
@@ -205,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>7c23a6a5633e11d75a58
-#>   URL: https://gist.github.com/7c23a6a5633e11d75a58
+#> <gist>087ebc6c33c0dcf91380
+#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:03Z / 2014-10-28T14:34:03Z
+#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:42Z
 #>   Files: code.R
 ```
 
@@ -250,9 +250,9 @@ x <- letters
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 6e9677fdeaded46b53dbf60ef7fb3bcf7874721b
+#>   Version: efa565b19834b144c013ab6ef5557f8c44808c31
 #>   User: sckott
-#>   Commited: 2014-10-28T14:34:03Z
+#>   Commited: 2014-10-28T14:43:42Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -293,11 +293,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>7c23a6a5633e11d75a58
-#>   URL: https://gist.github.com/7c23a6a5633e11d75a58
+#> <gist>087ebc6c33c0dcf91380
+#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:03Z / 2014-10-28T14:34:05Z
+#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:44Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -308,11 +308,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>7c23a6a5633e11d75a58
-#>   URL: https://gist.github.com/7c23a6a5633e11d75a58
+#> <gist>087ebc6c33c0dcf91380
+#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:03Z / 2014-10-28T14:34:06Z
+#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:44Z
 #>   Files: code.R
 ```
 
@@ -330,7 +330,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/7c23a6a5633e11d75a58.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/087ebc6c33c0dcf91380.js\"></script>"
 ```
 
 ### List forks
@@ -365,12 +365,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>829a03093b4d5173930c
-#>   URL: https://gist.github.com/829a03093b4d5173930c
-#>   Description: Gives the permutations
+#> <gist>224323e61e4aecf25240
+#>   URL: https://gist.github.com/224323e61e4aecf25240
+#>   Description: A simple tmux configuration file for remote servers.
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:07Z / 2014-10-28T14:34:07Z
-#>   Files: permute.lisp
+#>   Created/Edited: 2014-10-28T14:43:46Z / 2014-10-28T14:43:46Z
+#>   Files: .tmux.conf
 ```
 
 
@@ -379,7 +379,7 @@ g <- gists()
 
 _Working with the Mapzen Pelias geocoding API_
 
-The API is described at https://github.com/pelias/pelias, and is still in alpha they say. The steps: get data, make a gist.
+The API is described at https://github.com/pelias/pelias, and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map. 
 
 
 ```r
@@ -388,13 +388,15 @@ base <- "http://pelias.mapzen.com/search"
 res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
 json <- content(res, as = "text")
 gist_create(code = json, filename = "pelias_test.geojson")
-#> <gist>e63488a7961490940f54
-#>   URL: https://gist.github.com/e63488a7961490940f54
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:34:09Z / 2014-10-28T14:34:09Z
-#>   Files: pelias_test.geojson
+#> <gist>017214637bcfeb198070 
+#>   URL: https://gist.github.com/017214637bcfeb198070 
+#>   Description:  
+#>   Public: TRUE 
+#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z 
+#>   Files: pelias_test.geojson 
 ```
+
+And here's that gist: https://gist.github.com/sckott/017214637bcfeb198070
 
 ## Meta
 
