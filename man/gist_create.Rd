@@ -16,7 +16,8 @@ gist_create(files = NULL, description = "", public = TRUE,
 
 \item{browse}{(logical) To open newly create gist in default browser (default: TRUE)}
 
-\item{code}{Pass in any set of code}
+\item{code}{Pass in any set of code. This can be a single R object, or many lines of code
+wrapped in quotes, then curly brackets (see examples below).}
 
 \item{filename}{Name of the file to create, only used if \code{code} parameter is used. Default
 to \code{code.R}}
@@ -66,6 +67,12 @@ x <- letters
 (numbers <- runif(8))
 ```
 '}, knit=TRUE)
+
+library('httr')
+base <- "http://pelias.mapzen.com/search"
+res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
+json <- content(res, as = "text")
+gist_create(code = json, filename = "pelias_test.geojson")
 }
 }
 

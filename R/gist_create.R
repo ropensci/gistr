@@ -7,7 +7,8 @@
 #' @param description (character) Brief description of gist (optional)
 #' @param public (logical) Whether gist is public (default: TRUE)
 #' @param browse (logical) To open newly create gist in default browser (default: TRUE)
-#' @param code Pass in any set of code
+#' @param code Pass in any set of code. This can be a single R object, or many lines of code
+#' wrapped in quotes, then curly brackets (see examples below).
 #' @param filename Name of the file to create, only used if \code{code} parameter is used. Default
 #' to \code{code.R}
 #' @param knit (logical) Knit code before posting as a gist? Knitting done with 
@@ -48,6 +49,12 @@
 #' (numbers <- runif(8))
 #' ```
 #' '}, knit=TRUE)
+#' 
+#' library('httr')
+#' base <- "http://pelias.mapzen.com/search"
+#' res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
+#' json <- content(res, as = "text")
+#' gist_create(code = json, filename = "pelias_test.geojson")
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
