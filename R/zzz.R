@@ -1,67 +1,81 @@
-#' Function that takes a list of files and creates payload for API
-#'
-#' @importFrom RJSONIO toJSON
-#' @param filenames names of files to post
-#' @param description brief description of gist (optional)
-#' @param public whether gist is public (defaults to TRUE)
-#' @keywords internal
-create_gist <- function(filenames, description = "", public = TRUE) {
+# Function that takes a list of files and creates payload for API
+# @importFrom jsonlite toJSON auto_unbox
+# @param filenames names of files to post
+# @param description brief description of gist (optional)
+payload <- function(filenames, description = "") {
+  add <- filenames$add
+  edit <- filenames$edit
+  delete <- filenames$delete
+  rename <- filenames$rename
+  fnames <- c(unl(add), unl(edit), unl(delete), unr(rename))
+  add_edit <- lapply(c(add, edit), function(file) {
+    list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
+  })
+  del <- lapply(delete, function(file) structure("null", names=file))
+#   ren <- lapply(rename, function(file) list(filename = strsplit(file, "/")[[1]][2]))
+  ren <- lapply(rename, function(f) {
+    tt <- f[[1]]
+    list(filename = basename(f[[2]]), 
+         content = paste(readLines(tt, warn = FALSE), collapse = "\n"))
+  })
+  files <- c(add_edit, del, ren)
+  names(files) <- basename(fnames)
+  body <- list(description = description, files = files)
+  jsonlite::toJSON(body, auto_unbox = TRUE)
+}
+
+creategist <- function(filenames, description = "", public = TRUE) {
+  filenames <- files_exist(filenames)
   files <- lapply(filenames, function(file) {
-    x <- list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
+    list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
   names(files) <- basename(filenames)
   body <- list(description = description, public = public, files = files)
-  RJSONIO::toJSON(body)
+  jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
-#' Get Github credentials from use in console
-#' @keywords internal
-get_credentials <- function() {
-  if (is.null(getOption("github.username"))) {
-    username <- readline("Please enter your github username: ")
-    if(nchar(username) == 0){
-      stop("Authentication failed - you can't have a blank username")
-    }
-    options(github.username = username)
-  }
-  if (is.null(getOption("github.password"))) {
-    password <- readline("Please enter your github password: ")
-    if(nchar(password) == 0){
-      stop("Authentication failed - you can't have a blank password")
-    }
-    options(github.password = password)
-  }
-}
+unl <- function(x) if(!is.null(x)) do.call(c, x) else NULL
+unr <- function(x) if(!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 
-#' Handler to print messages or not via verbose parameter in all fxns
-#' @keywords internal
 mssg <- function(x, y) if(x) message(y)
 
-#' Compact fxn
-#' @keywords internal
 gist_compact <- function(l) Filter(Negate(is.null), l)
 
-# #' Response handler
-# #' @keywords internal
-# res_handler <- function(x){
-#   if(!x$status_code == 200){
-#     stnames <- names(content(x))
-#     if(!is.null(stnames)){
-#       if('developerMessage' %in% stnames|'message' %in% stnames){
-#         warning(sprintf("Error: (%s) - %s", x$status_code, 
-#                         noaa_compact(list(content(x)$developerMessage, content(x)$message))))
-#       } else { warning(sprintf("Error: (%s)", x$status_code)) }
-#     } else { warn_for_status(x) }
-#   } else {
-#     assert_that(x$headers$`content-type`=='application/json;charset=UTF-8')
-#     res <- content(x, as = 'text', encoding = "UTF-8")
-#     out <- jsonlite::fromJSON(res, simplifyVector = FALSE)
-#     if(!'results' %in% names(out)){
-#       if(length(out)==0){ warning("Sorry, no data found") }
-#     } else {
-#       if( class(try(out$results, silent=TRUE))=="try-error" | is.null(try(out$results, silent=TRUE)) )
-#         warning("Sorry, no data found")
-#     }
-#     return( out )
-#   }
-# }
+ghbase <- function() 'https://api.github.com'
+
+ghead <- function(){
+  add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
+}
+
+
+gist_GET <- function(url, auth, headers, args=list(), ...){
+  response <- GET(url, auth, headers, query=args, ...)
+  process(response)
+}
+
+gist_PATCH <- function(id, auth, headers, body, ...){
+  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, body=body, encode = "json", ...)
+  process(response)
+}
+
+gist_POST <- function(url, auth, headers, body, ...){
+  response <- POST(url, auth, headers, body=body, encode = "json", ...)
+  process(response)
+}
+
+gist_PUT <- function(url, auth, headers, ...){
+  PUT(url, auth, headers, ...)
+}
+
+gist_DELETE <- function(url, auth, headers, ...){
+  DELETE(url, auth, headers, ...)
+}
+
+process <- function(x){
+  stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
+  warn_for_status(x)
+  temp <- content(x, as = "text")
+  jsonlite::fromJSON(temp, FALSE)
+}
+
+check_auth <- function(x) if(!missing(x)) x else gist_auth()

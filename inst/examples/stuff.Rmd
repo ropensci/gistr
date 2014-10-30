@@ -1,0 +1,14 @@
+Stuff and things
+------------------
+
+## head of mtcars
+
+```{r}
+head(mtcars)
+```
+
+## head of iris
+
+```{r}
+head(iris)
+```

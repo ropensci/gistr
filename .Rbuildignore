@@ -1,3 +1,7 @@
 man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
+appveyor.yml
+.travis.yml
+cran-comments.md
+README.Rmd
