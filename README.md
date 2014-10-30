@@ -19,7 +19,7 @@ gistr
 
 
 ```r
-devtools::install_github("ropensci/gistr@dev")
+devtools::install_github("ropensci/gistr")
 ```
 
 
@@ -76,8 +76,8 @@ edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4753
-#> Resets in:  9 minutes
+#> Remaining:  4989
+#> Resets in:  38 minutes
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>51a5e6188da2685dfcb4
-#>   URL: https://gist.github.com/51a5e6188da2685dfcb4
-#>   Description: Twilio Calls Drupal Module
+#> <gist>d817ca3e959d21130b9d
+#>   URL: https://gist.github.com/d817ca3e959d21130b9d
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:35Z / 2014-10-28T14:43:36Z
-#>   Files: gistfile1.php
+#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
+#>   Files: gistfile1.txt
 #> 
 #> [[2]]
-#> <gist>0ebe3763389b76365d68
-#>   URL: https://gist.github.com/0ebe3763389b76365d68
-#>   Description: designer
+#> <gist>0dd8bbefd21f2e7cbf91
+#>   URL: https://gist.github.com/0dd8bbefd21f2e7cbf91
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:34Z / 2014-10-28T14:43:34Z
-#>   Files: designer.html
+#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
+#>   Files: MainClass.java
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>51a5e6188da2685dfcb4
-#>   URL: https://gist.github.com/51a5e6188da2685dfcb4
-#>   Description: Twilio Calls Drupal Module
+#> <gist>d817ca3e959d21130b9d
+#>   URL: https://gist.github.com/d817ca3e959d21130b9d
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:35Z / 2014-10-28T14:43:36Z
-#>   Files: gistfile1.php
+#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
+#>   Files: gistfile1.txt
 #> 
 #> [[2]]
-#> <gist>0ebe3763389b76365d68
-#>   URL: https://gist.github.com/0ebe3763389b76365d68
-#>   Description: designer
+#> <gist>0dd8bbefd21f2e7cbf91
+#>   URL: https://gist.github.com/0dd8bbefd21f2e7cbf91
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:34Z / 2014-10-28T14:43:34Z
-#>   Files: designer.html
+#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
+#>   Files: MainClass.java
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,19 +133,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>017214637bcfeb198070
-#>   URL: https://gist.github.com/017214637bcfeb198070
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z
-#>   Files: pelias_test.geojson
-#> 
-#> [[2]]
-#> <gist>d4c1ac85a760767dc542
-#>   URL: https://gist.github.com/d4c1ac85a760767dc542
+#> <gist>a635f164f23da23f5ce7
+#>   URL: https://gist.github.com/a635f164f23da23f5ce7
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:42:31Z / 2014-10-28T14:42:34Z
+#>   Created/Edited: 2014-10-28T14:50:42Z / 2014-10-28T14:50:42Z
+#>   Files: stuff.md, zoo.json
+#> 
+#> [[2]]
+#> <gist>ec47d5196a5c66fced76
+#>   URL: https://gist.github.com/ec47d5196a5c66fced76
+#>   Description: gist gist gist
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-28T14:48:23Z / 2014-10-28T14:48:23Z
 #>   Files: stuff.md, zoo.json
 ```
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>11962bd921daad1e2520
-#>   URL: https://gist.github.com/11962bd921daad1e2520
+#> <gist>adb3e748c1caeb353a19
+#>   URL: https://gist.github.com/adb3e748c1caeb353a19
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:42Z
+#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:16Z
 #>   Files: stuff.md
 ```
 
@@ -205,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>087ebc6c33c0dcf91380
-#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
+#> <gist>1ba5ee99d2929173304e
+#>   URL: https://gist.github.com/1ba5ee99d2929173304e
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:42Z
+#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:16Z
 #>   Files: code.R
 ```
 
@@ -250,9 +250,9 @@ x <- letters
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: efa565b19834b144c013ab6ef5557f8c44808c31
+#>   Version: fa29b26495e051533c15277ace16596b0cc10f27
 #>   User: sckott
-#>   Commited: 2014-10-28T14:43:42Z
+#>   Commited: 2014-10-30T14:03:16Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -293,11 +293,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>087ebc6c33c0dcf91380
-#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
+#> <gist>1ba5ee99d2929173304e
+#>   URL: https://gist.github.com/1ba5ee99d2929173304e
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:44Z
+#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:18Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -308,11 +308,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>087ebc6c33c0dcf91380
-#>   URL: https://gist.github.com/087ebc6c33c0dcf91380
+#> <gist>1ba5ee99d2929173304e
+#>   URL: https://gist.github.com/1ba5ee99d2929173304e
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:42Z / 2014-10-28T14:43:44Z
+#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:19Z
 #>   Files: code.R
 ```
 
@@ -330,7 +330,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/087ebc6c33c0dcf91380.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/binhvq/ea2ec20fae15e5aeda4e.js\"></script>"
 ```
 
 ### List forks
@@ -365,12 +365,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>224323e61e4aecf25240
-#>   URL: https://gist.github.com/224323e61e4aecf25240
-#>   Description: A simple tmux configuration file for remote servers.
+#> <gist>149319304120fb637e0e
+#>   URL: https://gist.github.com/149319304120fb637e0e
+#>   Description: Configuration for export test results from protractor (jasmine) to TestLink through testLinkApi 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:43:46Z / 2014-10-28T14:43:46Z
-#>   Files: .tmux.conf
+#>   Created/Edited: 2014-10-30T14:03:20Z / 2014-10-30T14:03:20Z
+#>   Files: e2e-qa.conf.js, gruntFile.coffee, jasmine-testlink.js, testLinkApi.coffee
 ```
 
 

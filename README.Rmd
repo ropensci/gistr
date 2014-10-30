@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ### Install
 
 ```{r eval=FALSE}
-devtools::install_github("ropensci/gistr@dev")
+devtools::install_github("ropensci/gistr")
 ```
 
 ```{r}
