@@ -152,7 +152,7 @@ gist_create(file, description='a new cool gist', knit=TRUE)
 #>   Files: stuff.md
 ```
 
-Or code blocks before (note that code blocks without knitr block demarcations will simply just end up with the unexecuted code):
+Or code blocks before (note that code blocks without knitr block demarcations will result in unexecuted code):
 
 ```{r eval=FALSE}
 gist_create(code={'
@@ -165,6 +165,34 @@ x <- letters
 #>   Public: TRUE
 #>   Created/Edited: 2014-10-27T16:09:09Z / 2014-10-27T16:09:09Z
 #>   Files: file81720d1ceff.md
+```
+
+### knit code from file path, code block, or gist file
+
+knit a local file
+
+```{r}
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
+```
+
+```{r echo=FALSE}
+gists('minepublic')[[1]] %>% delete
+```
+
+knit a code block (knitr code block notation missing, do add that in) (result not shown)
+
+```{r eval=FALSE}
+run({'
+x <- letters
+(numbers <- runif(8))
+'}) %>% gist_create
+```
+
+knit a file from a gist, has to get file first (result not shown)
+
+```{r eval=FALSE}
+gists('minepublic')[[1]] %>% run() %>% edit()
 ```
 
 ### List commits on a gist

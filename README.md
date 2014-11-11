@@ -76,8 +76,8 @@ edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4989
-#> Resets in:  38 minutes
+#> Remaining:  4921
+#> Resets in:  58 minutes
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>d817ca3e959d21130b9d
-#>   URL: https://gist.github.com/d817ca3e959d21130b9d
-#>   Description: 
+#> <gist>717255c79c5338dd44af
+#>   URL: https://gist.github.com/717255c79c5338dd44af
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>0dd8bbefd21f2e7cbf91
-#>   URL: https://gist.github.com/0dd8bbefd21f2e7cbf91
-#>   Description: 
+#> <gist>c25bc480ec5ccf9c4a05
+#>   URL: https://gist.github.com/c25bc480ec5ccf9c4a05
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
-#>   Files: MainClass.java
+#>   Created/Edited: 2014-11-11T01:47:41Z / 2014-11-11T01:47:41Z
+#>   Files: config.json
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>d817ca3e959d21130b9d
-#>   URL: https://gist.github.com/d817ca3e959d21130b9d
-#>   Description: 
+#> <gist>717255c79c5338dd44af
+#>   URL: https://gist.github.com/717255c79c5338dd44af
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>0dd8bbefd21f2e7cbf91
-#>   URL: https://gist.github.com/0dd8bbefd21f2e7cbf91
-#>   Description: 
+#> <gist>c25bc480ec5ccf9c4a05
+#>   URL: https://gist.github.com/c25bc480ec5ccf9c4a05
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:00Z / 2014-10-30T14:03:01Z
-#>   Files: MainClass.java
+#>   Created/Edited: 2014-11-11T01:47:41Z / 2014-11-11T01:47:41Z
+#>   Files: config.json
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,20 +133,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>a635f164f23da23f5ce7
-#>   URL: https://gist.github.com/a635f164f23da23f5ce7
+#> <gist>717255c79c5338dd44af
+#>   URL: https://gist.github.com/717255c79c5338dd44af
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:50:42Z / 2014-10-28T14:50:42Z
-#>   Files: stuff.md, zoo.json
+#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>ec47d5196a5c66fced76
-#>   URL: https://gist.github.com/ec47d5196a5c66fced76
-#>   Description: gist gist gist
+#> <gist>4951bb545b1300169e01
+#>   URL: https://gist.github.com/4951bb545b1300169e01
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:48:23Z / 2014-10-28T14:48:23Z
-#>   Files: stuff.md, zoo.json
+#>   Created/Edited: 2014-11-11T01:46:06Z / 2014-11-11T01:46:09Z
+#>   Files: code.R
 ```
 
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>adb3e748c1caeb353a19
-#>   URL: https://gist.github.com/adb3e748c1caeb353a19
+#> <gist>ecf3b6c2c17cbd15345b
+#>   URL: https://gist.github.com/ecf3b6c2c17cbd15345b
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:16Z
+#>   Created/Edited: 2014-11-11T01:48:14Z / 2014-11-11T01:48:14Z
 #>   Files: stuff.md
 ```
 
@@ -205,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>1ba5ee99d2929173304e
-#>   URL: https://gist.github.com/1ba5ee99d2929173304e
+#> <gist>61523201b43088dd36eb
+#>   URL: https://gist.github.com/61523201b43088dd36eb
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:16Z
+#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:15Z
 #>   Files: code.R
 ```
 
@@ -227,7 +227,7 @@ gist_create(file, description='a new cool gist', knit=TRUE)
 #>   Files: stuff.md
 ```
 
-Or code blocks before (note that code blocks without knitr block demarcations will simply just end up with the unexecuted code):
+Or code blocks before (note that code blocks without knitr block demarcations will result in unexecuted code):
 
 
 ```r
@@ -243,6 +243,41 @@ x <- letters
 #>   Files: file81720d1ceff.md
 ```
 
+### knit code from file path, code block, or gist file
+
+knit a local file
+
+
+```r
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
+#> <gist>c3584212a8b00932a8f2
+#>   URL: https://gist.github.com/c3584212a8b00932a8f2
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:15Z
+#>   Files: stuff.md
+```
+
+
+
+knit a code block (knitr code block notation missing, do add that in) (result not shown)
+
+
+```r
+run({'
+x <- letters
+(numbers <- runif(8))
+'}) %>% gist_create
+```
+
+knit a file from a gist, has to get file first (result not shown)
+
+
+```r
+gists('minepublic')[[1]] %>% run() %>% edit()
+```
+
 ### List commits on a gist
 
 
@@ -250,9 +285,9 @@ x <- letters
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: fa29b26495e051533c15277ace16596b0cc10f27
+#>   Version: 49ea3401369091362c3046d92ed439bc0880a76e
 #>   User: sckott
-#>   Commited: 2014-10-30T14:03:16Z
+#>   Commited: 2014-11-11T01:48:15Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -293,11 +328,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>1ba5ee99d2929173304e
-#>   URL: https://gist.github.com/1ba5ee99d2929173304e
+#> <gist>61523201b43088dd36eb
+#>   URL: https://gist.github.com/61523201b43088dd36eb
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:18Z
+#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:17Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -308,11 +343,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>1ba5ee99d2929173304e
-#>   URL: https://gist.github.com/1ba5ee99d2929173304e
+#> <gist>61523201b43088dd36eb
+#>   URL: https://gist.github.com/61523201b43088dd36eb
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:16Z / 2014-10-30T14:03:19Z
+#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:18Z
 #>   Files: code.R
 ```
 
@@ -330,7 +365,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/binhvq/ea2ec20fae15e5aeda4e.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/61523201b43088dd36eb.js\"></script>"
 ```
 
 ### List forks
@@ -365,12 +400,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>149319304120fb637e0e
-#>   URL: https://gist.github.com/149319304120fb637e0e
-#>   Description: Configuration for export test results from protractor (jasmine) to TestLink through testLinkApi 
+#> <gist>b3bc18884792a7751abe
+#>   URL: https://gist.github.com/b3bc18884792a7751abe
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-30T14:03:20Z / 2014-10-30T14:03:20Z
-#>   Files: e2e-qa.conf.js, gruntFile.coffee, jasmine-testlink.js, testLinkApi.coffee
+#>   Created/Edited: 2014-11-11T01:48:19Z / 2014-11-11T01:48:19Z
+#>   Files: config.json
 ```
 
 
