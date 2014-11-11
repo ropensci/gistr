@@ -76,8 +76,8 @@ edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4921
-#> Resets in:  58 minutes
+#> Remaining:  5000
+#> Resets in:  1 hours
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>717255c79c5338dd44af
-#>   URL: https://gist.github.com/717255c79c5338dd44af
-#>   Description: gist gist gist
-#>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
-#>   Files: stuff.md
-#> 
-#> [[2]]
-#> <gist>c25bc480ec5ccf9c4a05
-#>   URL: https://gist.github.com/c25bc480ec5ccf9c4a05
+#> <gist>90c6c2f7d4a610e89d30
+#>   URL: https://gist.github.com/90c6c2f7d4a610e89d30
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:47:41Z / 2014-11-11T01:47:41Z
+#>   Created/Edited: 2014-11-11T22:16:03Z / 2014-11-11T22:16:03Z
 #>   Files: config.json
+#> 
+#> [[2]]
+#> <gist>99090f544333ab9efa54
+#>   URL: https://gist.github.com/99090f544333ab9efa54
+#>   Description: Google Map API Markers
+#>   Public: TRUE
+#>   Created/Edited: 2014-11-11T22:16:02Z / 2014-11-11T22:16:02Z
+#>   Files: map.js
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>717255c79c5338dd44af
-#>   URL: https://gist.github.com/717255c79c5338dd44af
-#>   Description: gist gist gist
-#>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
-#>   Files: stuff.md
-#> 
-#> [[2]]
-#> <gist>c25bc480ec5ccf9c4a05
-#>   URL: https://gist.github.com/c25bc480ec5ccf9c4a05
+#> <gist>90c6c2f7d4a610e89d30
+#>   URL: https://gist.github.com/90c6c2f7d4a610e89d30
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:47:41Z / 2014-11-11T01:47:41Z
+#>   Created/Edited: 2014-11-11T22:16:03Z / 2014-11-11T22:16:03Z
 #>   Files: config.json
+#> 
+#> [[2]]
+#> <gist>99090f544333ab9efa54
+#>   URL: https://gist.github.com/99090f544333ab9efa54
+#>   Description: Google Map API Markers
+#>   Public: TRUE
+#>   Created/Edited: 2014-11-11T22:16:02Z / 2014-11-11T22:16:02Z
+#>   Files: map.js
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,20 +133,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>717255c79c5338dd44af
-#>   URL: https://gist.github.com/717255c79c5338dd44af
+#> <gist>7cf3e534b39abc122d4a
+#>   URL: https://gist.github.com/7cf3e534b39abc122d4a
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:47:46Z / 2014-11-11T01:47:46Z
+#>   Created/Edited: 2014-11-11T21:58:47Z / 2014-11-11T21:58:47Z
 #>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>4951bb545b1300169e01
-#>   URL: https://gist.github.com/4951bb545b1300169e01
-#>   Description: 
+#> <gist>372448ccb6398b387070
+#>   URL: https://gist.github.com/372448ccb6398b387070
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:46:06Z / 2014-11-11T01:46:09Z
-#>   Files: code.R
+#>   Created/Edited: 2014-11-11T21:56:27Z / 2014-11-11T21:56:27Z
+#>   Files: stuff.md
 ```
 
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>ecf3b6c2c17cbd15345b
-#>   URL: https://gist.github.com/ecf3b6c2c17cbd15345b
+#> <gist>3410af83c046cc27a531
+#>   URL: https://gist.github.com/3410af83c046cc27a531
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:14Z / 2014-11-11T01:48:14Z
+#>   Created/Edited: 2014-11-11T22:16:08Z / 2014-11-11T22:16:08Z
 #>   Files: stuff.md
 ```
 
@@ -205,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>61523201b43088dd36eb
-#>   URL: https://gist.github.com/61523201b43088dd36eb
+#> <gist>e6e8619e8b8b2822b519
+#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:15Z
+#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:09Z
 #>   Files: code.R
 ```
 
@@ -251,11 +251,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>c3584212a8b00932a8f2
-#>   URL: https://gist.github.com/c3584212a8b00932a8f2
+#> <gist>05cbda9aa7e07ec60140
+#>   URL: https://gist.github.com/05cbda9aa7e07ec60140
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:15Z
+#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:09Z
 #>   Files: stuff.md
 ```
 
@@ -285,10 +285,10 @@ gists('minepublic')[[1]] %>% run() %>% edit()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 49ea3401369091362c3046d92ed439bc0880a76e
-#>   User: sckott
-#>   Commited: 2014-11-11T01:48:15Z
-#>   Commits [total, additions, deletions]: [5,5,0]
+#>   Version: 97d4ee7ad225cf6cd6e5528d84ee299572cca8df
+#>   User: shadowyregulato
+#>   Commited: 2014-11-11T22:16:09Z
+#>   Commits [total, additions, deletions]: [1,1,0]
 ```
 
 ### Star a gist
@@ -328,11 +328,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>61523201b43088dd36eb
-#>   URL: https://gist.github.com/61523201b43088dd36eb
+#> <gist>e6e8619e8b8b2822b519
+#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:17Z
+#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:11Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -343,11 +343,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>61523201b43088dd36eb
-#>   URL: https://gist.github.com/61523201b43088dd36eb
+#> <gist>e6e8619e8b8b2822b519
+#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:15Z / 2014-11-11T01:48:18Z
+#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:12Z
 #>   Files: code.R
 ```
 
@@ -365,7 +365,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/61523201b43088dd36eb.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/gjuggdfyn/3c8f821b7f59cdb3c720.js\"></script>"
 ```
 
 ### List forks
@@ -400,12 +400,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>b3bc18884792a7751abe
-#>   URL: https://gist.github.com/b3bc18884792a7751abe
-#>   Description: Bootstrap Customizer Config
+#> <gist>a107e0d18fdac0d9dce0
+#>   URL: https://gist.github.com/a107e0d18fdac0d9dce0
+#>   Description: 블루카­지­노▶▶ ＮＡＴＥ１１９．ＣＯＭ ◀◀바카라하는곳
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T01:48:19Z / 2014-11-11T01:48:19Z
-#>   Files: config.json
+#>   Created/Edited: 2014-11-11T22:16:13Z / 2014-11-11T22:16:13Z
+#>   Files: 블루카­지­노▶▶ ＮＡＴＥ１１９．ＣＯＭ ◀◀바카라하는곳
 ```
 
 
@@ -431,7 +431,9 @@ gist_create(code = json, filename = "pelias_test.geojson")
 #>   Files: pelias_test.geojson 
 ```
 
-And here's that gist: https://gist.github.com/sckott/017214637bcfeb198070
+And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
+
+![](inst/img/gistr_ss.png)
 
 ## Meta
 

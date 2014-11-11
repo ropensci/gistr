@@ -288,7 +288,9 @@ gist_create(code = json, filename = "pelias_test.geojson")
 #>   Files: pelias_test.geojson 
 ```
 
-And here's that gist: https://gist.github.com/sckott/017214637bcfeb198070
+And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
+
+![](inst/img/gistr_ss.png)
 
 ## Meta
 
