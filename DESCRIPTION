@@ -3,8 +3,8 @@ Title: Work with GitHub gists from R.
 Description: Work with GitHub gists from R, including create new gists, update
     gists with new files, rename files, delete files, get gists, and more. You
     can authenticate or do unauthenticated requests. more...
-Version: 0.0.8.99
-Date: 2014-11-11
+Version: 0.0.9.99
+Date: 2014-12-02
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
     email = "ramnath.vaidya@gmail.com"),
     person("Karthik", "Ram", role = "aut",
