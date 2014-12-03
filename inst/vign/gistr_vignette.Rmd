@@ -1,28 +1,28 @@
-gistr
-=======
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{gistr vignette}
+-->
 
-```{r echo=FALSE}
+```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE, 
-  message = FALSE
+	message=FALSE,
+	warning=FALSE,
+	comment="#>"
 )
 ```
 
-[![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
-[![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
+gistr tutorial
+============
 
-`gistr` is a light interface to GitHub's gists for R.
+## Install
 
-## Seealso:
+Stable version from CRAN
 
-* [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
-* [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+```{r eval=FALSE}
+install.packages("gistr")
+```
 
-## Quick start
-
-### Install
+Development version from GitHub
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/gistr")
@@ -32,7 +32,7 @@ devtools::install_github("ropensci/gistr")
 library("gistr")
 ```
 
-### Authentication
+## Authentication
 
 There are two ways to authorise gistr to work with your GitHub account:
 
@@ -47,14 +47,14 @@ Using the `gist_auth()` function you can authenticate seperately first, or if yo
 gist_auth()
 ```
 
-### Workflow
+## Workflow
 
 In `gistr` you can use pipes, introduced perhaps first in R in the package `magrittr`, to pass outputs from one function to another. If you have used `dplyr` with pipes you can see the difference, and perhaps the utility, of this workflow over the traditional workflow in R. You can use a non-piping or a piping workflow with `gistr`. Examples below use a mix of both workflows. Here is an example of a piping wofklow (with some explanation):
 
 ```{r eval=FALSE}
-gists(what = "minepublic")[[1]] %>% # List my public gists, and index to get just the 1st one 
-  add_files("~/alm_othersources.md") %>% # Add a new file to that gist
-  edit() # Edit sends a PATCH command to the Gists API to add the file to your gist online
+gists(what = "minepublic")[[1]] %>% # List my public gists, and index 1st
+  add_files("~/alm_othersources.md") %>% # Add new file to that gist
+  edit() # Edit sends a PATCH command to Gists API to add file to your gist
 ```
 
 And a non-piping workflow that does the same exact thing:
@@ -71,14 +71,14 @@ Or you could string them all together in one line (but it's rather difficult to 
 edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```
 
-### Rate limit information
+## Rate limit information
 
 ```{r}
 rate_limit()
 ```
 
 
-### List gists
+## List gists
 
 Limiting to a few results here to keep it brief
 
@@ -99,35 +99,31 @@ gists('minepublic', per_page = 2)
 ```
 
 
-### List a single commit
+## List a single gist
 
 ```{r}
 gist(id = 'f1403260eb92f5dfa7e1')
 ```
 
-### Create gist
+## Create gist
 
 You can pass in files
 
+First, get a file to work with
+
+```{r}
+stuffpath <- system.file("examples", "stuff.md", package = "gistr")
+```
+
 ```{r eval=FALSE}
-gist_create(files="~/stuff.md", description='a new cool gist')
+gist_create(files=stuffpath, description='a new cool gist')
 ```
 
 ```{r}
-gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
+gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
-
-```{r eval=FALSE}
-gist_create(code={'
-x <- letters
-numbers <- runif(8)
-numbers
-
-[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
-'})
-```
 
 ```{r}
 gist_create(code={'
@@ -167,7 +163,7 @@ x <- letters
 #>   Files: file81720d1ceff.md
 ```
 
-### knit code from file path, code block, or gist file
+## knit code from file path, code block, or gist file
 
 knit a local file
 
@@ -180,7 +176,7 @@ run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
 gists('minepublic')[[1]] %>% delete
 ```
 
-knit a code block (knitr code block notation missing, do add that in) (result not shown)
+knit a code block (`knitr` code block notation missing, do add that in) (result not shown)
 
 ```{r eval=FALSE}
 run({'
@@ -195,13 +191,13 @@ knit a file from a gist, has to get file first (result not shown)
 gists('minepublic')[[1]] %>% run() %>% edit()
 ```
 
-### List commits on a gist
+## List commits on a gist
 
 ```{r}
 gists()[[1]] %>% commits()
 ```
 
-### Star a gist
+## Star a gist
 
 Star
 
@@ -215,13 +211,19 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 ```
 
-### Edit a gist
+## Edit a gist
 
 Add files
 
+First, path to file
+
+```{r}
+file <- system.file("examples", "alm_othersources.md", package = "gistr")
+```
+
 ```{r}
 gists(what = "minepublic")[[1]] %>%
-  add_files("~/alm_othersources.md") %>%
+  add_files(file) %>%
   edit()
 ```
 
@@ -229,11 +231,11 @@ Delete files
 
 ```{r}
 gists(what = "minepublic")[[1]] %>%
-  delete_files("~/alm_othersources.md") %>%
+  delete_files(file) %>%
   edit()
 ```
 
-### Open a gist in your default browser
+## Open a gist in your default browser
 
 ```{r eval=FALSE}
 gists()[[1]] %>% browse()
@@ -241,7 +243,7 @@ gists()[[1]] %>% browse()
 
 > Opens the gist in your default browser
 
-### Get embed script
+## Get embed script
 
 ```{r}
 gists()[[1]] %>% embed()
@@ -255,7 +257,7 @@ Returns a list of `gist` objects, just like `gists()`
 gist(id='1642874') %>% forks(per_page=2)
 ```
 
-### Fork a gist
+## Fork a gist
 
 Returns a `gist` object
 
@@ -272,7 +274,7 @@ gist(forked$id) %>% delete()
 
 _Working with the Mapzen Pelias geocoding API_
 
-The API is described at https://github.com/pelias/pelias, and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map. 
+The API is described at [https://github.com/pelias/pelias](https://github.com/pelias/pelias), and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map. 
 
 ```{r eval=FALSE}
 library('httr')
@@ -288,14 +290,6 @@ gist_create(code = json, filename = "pelias_test.geojson")
 #>   Files: pelias_test.geojson 
 ```
 
-And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
+And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
 
-![](inst/img/gistr_ss.png)
-
-## Meta
-
-* Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
-* License: MIT
-* Get citation information for `gistr` in R doing `citation(package = 'gistr')`
-
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+![](img/gistr_ss.png)
