@@ -67,8 +67,8 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
       writeLines(code, files)
     }
     files <- do.call(knitr::knit,
-                     c(input=files, 
-                       output=sub("\\.Rmd", "\\.md", files), 
+                     c(input = files, 
+                       output=sub("\\.Rmd", "\\.md", files),
                        knitopts))
   }
   body <- creategist(files, description, public)
@@ -77,6 +77,11 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   if(browse) browse(gist)
   return( gist )
 }
+
+# swapfilename <- function(x, filename){
+#   tmp <- strsplit(x, "/")[[1]]
+#   paste0(paste0(tmp[ - length(tmp) ], collapse = "/"), ,filename)
+# }
 
 code_handler <- function(x, filename){
   # Remove surrounding `{`
