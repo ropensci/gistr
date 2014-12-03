@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 `gistr` is a light interface to GitHub's gists for R.
 
-## Seealso:
+## See also:
 
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren

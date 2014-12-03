@@ -8,7 +8,7 @@ gistr
 
 `gistr` is a light interface to GitHub's gists for R.
 
-## Seealso:
+## See also:
 
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
@@ -31,7 +31,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use]() and record it in the `GITHUB_PAT` envar. 
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. 
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -76,8 +76,8 @@ edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  5000
-#> Resets in:  1 hours
+#> Remaining:  4944
+#> Resets in:  49 minutes
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>90c6c2f7d4a610e89d30
-#>   URL: https://gist.github.com/90c6c2f7d4a610e89d30
-#>   Description: Bootstrap Customizer Config
+#> <gist>6cce6add30a991ee7f71
+#>   URL: https://gist.github.com/6cce6add30a991ee7f71
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:03Z / 2014-11-11T22:16:03Z
-#>   Files: config.json
+#>   Created/Edited: 2014-12-03T02:46:54Z / 2014-12-03T02:46:55Z
+#>   Files: HelloWorld.md
 #> 
 #> [[2]]
-#> <gist>99090f544333ab9efa54
-#>   URL: https://gist.github.com/99090f544333ab9efa54
-#>   Description: Google Map API Markers
+#> <gist>25b4323f57e2e877604e
+#>   URL: https://gist.github.com/25b4323f57e2e877604e
+#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:02Z / 2014-11-11T22:16:02Z
-#>   Files: map.js
+#>   Created/Edited: 2014-12-03T02:46:46Z / 2014-12-03T02:46:46Z
+#>   Files: untrusted-lvl1-solution.js
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>90c6c2f7d4a610e89d30
-#>   URL: https://gist.github.com/90c6c2f7d4a610e89d30
-#>   Description: Bootstrap Customizer Config
+#> <gist>6cce6add30a991ee7f71
+#>   URL: https://gist.github.com/6cce6add30a991ee7f71
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:03Z / 2014-11-11T22:16:03Z
-#>   Files: config.json
+#>   Created/Edited: 2014-12-03T02:46:54Z / 2014-12-03T02:46:55Z
+#>   Files: HelloWorld.md
 #> 
 #> [[2]]
-#> <gist>99090f544333ab9efa54
-#>   URL: https://gist.github.com/99090f544333ab9efa54
-#>   Description: Google Map API Markers
+#> <gist>25b4323f57e2e877604e
+#>   URL: https://gist.github.com/25b4323f57e2e877604e
+#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:02Z / 2014-11-11T22:16:02Z
-#>   Files: map.js
+#>   Created/Edited: 2014-12-03T02:46:46Z / 2014-12-03T02:46:46Z
+#>   Files: untrusted-lvl1-solution.js
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,19 +133,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>7cf3e534b39abc122d4a
-#>   URL: https://gist.github.com/7cf3e534b39abc122d4a
-#>   Description: gist gist gist
+#> <gist>7393e3a8d2cb67727276
+#>   URL: https://gist.github.com/7393e3a8d2cb67727276
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T21:58:47Z / 2014-11-11T21:58:47Z
-#>   Files: stuff.md
+#>   Created/Edited: 2014-12-03T02:40:15Z / 2014-12-03T02:40:18Z
+#>   Files: code.R
 #> 
 #> [[2]]
-#> <gist>372448ccb6398b387070
-#>   URL: https://gist.github.com/372448ccb6398b387070
-#>   Description: gist gist gist
+#> <gist>38f7a00336fc5760af7a
+#>   URL: https://gist.github.com/38f7a00336fc5760af7a
+#>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T21:56:27Z / 2014-11-11T21:56:27Z
+#>   Created/Edited: 2014-12-03T02:40:15Z / 2014-12-03T02:40:15Z
 #>   Files: stuff.md
 ```
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>3410af83c046cc27a531
-#>   URL: https://gist.github.com/3410af83c046cc27a531
+#> <gist>ea444949bb2b3361a06c
+#>   URL: https://gist.github.com/ea444949bb2b3361a06c
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:08Z / 2014-11-11T22:16:08Z
+#>   Created/Edited: 2014-12-03T02:47:27Z / 2014-12-03T02:47:27Z
 #>   Files: stuff.md
 ```
 
@@ -205,11 +205,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>e6e8619e8b8b2822b519
-#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
+#> <gist>33a395551aff82baac6f
+#>   URL: https://gist.github.com/33a395551aff82baac6f
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:09Z
+#>   Created/Edited: 2014-12-03T02:47:27Z / 2014-12-03T02:47:27Z
 #>   Files: code.R
 ```
 
@@ -251,11 +251,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>05cbda9aa7e07ec60140
-#>   URL: https://gist.github.com/05cbda9aa7e07ec60140
+#> <gist>b8ea183eae932bec6864
+#>   URL: https://gist.github.com/b8ea183eae932bec6864
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:09Z
+#>   Created/Edited: 2014-12-03T02:47:27Z / 2014-12-03T02:47:27Z
 #>   Files: stuff.md
 ```
 
@@ -285,10 +285,10 @@ gists('minepublic')[[1]] %>% run() %>% edit()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 97d4ee7ad225cf6cd6e5528d84ee299572cca8df
-#>   User: shadowyregulato
-#>   Commited: 2014-11-11T22:16:09Z
-#>   Commits [total, additions, deletions]: [1,1,0]
+#>   Version: 54eb6f614bb87a8c2390c7e15687a6c6209dcf20
+#>   User: sckott
+#>   Commited: 2014-12-03T02:47:27Z
+#>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
 ### Star a gist
@@ -328,11 +328,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>e6e8619e8b8b2822b519
-#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
+#> <gist>33a395551aff82baac6f
+#>   URL: https://gist.github.com/33a395551aff82baac6f
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:11Z
+#>   Created/Edited: 2014-12-03T02:47:27Z / 2014-12-03T02:47:30Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -343,11 +343,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   edit()
-#> <gist>e6e8619e8b8b2822b519
-#>   URL: https://gist.github.com/e6e8619e8b8b2822b519
+#> <gist>33a395551aff82baac6f
+#>   URL: https://gist.github.com/33a395551aff82baac6f
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:09Z / 2014-11-11T22:16:12Z
+#>   Created/Edited: 2014-12-03T02:47:27Z / 2014-12-03T02:47:30Z
 #>   Files: code.R
 ```
 
@@ -365,7 +365,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/gjuggdfyn/3c8f821b7f59cdb3c720.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/33a395551aff82baac6f.js\"></script>"
 ```
 
 ### List forks
@@ -400,12 +400,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>a107e0d18fdac0d9dce0
-#>   URL: https://gist.github.com/a107e0d18fdac0d9dce0
-#>   Description: 블루카­지­노▶▶ ＮＡＴＥ１１９．ＣＯＭ ◀◀바카라하는곳
+#> <gist>79fe25254071f4e30ee5
+#>   URL: https://gist.github.com/79fe25254071f4e30ee5
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2014-11-11T22:16:13Z / 2014-11-11T22:16:13Z
-#>   Files: 블루카­지­노▶▶ ＮＡＴＥ１１９．ＣＯＭ ◀◀바카라하는곳
+#>   Created/Edited: 2014-12-03T02:47:31Z / 2014-12-03T02:47:31Z
+#>   Files: config.json
 ```
 
 
