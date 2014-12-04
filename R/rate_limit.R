@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param ... Named args to \code{\link[httr]{GET}}
-#' @examples \dontrun{
+#' @examples \donttest{
 #' rate_limit()
 #' rate_limit(config=verbose())
 #' }
@@ -22,14 +22,14 @@ print.gist_rate <- function(x, ...){
 
 time <- function(x) {
   x <- as.integer(x)
-  
+
   if (x > 3600) {
     paste0(x %/% 3600, " hours")
   } else if (x > 300) {
     paste0(x %/% 60, " minutes")
   } else if (x > 60) {
     paste0(round(x / 60, 1), " minutes")
-  } else { 
+  } else {
     paste0(x, "s")
   }
 }

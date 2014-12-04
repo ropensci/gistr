@@ -12,7 +12,7 @@ rate_limit(...)
 Get rate limit information
 }
 \examples{
-\dontrun{
+\donttest{
 rate_limit()
 rate_limit(config=verbose())
 }

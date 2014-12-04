@@ -14,7 +14,7 @@ delete(gist, ...)
 Delete a gist
 }
 \examples{
-\dontrun{
+\donttest{
 gists("minepublic")[[29]] \%>\% delete()
 }
 }

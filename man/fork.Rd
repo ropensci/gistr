@@ -18,7 +18,7 @@ A gist class object
 Fork a gist
 }
 \examples{
-\dontrun{
+\donttest{
 # fork a gist
 gists()[[1]] \%>\% fork()
 

@@ -21,7 +21,7 @@ A list of gist class objects
 List forks on a gist
 }
 \examples{
-\dontrun{
+\donttest{
 gist(id='1642874') \%>\% forks(per_page=2)
 }
 }

@@ -1,9 +1,9 @@
 #' Delete a gist
-#' 
+#'
 #' @param gist A gist object or something coerceable to a gist
 #' @template all
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' gists("minepublic")[[29]] %>% delete()
 #' }
 

@@ -22,7 +22,7 @@ updated at or after this time are returned.}
 List public gists, your own public gists, all your gists, by gist id, or query by date.
 }
 \examples{
-\dontrun{
+\donttest{
 # Public gists
 gists()
 gists(per_page=2)

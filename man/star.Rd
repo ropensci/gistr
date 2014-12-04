@@ -23,7 +23,7 @@ A message, and a gist object, the same one input to the function.
 Star a gist
 }
 \examples{
-\dontrun{
+\donttest{
 id <- '7ddb9810fc99c84c65ec'
 gist(id) \%>\% star()
 gist(id) \%>\% star_check()

@@ -16,7 +16,7 @@ edit(gist, description = gist$description, ...)
 Update/modify a gist
 }
 \examples{
-\dontrun{
+\donttest{
 # add new files
 gists(what = "minepublic")[[3]] \%>\%
  add_files("~/zillowstuff.Rmd", "~/zoo.json") \%>\%

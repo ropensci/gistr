@@ -5,7 +5,7 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. Max 100.
 #' @param ... Further named args to \code{\link[httr]{GET}}
-#' @examples \dontrun{
+#' @examples \donttest{
 #' gists()[[1]] %>% commits()
 #' gist(id='1f399774e9ecc9153a6f') %>% commits(per_page=2)
 #' }
@@ -24,7 +24,7 @@ print.commit <- function(x, ...){
   cat("  Version: ", x$version, "\n", sep = "")
   cat("  User: ", x$user$login, "\n", sep = "")
   cat("  Commited: ", x$committed_at, "\n", sep = "")
-  cat("  Commits [total, additions, deletions]: ", 
-    sprintf("[%s,%s,%s]", x$change_status$total, x$change_status$additions, x$change_status$deletions), 
+  cat("  Commits [total, additions, deletions]: ",
+    sprintf("[%s,%s,%s]", x$change_status$total, x$change_status$additions, x$change_status$deletions),
     "\n", sep = "")
 }

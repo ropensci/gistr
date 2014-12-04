@@ -18,7 +18,7 @@ commits(gist, page = NULL, per_page = 30, ...)
 List gist commits
 }
 \examples{
-\dontrun{
+\donttest{
 gists()[[1]] \%>\% commits()
 gist(id='1f399774e9ecc9153a6f') \%>\% commits(per_page=2)
 }
