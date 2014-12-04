@@ -1,8 +1,8 @@
 Package: gistr
-Title: Work with GitHub gists from R.
+Title: Work with GitHub Gists from R
 Description: Work with GitHub gists from R, including create new gists, update
     gists with new files, rename files, delete files, get gists, and more. You
-    can authenticate or do unauthenticated requests. more...
+    can authenticate or do unauthenticated requests.
 Version: 0.0.9.999
 Date: 2014-12-04
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
