@@ -5,7 +5,7 @@ Description: Work with GitHub gists from R, including create new gists, update
     star and unstar gists, fork gists, browse to a gist, get embed code for a
     gist, list gist commits, and get rate limit information when authenticated.
     Some requests require unauthentication and some do not.
-Version: 0.0.9.999
+Version: 0.1.0
 Date: 2014-12-04
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
     email = "ramnath.vaidya@gmail.com"),
