@@ -4,7 +4,7 @@
 #' @param gist A gist object or something coerceable to a gist
 #' @param description (character) Brief description of gist (optional)
 #' @template all
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # add new files
 #' gists(what = "minepublic")[[3]] %>%
 #'  add_files("~/zillowstuff.Rmd", "~/zoo.json") %>%

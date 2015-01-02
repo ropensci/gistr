@@ -5,7 +5,7 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. Max 100.
 #' @param ... Further named args to \code{\link[httr]{GET}}
-#' @examples \donttest{
+#' @examples \dontrun{
 #' gists()[[1]] %>% commits()
 #' gist(id='1f399774e9ecc9153a6f') %>% commits(per_page=2)
 #' }

@@ -3,7 +3,7 @@
 #' @param gist A gist object or something coerceable to a gist
 #' @template all
 #' @export
-#' @examples \donttest{
+#' @examples \dontrun{
 #' gists("minepublic")[[29]] %>% delete()
 #' }
 

@@ -2,10 +2,10 @@
 #'
 #' @export
 #' @rdname files
-#' 
+#'
 #' @param gist A gist object or something coerceable to a gist
 #' @template all
-#' @examples \donttest{
+#' @examples \dontrun{
 #' add_files("~/stuff.Rmd")
 #' update_files()
 #' delete_files()

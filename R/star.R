@@ -4,7 +4,7 @@
 #' @param gist A gist object or something that can be coerced to a gist object.
 #' @template all
 #' @return A message, and a gist object, the same one input to the function.
-#' @examples \donttest{
+#' @examples \dontrun{
 #' id <- '7ddb9810fc99c84c65ec'
 #' gist(id) %>% star()
 #' gist(id) %>% star_check()

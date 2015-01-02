@@ -10,7 +10,7 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. Max 100.
 #' @template all
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # Public gists
 #' gists()
 #' gists(per_page=2)

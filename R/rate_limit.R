@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param ... Named args to \code{\link[httr]{GET}}
-#' @examples \donttest{
+#' @examples \dontrun{
 #' rate_limit()
 #' rate_limit(config=verbose())
 #' }

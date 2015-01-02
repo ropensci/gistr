@@ -7,7 +7,7 @@
 #' to \code{code.R}
 #' @param knitopts (list) List of variables passed on to \code{link[knitr]{knit}}
 #' @return A path, unless a gist object is passed in, in which case a gist object is returned.
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # run a local file
 #' file <- system.file("examples", "stuff.Rmd", package = "gistr")
 #' run(file) %>% gist_create
@@ -21,7 +21,7 @@
 #' '}) %>% gist_create
 #'
 #' # run a file from a gist, has to get file first
-#' gists('minepublic')[[1]] %>% run() %>% update()
+#' gists('minepublic')[[2]] %>% run() %>% update()
 #' }
 
 run <- function(x, filename="code.R", knitopts=list()){

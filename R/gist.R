@@ -1,24 +1,24 @@
-#' Get a gist 
-#' 
+#' Get a gist
+#'
 #' @import httr
 #' @export
 #' @param id (character) A gist id
 #' @param x Object to coerce. Can be an integer (gist id), string
 #'   (gist id), a gist, or an list that can be coerced to a gist.
 #' @template all
-#' @examples \donttest{
+#' @examples \dontrun{
 #' gist(id = 'f1403260eb92f5dfa7e1')
-#' 
+#'
 #' as.gist('f1403260eb92f5dfa7e1')
 #' as.gist(10)
 #' as.gist(gist('f1403260eb92f5dfa7e1'))
-#' 
+#'
 #' ids <- sapply(gists(), "[[", "id")
 #' gist(ids[1])
 #' gist(ids[2])
 #' gist(ids[3])
 #' gist(ids[4])
-#' 
+#'
 #' gist(ids[1]) %>% browse()
 #' }
 

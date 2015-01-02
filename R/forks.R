@@ -6,7 +6,7 @@
 #' @param per_page (integer) Number of items to return per page. Default 30. Max 100.
 #' @param ... Further named args to \code{\link[httr]{GET}}
 #' @return A list of gist class objects
-#' @examples \donttest{
+#' @examples \dontrun{
 #' gist(id='1642874') %>% forks(per_page=2)
 #' }
 
@@ -24,7 +24,7 @@ forks <- function(gist, page=NULL, per_page=30, ...)
 #' @param gist A gist object or something coerceable to a gist
 #' @param ... Further named args to \code{\link[httr]{GET}}
 #'#' @return A gist class object
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # fork a gist
 #' gists()[[1]] %>% fork()
 #'
