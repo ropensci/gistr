@@ -1,7 +1,7 @@
 #' Run a .Rmd file
 #'
 #' @export
-#' @param x Input, one of: code wrapped in curly brackets and quotes, a file path to an .Rmd file, 
+#' @param x Input, one of: code wrapped in curly brackets and quotes, a file path to an .Rmd file,
 #' or a gist.
 #' @param filename Name of the file to create, only used if \code{code} parameter is used. Default
 #' to \code{code.R}
@@ -11,7 +11,7 @@
 #' # run a local file
 #' file <- system.file("examples", "stuff.Rmd", package = "gistr")
 #' run(file) %>% gist_create
-#' 
+#'
 #' # run code
 #' run({'
 #' ```{r}
@@ -19,9 +19,9 @@
 #' (numbers <- runif(8))
 #' ```
 #' '}) %>% gist_create
-#' 
+#'
 #' # run a file from a gist, has to get file first
-#' gists('minepublic')[[1]] %>% run() %>% edit()
+#' gists('minepublic')[[1]] %>% run() %>% update()
 #' }
 
 run <- function(x, filename="code.R", knitopts=list()){
@@ -43,18 +43,18 @@ run <- function(x, filename="code.R", knitopts=list()){
       }
     }
   }
-  
+
   outpath <- do.call(knitr::knit,
-          c(input=files, 
-            output=sub("\\.Rmd", "\\.md", files), 
+          c(input=files,
+            output=sub("\\.Rmd", "\\.md", files),
             knitopts))
-  if(is(x, 'gist')) x %>% edit_files(outpath) else outpath
+  if(is(x, 'gist')) x %>% update_files(outpath) else outpath
 }
 
 check_files <- function(x){
-  if(length(x$files) > 1){ 
-    stop("You can only feed one file to run()", call. = FALSE) 
-  } else { 
+  if(length(x$files) > 1){
+    stop("You can only feed one file to run()", call. = FALSE)
+  } else {
     x$files[[1]]
   }
 }

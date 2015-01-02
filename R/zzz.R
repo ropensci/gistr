@@ -4,21 +4,20 @@
 # @param description brief description of gist (optional)
 payload <- function(filenames, description = "") {
   add <- filenames$add
-  edit <- filenames$edit
+  update <- filenames$update
   delete <- filenames$delete
   rename <- filenames$rename
-  fnames <- c(unl(add), unl(edit), unl(delete), unr(rename))
-  add_edit <- lapply(c(add, edit), function(file) {
+  fnames <- c(unl(add), unl(update), unl(delete), unr(rename))
+  add_update <- lapply(c(add, update), function(file) {
     list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
   del <- lapply(delete, function(file) structure("null", names=file))
-#   ren <- lapply(rename, function(file) list(filename = strsplit(file, "/")[[1]][2]))
   ren <- lapply(rename, function(f) {
     tt <- f[[1]]
-    list(filename = basename(f[[2]]), 
+    list(filename = basename(f[[2]]),
          content = paste(readLines(tt, warn = FALSE), collapse = "\n"))
   })
-  files <- c(add_edit, del, ren)
+  files <- c(add_update, del, ren)
   names(files) <- basename(fnames)
   body <- list(description = description, files = files)
   jsonlite::toJSON(body, auto_unbox = TRUE)

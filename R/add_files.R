@@ -7,7 +7,7 @@
 #' @template all
 #' @examples \donttest{
 #' add_files("~/stuff.Rmd")
-#' edit_files()
+#' update_files()
 #' delete_files()
 #' rename_files()
 #' }
@@ -22,11 +22,11 @@ add_files <- function(gist, ...)
 
 #' @export
 #' @rdname files
-edit_files <- function(gist, ...)
+update_files <- function(gist, ...)
 {
   files <- list(...)
   files <- files_exist(files)
-  gist$edit_files <- files
+  gist$update_files <- files
   gist
 }
 
