@@ -36,7 +36,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. 
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar.
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -52,9 +52,9 @@ gist_auth()
 In `gistr` you can use pipes, introduced perhaps first in R in the package `magrittr`, to pass outputs from one function to another. If you have used `dplyr` with pipes you can see the difference, and perhaps the utility, of this workflow over the traditional workflow in R. You can use a non-piping or a piping workflow with `gistr`. Examples below use a mix of both workflows. Here is an example of a piping wofklow (with some explanation):
 
 ```{r eval=FALSE}
-gists(what = "minepublic")[[1]] %>% # List my public gists, and index 1st
+gists(what = "minepublic")[[6]] %>% # List my public gists, and index 1st
   add_files("~/alm_othersources.md") %>% # Add new file to that gist
-  edit() # Edit sends a PATCH command to Gists API to add file to your gist
+  update() # update sends a PATCH command to Gists API to add file to your gist
 ```
 
 And a non-piping workflow that does the same exact thing:
@@ -62,13 +62,13 @@ And a non-piping workflow that does the same exact thing:
 ```{r eval=FALSE}
 g <- gists(what = "minepublic")[[1]]
 g <- add_files(g, "~/alm_othersources.md")
-edit(g)
+update(g)
 ```
 
 Or you could string them all together in one line (but it's rather difficult to follow what's going on because you have to read from the inside out)
 
 ```{r eval=FALSE}
-edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
+update(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```
 
 ## Rate limit information
@@ -157,7 +157,7 @@ x <- letters
 '}, knit=TRUE)
 #> <gist>ec45c396dee4aa492139
 #>   URL: https://gist.github.com/ec45c396dee4aa492139
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2014-10-27T16:09:09Z / 2014-10-27T16:09:09Z
 #>   Files: file81720d1ceff.md
@@ -188,7 +188,7 @@ x <- letters
 knit a file from a gist, has to get file first (result not shown)
 
 ```{r eval=FALSE}
-gists('minepublic')[[1]] %>% run() %>% edit()
+gists('minepublic')[[1]] %>% run() %>% update()
 ```
 
 ## List commits on a gist
@@ -211,7 +211,7 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 ```
 
-## Edit a gist
+## Update a gist
 
 Add files
 
@@ -224,7 +224,7 @@ file <- system.file("examples", "alm_othersources.md", package = "gistr")
 ```{r}
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
-  edit()
+  update()
 ```
 
 Delete files
@@ -232,7 +232,7 @@ Delete files
 ```{r}
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
-  edit()
+  update()
 ```
 
 ## Open a gist in your default browser
@@ -274,7 +274,7 @@ gist(forked$id) %>% delete()
 
 _Working with the Mapzen Pelias geocoding API_
 
-The API is described at [https://github.com/pelias/pelias](https://github.com/pelias/pelias), and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map. 
+The API is described at [https://github.com/pelias/pelias](https://github.com/pelias/pelias), and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map.
 
 ```{r eval=FALSE}
 library('httr')
@@ -282,12 +282,12 @@ base <- "http://pelias.mapzen.com/search"
 res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
 json <- content(res, as = "text")
 gist_create(code = json, filename = "pelias_test.geojson")
-#> <gist>017214637bcfeb198070 
-#>   URL: https://gist.github.com/017214637bcfeb198070 
-#>   Description:  
-#>   Public: TRUE 
-#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z 
-#>   Files: pelias_test.geojson 
+#> <gist>017214637bcfeb198070
+#>   URL: https://gist.github.com/017214637bcfeb198070
+#>   Description:
+#>   Public: TRUE
+#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z
+#>   Files: pelias_test.geojson
 ```
 
 And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
