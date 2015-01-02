@@ -290,7 +290,7 @@ gist_create(code = json, filename = "pelias_test.geojson")
 
 And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
 
-![](inst/img/gistr_ss.png)
+![pelias img](inst/img/gistr_ss.png)
 
 ## Meta
 
@@ -298,4 +298,4 @@ And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
 * License: MIT
 * Get citation information for `gistr` in R doing `citation(package = 'gistr')`
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
