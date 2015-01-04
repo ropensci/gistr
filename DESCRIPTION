@@ -1,6 +1,6 @@
 Package: gistr
 Title: Work with GitHub Gists
-Description: Work with GitHub gists from R, (e.g., 
+Description: Work with GitHub gists from R (e.g., 
     http://en.wikipedia.org/wiki/GitHub#Gist, 
     https://help.github.com/articles/about-gists/). A gist is simply one or 
     more files with code/text/images/etc. gistr allows the user to 
