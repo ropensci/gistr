@@ -1,12 +1,16 @@
 Package: gistr
-Title: Work with GitHub Gists from R
-Description: Work with GitHub gists from R, including create new gists, update
-    gists with new files, rename files, delete files, get and delete gists
-    star and un-star gists, fork gists, open a gist in your default browser,
-    get embed code for a gist, list gist commits, and get rate limit information
-    when authenticated. Some requests require authentication and some do not.
+Title: Work with GitHub Gists
+Description: Work with GitHub gists from R, (e.g., 
+    http://en.wikipedia.org/wiki/GitHub#Gist, 
+    https://help.github.com/articles/about-gists/). A gist is simply one or 
+    more files with code/text/images/etc. gistr allows the user to 
+    create new gists, update gists with new files, rename files, delete files, 
+    get and delete gists, star and un-star gists, fork gists, open a gist in 
+    your default browser, get embed code for a gist, list gist commits, and 
+    get rate limit information when authenticated. Some requests require 
+    authentication and some do not. Gists website: https://gist.github.com/.
 Version: 0.1.0
-Date: 2015-01-02
+Date: 2015-01-04
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
     email = "ramnath.vaidya@gmail.com"),
     person("Karthik", "Ram", role = "aut",
