@@ -6,4 +6,3 @@ appveyor.yml
 cran-comments.md
 README.Rmd
 Makefile
-tests/test-all.R
