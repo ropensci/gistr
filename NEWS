@@ -6,6 +6,12 @@ NEW FEATURES
 * `gistr_create()` can now optionally include source file if `knit=TRUE` using the new 
 parameter `include_source` (#19)
 
+
+MINOR IMPROVEMENTS
+
+* `gistr_create()` works with `.Rnw` files, and example `.Rnw` file included in the package. (#20)
+
+
 taxize 0.1.0
 ===============
 
