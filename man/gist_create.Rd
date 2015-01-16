@@ -64,6 +64,11 @@ gist_create(file, description='a new cool gist', knit=TRUE)
 file <- "~/alm_othersources.Rmd"
 gist_create(file, description='a new cool gist', knit=TRUE)
 
+# an .Rnw file
+file <- system.file("examples", "rnw_example.Rnw", package = "gistr")
+gist_create(file)
+gist_create(file, knit=TRUE)
+
 # Knit code input before posting as a gist
 gist_create(code={'
 ```{r}

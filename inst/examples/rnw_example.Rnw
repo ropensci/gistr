@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+head of mtcars
+
+<<foo>>=
+head(mtcars)
+@
+
+head of iris
+
+<<>>=
+head(iris)
+@
+
+\end{document}
