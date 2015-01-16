@@ -14,6 +14,8 @@
 #' @param knit (logical) Knit code before posting as a gist? Knitting done with
 #' \code{link[knitr]{knit}}
 #' @param knitopts (list) List of variables passed on to \code{link[knitr]{knit}}
+#' @param include_source (logical) Only applies if \code{knit=TRUE}. Include source file in the
+#' gist in addition to the knitted output. 
 #' @param ... Further args passed on to \code{link[httr]{POST}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
@@ -55,13 +57,25 @@
 #' res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
 #' json <- content(res, as = "text")
 #' gist_create(code = json, filename = "pelias_test.geojson")
+#' 
+#' # Knit and include source file, so both files are in the gist
+#' file <- system.file("examples", "stuff.Rmd", package = "gistr")
+#' gist_create(file, knit=TRUE, include_source=TRUE)
+#' 
+#' gist_create(code={'
+#' ```{r}
+#' x <- letters
+#' (numbers <- runif(8))
+#' ```
+#' '}, filename="code.Rmd", knit=TRUE, include_source=TRUE)
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-  filename="code.R", knit=FALSE, knitopts=list(), ...)
+  filename="code.R", knit=FALSE, knitopts=list(), include_source = FALSE, ...)
 {
   if(!is.null(code)) files <- code_handler(code, filename)
   if(knit){
+    orig_files <- files
     if(!is.null(code)){
       files <- tempfile(fileext = ".Rmd")
       writeLines(code, files)
@@ -70,6 +84,7 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
                      c(input = files,
                        output=sub("\\.Rmd", "\\.md", files),
                        knitopts))
+    if(include_source) files <- c(orig_files, files)
   }
   body <- creategist(files, description, public)
   res <- gist_POST(paste0(ghbase(), '/gists'), gist_auth(), ghead(), body, ...)
