@@ -1,3 +1,11 @@
+taxize 0.1.1.99
+===============
+
+NEW FEATURES
+
+* `gistr_create()` can now optionally include source file if `knit=TRUE` using the new 
+parameter `include_source` (#19)
+
 taxize 0.1.0
 ===============
 
