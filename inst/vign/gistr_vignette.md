@@ -81,8 +81,8 @@ rate_limit()
 
 ```
 #> Rate limit: 5000
-#> Remaining:  4992
-#> Resets in:  58 minutes
+#> Remaining:  4937
+#> Resets in:  50 minutes
 ```
 
 
@@ -97,20 +97,20 @@ gists(per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>d4a9747a858eac277106
-#>   URL: https://gist.github.com/d4a9747a858eac277106
-#>   Description: A song created with http://www.danielx.net/composer/
+#> <gist>f6a41fd1356de2b8931d
+#>   URL: https://gist.github.com/f6a41fd1356de2b8931d
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:55Z / 2015-01-02T21:47:55Z
-#>   Files: data.json
+#>   Created/Edited: 2015-01-23T16:27:46Z / 2015-01-23T16:27:46Z
+#>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>21e68cb744704829e97e
-#>   URL: https://gist.github.com/21e68cb744704829e97e
-#>   Description: dxdiag
+#> <gist>2c0595baa786d8add54e
+#>   URL: https://gist.github.com/2c0595baa786d8add54e
+#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:50Z / 2015-01-02T21:47:51Z
-#>   Files: dxdiag
+#>   Created/Edited: 2015-01-23T16:27:43Z / 2015-01-23T16:27:43Z
+#>   Files: untrusted-lvl1-solution.js
 ```
 
 Since a certain date/time
@@ -122,20 +122,20 @@ gists(since='2014-05-26T00:00:00Z', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>d4a9747a858eac277106
-#>   URL: https://gist.github.com/d4a9747a858eac277106
-#>   Description: A song created with http://www.danielx.net/composer/
+#> <gist>f6a41fd1356de2b8931d
+#>   URL: https://gist.github.com/f6a41fd1356de2b8931d
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:55Z / 2015-01-02T21:47:55Z
-#>   Files: data.json
+#>   Created/Edited: 2015-01-23T16:27:46Z / 2015-01-23T16:27:46Z
+#>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>21e68cb744704829e97e
-#>   URL: https://gist.github.com/21e68cb744704829e97e
-#>   Description: dxdiag
+#> <gist>2c0595baa786d8add54e
+#>   URL: https://gist.github.com/2c0595baa786d8add54e
+#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:50Z / 2015-01-02T21:47:51Z
-#>   Files: dxdiag
+#>   Created/Edited: 2015-01-23T16:27:43Z / 2015-01-23T16:27:43Z
+#>   Files: untrusted-lvl1-solution.js
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -147,19 +147,19 @@ gists('minepublic', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>d2383fe8a37bd98b5c2e
-#>   URL: https://gist.github.com/d2383fe8a37bd98b5c2e
+#> <gist>485fc353504f902194a8
+#>   URL: https://gist.github.com/485fc353504f902194a8
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:09:26Z / 2015-01-02T21:09:54Z
-#>   Files: stuff.md, zoo.json
+#>   Created/Edited: 2015-01-23T16:24:50Z / 2015-01-23T16:24:50Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>81dca1f30ddc34a1b8f7
-#>   URL: https://gist.github.com/81dca1f30ddc34a1b8f7
+#> <gist>d756e9c7ceebd154ec26
+#>   URL: https://gist.github.com/d756e9c7ceebd154ec26
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:06:57Z / 2015-01-02T21:11:45Z
+#>   Created/Edited: 2015-01-23T13:48:18Z / 2015-01-23T13:48:19Z
 #>   Files: stuff.md, zoo.json
 ```
 
@@ -202,15 +202,15 @@ gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
 ```
 
 ```
-#> <gist>e6ebc9ef1959f968dd05
-#>   URL: https://gist.github.com/e6ebc9ef1959f968dd05
+#> <gist>23000a2ff523bdf6c438
+#>   URL: https://gist.github.com/23000a2ff523bdf6c438
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:57Z / 2015-01-02T21:47:57Z
+#>   Created/Edited: 2015-01-23T16:27:53Z / 2015-01-23T16:27:53Z
 #>   Files: stuff.md
 ```
 
-Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
+Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `'}` at the end.
 
 
 ```r
@@ -224,11 +224,11 @@ numbers
 ```
 
 ```
-#> <gist>0d241b7e1b87756cf916
-#>   URL: https://gist.github.com/0d241b7e1b87756cf916
+#> <gist>04ee8c7a0491d3317617
+#>   URL: https://gist.github.com/04ee8c7a0491d3317617
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:57Z / 2015-01-02T21:47:57Z
+#>   Created/Edited: 2015-01-23T16:27:54Z / 2015-01-23T16:27:54Z
 #>   Files: code.R
 ```
 
@@ -273,11 +273,11 @@ run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
 ```
 
 ```
-#> <gist>4b9724a50787841be2f5
-#>   URL: https://gist.github.com/4b9724a50787841be2f5
+#> <gist>541490440515c66168bb
+#>   URL: https://gist.github.com/541490440515c66168bb
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:57Z / 2015-01-02T21:47:57Z
+#>   Created/Edited: 2015-01-23T16:27:54Z / 2015-01-23T16:27:54Z
 #>   Files: stuff.md
 ```
 
@@ -310,10 +310,10 @@ gists()[[1]] %>% commits()
 ```
 #> [[1]]
 #> <commit>
-#>   Version: a2df37e46b4be03de64243067f02377e295c78f7
-#>   User: sckott
-#>   Commited: 2015-01-02T21:47:57Z
-#>   Commits [total, additions, deletions]: [5,5,0]
+#>   Version: 103641c54a3382b3a6f7089376bd420082c2d658
+#>   User: invalid-email-address
+#>   Commited: 2015-01-23T16:27:54Z
+#>   Commits [total, additions, deletions]: [35,35,0]
 ```
 
 ## Star a gist
@@ -369,11 +369,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>0d241b7e1b87756cf916
-#>   URL: https://gist.github.com/0d241b7e1b87756cf916
+#> <gist>04ee8c7a0491d3317617
+#>   URL: https://gist.github.com/04ee8c7a0491d3317617
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:57Z / 2015-01-02T21:47:59Z
+#>   Created/Edited: 2015-01-23T16:27:54Z / 2015-01-23T16:27:56Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -387,11 +387,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>0d241b7e1b87756cf916
-#>   URL: https://gist.github.com/0d241b7e1b87756cf916
+#> <gist>04ee8c7a0491d3317617
+#>   URL: https://gist.github.com/04ee8c7a0491d3317617
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:47:57Z / 2015-01-02T21:48:00Z
+#>   Created/Edited: 2015-01-23T16:27:54Z / 2015-01-23T16:27:57Z
 #>   Files: code.R
 ```
 
@@ -412,7 +412,7 @@ gists()[[1]] %>% embed()
 ```
 
 ```
-#> [1] "<script src=\"https://gist.github.com/openpanzer/b7415fca02984c72853b.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/SiestaMadokaist/6252116110eaddeced11.js\"></script>"
 ```
 
 ### List forks
@@ -438,7 +438,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2014-04-09T03:11:36Z
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-01-15T16:50:51Z
 #>   Files:
 ```
 
@@ -453,12 +453,12 @@ g <- gists()
 ```
 
 ```
-#> <gist>32a3de9397a9387c9c5b
-#>   URL: https://gist.github.com/32a3de9397a9387c9c5b
-#>   Description: Bootstrap Customizer Config
+#> <gist>f1f863e026f65328bbf7
+#>   URL: https://gist.github.com/f1f863e026f65328bbf7
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T21:48:01Z / 2015-01-02T21:48:01Z
-#>   Files: config.json
+#>   Created/Edited: 2015-01-23T16:27:58Z / 2015-01-23T16:27:58Z
+#>   Files: log
 ```
 
 

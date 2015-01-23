@@ -123,7 +123,7 @@ gist_create(files=stuffpath, description='a new cool gist')
 gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
 ```
 
-Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
+Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `'}` at the end.
 
 ```{r}
 gist_create(code={'
