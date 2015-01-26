@@ -139,6 +139,8 @@ numbers
 '}, browse=FALSE)
 ```
 
+#### knit and create
+
 You can also knit an input file before posting as a gist:
 
 ```{r eval=FALSE}

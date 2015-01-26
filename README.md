@@ -76,8 +76,8 @@ update(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4651
-#> Resets in:  10 minutes
+#> Remaining:  5000
+#> Resets in:  60 minutes
 ```
 
 
@@ -89,20 +89,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>1b5cd1111a65cb98a441
-#>   URL: https://gist.github.com/1b5cd1111a65cb98a441
-#>   Description: Smallest and LArgest number in an Array
+#> <gist>9b626473dc4a41005427
+#>   URL: https://gist.github.com/9b626473dc4a41005427
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:54Z / 2015-01-02T22:35:54Z
-#>   Files: min-max-array.js
+#>   Created/Edited: 2015-01-26T18:15:12Z / 2015-01-26T18:15:13Z
+#>   Files: html5
 #> 
 #> [[2]]
-#> <gist>9e2a29354b59ac1f59a8
-#>   URL: https://gist.github.com/9e2a29354b59ac1f59a8
-#>   Description: Bootstrap Customizer Config
+#> <gist>7a3b3bbfa721a3b35398
+#>   URL: https://gist.github.com/7a3b3bbfa721a3b35398
+#>   Description: test
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:40Z / 2015-01-02T22:35:40Z
-#>   Files: config.json
+#>   Created/Edited: 2015-01-26T18:15:03Z / 2015-01-26T18:15:03Z
+#>   Files: config.json, inlet.js, us500.csv
 ```
 
 Since a certain date/time
@@ -111,20 +111,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>1b5cd1111a65cb98a441
-#>   URL: https://gist.github.com/1b5cd1111a65cb98a441
-#>   Description: Smallest and LArgest number in an Array
+#> <gist>9b626473dc4a41005427
+#>   URL: https://gist.github.com/9b626473dc4a41005427
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:54Z / 2015-01-02T22:35:54Z
-#>   Files: min-max-array.js
+#>   Created/Edited: 2015-01-26T18:15:12Z / 2015-01-26T18:15:13Z
+#>   Files: html5
 #> 
 #> [[2]]
-#> <gist>9e2a29354b59ac1f59a8
-#>   URL: https://gist.github.com/9e2a29354b59ac1f59a8
-#>   Description: Bootstrap Customizer Config
+#> <gist>7a3b3bbfa721a3b35398
+#>   URL: https://gist.github.com/7a3b3bbfa721a3b35398
+#>   Description: test
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:40Z / 2015-01-02T22:35:40Z
-#>   Files: config.json
+#>   Created/Edited: 2015-01-26T18:15:03Z / 2015-01-26T18:15:03Z
+#>   Files: config.json, inlet.js, us500.csv
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,19 +133,19 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>83e9170692608334e0b4
-#>   URL: https://gist.github.com/83e9170692608334e0b4
-#>   Description: 
+#> <gist>431989eb78b73184697c
+#>   URL: https://gist.github.com/431989eb78b73184697c
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:32:49Z / 2015-01-02T22:32:52Z
-#>   Files: code.R
+#>   Created/Edited: 2015-01-26T11:51:48Z / 2015-01-26T11:51:48Z
+#>   Files: stuff.md
 #> 
 #> [[2]]
-#> <gist>37f592be5c1fbb114a3c
-#>   URL: https://gist.github.com/37f592be5c1fbb114a3c
-#>   Description: a new cool gist
+#> <gist>b03f8efa868ac3271a41
+#>   URL: https://gist.github.com/b03f8efa868ac3271a41
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:32:49Z / 2015-01-02T22:32:49Z
+#>   Created/Edited: 2015-01-25T11:50:29Z / 2015-01-25T11:50:29Z
 #>   Files: stuff.md
 ```
 
@@ -175,11 +175,11 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>4ee97321a151ce61ce5c
-#>   URL: https://gist.github.com/4ee97321a151ce61ce5c
+#> <gist>00759084c3af09d6c54f
+#>   URL: https://gist.github.com/00759084c3af09d6c54f
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:58Z / 2015-01-02T22:35:58Z
+#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:23Z
 #>   Files: stuff.md
 ```
 
@@ -205,13 +205,15 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>0902882b99ba77971e93
-#>   URL: https://gist.github.com/0902882b99ba77971e93
+#> <gist>2f86521142c605fd4740
+#>   URL: https://gist.github.com/2f86521142c605fd4740
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:58Z / 2015-01-02T22:35:58Z
+#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:23Z
 #>   Files: code.R
 ```
+
+#### knit and create
 
 You can also knit an input file before posting as a gist:
 
@@ -251,11 +253,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>9de93fd426ad94077657
-#>   URL: https://gist.github.com/9de93fd426ad94077657
+#> <gist>d3352b5062c442199483
+#>   URL: https://gist.github.com/d3352b5062c442199483
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:58Z / 2015-01-02T22:35:58Z
+#>   Created/Edited: 2015-01-26T18:15:24Z / 2015-01-26T18:15:24Z
 #>   Files: stuff.md
 ```
 
@@ -285,9 +287,9 @@ gists('minepublic')[[1]] %>% run() %>% update()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: ff4a209df1477711aef6a9705ee7f4204db1e064
+#>   Version: d2743f0c6b150b90e9f91ffcb2b9c96be5989d5b
 #>   User: sckott
-#>   Commited: 2015-01-02T22:35:58Z
+#>   Commited: 2015-01-26T18:15:23Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -328,11 +330,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   update()
-#> <gist>0902882b99ba77971e93
-#>   URL: https://gist.github.com/0902882b99ba77971e93
+#> <gist>2f86521142c605fd4740
+#>   URL: https://gist.github.com/2f86521142c605fd4740
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:58Z / 2015-01-02T22:36:00Z
+#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:26Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -343,11 +345,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   update()
-#> <gist>0902882b99ba77971e93
-#>   URL: https://gist.github.com/0902882b99ba77971e93
+#> <gist>2f86521142c605fd4740
+#>   URL: https://gist.github.com/2f86521142c605fd4740
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:35:58Z / 2015-01-02T22:36:01Z
+#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:27Z
 #>   Files: code.R
 ```
 
@@ -365,7 +367,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/0902882b99ba77971e93.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com//2d8bdd257cc9abb4e7b6.js\"></script>"
 ```
 
 ### List forks
@@ -388,7 +390,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2014-04-09T03:11:36Z
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-01-15T16:50:51Z
 #>   Files:
 ```
 
@@ -400,12 +402,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>1ce9a7121f54a12b5de2
-#>   URL: https://gist.github.com/1ce9a7121f54a12b5de2
-#>   Description: Python - Bubble Sort
+#> <gist>33678ebfc3fc2721eab7
+#>   URL: https://gist.github.com/33678ebfc3fc2721eab7
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-02T22:36:02Z / 2015-01-02T22:36:02Z
-#>   Files: bubble_sort.py
+#>   Created/Edited: 2015-01-26T18:15:29Z / 2015-01-26T18:15:29Z
+#>   Files: config.json
 ```
 
 
