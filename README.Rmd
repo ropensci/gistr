@@ -24,6 +24,14 @@ knitr::opts_chunk$set(
 
 ### Install
 
+Stable version from CRAN
+
+```{r eval=FALSE}
+install.packages("gistr")
+```
+
+Or dev version from GitHub. 
+
 ```{r eval=FALSE}
 devtools::install_github("ropensci/gistr")
 ```

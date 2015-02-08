@@ -17,6 +17,15 @@ gistr
 
 ### Install
 
+Stable version from CRAN
+
+
+```r
+install.packages("gistr")
+```
+
+Or dev version from GitHub. 
+
 
 ```r
 devtools::install_github("ropensci/gistr")
@@ -89,20 +98,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>9b626473dc4a41005427
-#>   URL: https://gist.github.com/9b626473dc4a41005427
-#>   Description: 
+#> <gist>933a35c92f544dbfa5cc
+#>   URL: https://gist.github.com/933a35c92f544dbfa5cc
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:12Z / 2015-01-26T18:15:13Z
-#>   Files: html5
+#>   Created/Edited: 2015-02-08T02:58:19Z / 2015-02-08T02:58:19Z
+#>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>7a3b3bbfa721a3b35398
-#>   URL: https://gist.github.com/7a3b3bbfa721a3b35398
-#>   Description: test
+#> <gist>77d4d059c84d0d0fcb08
+#>   URL: https://gist.github.com/77d4d059c84d0d0fcb08
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:03Z / 2015-01-26T18:15:03Z
-#>   Files: config.json, inlet.js, us500.csv
+#>   Created/Edited: 2015-02-08T02:58:02Z / 2015-02-08T02:58:03Z
+#>   Files: gistfile1.txt
 ```
 
 Since a certain date/time
@@ -111,20 +120,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>9b626473dc4a41005427
-#>   URL: https://gist.github.com/9b626473dc4a41005427
-#>   Description: 
+#> <gist>933a35c92f544dbfa5cc
+#>   URL: https://gist.github.com/933a35c92f544dbfa5cc
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:12Z / 2015-01-26T18:15:13Z
-#>   Files: html5
+#>   Created/Edited: 2015-02-08T02:58:19Z / 2015-02-08T02:58:19Z
+#>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>7a3b3bbfa721a3b35398
-#>   URL: https://gist.github.com/7a3b3bbfa721a3b35398
-#>   Description: test
+#> <gist>77d4d059c84d0d0fcb08
+#>   URL: https://gist.github.com/77d4d059c84d0d0fcb08
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:03Z / 2015-01-26T18:15:03Z
-#>   Files: config.json, inlet.js, us500.csv
+#>   Created/Edited: 2015-02-08T02:58:02Z / 2015-02-08T02:58:03Z
+#>   Files: gistfile1.txt
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -133,20 +142,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>431989eb78b73184697c
-#>   URL: https://gist.github.com/431989eb78b73184697c
-#>   Description: gist gist gist
+#> <gist>8c7b214336868e2829d5
+#>   URL: https://gist.github.com/8c7b214336868e2829d5
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T11:51:48Z / 2015-01-26T11:51:48Z
-#>   Files: stuff.md
+#>   Created/Edited: 2015-02-07T02:45:15Z / 2015-02-07T02:48:52Z
+#>   Files: alm_citations_time.md
 #> 
 #> [[2]]
-#> <gist>b03f8efa868ac3271a41
-#>   URL: https://gist.github.com/b03f8efa868ac3271a41
-#>   Description: gist gist gist
+#> <gist>ef89977ff9227cd4d193
+#>   URL: https://gist.github.com/ef89977ff9227cd4d193
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-25T11:50:29Z / 2015-01-25T11:50:29Z
-#>   Files: stuff.md
+#>   Created/Edited: 2015-02-06T21:45:06Z / 2015-02-06T21:45:06Z
+#>   Files: rnoaa_eg1.md
 ```
 
 
@@ -175,12 +184,8 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> <gist>00759084c3af09d6c54f
-#>   URL: https://gist.github.com/00759084c3af09d6c54f
-#>   Description: a new cool gist
-#>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:23Z
-#>   Files: stuff.md
+#> Error: These don't exist or can't be found:
+#> ~/stuff.md
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
@@ -205,11 +210,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>2f86521142c605fd4740
-#>   URL: https://gist.github.com/2f86521142c605fd4740
+#> <gist>aee3cf8b3a918073dfc7
+#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:23Z
+#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:50Z
 #>   Files: code.R
 ```
 
@@ -253,11 +258,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>d3352b5062c442199483
-#>   URL: https://gist.github.com/d3352b5062c442199483
+#> <gist>ab8d244a2a0ba9d76381
+#>   URL: https://gist.github.com/ab8d244a2a0ba9d76381
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:24Z / 2015-01-26T18:15:24Z
+#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:50Z
 #>   Files: stuff.md
 ```
 
@@ -287,9 +292,9 @@ gists('minepublic')[[1]] %>% run() %>% update()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: d2743f0c6b150b90e9f91ffcb2b9c96be5989d5b
+#>   Version: 065fc88eceb1daab38730f8ed9ccefb63d616df5
 #>   User: sckott
-#>   Commited: 2015-01-26T18:15:23Z
+#>   Commited: 2015-02-08T02:58:50Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -330,11 +335,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   update()
-#> <gist>2f86521142c605fd4740
-#>   URL: https://gist.github.com/2f86521142c605fd4740
+#> <gist>aee3cf8b3a918073dfc7
+#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:26Z
+#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:53Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -345,11 +350,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   update()
-#> <gist>2f86521142c605fd4740
-#>   URL: https://gist.github.com/2f86521142c605fd4740
+#> <gist>aee3cf8b3a918073dfc7
+#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:23Z / 2015-01-26T18:15:27Z
+#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:53Z
 #>   Files: code.R
 ```
 
@@ -367,7 +372,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com//2d8bdd257cc9abb4e7b6.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/aee3cf8b3a918073dfc7.js\"></script>"
 ```
 
 ### List forks
@@ -402,12 +407,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>33678ebfc3fc2721eab7
-#>   URL: https://gist.github.com/33678ebfc3fc2721eab7
-#>   Description: Bootstrap Customizer Config
+#> <gist>217ec02aaee33fec2cbb
+#>   URL: https://gist.github.com/217ec02aaee33fec2cbb
+#>   Description: A Python script which is intended to be run as a background process, and listens for + takes action on GPIO button 17, 22, and 23 presses.
 #>   Public: TRUE
-#>   Created/Edited: 2015-01-26T18:15:29Z / 2015-01-26T18:15:29Z
-#>   Files: config.json
+#>   Created/Edited: 2015-02-08T02:58:55Z / 2015-02-08T02:58:55Z
+#>   Files: gpio-button-listener
 ```
 
 
