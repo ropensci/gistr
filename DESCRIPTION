@@ -25,6 +25,8 @@ Imports:
     jsonlite,
     httr,
     magrittr,
+    stringr,
+    assertthat,
     knitr
 Suggests:
     roxygen2,
