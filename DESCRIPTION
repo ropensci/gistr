@@ -25,7 +25,6 @@ Imports:
     jsonlite,
     httr,
     magrittr,
-    stringr,
     assertthat,
     knitr
 Suggests:

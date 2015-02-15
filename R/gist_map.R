@@ -8,16 +8,15 @@
 #' @param  browse Default is \code{TRUE}. Set to \code{FALSE} if you don't want to automatically browse to the URL.
 #' @export
 #' @import assertthat
-#' @importFrom stringr str_split
 #' @examples \dontrun{
 #' library(ecoengine)
 #' x <- ee_observations(genus = "vulpes")
 #' ee_map(x, dest = "~/Desktop")
 #' gist_id <- gist_create(files = "~/Desktop/temp.geojson", browse = FALSE)
-#' gistr_map(file = "temp.geojson", gist_id)
+#' gist_map(file = "temp.geojson", gist_id)
 #' 
 #'}
-gistr_map <- function(file = NULL, gist_object, browse = TRUE) {
+gist_map <- function(file = NULL, gist_object, browse = TRUE) {
     
     assertthat::assert_that(has_extension(file, "geojson"))
 
@@ -27,7 +26,7 @@ gistr_map <- function(file = NULL, gist_object, browse = TRUE) {
     full_path <- gist_object$history[[point]]$url
     user <- gist_object$history[[point]]$user$login
     commit <- gsub("https://api.github.com/gists/", "", full_path)
-    actual_commit <- str_split(commit, "/")[[1]][1]
+    actual_commit <- strsplit(commit, "/")[[1]][1]
     path <- paste(render_url, user, actual_commit, "raw", file, sep = "/")
     if(browse) {
         browseURL(path)
