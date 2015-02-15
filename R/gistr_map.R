@@ -26,10 +26,9 @@ gistr_map <- function(file = NULL, gist_object, browse = TRUE) {
     version <-gist_object$history[[point]]$version
     full_path <- gist_object$history[[point]]$url
     user <- gist_object$history[[point]]$user$login
-    file_name <- names(gist_object$files)[1]
     commit <- gsub("https://api.github.com/gists/", "", full_path)
     actual_commit <- str_split(commit, "/")[[1]][1]
-    path <- paste(render_url, user, actual_commit, "raw", file_name, sep = "/")
+    path <- paste(render_url, user, actual_commit, "raw", file, sep = "/")
     if(browse) {
         browseURL(path)
     } else {
