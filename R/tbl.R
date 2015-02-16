@@ -5,23 +5,23 @@
 #' @param x Either a gist class object or a list of many gist class objects
 #' @examples \dontrun{
 #' x <- as.gist('f1403260eb92f5dfa7e1')
-#' tbl(x)
+#' tabl(x)
 #' 
 #' # from a list
 #' ss <- gists('minepublic')
-#' tbl(ss[1:3])
+#' tabl(ss[1:3])
 #' ## manipulate with dplyr
 #' library("dplyr")
-#' tbl(gists("minepublic")[1:4]) %>% 
+#' tabl(gists("minepublic")[1:10]) %>% 
 #'   select(id, description, owner_login) %>% 
 #'   filter(grepl("gist gist gist", description)) %>% 
 #'   delete
 #' }
-tbl <- function(x) UseMethod("tbl")
+tabl <- function(x) UseMethod("tabl")
 
 #' @export
-#' @rdname tbl
-tbl.gist <- function(x){
+#' @rdname tabl
+tabl.gist <- function(x){
   singles <- move_cols(data.frame(null2na(x[ names(x) %in% snames ]), stringsAsFactors = FALSE), "id")
   others <- x[ !names(x) %in% snames ]
   files <- lappdf(others$files, "files")
@@ -33,8 +33,8 @@ tbl.gist <- function(x){
 }
 
 #' @export
-#' @rdname tbl
-tbl.list <- function(x) rbind_all(lapply(x, tbl))
+#' @rdname tabl
+tabl.list <- function(x) rbind_all(lapply(x, tabl))
 
 snames <- c("url","forks_url", "commits_url", "id", "git_pull_url",
             "git_push_url", "html_url", "public", "created_at",
