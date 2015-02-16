@@ -26,7 +26,8 @@ Imports:
     httr,
     magrittr,
     assertthat,
-    knitr
+    knitr,
+    dplyr
 Suggests:
     roxygen2,
     testthat

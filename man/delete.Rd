@@ -2,12 +2,18 @@
 % Please edit documentation in R/delete.R
 \name{delete}
 \alias{delete}
+\alias{delete.gist}
+\alias{delete.tbl}
 \title{Delete a gist}
 \usage{
-delete(gist, ...)
+delete(x, ...)
+
+\method{delete}{gist}(x, ...)
+
+\method{delete}{tbl}(x, ...)
 }
 \arguments{
-\item{gist}{A gist object or something coerceable to a gist}
+\item{x}{A gist object or something coerceable to a gist}
 
 \item{...}{Curl options passed on to httr::GET}
 }
