@@ -5,6 +5,7 @@ gistr
 
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
+[![Coverage Status](https://coveralls.io/repos/ropensci/gistr/badge.svg)](https://coveralls.io/r/ropensci/gistr)
 
 `gistr` is a light interface to GitHub's gists for R.
 
@@ -85,8 +86,8 @@ update(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  5000
-#> Resets in:  60 minutes
+#> Remaining:  4755
+#> Resets in:  33 minutes
 ```
 
 
@@ -98,20 +99,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>933a35c92f544dbfa5cc
-#>   URL: https://gist.github.com/933a35c92f544dbfa5cc
+#> <gist>6ca0032bbab7bd5b665c
+#>   URL: https://gist.github.com/6ca0032bbab7bd5b665c
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:19Z / 2015-02-08T02:58:19Z
+#>   Created/Edited: 2015-02-27T19:28:29Z / 2015-02-27T19:28:29Z
 #>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>77d4d059c84d0d0fcb08
-#>   URL: https://gist.github.com/77d4d059c84d0d0fcb08
-#>   Description: 
+#> <gist>74a59ba893a140ab7445
+#>   URL: https://gist.github.com/74a59ba893a140ab7445
+#>   Description: designer
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:02Z / 2015-02-08T02:58:03Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2015-02-27T19:28:24Z / 2015-02-27T19:28:24Z
+#>   Files: designer.html
 ```
 
 Since a certain date/time
@@ -120,20 +121,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>933a35c92f544dbfa5cc
-#>   URL: https://gist.github.com/933a35c92f544dbfa5cc
+#> <gist>6ca0032bbab7bd5b665c
+#>   URL: https://gist.github.com/6ca0032bbab7bd5b665c
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:19Z / 2015-02-08T02:58:19Z
+#>   Created/Edited: 2015-02-27T19:28:29Z / 2015-02-27T19:28:29Z
 #>   Files: config.json
 #> 
 #> [[2]]
-#> <gist>77d4d059c84d0d0fcb08
-#>   URL: https://gist.github.com/77d4d059c84d0d0fcb08
-#>   Description: 
+#> <gist>74a59ba893a140ab7445
+#>   URL: https://gist.github.com/74a59ba893a140ab7445
+#>   Description: designer
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:02Z / 2015-02-08T02:58:03Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2015-02-27T19:28:24Z / 2015-02-27T19:28:24Z
+#>   Files: designer.html
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -142,20 +143,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>8c7b214336868e2829d5
-#>   URL: https://gist.github.com/8c7b214336868e2829d5
+#> <gist>133793175ae8972aad55
+#>   URL: https://gist.github.com/133793175ae8972aad55
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-07T02:45:15Z / 2015-02-07T02:48:52Z
-#>   Files: alm_citations_time.md
+#>   Created/Edited: 2015-02-27T19:28:04Z / 2015-02-27T19:28:08Z
+#>   Files: code.R
 #> 
 #> [[2]]
-#> <gist>ef89977ff9227cd4d193
-#>   URL: https://gist.github.com/ef89977ff9227cd4d193
-#>   Description: 
+#> <gist>9640bcd332bd0bf34c5b
+#>   URL: https://gist.github.com/9640bcd332bd0bf34c5b
+#>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-06T21:45:06Z / 2015-02-06T21:45:06Z
-#>   Files: rnoaa_eg1.md
+#>   Created/Edited: 2015-02-27T19:28:04Z / 2015-02-27T19:28:04Z
+#>   Files: stuff.md
 ```
 
 
@@ -184,8 +185,12 @@ gist_create(files="~/stuff.md", description='a new cool gist')
 
 ```r
 gist_create(files="~/stuff.md", description='a new cool gist', browse = FALSE)
-#> Error: These don't exist or can't be found:
-#> ~/stuff.md
+#> <gist>035186d99eee4194ef2e
+#>   URL: https://gist.github.com/035186d99eee4194ef2e
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2015-02-27T19:28:33Z / 2015-02-27T19:28:33Z
+#>   Files: stuff.md
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
@@ -210,11 +215,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>aee3cf8b3a918073dfc7
-#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
+#> <gist>28ed2e1ccd132039d5c2
+#>   URL: https://gist.github.com/28ed2e1ccd132039d5c2
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:50Z
+#>   Created/Edited: 2015-02-27T19:28:34Z / 2015-02-27T19:28:34Z
 #>   Files: code.R
 ```
 
@@ -258,11 +263,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>ab8d244a2a0ba9d76381
-#>   URL: https://gist.github.com/ab8d244a2a0ba9d76381
+#> <gist>3c22505b572a794b25d6
+#>   URL: https://gist.github.com/3c22505b572a794b25d6
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:50Z
+#>   Created/Edited: 2015-02-27T19:28:34Z / 2015-02-27T19:28:34Z
 #>   Files: stuff.md
 ```
 
@@ -292,9 +297,9 @@ gists('minepublic')[[1]] %>% run() %>% update()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 065fc88eceb1daab38730f8ed9ccefb63d616df5
+#>   Version: cfcc10be38c756c9e89342536ab40133a1a1ed3f
 #>   User: sckott
-#>   Commited: 2015-02-08T02:58:50Z
+#>   Commited: 2015-02-27T19:28:34Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -335,11 +340,11 @@ Add files
 gists(what = "minepublic")[[1]] %>%
   add_files("~/alm_othersources.md") %>%
   update()
-#> <gist>aee3cf8b3a918073dfc7
-#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
+#> <gist>28ed2e1ccd132039d5c2
+#>   URL: https://gist.github.com/28ed2e1ccd132039d5c2
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:53Z
+#>   Created/Edited: 2015-02-27T19:28:34Z / 2015-02-27T19:28:36Z
 #>   Files: alm_othersources.md, code.R
 ```
 
@@ -350,11 +355,11 @@ Delete files
 gists(what = "minepublic")[[1]] %>%
   delete_files("~/alm_othersources.md") %>%
   update()
-#> <gist>aee3cf8b3a918073dfc7
-#>   URL: https://gist.github.com/aee3cf8b3a918073dfc7
+#> <gist>28ed2e1ccd132039d5c2
+#>   URL: https://gist.github.com/28ed2e1ccd132039d5c2
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:50Z / 2015-02-08T02:58:53Z
+#>   Created/Edited: 2015-02-27T19:28:34Z / 2015-02-27T19:28:37Z
 #>   Files: code.R
 ```
 
@@ -372,7 +377,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/aee3cf8b3a918073dfc7.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/28ed2e1ccd132039d5c2.js\"></script>"
 ```
 
 ### List forks
@@ -387,7 +392,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1642989
 #>   Description: Spline Transition
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2014-12-10T03:25:19Z
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-02-20T13:50:25Z
 #>   Files: 
 #> 
 #> [[2]]
@@ -407,12 +412,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>217ec02aaee33fec2cbb
-#>   URL: https://gist.github.com/217ec02aaee33fec2cbb
-#>   Description: A Python script which is intended to be run as a background process, and listens for + takes action on GPIO button 17, 22, and 23 presses.
+#> <gist>f81f820abdbfd5603ff4
+#>   URL: https://gist.github.com/f81f820abdbfd5603ff4
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-02-08T02:58:55Z / 2015-02-08T02:58:55Z
-#>   Files: gpio-button-listener
+#>   Created/Edited: 2015-02-27T19:28:38Z / 2015-02-27T19:28:38Z
+#>   Files: config.json
 ```
 
 
