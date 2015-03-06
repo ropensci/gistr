@@ -13,5 +13,5 @@ test_that("commits works", {
 
 test_that("config options work", {
   library('httr')
-  expect_equal( length(gists()[[1]] %>% commits(page = 4545)), 0 )
+  expect_equal( length(gists()[[1]] %>% commits(page = 454590788)), 0 )
 })
