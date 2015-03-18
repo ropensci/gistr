@@ -15,7 +15,10 @@
 #' \code{link[knitr]{knit}}
 #' @param knitopts (list) List of variables passed on to \code{link[knitr]{knit}}
 #' @param include_source (logical) Only applies if \code{knit=TRUE}. Include source file in the
-#' gist in addition to the knitted output. 
+#' gist in addition to the knitted output.
+#' @param artifacts (logical) Include artifacts or not, Ignored for now. Default: FALSE
+#' @param imgur_inject (logical) Inject \code{\link[knitr]{imgur_upload}} into your
+#' \code{.Rmd} file to upload files to \url{http://imgur.com/}. Default: FALSE
 #' @param ... Further args passed on to \code{link[httr]{POST}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
@@ -41,9 +44,9 @@
 #' file <- system.file("examples", "stuff.Rmd", package = "gistr")
 #' gist_create(file, description='a new cool gist', knit=TRUE)
 #'
-#' file <- "~/alm_othersources.Rmd"
-#' gist_create(file, description='a new cool gist', knit=TRUE)
-#' 
+#' file <- system.file("examples", "plots.Rmd", package = "gistr")
+#' gist_create(file, description='some plots', knit=TRUE)
+#'
 #' # an .Rnw file
 #' file <- system.file("examples", "rnw_example.Rnw", package = "gistr")
 #' gist_create(file)
@@ -62,33 +65,53 @@
 #' res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
 #' json <- content(res, as = "text")
 #' gist_create(code = json, filename = "pelias_test.geojson")
-#' 
+#'
 #' # Knit and include source file, so both files are in the gist
 #' file <- system.file("examples", "stuff.Rmd", package = "gistr")
 #' gist_create(file, knit=TRUE, include_source=TRUE)
-#' 
+#'
 #' gist_create(code={'
 #' ```{r}
 #' x <- letters
 #' (numbers <- runif(8))
 #' ```
-#' '}, filename="code.Rmd", knit=TRUE, include_source=TRUE) 
+#' '}, filename="code.Rmd", knit=TRUE, include_source=TRUE)
+#' 
+#' # Uploading images created during knit process
+#' ## using imgur - if you're file uses imgur or similar, you're good
+#' file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+#' gist_create(file, knit=TRUE)
+#' ## if not, GitHub doesn't allow upload of binary files via the HTTP API (which gistr uses)
+#' ## but check back later as I'm working on an option to get binary files uploaded, 
+#' ## but will involve having to use git
+#' file <- system.file("examples", "plots.Rmd", package = "gistr")
+#' gist_create(file, knit=TRUE, imgur_inject = TRUE, artifacts = TRUE)
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-  filename="code.R", knit=FALSE, knitopts=list(), include_source = FALSE, ...)
-{
+  filename="code.R", knit=FALSE, knitopts=list(), include_source = FALSE, artifacts = FALSE, 
+  imgur_inject = FALSE, ...) {
+  
   if(!is.null(code)) files <- code_handler(code, filename)
   if(knit){
+    dirpath <- dirname(files)
     orig_files <- files
     if(!is.null(code)){
       files <- tempfile(fileext = ".Rmd")
       writeLines(code, files)
     }
+#     inject_imgur(files, imgur_inject)
+#     tdir <- tempdir()
+#     inject_root_dir(files, tdir)
     files <- do.call(knitr::knit,
                      c(input = files,
-                       output=sub("\\.Rmd", "\\.md", files),
+                       output = sub("\\.Rmd", "\\.md", files),
+                       # output = file.path(tdir, basename(sub("\\.Rmd", "\\.md", files))),
                        knitopts))
+    if(artifacts) {
+      file_artifacts <- get_artifacts(files, dirpath)
+      files <- c(files, file_artifacts)
+    }
     if(include_source) files <- c(orig_files, files)
   }
   body <- creategist(files, description, public)
@@ -96,6 +119,39 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   gist <- as.gist(res)
   if(browse) browse(gist)
   return( gist )
+}
+
+get_artifacts <- function(x, dirpath) {
+  paths <- grep("!\\[", readLines(x), value = TRUE)
+  file.path(dirpath, sapply(imgs, getpath, USE.NAMES = FALSE))
+}
+
+getpath <- function(z) {
+  gsub("^\\(|\\)$", "", strtrim(strextract(z, "\\(.+")))
+}
+
+strextract <- function(str, pattern) {
+  regmatches(str, regexpr(pattern, str))
+}
+
+strtrim <- function(str) {
+  gsub("^\\s+|\\s+$", "", str)
+}
+
+inject_imgur <- function(x, imgur_inject = TRUE) {
+  if(!any(grepl("imgur_upload", readLines(x))) && imgur_inject) {
+    orig <- readLines(x)
+    cat("```{r echo=FALSE}
+knitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
+```\n", orig, file = x, sep = "\n")
+  }
+}
+
+inject_root_dir <- function(x, path) {
+  orig <- readLines(x)
+  cat(sprintf("```{r echo=FALSE}
+knitr::opts_knit$set(root.dir = \"%s\")
+```\n", path), orig, file = x, sep = "\n")
 }
 
 # swapfilename <- function(x, filename){

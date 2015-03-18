@@ -1,0 +1,17 @@
+## Scatter plot 
+
+```{r}
+plot(mpg ~ cyl, data=mtcars)
+```
+
+## Bar plot
+
+```{r}
+barplot(VADeaths)
+```
+
+## Histogram
+
+```{r}
+hist(iris$Petal.Length)
+```

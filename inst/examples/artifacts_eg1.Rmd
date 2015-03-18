@@ -1,0 +1,5 @@
+## write table to file
+
+```{r}
+write.csv(mtcars, file = "mtcars.csv")
+```
