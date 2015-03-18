@@ -78,3 +78,11 @@ process <- function(x){
 }
 
 check_auth <- function(x) if(!missing(x)) x else gist_auth()
+
+strextract <- function(str, pattern) {
+  regmatches(str, regexpr(pattern, str))
+}
+
+strtrim <- function(str) {
+  gsub("^\\s+|\\s+$", "", str)
+}

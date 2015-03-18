@@ -103,6 +103,7 @@ x <- letters
 # Uploading images created during knit process
 ## using imgur - if you're file uses imgur or similar, you're good
 file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+cat(readLines(file), sep = "\\n") # peek at file
 gist_create(file, knit=TRUE)
 ## if not, GitHub doesn't allow upload of binary files via the HTTP API (which gistr uses)
 ## but check back later as I'm working on an option to get binary files uploaded,
