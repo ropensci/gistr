@@ -122,7 +122,7 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
 }
 
 get_artifacts <- function(x, dirpath) {
-  paths <- grep("!\\[", readLines(x), value = TRUE)
+  imgs <- grep("!\\[", readLines(x), value = TRUE)
   file.path(dirpath, sapply(imgs, getpath, USE.NAMES = FALSE))
 }
 
