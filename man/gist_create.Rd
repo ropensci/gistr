@@ -6,8 +6,8 @@
 \usage{
 gist_create(files = NULL, description = "", public = TRUE,
   browse = TRUE, code = NULL, filename = "code.R", knit = FALSE,
-  knitopts = list(), include_source = FALSE, artifacts = FALSE,
-  imgur_inject = FALSE, ...)
+  knitopts = list(), renderopts = list(), include_source = FALSE,
+  artifacts = FALSE, imgur_inject = FALSE, ...)
 }
 \arguments{
 \item{files}{Files to upload}
@@ -24,10 +24,12 @@ wrapped in quotes, then curly brackets (see examples below).}
 \item{filename}{Name of the file to create, only used if \code{code} parameter is used. Default
 to \code{code.R}}
 
-\item{knit}{(logical) Knit code before posting as a gist? Knitting done with
-\code{link[knitr]{knit}}}
+\item{knit}{(logical) Knit code before posting as a gist? If the file has a \code{.Rmd}
+or \code{.Rnw} extension, we run the file with \code{link[knitr]{knit}}, and if it has
+a \code{.R} extension, then we use \code{\link[rmarkdown]{render}}}
 
-\item{knitopts}{(list) List of variables passed on to \code{link[knitr]{knit}}}
+\item{knitopts,renderopts}{(list) List of variables passed on to \code{link[knitr]{knit}},
+or \code{\link[rmarkdown]{render}}}
 
 \item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include source file in the
 gist in addition to the knitted output.}
@@ -110,6 +112,11 @@ gist_create(file, knit=TRUE)
 ## but will involve having to use git
 file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE, artifacts = TRUE)
+
+# Render `.R` files
+file <- system.file("examples", "example1.R", package = "gistr")
+cat(readLines(file), sep = "\\n") # peek at file
+gist_create(file, knit = TRUE)
 }
 }
 

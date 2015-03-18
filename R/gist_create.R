@@ -1,7 +1,7 @@
 #' Create a gist
 #'
 #' @export
-#' @import knitr
+#' @import knitr rmarkdown
 #'
 #' @param files Files to upload
 #' @param description (character) Brief description of gist (optional)
@@ -11,9 +11,11 @@
 #' wrapped in quotes, then curly brackets (see examples below).
 #' @param filename Name of the file to create, only used if \code{code} parameter is used. Default
 #' to \code{code.R}
-#' @param knit (logical) Knit code before posting as a gist? Knitting done with
-#' \code{link[knitr]{knit}}
-#' @param knitopts (list) List of variables passed on to \code{link[knitr]{knit}}
+#' @param knit (logical) Knit code before posting as a gist? If the file has a \code{.Rmd} 
+#' or \code{.Rnw} extension, we run the file with \code{link[knitr]{knit}}, and if it has
+#' a \code{.R} extension, then we use \code{\link[rmarkdown]{render}}
+#' @param knitopts,renderopts (list) List of variables passed on to \code{link[knitr]{knit}},
+#' or \code{\link[rmarkdown]{render}}
 #' @param include_source (logical) Only applies if \code{knit=TRUE}. Include source file in the
 #' gist in addition to the knitted output.
 #' @param artifacts (logical) Include artifacts or not, Ignored for now. Default: FALSE
@@ -87,11 +89,16 @@
 #' ## but will involve having to use git
 #' file <- system.file("examples", "plots.Rmd", package = "gistr")
 #' gist_create(file, knit=TRUE, imgur_inject = TRUE, artifacts = TRUE)
+#' 
+#' # Render `.R` files
+#' file <- system.file("examples", "example1.R", package = "gistr")
+#' cat(readLines(file), sep = "\n") # peek at file
+#' gist_create(file, knit = TRUE)
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-  filename="code.R", knit=FALSE, knitopts=list(), include_source = FALSE, artifacts = FALSE, 
-  imgur_inject = FALSE, ...) {
+  filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE, 
+  artifacts = FALSE, imgur_inject = FALSE, ...) {
   
   if(!is.null(code)) files <- code_handler(code, filename)
   if(knit){
@@ -104,11 +111,7 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
 #     inject_imgur(files, imgur_inject)
 #     tdir <- tempdir()
 #     inject_root_dir(files, tdir)
-    files <- do.call(knitr::knit,
-                     c(input = files,
-                       output = sub("\\.Rmd", "\\.md", files),
-                       # output = file.path(tdir, basename(sub("\\.Rmd", "\\.md", files))),
-                       knitopts))
+    files <- knit_render(files, knitopts, renderopts)
     if(artifacts) {
       file_artifacts <- get_artifacts(files, dirpath)
       files <- c(files, file_artifacts)
@@ -120,6 +123,26 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   gist <- as.gist(res)
   if(browse) browse(gist)
   return( gist )
+}
+
+knit_render <- function(x, knitopts, renderopts) {
+  if(grepl("\\.[rR]md$|\\.[rR]nw$", x)) {
+    ext <- "knitr"
+  } else if(grepl("\\.[rR]$", x)) {
+    ext <- "rmarkdown"
+  }
+  switch(ext, 
+         knitr = {
+           do.call(knitr::knit,
+                   c(input = x,
+                     output = sub("\\.Rmd", "\\.md", x),
+                     knitopts))        
+         }, 
+         rmarkdown = {
+           do.call(rmarkdown::render,
+                   c(input = x, renderopts))
+         }
+  )
 }
 
 get_artifacts <- function(x, dirpath) {

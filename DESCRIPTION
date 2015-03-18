@@ -9,7 +9,7 @@ Description: Work with GitHub gists from R (e.g.,
     your default browser, get embed code for a gist, list gist commits, and 
     get rate limit information when authenticated. Some requests require 
     authentication and some do not. Gists website: https://gist.github.com/.
-Version: 0.1.2.999
+Version: 0.1.2.9999
 Date: 2015-03-18
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
     email = "ramnath.vaidya@gmail.com"),
@@ -26,7 +26,8 @@ Imports:
     httr,
     magrittr,
     assertthat,
-    knitr
+    knitr,
+    rmarkdown
 Suggests:
     roxygen2,
     testthat
