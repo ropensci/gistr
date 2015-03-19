@@ -131,6 +131,8 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
       if(include_source) ff <- c(orig_files, ff)
       allfiles[[i]] <- ff
     }
+  } else {
+    allfiles <- files
   }
   body <- creategist(unlist(allfiles), description, public)
   res <- gist_POST(paste0(ghbase(), '/gists'), gist_auth(), ghead(), body, ...)
