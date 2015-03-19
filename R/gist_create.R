@@ -94,6 +94,17 @@
 #' file <- system.file("examples", "example1.R", package = "gistr")
 #' cat(readLines(file), sep = "\n") # peek at file
 #' gist_create(file, knit = TRUE)
+#' gist_create(file, knit = TRUE, include_source = TRUE)
+#' ## many files
+#' (file1 <- system.file("examples", "example1.R", package = "gistr"))
+#' (file2 <- system.file("examples", "example2.R", package = "gistr"))
+#' cat(readLines(file1), sep = "\n") # peek at file
+#' cat(readLines(file2), sep = "\n") # peek at file
+#' gist_create(files=list(file1, file2), knit = TRUE)
+#' ### three at once, some .R and some .Rmd
+#' file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+#' gist_create(files=list(file1, file2, file3), knit = TRUE)
+#' gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
@@ -101,24 +112,27 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   artifacts = FALSE, imgur_inject = FALSE, ...) {
   
   if(!is.null(code)) files <- code_handler(code, filename)
-  if(knit){
-    dirpath <- dirname(files)
-    orig_files <- files
-    if(!is.null(code)){
-      files <- tempfile(fileext = ".Rmd")
-      writeLines(code, files)
+  if(knit) {
+    allfiles <- list()
+    for(i in seq_along(files)){
+      ff <- files[[i]]
+      dirpath <- dirname(ff)
+      orig_files <- ff
+      if(!is.null(code)){
+        ff <- tempfile(fileext = ".Rmd")
+        writeLines(code, ff)
+      }
+      inject_imgur(ff, imgur_inject)
+      ff <- knit_render(ff, knitopts, renderopts)
+      if(artifacts) {
+        file_artifacts <- get_artifacts(ff, dirpath)
+        files <- c(ff, file_artifacts)
+      }
+      if(include_source) ff <- c(orig_files, ff)
+      allfiles[[i]] <- ff
     }
-#     inject_imgur(files, imgur_inject)
-#     tdir <- tempdir()
-#     inject_root_dir(files, tdir)
-    files <- knit_render(files, knitopts, renderopts)
-    if(artifacts) {
-      file_artifacts <- get_artifacts(files, dirpath)
-      files <- c(files, file_artifacts)
-    }
-    if(include_source) files <- c(orig_files, files)
   }
-  body <- creategist(files, description, public)
+  body <- creategist(unlist(allfiles), description, public)
   res <- gist_POST(paste0(ghbase(), '/gists'), gist_auth(), ghead(), body, ...)
   gist <- as.gist(res)
   if(browse) browse(gist)

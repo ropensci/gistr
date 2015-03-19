@@ -117,6 +117,17 @@ gist_create(file, knit=TRUE, imgur_inject = TRUE, artifacts = TRUE)
 file <- system.file("examples", "example1.R", package = "gistr")
 cat(readLines(file), sep = "\\n") # peek at file
 gist_create(file, knit = TRUE)
+gist_create(file, knit = TRUE, include_source = TRUE)
+## many files
+(file1 <- system.file("examples", "example1.R", package = "gistr"))
+(file2 <- system.file("examples", "example2.R", package = "gistr"))
+cat(readLines(file1), sep = "\\n") # peek at file
+cat(readLines(file2), sep = "\\n") # peek at file
+gist_create(files=list(file1, file2), knit = TRUE)
+### three at once, some .R and some .Rmd
+file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+gist_create(files=list(file1, file2, file3), knit = TRUE)
+gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
 }
 }
 

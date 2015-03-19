@@ -28,7 +28,7 @@ creategist <- function(filenames, description = "", public = TRUE) {
   files <- lapply(filenames, function(file) {
     list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
-  names(files) <- basename(filenames)
+  names(files) <- sapply(filenames, basename)
   body <- list(description = description, public = public, files = files)
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
