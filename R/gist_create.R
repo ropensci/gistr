@@ -20,7 +20,9 @@
 #' gist in addition to the knitted output.
 #' @param artifacts (logical) Include artifacts or not, Ignored for now. Default: FALSE
 #' @param imgur_inject (logical) Inject \code{\link[knitr]{imgur_upload}} into your
-#' \code{.Rmd} file to upload files to \url{http://imgur.com/}. Default: FALSE
+#' \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored 
+#' if the file is a sweave/latex file because the rendered pdf can't be uploaded
+#' anyway. Default: FALSE
 #' @param ... Further args passed on to \code{link[httr]{POST}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
@@ -173,9 +175,14 @@ getpath <- function(z) {
 inject_imgur <- function(x, imgur_inject = TRUE) {
   if(!any(grepl("imgur_upload", readLines(x))) && imgur_inject) {
     orig <- readLines(x)
-    cat("```{r echo=FALSE}
-knitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
-```\n", orig, file = x, sep = "\n")
+    if(grepl("\\.[rR]md$", x)) {
+      str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
+      cat(str, orig, file = x, sep = "\n")
+    } 
+#     else if(grepl("\\.[rR]nw$", x)) {
+#       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
+#       cat(str, orig, file = x, sep = "\n")
+#     }
   }
 }
 

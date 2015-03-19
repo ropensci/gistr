@@ -37,7 +37,9 @@ gist in addition to the knitted output.}
 \item{artifacts}{(logical) Include artifacts or not, Ignored for now. Default: FALSE}
 
 \item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}} into your
-\code{.Rmd} file to upload files to \url{http://imgur.com/}. Default: FALSE}
+\code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored
+if the file is a sweave/latex file because the rendered pdf can't be uploaded
+anyway. Default: FALSE}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
