@@ -207,6 +207,41 @@ knit a file from a gist, has to get file first (result not shown)
 gists('minepublic')[[1]] %>% run() %>% update()
 ```
 
+### working with images
+
+The GitHub API doesn't let you upload binary files (e.g., images) via their HTTP API, which we use
+in `gistr`. There is a workaround.
+
+If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so 
+that imgur knit options are injected at the top of your file so that images will be uploaded to imgur. 
+Alternatively, you can do this yourself, setting knit options to use imgur.
+
+A file already using imgur
+
+```{r eval=FALSE}
+file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+gist_create(file, knit=TRUE)
+#> <gist>1a6e7f7d6ddb739fce0b
+#>   URL: https://gist.github.com/1a6e7f7d6ddb739fce0b
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2015-03-19T00:20:48Z / 2015-03-19T00:20:48Z
+#>   Files: plots_imgur.md
+```
+
+A file _NOT_ already using imgur
+
+```{r eval=FALSE}
+file <- system.file("examples", "plots.Rmd", package = "gistr")
+gist_create(file, knit=TRUE, imgur_inject = TRUE)
+#> <gist>ec9987ad245bbc668c72
+#>   URL: https://gist.github.com/ec9987ad245bbc668c72
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
+#>   Files: plots.md
+```
+
 ### List commits on a gist
 
 ```{r}

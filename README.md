@@ -91,8 +91,8 @@ update(add_files(gists(what = "minepublic")[[1]], file))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4882
-#> Resets in:  37 minutes
+#> Remaining:  4584
+#> Resets in:  25 minutes
 ```
 
 ### List gists
@@ -103,20 +103,20 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>1c9002f61da75cf08ece
-#>   URL: https://gist.github.com/1c9002f61da75cf08ece
-#>   Description: Bootstrap Customizer Config
+#> <gist>5f2a44cf020285cd888a
+#>   URL: https://gist.github.com/5f2a44cf020285cd888a
+#>   Description: Medusa collective data
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:03Z / 2015-03-18T19:00:03Z
-#>   Files: config.json
+#>   Created/Edited: 2015-03-19T00:21:28Z / 2015-03-19T00:21:28Z
+#>   Files: results.js
 #> 
 #> [[2]]
-#> <gist>fc3615877fc1b9a957b0
-#>   URL: https://gist.github.com/fc3615877fc1b9a957b0
+#> <gist>ec9987ad245bbc668c72
+#>   URL: https://gist.github.com/ec9987ad245bbc668c72
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T18:59:32Z / 2015-03-18T18:59:33Z
-#>   Files: get_ninja_forms_version
+#>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
+#>   Files: plots.md
 ```
 
 Since a certain date/time
@@ -125,20 +125,20 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>1c9002f61da75cf08ece
-#>   URL: https://gist.github.com/1c9002f61da75cf08ece
-#>   Description: Bootstrap Customizer Config
+#> <gist>5f2a44cf020285cd888a
+#>   URL: https://gist.github.com/5f2a44cf020285cd888a
+#>   Description: Medusa collective data
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:03Z / 2015-03-18T19:00:03Z
-#>   Files: config.json
+#>   Created/Edited: 2015-03-19T00:21:28Z / 2015-03-19T00:21:28Z
+#>   Files: results.js
 #> 
 #> [[2]]
-#> <gist>fc3615877fc1b9a957b0
-#>   URL: https://gist.github.com/fc3615877fc1b9a957b0
+#> <gist>ec9987ad245bbc668c72
+#>   URL: https://gist.github.com/ec9987ad245bbc668c72
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T18:59:32Z / 2015-03-18T18:59:33Z
-#>   Files: get_ninja_forms_version
+#>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
+#>   Files: plots.md
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -147,20 +147,20 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>c7eaef7321bc44b5211d
-#>   URL: https://gist.github.com/c7eaef7321bc44b5211d
-#>   Description: gist gist gist
+#> <gist>ec9987ad245bbc668c72
+#>   URL: https://gist.github.com/ec9987ad245bbc668c72
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T18:57:15Z / 2015-03-18T18:57:15Z
-#>   Files: stuff.md
+#>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
+#>   Files: plots.md
 #> 
 #> [[2]]
-#> <gist>5f71f722d63870a0fc8a
-#>   URL: https://gist.github.com/5f71f722d63870a0fc8a
-#>   Description: gist gist gist
+#> <gist>1a6e7f7d6ddb739fce0b
+#>   URL: https://gist.github.com/1a6e7f7d6ddb739fce0b
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T18:43:40Z / 2015-03-18T18:43:41Z
-#>   Files: stuff.md, zoo.json
+#>   Created/Edited: 2015-03-19T00:20:48Z / 2015-03-19T00:20:48Z
+#>   Files: plots_imgur.md
 ```
 
 
@@ -185,11 +185,11 @@ You can pass in files
 ```r
 file <- system.file("examples", "stuff.md", package = "gistr")
 gist_create(file, description='a new cool gist', browse = FALSE)
-#> <gist>1be2f329f19eb827b862
-#>   URL: https://gist.github.com/1be2f329f19eb827b862
+#> <gist>eff66901203ed68cef01
+#>   URL: https://gist.github.com/eff66901203ed68cef01
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:15Z / 2015-03-18T19:00:15Z
+#>   Created/Edited: 2015-03-19T00:21:34Z / 2015-03-19T00:21:34Z
 #>   Files: stuff.md
 ```
 
@@ -215,11 +215,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>04812871818f91eba796
-#>   URL: https://gist.github.com/04812871818f91eba796
+#> <gist>413c09eb9791b0598070
+#>   URL: https://gist.github.com/413c09eb9791b0598070
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:16Z / 2015-03-18T19:00:16Z
+#>   Created/Edited: 2015-03-19T00:21:35Z / 2015-03-19T00:21:35Z
 #>   Files: code.R
 ```
 
@@ -263,11 +263,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>0cab47f45dbf61e59d02
-#>   URL: https://gist.github.com/0cab47f45dbf61e59d02
+#> <gist>68941c9a914ef3a27bfa
+#>   URL: https://gist.github.com/68941c9a914ef3a27bfa
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:16Z / 2015-03-18T19:00:16Z
+#>   Created/Edited: 2015-03-19T00:21:35Z / 2015-03-19T00:21:35Z
 #>   Files: stuff.md
 ```
 
@@ -290,6 +290,43 @@ knit a file from a gist, has to get file first (result not shown)
 gists('minepublic')[[1]] %>% run() %>% update()
 ```
 
+### working with images
+
+The GitHub API doesn't let you upload binary files (e.g., images) via their HTTP API, which we use
+in `gistr`. There is a workaround.
+
+If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so 
+that imgur knit options are injected at the top of your file so that images will be uploaded to imgur. 
+Alternatively, you can do this yourself, setting knit options to use imgur.
+
+A file already using imgur
+
+
+```r
+file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
+gist_create(file, knit=TRUE)
+#> <gist>1a6e7f7d6ddb739fce0b
+#>   URL: https://gist.github.com/1a6e7f7d6ddb739fce0b
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2015-03-19T00:20:48Z / 2015-03-19T00:20:48Z
+#>   Files: plots_imgur.md
+```
+
+A file _NOT_ already using imgur
+
+
+```r
+file <- system.file("examples", "plots.Rmd", package = "gistr")
+gist_create(file, knit=TRUE, imgur_inject = TRUE)
+#> <gist>ec9987ad245bbc668c72
+#>   URL: https://gist.github.com/ec9987ad245bbc668c72
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
+#>   Files: plots.md
+```
+
 ### List commits on a gist
 
 
@@ -297,10 +334,10 @@ gists('minepublic')[[1]] %>% run() %>% update()
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 3ba3290815c3ca30357ea934fc2f42ef9ed68877
-#>   User: invalid-email-address
-#>   Commited: 2015-03-18T19:00:16Z
-#>   Commits [total, additions, deletions]: [429,429,0]
+#>   Version: 24ae478d01413e190a32be5159ffdc97edac5630
+#>   User: sckott
+#>   Commited: 2015-03-19T00:21:35Z
+#>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
 ### Star a gist
@@ -341,11 +378,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
   update()
-#> <gist>04812871818f91eba796
-#>   URL: https://gist.github.com/04812871818f91eba796
+#> <gist>413c09eb9791b0598070
+#>   URL: https://gist.github.com/413c09eb9791b0598070
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:16Z / 2015-03-18T19:00:19Z
+#>   Created/Edited: 2015-03-19T00:21:35Z / 2015-03-19T00:21:37Z
 #>   Files: alm.md, code.R
 ```
 
@@ -357,11 +394,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
   update()
-#> <gist>04812871818f91eba796
-#>   URL: https://gist.github.com/04812871818f91eba796
+#> <gist>413c09eb9791b0598070
+#>   URL: https://gist.github.com/413c09eb9791b0598070
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:16Z / 2015-03-18T19:00:20Z
+#>   Created/Edited: 2015-03-19T00:21:35Z / 2015-03-19T00:21:38Z
 #>   Files: code.R
 ```
 
@@ -379,7 +416,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/marcjchapman/d83bece28e1fbb6e0874.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/413c09eb9791b0598070.js\"></script>"
 ```
 
 ### List forks
@@ -414,12 +451,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>447dd054bd2a165b4037
-#>   URL: https://gist.github.com/447dd054bd2a165b4037
-#>   Description: warnings
+#> <gist>515b565e220d07d30025
+#>   URL: https://gist.github.com/515b565e220d07d30025
+#>   Description: Medusa collective data
 #>   Public: TRUE
-#>   Created/Edited: 2015-03-18T19:00:21Z / 2015-03-18T19:00:21Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2015-03-19T00:21:39Z / 2015-03-19T00:21:39Z
+#>   Files: results.js
 ```
 
 
