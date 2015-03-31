@@ -33,6 +33,14 @@ creategist <- function(filenames, description = "", public = TRUE) {
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
+creategist_obj <- function(z, description = "", public = TRUE) {
+  nm <- deparse(substitute(z))
+  z <- list(list(content = as.character(jsonlite::toJSON(z, auto_unbox = TRUE))))
+  names(z) <- 'file.md'
+  body <- list(description = description, public = public, files = z)
+  jsonlite::toJSON(body, auto_unbox = TRUE)
+}
+
 unl <- function(x) if(!is.null(x)) do.call(c, x) else NULL
 unr <- function(x) if(!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 
