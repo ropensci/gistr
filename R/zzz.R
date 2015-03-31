@@ -71,8 +71,8 @@ gist_DELETE <- function(url, auth, headers, ...){
 }
 
 process <- function(x){
-  stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
   warn_for_status(x)
+  stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
   temp <- content(x, as = "text")
   jsonlite::fromJSON(temp, FALSE)
 }
