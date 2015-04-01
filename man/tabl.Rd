@@ -4,10 +4,12 @@
 \alias{tabl}
 \title{Make a table from gist or commit class or a list of either}
 \usage{
-tabl(x)
+tabl(x, ...)
 }
 \arguments{
 \item{x}{Either a gist or commit class object or a list of either}
+
+\item{...}{Ignored}
 }
 \description{
 Make a table from gist or commit class or a list of either

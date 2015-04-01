@@ -4,6 +4,7 @@
 #' @importFrom dplyr rbind_all as_data_frame 
 #' @importFrom jsonlite flatten
 #' @param x Either a gist or commit class object or a list of either
+#' @param ... Ignored
 #' @examples \dontrun{
 #' x <- as.gist('f1403260eb92f5dfa7e1')
 #' tabl(x)
@@ -27,12 +28,12 @@
 #'   select(id, login, change_status.total, url) %>% 
 #'   filter(change_status.total > 50)
 #' }
-tabl <- function(x) {
+tabl <- function(x, ...) {
   UseMethod("tabl")
 }
 
 #' @export
-tabl.gist <- function(x){
+tabl.gist <- function(x, ...){
   singles <- move_cols(data.frame(null2na(x[ names(x) %in% snames ]), stringsAsFactors = FALSE), "id")
   others <- x[ !names(x) %in% snames ]
   files <- lappdf(others$files, "files")
@@ -44,7 +45,7 @@ tabl.gist <- function(x){
 }
 
 #' @export
-tabl.list <- function(x) {
+tabl.list <- function(x, ...) {
   if(any(sapply(x, class) == "list")) {
     x <- unlist(x, recursive = FALSE)
   }
@@ -52,10 +53,10 @@ tabl.list <- function(x) {
 }
 
 #' @export
-tabl.commit <- function(m){
+tabl.commit <- function(x, ...){
   as_data_frame(move_cols(
-    do.call("cbind", gist_compact(list(null2na(m$user), 
-                          flatten(data.frame(null2na(pop(unclass(m), "user")), 
+    do.call("cbind", gist_compact(list(null2na(x$user), 
+                          flatten(data.frame(null2na(pop(unclass(x), "user")), 
                                              stringsAsFactors = FALSE))))), "id"))
 }
 
