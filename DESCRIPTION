@@ -27,7 +27,8 @@ Imports:
     magrittr,
     assertthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    dplyr
 Suggests:
     roxygen2,
     testthat

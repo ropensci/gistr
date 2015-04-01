@@ -86,3 +86,16 @@ strextract <- function(str, pattern) {
 strtrim <- function(str) {
   gsub("^\\s+|\\s+$", "", str)
 }
+
+# pop columns or named elements out of lists
+pop <- function(x, topop, ...) {
+  UseMethod("pop")
+}
+
+pop.data.frame <- function(x, topop, ...) {
+  x[ !names(x) %in% topop, ]
+}
+
+pop.list <- function(x, topop, ...) {
+  x[ !names(x) %in% topop ]
+}
