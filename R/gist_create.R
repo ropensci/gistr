@@ -113,24 +113,24 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, ...) {
   
-  if(!is.null(code)) files <- code_handler(code, filename)
-  if(knit) {
+  if (!is.null(code)) files <- code_handler(code, filename)
+  if (knit) {
     allfiles <- list()
-    for(i in seq_along(files)){
+    for (i in seq_along(files)) {
       ff <- files[[i]]
       dirpath <- dirname(ff)
       orig_files <- ff
-      if(!is.null(code)){
+      if (!is.null(code)) {
         ff <- tempfile(fileext = ".Rmd")
         writeLines(code, ff)
       }
       inject_imgur(ff, imgur_inject)
       ff <- knit_render(ff, knitopts, renderopts)
-      if(artifacts) {
+      if (artifacts) {
         file_artifacts <- get_artifacts(ff, dirpath)
         files <- c(ff, file_artifacts)
       }
-      if(include_source) ff <- c(orig_files, ff)
+      if (include_source) ff <- c(orig_files, ff)
       allfiles[[i]] <- ff
     }
   } else {
@@ -139,14 +139,14 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   body <- creategist(unlist(allfiles), description, public)
   res <- gist_POST(paste0(ghbase(), '/gists'), gist_auth(), ghead(), body, ...)
   gist <- as.gist(res)
-  if(browse) browse(gist)
+  if (browse) browse(gist)
   return( gist )
 }
 
 knit_render <- function(x, knitopts, renderopts) {
-  if(grepl("\\.[rR]md$|\\.[rR]nw$", x)) {
+  if (grepl("\\.[rR]md$|\\.[rR]nw$", x)) {
     ext <- "knitr"
-  } else if(grepl("\\.[rR]$", x)) {
+  } else if (grepl("\\.[rR]$", x)) {
     ext <- "rmarkdown"
   }
   switch(ext, 
@@ -173,9 +173,9 @@ getpath <- function(z) {
 }
 
 inject_imgur <- function(x, imgur_inject = TRUE) {
-  if(!any(grepl("imgur_upload", readLines(x))) && imgur_inject) {
+  if (!any(grepl("imgur_upload", readLines(x))) && imgur_inject) {
     orig <- readLines(x)
-    if(grepl("\\.[rR]md$", x)) {
+    if (grepl("\\.[rR]md$", x)) {
       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
       cat(str, orig, file = x, sep = "\n")
     } 
@@ -201,7 +201,7 @@ knitr::opts_knit$set(root.dir = \"%s\")
 code_handler <- function(x, filename){
   # Remove surrounding `{`
   if (identical(x[[1]], "{")) {
-    x <- as.list(x[-c(1,length(x))])
+    x <- as.list(x[-c(1, length(x))])
   } else {
     x <- list(x)
   }
