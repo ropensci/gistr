@@ -10,10 +10,9 @@
 #' gist(id='1f399774e9ecc9153a6f') %>% commits(per_page=2)
 #' }
 
-commits <- function(gist, page=NULL, per_page=30, ...)
-{
+commits <- function(gist, page=NULL, per_page=30, ...) {
   gist <- as.gist(gist)
-  args <- gist_compact(list(page=page, per_page=per_page))
+  args <- gist_compact(list(page = page, per_page = per_page))
   res <- gist_GET(sprintf('%s/gists/%s/commits', ghbase(), gist$id), gist_auth(), ghead(), args, ...)
   lapply(res, structure, class = "commit")
 }
