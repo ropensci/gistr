@@ -90,7 +90,7 @@
 #' ## but check back later as I'm working on an option to get binary files uploaded, 
 #' ## but will involve having to use git
 #' file <- system.file("examples", "plots.Rmd", package = "gistr")
-#' gist_create(file, knit=TRUE, imgur_inject = TRUE, artifacts = TRUE)
+#' gist_create(file, knit=TRUE, imgur_inject = TRUE)
 #' 
 #' # Render `.R` files
 #' file <- system.file("examples", "example1.R", package = "gistr")
