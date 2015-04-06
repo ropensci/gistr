@@ -24,6 +24,7 @@ List forks on a gist
 \examples{
 \dontrun{
 gist(id='1642874') \%>\% forks(per_page=2)
+gist(id = "8172796") \%>\% forks()
 }
 }
 

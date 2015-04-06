@@ -8,12 +8,12 @@
 #' @return A list of gist class objects
 #' @examples \dontrun{
 #' gist(id='1642874') %>% forks(per_page=2)
+#' gist(id = "8172796") %>% forks()
 #' }
 
-forks <- function(gist, page=NULL, per_page=30, ...)
-{
+forks <- function(gist, page=NULL, per_page=30, ...) {
   gist <- as.gist(gist)
-  args <- gist_compact(list(page=page, per_page=per_page))
+  args <- gist_compact(list(page = page, per_page = per_page))
   res <- gist_GET(sprintf('%s/gists/%s/forks', ghbase(), gist$id), gist_auth(), ghead(), args, ...)
   lapply(res, structure, class = "gist")
 }
@@ -37,8 +37,7 @@ forks <- function(gist, page=NULL, per_page=30, ...)
 #'  extract(length(.))
 #' }
 
-fork <- function(gist, ...)
-{
+fork <- function(gist, ...) {
   gist <- as.gist(gist)
   res <- gist_POST(sprintf('%s/gists/%s/fork', ghbase(), gist$id), gist_auth(), ghead(), list(), ...)
   structure(res, class = "gist")
