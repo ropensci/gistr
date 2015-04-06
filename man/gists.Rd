@@ -17,7 +17,7 @@ updated at or after this time are returned.}
 
 \item{per_page}{(integer) Number of items to return per page. Default 30. Max 100.}
 
-\item{...}{Curl options passed on to httr::GET}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 List public gists, your own public gists, all your gists, by gist id, or query by date.

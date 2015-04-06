@@ -21,7 +21,7 @@ List gist commits
 \examples{
 \dontrun{
 gists()[[1]] \%>\% commits()
-gist(id='1f399774e9ecc9153a6f') \%>\% commits(per_page=2)
+gist(id = '1f399774e9ecc9153a6f') \%>\% commits(per_page = 5)
 }
 }
 

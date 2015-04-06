@@ -26,7 +26,7 @@ payload <- function(filenames, description = "") {
 creategist <- function(filenames, description = "", public = TRUE) {
   filenames <- files_exist(filenames)
   files <- lapply(filenames, function(file) {
-    list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
+    list(content = paste(readLines(file, warn = FALSE, encoding = "UTF-8"), collapse = "\n"))
   })
   names(files) <- sapply(filenames, basename)
   body <- list(description = description, public = public, files = files)
@@ -93,4 +93,17 @@ strextract <- function(str, pattern) {
 
 strtrim <- function(str) {
   gsub("^\\s+|\\s+$", "", str)
+}
+
+# pop columns or named elements out of lists
+pop <- function(x, topop, ...) {
+  UseMethod("pop")
+}
+
+pop.data.frame <- function(x, topop, ...) {
+  x[ !names(x) %in% topop, ]
+}
+
+pop.list <- function(x, topop, ...) {
+  x[ !names(x) %in% topop ]
 }
