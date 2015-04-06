@@ -2,7 +2,7 @@ context("gist_create")
 
 test_that("gist_create works from a file", {
   file <- system.file("examples", "stuff.Rmd", package = "gistr")
-  g <- gist_create(file, browse = FALSE)
+  g <- gist_create(file, browse = FALSE, knitopts = list(quiet = TRUE))
   expect_is(g, "gist")
   expect_equal(names(g$files), "stuff.Rmd")
   expect_true(g$public)
@@ -16,7 +16,7 @@ test_that("gist_create works from a code block", {
   h <- gist_create(code={'
   x <- letters
   (numbers <- runif(8))
-  '}, filename="my_cool_code.R", browse=FALSE)
+  '}, filename="my_cool_code.R", browse=FALSE, knitopts = list(quiet = TRUE))
   
   expect_is(h, "gist")
   expect_equal(names(h$files), "my_cool_code.R")
@@ -30,11 +30,11 @@ test_that("gist_create works from a code block", {
 test_that("gist_create works to upload images", {
   ## using imgur - if you're file uses imgur or similar, you're good
   file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
-  res1 <- gist_create(file, knit=TRUE, browse = FALSE)
+  res1 <- gist_create(file, knit=TRUE, browse = FALSE, knitopts = list(quiet = TRUE))
   
   ## inject imgur
   file <- system.file("examples", "plots.Rmd", package = "gistr")
-  res2 <- gist_create(file, knit=TRUE, browse = FALSE, imgur_inject = TRUE)
+  res2 <- gist_create(file, knit=TRUE, browse = FALSE, imgur_inject = TRUE, knitopts = list(quiet = TRUE))
   
   expect_is(res1, "gist")
   expect_equal(names(res1$files), "plots_imgur.md")
