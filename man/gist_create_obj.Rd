@@ -5,7 +5,7 @@
 \title{Create a gist from an R object}
 \usage{
 gist_create_obj(x = NULL, description = "", public = TRUE,
-  browse = TRUE, ...)
+  browse = TRUE, pretty = TRUE, ...)
 }
 \arguments{
 \item{x}{An R object, any of data.frame, matrix, list, character, numeric}
@@ -15,6 +15,9 @@ gist_create_obj(x = NULL, description = "", public = TRUE,
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
 \item{browse}{(logical) To open newly create gist in default browser (default: TRUE)}
+
+\item{pretty}{(logical) For data.frame and matrix objects, create
+a markdown table. If FALSE, pushes up json. (default: TRUE)}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
@@ -28,7 +31,13 @@ This function is specifically for going from R objects to a gist, whereas
 \examples{
 \dontrun{
 ## data.frame
+### by default makes pretty table in markdown format
+row.names(mtcars) <- NULL
 gist_create_obj(mtcars)
+gist_create_obj(iris)
+### or just push up json
+gist_create_obj(mtcars, pretty = FALSE)
+
 ## matrix
 gist_create_obj(as.matrix(mtcars))
 ## list

@@ -33,18 +33,22 @@ creategist <- function(filenames, description = "", public = TRUE) {
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
-creategist_obj <- function(z, description = "", public = TRUE) {
+creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE) {
   nm <- deparse(substitute(z))
-  z <- list(list(content = as.character(jsonlite::toJSON(z, auto_unbox = TRUE))))
+  if (pretty && any(is.data.frame(z) || is.matrix(z))) {
+    z <- list(list(content = paste0(knitr::kable(z), collapse = "\n")))
+  } else {
+    z <- list(list(content = as.character(jsonlite::toJSON(z, auto_unbox = TRUE))))
+  }
   names(z) <- 'file.md'
   body <- list(description = description, public = public, files = z)
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
-unl <- function(x) if(!is.null(x)) do.call(c, x) else NULL
-unr <- function(x) if(!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
+unl <- function(x) if (!is.null(x)) do.call(c, x) else NULL
+unr <- function(x) if (!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 
-mssg <- function(x, y) if(x) message(y)
+mssg <- function(x, y) if (x) message(y)
 
 gist_compact <- function(l) Filter(Negate(is.null), l)
 
@@ -54,19 +58,18 @@ ghead <- function(){
   add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
 }
 
-
 gist_GET <- function(url, auth, headers, args=list(), ...){
-  response <- GET(url, auth, headers, query=args, ...)
+  response <- GET(url, auth, headers, query = args, ...)
   process(response)
 }
 
 gist_PATCH <- function(id, auth, headers, body, ...){
-  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, body=body, encode = "json", ...)
+  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, body = body, encode = "json", ...)
   process(response)
 }
 
 gist_POST <- function(url, auth, headers, body, ...){
-  response <- POST(url, auth, headers, body=body, encode = "json", ...)
+  response <- POST(url, auth, headers, body = body, encode = "json", ...)
   process(response)
 }
 
