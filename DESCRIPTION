@@ -28,7 +28,8 @@ Imports:
     assertthat,
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    git2r
 Suggests:
     roxygen2,
     testthat
