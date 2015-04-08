@@ -52,6 +52,11 @@ mssg <- function(x, y) if (x) message(y)
 
 gist_compact <- function(l) Filter(Negate(is.null), l)
 
+gc <- function(x) {
+  x <- gist_compact(x)
+  x[rapply(x, length) != 0]
+}
+
 ghbase <- function() 'https://api.github.com'
 
 ghead <- function(){
