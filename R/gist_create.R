@@ -1,7 +1,8 @@
 #' Create a gist
 #'
 #' @export
-#' @import knitr rmarkdown
+#' @importFrom knitr knit 
+#' @importFrom rmarkdown render
 #' @template args
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
