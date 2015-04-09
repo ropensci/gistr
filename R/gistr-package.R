@@ -13,11 +13,17 @@
 #' }
 #' 
 #' Using the \code{GITHUB_PAT} is recommended.
+#' 
+#' We also provide an interface to GitHub Gists using git, bypassing the http API.
+#' This path is much easier if you already use git locally. If not, you'll have to 
+#' setup some git options. See \url{https://github.com/ropensci/git2r#configuration}
 #'
 #' @name gistr-package
 #' @aliases gistr
 #' @docType package
 #' @title R client for GitHub gists
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Ramnath Vaidyanathan \email{ramnath.vaidya@@gmail.com}
+#' @author Karthik Ram \email{karthik.ram@@gmail.com}
 #' @keywords package
 NULL

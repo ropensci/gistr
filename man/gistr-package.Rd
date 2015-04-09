@@ -22,9 +22,17 @@ There are two ways to authorise gistr to work with your GitHub account:
 }
 
 Using the \code{GITHUB_PAT} is recommended.
+
+We also provide an interface to GitHub Gists using git, bypassing the http API.
+This path is much easier if you already use git locally. If not, you'll have to
+setup some git options. See \url{https://github.com/ropensci/git2r#configuration}
 }
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
+
+Ramnath Vaidyanathan \email{ramnath.vaidya@gmail.com}
+
+Karthik Ram \email{karthik.ram@gmail.com}
 }
 \keyword{package}
 
