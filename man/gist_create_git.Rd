@@ -91,4 +91,7 @@ numbers
 '}, filename="my_cool_code.R")
 }
 }
+\seealso{
+\code{\link{gist_create}}, \code{\link{gist_create_obj}}
+}
 

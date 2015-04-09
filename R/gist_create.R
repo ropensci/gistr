@@ -4,6 +4,7 @@
 #' @importFrom knitr knit 
 #' @importFrom rmarkdown render
 #' @template args
+#' @seealso \code{\link{gist_create_git}}, \code{\link{gist_create_obj}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
 #' gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')

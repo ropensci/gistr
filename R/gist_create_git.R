@@ -19,6 +19,7 @@
 #' 
 #' Another difference between this function and \code{\link{gist_create}} is that
 #' this function can easily collect all artifacts coming out of a knit process.
+#' @seealso \code{\link{gist_create}}, \code{\link{gist_create_obj}}
 #' @examples \dontrun{
 #' gist_create_git(files = "~/gitgist/stuff.md")
 #' gist_create_git(files = c("~/gitgist/stuff.md", "~/gitgist/icanhazallthedata.md"))

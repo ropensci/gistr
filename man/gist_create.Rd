@@ -132,4 +132,7 @@ gist_create(files=list(file1, file2, file3), knit = TRUE)
 gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
 }
 }
+\seealso{
+\code{\link{gist_create_git}}, \code{\link{gist_create_obj}}
+}
 
