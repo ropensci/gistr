@@ -90,15 +90,17 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   # add files
   git2r::add(git, basename(allfiles))
   # commit files
-  git2r::commit(git, message = "added files from gistr")
+  cm <- tryCatch(git2r::commit(git, message = "added files from gistr"), error = function(e) e)
+  if (is(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
   # create gist
-  gst <- cgist(description, public)
-  gst <- as.gist(gst)
+  gst <- as.gist(cgist(description, public))
   # add remote
-  git2r::remote_add(git, "gistr", sprintf("git@gist.github.com:/%s.git", gst$id))
+  ra <- tryCatch(git2r::remote_add(git, "gistr", sprintf("git@gist.github.com:/%s.git", gst$id)), error = function(e) e)
+  if (is(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
   # push up files
   git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
-  # .Call(git2r:::git2r_push, git, "gistr", "+refs/heads/master:refs/heads/master", NULL)
+  # refresh gist metadata
+  gst <- gist(gst$id)
   # browse
   if (browse) browse(gst)
   return( gst )
