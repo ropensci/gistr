@@ -2,7 +2,7 @@
 % Please edit documentation in R/gist_create_git.R
 \name{gist_create_git}
 \alias{gist_create_git}
-\title{Create a gist via git instead of the HTTP API}
+\title{Create a gist via git instead of the GitHub Gists HTTP API}
 \usage{
 gist_create_git(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
@@ -44,7 +44,26 @@ anyway. Default: FALSE}
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
 \description{
-Create a gist via git instead of the HTTP API
+Create a gist via git instead of the GitHub Gists HTTP API
+}
+\details{
+This function uses git instead of the HTTP API, and thus requires
+the R package \code{git2r}. If you don't have \code{git2r} installed, and
+try to use this function, it will stop and tell you to install \code{git2r}.
+
+This function using git is better suited than \code{\link{gist_create}}
+for use cases involving:
+
+\itemize{
+ \item Big files - The GitHub API allows only files of up to 1 MB in size. Using
+ git we can get around that limit.
+ \item Binary files - Often artifacts created are binary files like \code{.png}.
+ The GitHub API doesn't allow transport of binary files, but we can do that with
+ git.
+}
+
+Another difference between this function and \code{\link{gist_create}} is that
+this function can easily collect all artifacts coming out of a knit process.
 }
 \examples{
 \dontrun{
