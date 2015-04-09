@@ -1,7 +1,6 @@
 #' Create a gist via git instead of the HTTP API
 #'
 #' @export
-#' @importFrom git2r init add commit remote_add push
 #' @template args
 #' @examples \dontrun{
 #' gist_create_git(files = "~/gitgist/stuff.md")
@@ -32,6 +31,10 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, ...) {
+  
+  if (!requireNamespace("git2r", quietly = TRUE)) {
+    stop("Please install git2r", call. = FALSE)
+  }
   
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
