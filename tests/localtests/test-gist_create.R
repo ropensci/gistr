@@ -44,3 +44,16 @@ test_that("gist_create works to upload images", {
   suppressMessages(res1 %>% delete())
   suppressMessages(res2 %>% delete())
 })
+
+test_that("gist_create fails correctly when binary files passed", {
+  file <- system.file("examples", "file.png", package = "gistr")
+  expect_error(gist_create(file, browse = FALSE), "Binary files not supported")
+})
+
+test_that("gist_create fails correctly when directory passed", {
+  file <- system.file("examples", "file.png", package = "gistr")
+  direct <- tempdir()
+  expect_error(gist_create(direct, browse = FALSE), "Directories not supported")
+  # binary check is first in the function
+  expect_error(gist_create(c(direct, file), browse = FALSE), "Binary files not supported")
+})
