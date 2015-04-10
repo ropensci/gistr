@@ -11,6 +11,7 @@
 #' @param ... Further args passed on to \code{link[httr]{POST}}
 #' @details This function is specifically for going from R objects to a gist, whereas 
 #' \code{\link{gist_create}} is for going from files or executing code
+#' @seealso \code{\link{gist_create}}, \code{\link{gist_create_git}}
 #' @examples \dontrun{
 #' ## data.frame
 #' ### by default makes pretty table in markdown format

@@ -48,4 +48,7 @@ gist_create_obj("hello, world")
 gist_create_obj(runif(10))
 }
 }
+\seealso{
+\code{\link{gist_create}}, \code{\link{gist_create_git}}
+}
 

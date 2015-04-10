@@ -52,6 +52,11 @@ mssg <- function(x, y) if (x) message(y)
 
 gist_compact <- function(l) Filter(Negate(is.null), l)
 
+gc <- function(x) {
+  x <- gist_compact(x)
+  x[rapply(x, length) != 0]
+}
+
 ghbase <- function() 'https://api.github.com'
 
 ghead <- function(){
@@ -82,10 +87,18 @@ gist_DELETE <- function(url, auth, headers, ...){
 }
 
 process <- function(x){
-  stop_for_status(x)
+  stopstatus(x)
   stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
-  temp <- content(x, as = "text")
+  temp <- httr::content(x, as = "text")
   jsonlite::fromJSON(temp, FALSE)
+}
+
+stopstatus <- function(x) {
+  if (x$status_code > 203) {
+    res <- httr::content(x)
+    errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", collapse = "\n"))
+    stop(res$message, "\n", errs, call. = FALSE)
+  }
 }
 
 check_auth <- function(x) if(!missing(x)) x else gist_auth()
