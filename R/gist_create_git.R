@@ -101,6 +101,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
   # refresh gist metadata
   gst <- gist(gst$id)
+  message("The file list for your gist may not be accurate if you are uploading a lot of files")
   # browse
   if (browse) browse(gst)
   return( gst )
@@ -110,11 +111,19 @@ makefiles <- function(x) {
   if (is.null(x)) {
     NULL
   } else {
-    if (file.info(x)$isdir) {
-      list.files(x, full.names = TRUE)
+    if (length(x) > 1) {
+      unname(sapply(x, unpack))
     } else {
-      x
+      unpack(x)
     }
+  }
+}
+
+unpack <- function(z) {
+  if (file.info(z)$isdir) {
+    list.files(z, full.names = TRUE)
+  } else {
+    z
   }
 }
 
