@@ -57,3 +57,8 @@ test_that("gist_create fails correctly when directory passed", {
   # binary check is first in the function
   expect_error(gist_create(c(direct, file), browse = FALSE), "Binary files not supported")
 })
+
+test_that("gist_create passes informative error messages correctly", {
+  file <- system.file("examples", "file.png", package = "gistr")
+  expect_error(gist_create(file, browse = FALSE), "Binary files not supported")
+})
