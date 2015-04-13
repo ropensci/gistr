@@ -194,11 +194,11 @@ code_handler <- function(x, filename){
   return(tmp)
 }
 
-is.binary <- function(x, max = 1000) {
+is.binary <- function(x, maximum = 1000) {
   if (!is.dir(x)) {
     f <- file(x, "rb", raw = TRUE)
-    b <- readBin(f, "int", max, size = 1, signed = FALSE)
-    tmp <- max(b) > 128
+    b <- readBin(f, "int", maximum, size = 1, signed = FALSE)
+    tmp <- suppressWarnings(max(b)) > 128
     close.connection(f)
     tmp
   } else {
