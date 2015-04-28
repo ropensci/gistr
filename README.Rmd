@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
 [![Coverage Status](https://coveralls.io/repos/ropensci/gistr/badge.svg)](https://coveralls.io/r/ropensci/gistr)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/gistr)](https://github.com/metacran/cranlogs.app)
 
 `gistr` is a light interface to GitHub's gists for R.
 
@@ -31,7 +32,7 @@ Stable version from CRAN
 install.packages("gistr")
 ```
 
-Or dev version from GitHub. 
+Or dev version from GitHub.
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/gistr")
@@ -212,8 +213,8 @@ gists('minepublic')[[1]] %>% run() %>% update()
 The GitHub API doesn't let you upload binary files (e.g., images) via their HTTP API, which we use
 in `gistr`. There is a workaround.
 
-If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so 
-that imgur knit options are injected at the top of your file so that images will be uploaded to imgur. 
+If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so
+that imgur knit options are injected at the top of your file so that images will be uploaded to imgur.
 Alternatively, you can do this yourself, setting knit options to use imgur.
 
 A file already using imgur
@@ -223,7 +224,7 @@ file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 gist_create(file, knit=TRUE)
 #> <gist>1a6e7f7d6ddb739fce0b
 #>   URL: https://gist.github.com/1a6e7f7d6ddb739fce0b
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-03-19T00:20:48Z / 2015-03-19T00:20:48Z
 #>   Files: plots_imgur.md
@@ -236,7 +237,7 @@ file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE)
 #> <gist>ec9987ad245bbc668c72
 #>   URL: https://gist.github.com/ec9987ad245bbc668c72
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-03-19T00:21:13Z / 2015-03-19T00:21:13Z
 #>   Files: plots.md

@@ -6,6 +6,7 @@ gistr
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
 [![Coverage Status](https://coveralls.io/repos/ropensci/gistr/badge.svg)](https://coveralls.io/r/ropensci/gistr)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/gistr)](https://github.com/metacran/cranlogs.app)
 
 `gistr` is a light interface to GitHub's gists for R.
 
