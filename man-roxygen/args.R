@@ -13,7 +13,6 @@
 #' or \code{\link[rmarkdown]{render}}
 #' @param include_source (logical) Only applies if \code{knit=TRUE}. Include source file in the
 #' gist in addition to the knitted output.
-#' @param artifacts (logical) Include artifacts or not, Ignored for now. Default: FALSE
 #' @param imgur_inject (logical) Inject \code{\link[knitr]{imgur_upload}} into your
 #' \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored 
 #' if the file is a sweave/latex file because the rendered pdf can't be uploaded

@@ -1,7 +1,3 @@
-```{r echo=FALSE}
-knitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
-```
-
 ## Scatter plot 
 
 ```{r}
