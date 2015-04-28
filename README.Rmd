@@ -210,12 +210,9 @@ gists('minepublic')[[1]] %>% run() %>% update()
 
 ### working with images
 
-The GitHub API doesn't let you upload binary files (e.g., images) via their HTTP API, which we use
-in `gistr`. There is a workaround.
+The GitHub API doesn't let you upload binary files (e.g., images) via their HTTP API, which we use in `gistr`. There is a workaround.
 
-If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so
-that imgur knit options are injected at the top of your file so that images will be uploaded to imgur.
-Alternatively, you can do this yourself, setting knit options to use imgur.
+If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `gistr_create()` so that imgur knit options are injected at the top of your file so that images will be uploaded to imgur. Alternatively, you can do this yourself, setting knit options to use imgur.
 
 A file already using imgur
 
