@@ -33,14 +33,14 @@ creategist <- function(filenames, description = "", public = TRUE) {
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
-creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE) {
+creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE, filename = "file.txt") {
   nm <- deparse(substitute(z))
   if (pretty && any(is.data.frame(z) || is.matrix(z))) {
     z <- list(list(content = paste0(knitr::kable(z), collapse = "\n")))
   } else {
     z <- list(list(content = as.character(jsonlite::toJSON(z, auto_unbox = TRUE))))
   }
-  names(z) <- 'file.md'
+  names(z) <- filename
   body <- list(description = description, public = public, files = z)
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
