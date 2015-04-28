@@ -2,6 +2,9 @@
 #'
 #' @export
 #' @template args
+#' @param artifacts (logical/character) Include artifacts or not. If \code{TRUE}, 
+#' includes all artifacts. Or you can pass in a file extension to only upload 
+#' artifacts of certain file exensions. Default: \code{FALSE}
 #' @details This function uses git instead of the HTTP API, and thus requires
 #' the R package \code{git2r}. If you don't have \code{git2r} installed, and 
 #' try to use this function, it will stop and tell you to install \code{git2r}.
@@ -43,6 +46,11 @@
 #'
 #' [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 #' '}, filename="my_cool_code.R")
+#' 
+#' # include artifacts, e.g., images created during knit process
+#' gist_create_git(files = "~/stuffthings/plots.Rmd")
+#' gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE)
+#' gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE, artifacts = TRUE)
 #' }
 
 gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
