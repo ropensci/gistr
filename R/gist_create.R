@@ -91,8 +91,8 @@
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-                        filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE, 
-                        artifacts = FALSE, imgur_inject = FALSE, ...) {
+  filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE, 
+  imgur_inject = FALSE, ...) {
   
   if (!is.null(code)) files <- code_handler(code, filename)
   if (knit) {
@@ -107,10 +107,6 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
       }
       inject_imgur(ff, imgur_inject)
       ff <- knit_render(ff, knitopts, renderopts)
-      if (artifacts) {
-        file_artifacts <- get_artifacts(ff, dirpath)
-        ff <- c(ff, file_artifacts)
-      }
       if (include_source) ff <- c(orig_files, ff)
       allfiles[[i]] <- ff
     }
@@ -144,11 +140,6 @@ knit_render <- function(x, knitopts, renderopts) {
                    c(input = x, renderopts))
          }
   )
-}
-
-get_artifacts <- function(x, dirpath) {
-  imgs <- grep("!\\[", readLines(x), value = TRUE)
-  file.path(dirpath, sapply(imgs, getpath, USE.NAMES = FALSE))
 }
 
 getpath <- function(z) {
