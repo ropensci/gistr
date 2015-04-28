@@ -31,5 +31,4 @@ Imports:
     dplyr
 Suggests:
     roxygen2,
-    testthat,
-    git2r
+    testthat

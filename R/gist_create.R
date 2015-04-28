@@ -1,10 +1,10 @@
 #' Create a gist
 #'
 #' @export
-#' @importFrom knitr knit 
+#' @importFrom knitr knit
 #' @importFrom rmarkdown render
 #' @template args
-#' @seealso \code{\link{gist_create_git}}, \code{\link{gist_create_obj}}
+#' @seealso \code{\link{gist_create_obj}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
 #' gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')
@@ -61,18 +61,18 @@
 #' (numbers <- runif(8))
 #' ```
 #' '}, filename="code.Rmd", knit=TRUE, include_source=TRUE)
-#' 
+#'
 #' # Uploading images created during knit process
 #' ## using imgur - if you're file uses imgur or similar, you're good
 #' file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 #' cat(readLines(file), sep = "\n") # peek at file
 #' gist_create(file, knit=TRUE)
 #' ## if not, GitHub doesn't allow upload of binary files via the HTTP API (which gistr uses)
-#' ## but check back later as I'm working on an option to get binary files uploaded, 
+#' ## but check back later as I'm working on an option to get binary files uploaded,
 #' ## but will involve having to use git
 #' file <- system.file("examples", "plots.Rmd", package = "gistr")
 #' gist_create(file, knit=TRUE, imgur_inject = TRUE)
-#' 
+#'
 #' # Render `.R` files
 #' file <- system.file("examples", "example1.R", package = "gistr")
 #' cat(readLines(file), sep = "\n") # peek at file
@@ -91,9 +91,9 @@
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-  filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE, 
+  filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE,
   imgur_inject = FALSE, ...) {
-  
+
   if (!is.null(code)) files <- code_handler(code, filename)
   if (knit) {
     allfiles <- list()
@@ -128,13 +128,13 @@ knit_render <- function(x, knitopts, renderopts) {
   } else if (grepl("\\.[rR]$", x)) {
     ext <- "rmarkdown"
   }
-  switch(ext, 
+  switch(ext,
          knitr = {
            do.call(knitr::knit,
                    gc(c(input = x,
                         output = sub("\\.Rmd", "\\.md", x),
                         knitopts)))
-         }, 
+         },
          rmarkdown = {
            do.call(rmarkdown::render,
                    c(input = x, renderopts))
@@ -152,7 +152,7 @@ inject_imgur <- function(x, imgur_inject = TRUE) {
     if (grepl("\\.[rR]md$", x)) {
       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
       cat(str, orig, file = x, sep = "\n")
-    } 
+    }
     #     else if(grepl("\\.[rR]nw$", x)) {
     #       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
     #       cat(str, orig, file = x, sep = "\n")
