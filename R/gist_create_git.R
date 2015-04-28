@@ -5,7 +5,18 @@
 #' @param artifacts (logical/character) Include artifacts or not. If \code{TRUE}, 
 #' includes all artifacts. Or you can pass in a file extension to only upload 
 #' artifacts of certain file exensions. Default: \code{FALSE}
-#' @details This function uses git instead of the HTTP API, and thus requires
+#' @details Note that when \code{browse=TRUE} there is a slight delay in when 
+#' we open up the gist in your default browser and when the data will display 
+#' in the gist. We could have this function sleep a while and guess when it 
+#' will be ready, but instead we open your gist right after we're done sending
+#' the data to GitHub. Make sure to refresh the page if you don't see your 
+#' content right away.
+#' 
+#' Likewise, the object that is returned from this function call may not have 
+#' the updated and correct file information. You can retrieve that easily by 
+#' calling \code{\link{gist}} with the gist id. 
+#' 
+#' This function uses git instead of the HTTP API, and thus requires
 #' the R package \code{git2r}. If you don't have \code{git2r} installed, and 
 #' try to use this function, it will stop and tell you to install \code{git2r}.
 #' 
@@ -48,9 +59,14 @@
 #' '}, filename="my_cool_code.R")
 #' 
 #' # include artifacts, e.g., images created during knit process
-#' gist_create_git(files = "~/stuffthings/plots.Rmd")
-#' gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE)
-#' gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE, artifacts = TRUE)
+#' file <- system.file("examples", "plots.Rmd", package = "gistr")
+#' dir <- tempdir()
+#' file.copy(file, dir)
+#' file <- file.path(dir, "plots.Rmd")
+#' setwd(dir)
+#' gist_create_git(file)
+#' gist_create_git(file, knit = TRUE)
+#' gist_create_git(file, knit = TRUE, artifacts = TRUE)
 #' }
 
 gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
@@ -96,7 +112,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   }
   
   # add files
-  git2r::add(git, basename(allfiles))
+  ftoadd <- gsub(sprintf("%s/?|\\./", git@path), "", allfiles)
+  git2r::add(git, ftoadd)
   # commit files
   cm <- tryCatch(git2r::commit(git, message = "added files from gistr"), error = function(e) e)
   if (is(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
@@ -153,6 +170,6 @@ cgist <- function(description, public) {
 }
 
 all_artifacts <- function(x) {
-  tmp <- list.files(dirname(x), full.names = TRUE)
+  tmp <- list.files(dirname(x), full.names = TRUE, recursive = TRUE)
   tmp[ !tmp %in% path.expand(c(x, sub("\\.md", ".Rmd", x))) ]
 }

@@ -49,6 +49,17 @@ anyway. Default: FALSE}
 Create a gist via git instead of the GitHub Gists HTTP API
 }
 \details{
+Note that when \code{browse=TRUE} there is a slight delay in when
+we open up the gist in your default browser and when the data will display
+in the gist. We could have this function sleep a while and guess when it
+will be ready, but instead we open your gist right after we're done sending
+the data to GitHub. Make sure to refresh the page if you don't see your
+content right away.
+
+Likewise, the object that is returned from this function call may not have
+the updated and correct file information. You can retrieve that easily by
+calling \code{\link{gist}} with the gist id.
+
 This function uses git instead of the HTTP API, and thus requires
 the R package \code{git2r}. If you don't have \code{git2r} installed, and
 try to use this function, it will stop and tell you to install \code{git2r}.
@@ -93,9 +104,14 @@ numbers
 '}, filename="my_cool_code.R")
 
 # include artifacts, e.g., images created during knit process
-gist_create_git(files = "~/stuffthings/plots.Rmd")
-gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE)
-gist_create_git(files = "~/stuffthings/plots.Rmd", knit = TRUE, artifacts = TRUE)
+file <- system.file("examples", "plots.Rmd", package = "gistr")
+dir <- tempdir()
+file.copy(file, dir)
+file <- file.path(dir, "plots.Rmd")
+setwd(dir)
+gist_create_git(file)
+gist_create_git(file, knit = TRUE)
+gist_create_git(file, knit = TRUE, artifacts = TRUE)
 }
 }
 \seealso{
