@@ -1,18 +1,39 @@
-taxize 0.1.1.99
+gistr 0.2.0
 ===============
 
 NEW FEATURES
 
-* `gistr_create()` can now optionally include source file if `knit=TRUE` using the new 
+* `gistr_create()` can now optionally include source file if `knit=TRUE` using the new
 parameter `include_source` (#19)
-
+* new function `gist_create_obj()` to create a gist directly from a R object, like 
+numeric, list, character, data.frame, matrix (#36) (#44)
+* new function `gist_map()` to open a full page map in your default browser of a gist 
+after gist creation (#23)
+* new function `tabl()` (weird function name to avoid the `table` function in base R).
+This function goal is to make it easier to play with gist data. Data given back from the
+GitHub API is great, but is in nested list format (after conversion from JSON) - so 
+is rather hard to manipulate. `tabl()` makes a data.frame from output of `gist()`,
+`gists()`, `as.gist()`, and `commits()` (#25)
 
 MINOR IMPROVEMENTS
 
 * `gistr_create()` works with `.Rnw` files, and example `.Rnw` file included in the package. (#20)
+* Added ability in `gist_create()` to optionally include the source file passed into
+the function call when `knit=TRUE` (#19)
+* Added ability to inject imgur hooks into a knitted document so that images can be rendered in a gist automatically. The GitHub HTTP API doesn't allow binary uploads 
+(e.g., images), so the parameter `imgur_inject` uploads your images to imgur
+and embeds links to the images in your document. (#33)
+* Improved information on truncation. If you request a gist that is larger than 1MB, 
+the returned object says it's truncated. You can download the whole thing using 
+the `raw_url`, or for larger than 10 MB to the `git_pull_url`. (#26)
 
+BUG FIXES
 
-taxize 0.1.0
+* Fixed unicode problem on Windows (#37)
+* Improved error catching (#28)
+* `gist_create()` now works for an R script, didn't before (#29)
+
+gistr 0.1.0
 ===============
 
 NEW FEATURES
