@@ -9,7 +9,7 @@ Description: Work with GitHub gists from R (e.g.,
     your default browser, get embed code for a gist, list gist commits, and 
     get rate limit information when authenticated. Some requests require 
     authentication and some do not. Gists website: https://gist.github.com/.
-Version: 0.1.8.999
+Version: 0.1.9.99
 Date: 2015-04-28
 Authors@R: c(person("Ramnath", "Vaidyanathan", role = "aut",
     email = "ramnath.vaidya@gmail.com"),
