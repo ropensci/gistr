@@ -1,3 +1,11 @@
+gistr 0.3.0
+===============
+
+NEW FEATURES
+
+* Gained new function `gistr_save()` to save gist files to disk easily and optionally open
+them in your editor/R GUI (#47)
+
 gistr 0.2.0
 ===============
 

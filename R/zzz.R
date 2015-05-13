@@ -18,7 +18,7 @@ payload <- function(filenames, description = "") {
          content = paste(readLines(tt, warn = FALSE), collapse = "\n"))
   })
   files <- c(add_update, del, ren)
-  names(files) <- basename(fnames)
+  names(files) <- base::basename(fnames)
   body <- list(description = description, files = files)
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
