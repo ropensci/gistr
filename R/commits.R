@@ -8,6 +8,9 @@
 #' @examples \dontrun{
 #' gists()[[1]] %>% commits()
 #' gist(id = '1f399774e9ecc9153a6f') %>% commits(per_page = 5)
+#' 
+#' # pass in a url
+#' gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% commits
 #' }
 
 commits <- function(gist, page=NULL, per_page=30, ...) {

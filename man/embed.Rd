@@ -15,6 +15,9 @@ Get embed script for a gist
 \examples{
 \dontrun{
 gists()[[1]] \%>\% embed()
+
+# pass in a url
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% embed
 }
 }
 

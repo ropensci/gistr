@@ -27,6 +27,13 @@
 #' tabl(x) %>%
 #'   select(id, login, change_status.total, url) %>% 
 #'   filter(change_status.total > 50)
+#'   
+#' # pass in a url
+#' gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% tabl
+#' ## many
+#' gg <- gists()
+#' (urls <- vapply(gg, "[[", "", "html_url"))
+#' sapply(urls[1:5], as.gist) %>% tabl()
 #' }
 tabl <- function(x, ...) {
   UseMethod("tabl")

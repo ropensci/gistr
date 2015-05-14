@@ -14,6 +14,11 @@
 #' gist(id) %>%
 #'   star() %>%
 #'   star_check()
+#'   
+#' # pass in a url
+#' x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
+#' gist(x) %>% star
+#' gist(x) %>% unstar
 #' }
 
 star <- function(gist, ...){
