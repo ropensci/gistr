@@ -20,8 +20,11 @@
 #' as.gist(10)
 #' as.gist(gist('f1403260eb92f5dfa7e1'))
 #'
-#' # from a url
+#' # from a url, or partial url
 #' x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
+#' x <- "gist.github.com/expersso/4ac33b9c00751fddc7f8"
+#' x <- "gist.github.com/4ac33b9c00751fddc7f8"
+#' x <- "expersso/4ac33b9c00751fddc7f8"
 #' as.gist(x)
 #' 
 #' ids <- sapply(gists(), "[[", "id")
@@ -68,11 +71,18 @@ as.gist.character <- function(x) {
 as.gist.list <- function(x) list2gist(x)
 
 normalize_id <- function(x) {
-  if (is_url(x)) {
+  if (is_url(x) || is_gisturl(x)) {
     get_gistid(x)
   } else {
     x
   }
+}
+
+is_gisturl <- function(x){
+  str1 <- "^gist\\.github\\.com/[A-Za-z0-9]+/[0-9a-z]+$"
+  str2 <- "^gist\\.github\\.com/[0-9a-z]+$"
+  str3 <- "^[A-Za-z0-9]+/[0-9a-z]+$"
+  grepl(paste(str1, str2, str3, sep = "||"), x, ignore.case = TRUE)
 }
 
 is_url <- function(x){

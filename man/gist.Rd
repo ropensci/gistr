@@ -36,8 +36,11 @@ as.gist('f1403260eb92f5dfa7e1')
 as.gist(10)
 as.gist(gist('f1403260eb92f5dfa7e1'))
 
-# from a url
+# from a url, or partial url
 x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
+x <- "gist.github.com/expersso/4ac33b9c00751fddc7f8"
+x <- "gist.github.com/4ac33b9c00751fddc7f8"
+x <- "expersso/4ac33b9c00751fddc7f8"
 as.gist(x)
 
 ids <- sapply(gists(), "[[", "id")
