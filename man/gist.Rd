@@ -10,7 +10,7 @@ gist(id, ...)
 as.gist(x)
 }
 \arguments{
-\item{id}{(character) A gist id}
+\item{id}{(character) A gist id, or a gist URL}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 
@@ -30,11 +30,15 @@ need to clone the file using git, etc.
 }
 \examples{
 \dontrun{
-gist(id = 'f1403260eb92f5dfa7e1')
+gist('f1403260eb92f5dfa7e1')
 
 as.gist('f1403260eb92f5dfa7e1')
 as.gist(10)
 as.gist(gist('f1403260eb92f5dfa7e1'))
+
+# from a url
+x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
+as.gist(x)
 
 ids <- sapply(gists(), "[[", "id")
 gist(ids[1])

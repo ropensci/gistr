@@ -24,6 +24,7 @@ Save a gist to disk
 \examples{
 \dontrun{
 gist("a65ac7e56b7b3f746913") \%>\% gist_save()
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% gist_save()
 }
 }
 

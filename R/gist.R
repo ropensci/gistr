@@ -3,7 +3,7 @@
 #' @importFrom httr GET POST PATCH PUT DELETE content stop_for_status 
 #' add_headers warn_for_status
 #' @export
-#' @param id (character) A gist id
+#' @param id (character) A gist id, or a gist URL
 #' @param x Object to coerce. Can be an integer (gist id), string
 #'   (gist id), a gist, or an list that can be coerced to a gist.
 #' @template all
@@ -14,12 +14,16 @@
 #' example below), then retrieve from that. If the file is very big, you may 
 #' need to clone the file using git, etc. 
 #' @examples \dontrun{
-#' gist(id = 'f1403260eb92f5dfa7e1')
+#' gist('f1403260eb92f5dfa7e1')
 #'
 #' as.gist('f1403260eb92f5dfa7e1')
 #' as.gist(10)
 #' as.gist(gist('f1403260eb92f5dfa7e1'))
 #'
+#' # from a url
+#' x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
+#' as.gist(x)
+#' 
 #' ids <- sapply(gists(), "[[", "id")
 #' gist(ids[1])
 #' gist(ids[2])
@@ -38,7 +42,7 @@
 #' }
 
 gist <- function(id, ...){
-  res <- gist_GET(switch_url('id', id), gist_auth(), ghead(), ...)
+  res <- gist_GET(switch_url('id', normalize_id(id)), gist_auth(), ghead(), ...)
   as.gist(res)
 }
 
@@ -53,17 +57,40 @@ as.gist.gist <- function(x) x
 as.gist.numeric <- function(x) gist(x)
 
 #' @export
-as.gist.character <- function(x) gist(x)
+as.gist.character <- function(x) {
+  if (is_url(x)) {
+    x <- get_gistid(x)
+  }
+  gist(x)
+}
 
 #' @export
 as.gist.list <- function(x) list2gist(x)
+
+normalize_id <- function(x) {
+  if (is_url(x)) {
+    get_gistid(x)
+  } else {
+    x
+  }
+}
+
+is_url <- function(x){
+  grepl("https?://", x, ignore.case = TRUE) || grepl("localhost:[0-9]{4}", x, ignore.case = TRUE)
+}
+
+get_gistid <- function(x) {
+  strextract(x, "[0-9a-z]+$")
+}
 
 list2gist <- function(x){
   nmz <- c('url','forks_url','commits_url','id','git_pull_url','git_push_url','html_url',
            'files','public','created_at','updated_at','description','comments','user',
            'comments_url','owner','fork_of','forks','history')
-  if(!all(names(x) %in% nmz)) stop("Not coerceable to a gist")
-  structure(x, class="gist")
+  if (!all(names(x) %in% nmz)) {
+    stop("Not coerceable to a gist", call. = FALSE)
+  }
+  structure(x, class = "gist")
 }
 
 #' @export
