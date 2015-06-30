@@ -17,6 +17,7 @@
 forks <- function(gist, page=NULL, per_page=30, ...) {
   gist <- as.gist(gist)
   args <- gist_compact(list(page = page, per_page = per_page))
+  if (length(args) == 0) args <- NULL
   res <- gist_GET(sprintf('%s/gists/%s/forks', ghbase(), gist$id), gist_auth(), ghead(), args, ...)
   lapply(res, structure, class = "gist")
 }

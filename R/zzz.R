@@ -63,7 +63,7 @@ ghead <- function(){
   add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
 }
 
-gist_GET <- function(url, auth, headers, args=list(), ...){
+gist_GET <- function(url, auth, headers, args=NULL, ...){
   response <- GET(url, auth, headers, query = args, ...)
   process(response)
 }

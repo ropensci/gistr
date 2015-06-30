@@ -8,8 +8,8 @@
 #' }
 
 rate_limit <- function(...){
-  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), gist_auth(), ghead(), list(), ...)
-  structure(tmp, class="gist_rate")
+  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), gist_auth(), ghead(), NULL, ...)
+  structure(tmp, class = "gist_rate")
 }
 
 #' @export
