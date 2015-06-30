@@ -91,11 +91,15 @@
 #' file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 #' gist_create(files=list(file1, file2, file3), knit = TRUE)
 #' gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
+#' 
+#' # Use rmarkdown::render instead of knitr::knit
+#' file <- system.file("examples", "yaml_frontmatter_eg.Rmd", package = "gistr")
+#' gist_create(file, knit = TRUE, rmarkdown = TRUE)
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
   filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE,
-  imgur_inject = FALSE, ...) {
+  imgur_inject = FALSE, rmarkdown = FALSE, ...) {
 
   if (!is.null(code)) files <- code_handler(code, filename)
   if (knit) {
@@ -109,7 +113,7 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
         writeLines(code, ff)
       }
       inject_imgur(ff, imgur_inject)
-      ff <- knit_render(ff, knitopts, renderopts)
+      ff <- knit_render(ff, knitopts, renderopts, rmarkdown)
       if (include_source) ff <- c(orig_files, ff)
       allfiles[[i]] <- ff
     }
@@ -125,10 +129,10 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
   return( gist )
 }
 
-knit_render <- function(x, knitopts, renderopts) {
+knit_render <- function(x, knitopts, renderopts, rmarkdown) {
   if (grepl("\\.[rR]md$|\\.[rR]nw$", x)) {
     ext <- "knitr"
-  } else if (grepl("\\.[rR]$", x)) {
+  } else if (grepl("\\.[rR]$", x) || rmarkdown) {
     ext <- "rmarkdown"
   }
   switch(ext,

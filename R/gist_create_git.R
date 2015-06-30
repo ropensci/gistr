@@ -72,7 +72,7 @@
 gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
                             knit = FALSE, code = NULL, filename = "code.R",
                             knitopts=list(), renderopts=list(), include_source = FALSE, 
-                            artifacts = FALSE, imgur_inject = FALSE, ...) {
+                            artifacts = FALSE, imgur_inject = FALSE, rmarkdown = FALSE, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
@@ -98,7 +98,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
         writeLines(code, ff)
       }
       inject_imgur(ff, imgur_inject)
-      ff <- knit_render(ff, knitopts, renderopts)
+      ff <- knit_render(ff, knitopts, renderopts, rmarkdown)
       if (artifacts) {
         file_artifacts <- all_artifacts(ff)
         ff <- c(ff, file_artifacts)

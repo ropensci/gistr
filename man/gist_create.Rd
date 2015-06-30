@@ -7,7 +7,7 @@
 gist_create(files = NULL, description = "", public = TRUE,
   browse = TRUE, code = NULL, filename = "code.R", knit = FALSE,
   knitopts = list(), renderopts = list(), include_source = FALSE,
-  imgur_inject = FALSE, ...)
+  imgur_inject = FALSE, rmarkdown = FALSE, ...)
 }
 \arguments{
 \item{files}{Files to upload}
@@ -38,6 +38,9 @@ gist in addition to the knitted output.}
 \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored
 if the file is a sweave/latex file because the rendered pdf can't be uploaded
 anyway. Default: FALSE}
+
+\item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}}
+instead of \code{\link[knitr]{knit}} to render the document.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
@@ -131,6 +134,10 @@ gist_create(files=list(file1, file2), knit = TRUE)
 file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 gist_create(files=list(file1, file2, file3), knit = TRUE)
 gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
+
+# Use rmarkdown::render instead of knitr::knit
+file <- system.file("examples", "yaml_frontmatter_eg.Rmd", package = "gistr")
+gist_create(file, knit = TRUE, rmarkdown = TRUE)
 }
 }
 \seealso{

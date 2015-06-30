@@ -7,7 +7,7 @@
 gist_create_git(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts = list(), renderopts = list(), include_source = FALSE,
-  artifacts = FALSE, imgur_inject = FALSE, ...)
+  artifacts = FALSE, imgur_inject = FALSE, rmarkdown = FALSE, ...)
 }
 \arguments{
 \item{files}{Files to upload}
@@ -42,6 +42,9 @@ artifacts of certain file exensions. Default: \code{FALSE}}
 \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored
 if the file is a sweave/latex file because the rendered pdf can't be uploaded
 anyway. Default: FALSE}
+
+\item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}}
+instead of \code{\link[knitr]{knit}} to render the document.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
