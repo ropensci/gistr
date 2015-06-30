@@ -51,8 +51,9 @@ In `gistr` you can use pipes, introduced perhaps first in R in the package `magr
 
 
 ```r
-gists(what = "minepublic")[[6]] %>% # List my public gists, and index 1st
-  add_files("~/alm_othersources.md") %>% # Add new file to that gist
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+gists(what = "minepublic")[[1]] %>% # List my public gists, and index 1st
+  add_files(file) %>% # Add new file to that gist
   update() # update sends a PATCH command to Gists API to add file to your gist
 ```
 
@@ -60,8 +61,9 @@ And a non-piping workflow that does the same exact thing:
 
 
 ```r
+file <- system.file("examples", "example1.md", package = "gistr")
 g <- gists(what = "minepublic")[[1]]
-g <- add_files(g, "~/alm_othersources.md")
+g <- add_files(g, file)
 update(g)
 ```
 
@@ -69,7 +71,7 @@ Or you could string them all together in one line (but it's rather difficult to 
 
 
 ```r
-update(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
+update(add_files(gists(what = "minepublic")[[1]], file))
 ```
 
 ## Rate limit information
@@ -81,8 +83,8 @@ rate_limit()
 
 ```
 #> Rate limit: 5000
-#> Remaining:  4782
-#> Resets in:  32 minutes
+#> Remaining:  4956
+#> Resets in:  47 minutes
 ```
 
 
@@ -97,49 +99,49 @@ gists(per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>0d0236018fd2e18f76eb
-#>   URL: https://gist.github.com/0d0236018fd2e18f76eb
-#>   Description: 
+#> <gist>d88a5676acb507dcbf5c
+#>   URL: https://gist.github.com/d88a5676acb507dcbf5c
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:13Z / 2015-05-01T04:10:13Z
-#>   Files: concurrency-in-go.md
+#>   Created/Edited: 2015-06-30T13:56:53Z / 2015-06-30T13:56:53Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>cc1a45d62d544b2fbb68
-#>   URL: https://gist.github.com/cc1a45d62d544b2fbb68
-#>   Description: 
+#> <gist>9618e728a094c0770eec
+#>   URL: https://gist.github.com/9618e728a094c0770eec
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:13Z / 2015-05-01T04:10:15Z
-#>   Files: alm.md, code.R
-#>   Truncated?: FALSE, FALSE
+#>   Created/Edited: 2015-06-30T13:56:42Z / 2015-06-30T13:56:42Z
+#>   Files: config.json
+#>   Truncated?: FALSE
 ```
 
 Since a certain date/time
 
 
 ```r
-gists(since='2014-05-26T00:00:00Z', per_page = 2)
+gists(since = '2014-05-26T00:00:00Z', per_page = 2)
 ```
 
 ```
 #> [[1]]
-#> <gist>0d0236018fd2e18f76eb
-#>   URL: https://gist.github.com/0d0236018fd2e18f76eb
-#>   Description: 
+#> <gist>d88a5676acb507dcbf5c
+#>   URL: https://gist.github.com/d88a5676acb507dcbf5c
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:13Z / 2015-05-01T04:10:13Z
-#>   Files: concurrency-in-go.md
+#>   Created/Edited: 2015-06-30T13:56:53Z / 2015-06-30T13:56:53Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>cc1a45d62d544b2fbb68
-#>   URL: https://gist.github.com/cc1a45d62d544b2fbb68
-#>   Description: 
+#> <gist>9618e728a094c0770eec
+#>   URL: https://gist.github.com/9618e728a094c0770eec
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:13Z / 2015-05-01T04:10:15Z
-#>   Files: alm.md, code.R
-#>   Truncated?: FALSE, FALSE
+#>   Created/Edited: 2015-06-30T13:56:42Z / 2015-06-30T13:56:42Z
+#>   Files: config.json
+#>   Truncated?: FALSE
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -151,20 +153,20 @@ gists('minepublic', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>cc1a45d62d544b2fbb68
-#>   URL: https://gist.github.com/cc1a45d62d544b2fbb68
+#> <gist>e91913daaabfc7d94001
+#>   URL: https://gist.github.com/e91913daaabfc7d94001
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:13Z / 2015-05-01T04:10:15Z
-#>   Files: alm.md, code.R
-#>   Truncated?: FALSE, FALSE
+#>   Created/Edited: 2015-06-30T13:55:39Z / 2015-06-30T13:55:42Z
+#>   Files: code.R
+#>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>a72d9b3b59844f82e87b
-#>   URL: https://gist.github.com/a72d9b3b59844f82e87b
+#> <gist>fc26e62b6d641340c039
+#>   URL: https://gist.github.com/fc26e62b6d641340c039
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:12Z / 2015-05-01T04:10:12Z
+#>   Created/Edited: 2015-06-30T13:55:39Z / 2015-06-30T13:55:39Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -200,20 +202,20 @@ stuffpath <- system.file("examples", "stuff.md", package = "gistr")
 
 
 ```r
-gist_create(files=stuffpath, description='a new cool gist')
+gist_create(files = stuffpath, description = 'a new cool gist')
 ```
 
 
 ```r
-gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
+gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
 ```
-#> <gist>ac19258b9bd255a09981
-#>   URL: https://gist.github.com/ac19258b9bd255a09981
+#> <gist>7358f7874a7b7b92ac1d
+#>   URL: https://gist.github.com/7358f7874a7b7b92ac1d
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:34Z / 2015-05-01T04:10:34Z
+#>   Created/Edited: 2015-06-30T13:57:00Z / 2015-06-30T13:57:00Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -222,21 +224,21 @@ Or, wrap `gist_create()` around some code in your R session/IDE, like so, with j
 
 
 ```r
-gist_create(code={'
+gist_create(code = {'
 x <- letters
 numbers <- runif(8)
 numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
-'}, browse=FALSE)
+'}, browse = FALSE)
 ```
 
 ```
-#> <gist>d5f968cef4c80e7ea9c3
-#>   URL: https://gist.github.com/d5f968cef4c80e7ea9c3
+#> <gist>a9005601f4c95f4c74c0
+#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:34Z / 2015-05-01T04:10:34Z
+#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:01Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -246,7 +248,7 @@ You can also knit an input file before posting as a gist:
 
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-gist_create(file, description='a new cool gist', knit=TRUE)
+gist_create(file, description = 'a new cool gist', knit = TRUE)
 #> <gist>4162b9c53479fbc298db
 #>   URL: https://gist.github.com/4162b9c53479fbc298db
 #>   Description: a new cool gist
@@ -259,10 +261,10 @@ Or code blocks before (note that code blocks without knitr block demarcations wi
 
 
 ```r
-gist_create(code={'
+gist_create(code = {'
 x <- letters
 (numbers <- runif(8))
-'}, knit=TRUE)
+'}, knit = TRUE)
 #> <gist>ec45c396dee4aa492139
 #>   URL: https://gist.github.com/ec45c396dee4aa492139
 #>   Description:
@@ -278,15 +280,15 @@ knit a local file
 
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
+run(file, knitopts = list(quiet = TRUE)) %>% gist_create(browse = FALSE)
 ```
 
 ```
-#> <gist>4febc43f823a3ecd6f7e
-#>   URL: https://gist.github.com/4febc43f823a3ecd6f7e
+#> <gist>3b912eaa0cf4f466df64
+#>   URL: https://gist.github.com/3b912eaa0cf4f466df64
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:34Z / 2015-05-01T04:10:34Z
+#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:01Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -300,7 +302,7 @@ knit a code block (`knitr` code block notation missing, do add that in) (result 
 run({'
 x <- letters
 (numbers <- runif(8))
-'}) %>% gist_create
+'}) %>% gist_create()
 ```
 
 knit a file from a gist, has to get file first (result not shown)
@@ -320,9 +322,9 @@ gists()[[1]] %>% commits()
 ```
 #> [[1]]
 #> <commit>
-#>   Version: 9eb068aef0f299cd011fc7b5db84237ce5b86e19
+#>   Version: dabb3f6b08a80842df6e77a0b2b48c9a2fb4b274
 #>   User: sckott
-#>   Commited: 2015-05-01T04:10:34Z
+#>   Commited: 2015-06-30T13:57:01Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -340,7 +342,7 @@ gist('7ddb9810fc99c84c65ec') %>% star()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T13:55:41Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -357,7 +359,7 @@ gist('7ddb9810fc99c84c65ec') %>% unstar()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T13:57:02Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -381,11 +383,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>d5f968cef4c80e7ea9c3
-#>   URL: https://gist.github.com/d5f968cef4c80e7ea9c3
+#> <gist>a9005601f4c95f4c74c0
+#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:34Z / 2015-05-01T04:10:36Z
+#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:04Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -394,9 +396,19 @@ Delete files
 
 
 ```r
-gists(what = "minepublic")[[1]]
-  delete_files("code.R") %>%
+gists(what = "minepublic")[[1]] %>% 
+  delete_files(file) %>%
   update()
+```
+
+```
+#> <gist>a9005601f4c95f4c74c0
+#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
+#>   Description: 
+#>   Public: TRUE
+#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:04Z
+#>   Files: code.R
+#>   Truncated?: FALSE
 ```
 
 ## Open a gist in your default browser
@@ -416,7 +428,7 @@ gists()[[1]] %>% embed()
 ```
 
 ```
-#> [1] "<script src=\"https://gist.github.com/sckott/d5f968cef4c80e7ea9c3.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com//d5e4ac4ad72be5a03d7e.js\"></script>"
 ```
 
 ### List forks
@@ -425,7 +437,7 @@ Returns a list of `gist` objects, just like `gists()`
 
 
 ```r
-gist(id='1642874') %>% forks(per_page=2)
+gist(id = '1642874') %>% forks(per_page = 2)
 ```
 
 ```
@@ -434,7 +446,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1642989
 #>   Description: Spline Transition
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-04-15T10:16:23Z
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-06-11T19:40:48Z
 #>   Files: 
 #>   Truncated?: 
 #> 
@@ -443,7 +455,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-04-15T10:16:33Z
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-06-11T19:40:48Z
 #>   Files: 
 #>   Truncated?:
 ```
@@ -459,12 +471,12 @@ g <- gists()
 ```
 
 ```
-#> <gist>198a3d98aefe5432cedd
-#>   URL: https://gist.github.com/198a3d98aefe5432cedd
+#> <gist>fec90cd27fc99e6a1cb8
+#>   URL: https://gist.github.com/fec90cd27fc99e6a1cb8
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T04:10:37Z / 2015-05-01T04:10:37Z
-#>   Files: Servidor.js
+#>   Created/Edited: 2015-06-30T13:57:05Z / 2015-06-30T13:57:05Z
+#>   Files: gistfile1.txt
 #>   Truncated?: FALSE
 ```
 
@@ -480,8 +492,8 @@ The API is described at [https://github.com/pelias/pelias](https://github.com/pe
 ```r
 library('httr')
 base <- "http://pelias.mapzen.com/search"
-res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
-json <- content(res, as = "text")
+res <- httr::GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
+json <- httr::content(res, "text")
 gist_create(code = json, filename = "pelias_test.geojson")
 #> <gist>017214637bcfeb198070
 #>   URL: https://gist.github.com/017214637bcfeb198070
