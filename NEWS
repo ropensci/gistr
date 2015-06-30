@@ -6,7 +6,10 @@ NEW FEATURES
 * Gained new function `gistr_save()` to save gist files to disk easily and optionally open
 them in your editor/R GUI (#47)
 * `gist()` now accepts either a gist ID or full or partial URL's for a gist
-* 
+
+MINOR IMPROVEMENTS
+
+* Can now optionally use `rmarkdown::render()` with `gist_create()` (#52)
 
 BUG FIXES
 

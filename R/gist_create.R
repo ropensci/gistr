@@ -93,8 +93,9 @@
 #' gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
 #' 
 #' # Use rmarkdown::render instead of knitr::knit
-#' file <- system.file("examples", "yaml_frontmatter_eg.Rmd", package = "gistr")
-#' gist_create(file, knit = TRUE, rmarkdown = TRUE)
+#' file <- system.file("examples", "rmarkdown_eg.Rmd", package = "gistr")
+#' gist_create(file, knit = TRUE, rmarkdown = TRUE, imgur_inject = TRUE,
+#'    renderopts = list(output_format = "md_document"))
 #' }
 
 gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,

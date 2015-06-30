@@ -1,0 +1,29 @@
+```{r echo=FALSE}
+knitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
+```
+
+---
+title: "Some plots and stuff"
+author: "Foo Bar"
+date: "June 30, 2015"
+---
+
+```{r}
+library("ggplot2")
+```
+
+## Scatter plot
+
+```{r tidy=FALSE}
+ggplot(mtcars, aes(cyl, hp)) + 
+  geom_point() + 
+  theme_grey(base_size = 18)
+```
+
+## Bar plot
+
+```{r}
+ggplot(iris, aes(Species, Sepal.Length)) + 
+  stat_boxplot() +
+  theme_grey(base_size = 18)
+```
