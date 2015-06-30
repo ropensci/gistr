@@ -112,6 +112,9 @@ gist_create(file, knit=TRUE)
 ## but will involve having to use git
 file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE)
+## works with ggplot2 as well
+file <- system.file("examples", "ggplot_imgur.Rmd", package = "gistr")
+gist_create(file, knit=TRUE)
 
 # Render `.R` files
 file <- system.file("examples", "example1.R", package = "gistr")

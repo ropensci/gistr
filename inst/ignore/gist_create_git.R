@@ -35,6 +35,12 @@
 #' this function can easily collect all artifacts coming out of a knit process.
 #' @seealso \code{\link{gist_create}}, \code{\link{gist_create_obj}}
 #' @examples \dontrun{
+#' # prepare a directory and a file
+#' dir.create("~/gitgist")
+#' file <- system.file("examples", "stuff.md", package = "gistr")
+#' writeLines(readLines(file), con = "~/gitgist/stuff.md")
+#' 
+#' # create a gist
 #' gist_create_git(files = "~/gitgist/stuff.md")
 #' gist_create_git(files = c("~/gitgist/stuff.md", "~/gitgist/icanhazallthedata.md"))
 #' gist_create_git(files = "~/gitgist")
