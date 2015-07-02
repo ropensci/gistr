@@ -1,6 +1,8 @@
 context("gist_create")
 
 test_that("gist_create works from a file", {
+  skip_on_cran()
+  
   file <- system.file("examples", "stuff.Rmd", package = "gistr")
   g <- gist_create(file, browse = FALSE, knitopts = list(quiet = TRUE))
   expect_is(g, "gist")
@@ -13,6 +15,8 @@ test_that("gist_create works from a file", {
 })
 
 test_that("gist_create works from a code block", {
+  skip_on_cran()
+  
   h <- gist_create(code = {'
   x <- letters
   (numbers <- runif(8))
@@ -28,6 +32,8 @@ test_that("gist_create works from a code block", {
 })
 
 test_that("gist_create works to upload images", {
+  skip_on_cran()
+  
   ## using imgur - if you're file uses imgur or similar, you're good
   file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
   res1 <- gist_create(file, knit = TRUE, browse = FALSE, knitopts = list(quiet = TRUE))
@@ -46,11 +52,15 @@ test_that("gist_create works to upload images", {
 })
 
 test_that("gist_create fails correctly when binary files passed", {
+  skip_on_cran()
+  
   file <- system.file("examples", "file.png", package = "gistr")
   expect_error(gist_create(file, browse = FALSE), "Binary files not supported")
 })
 
 test_that("gist_create fails correctly when directory passed", {
+  skip_on_cran()
+  
   file <- system.file("examples", "file.png", package = "gistr")
   direct <- tempdir()
   expect_error(gist_create(direct, browse = FALSE), "Directories not supported")
@@ -59,6 +69,8 @@ test_that("gist_create fails correctly when directory passed", {
 })
 
 test_that("gist_create passes informative error messages correctly", {
+  skip_on_cran()
+  
   file <- system.file("examples", "file.png", package = "gistr")
   expect_error(gist_create(file, browse = FALSE), "Binary files not supported")
 })

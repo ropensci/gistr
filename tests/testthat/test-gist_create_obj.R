@@ -1,6 +1,8 @@
 context("gist_create_obj")
 
 test_that("gist_create_obj works from a data.frame", {
+  skip_on_cran()
+  
   ## data.frame
   ### by default makes pretty table in markdown format
   row.names(mtcars) <- NULL
@@ -22,6 +24,8 @@ test_that("gist_create_obj works from a data.frame", {
 })
 
 test_that("gist_create_obj works from a matrix", {
+  skip_on_cran()
+  
   mtmat <- as.matrix(mtcars)
   mat_1 <- gist_create_obj(mtmat, browse = FALSE)
   
@@ -34,6 +38,8 @@ test_that("gist_create_obj works from a matrix", {
 })
 
 test_that("gist_create_obj works from a list", {
+  skip_on_cran()
+  
   mtlist <- apply(mtcars, 1, as.list)
   list_1 <- gist_create_obj(mtlist, browse = FALSE)
   

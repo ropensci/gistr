@@ -2,21 +2,29 @@
 context("gist")
 
 test_that("gist works", {
+  skip_on_cran()
+  
   expect_is(gist(id = 'f1403260eb92f5dfa7e1'), "gist")
 })
 
 test_that("as.gist works", {
+  skip_on_cran()
+  
   expect_is(as.gist('f1403260eb92f5dfa7e1'), "gist")
   expect_is(as.gist(10), "gist")
   expect_is(as.gist(gist('f1403260eb92f5dfa7e1')), "gist")
 })
 
 test_that("config options work", {
+  skip_on_cran()
+  
   library('httr')
   expect_error(gist(10, config = timeout(0.001)))
 })
 
 test_that("passing in a URL or URL fragment", {
+  skip_on_cran()
+  
   x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
   gurl <- as.gist(x)
   gurl2 <- gist(x)

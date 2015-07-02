@@ -1,6 +1,8 @@
 context("star")
 
 test_that("star works", {
+  skip_on_cran()
+  
   id <- '7ddb9810fc99c84c65ec'
   expect_message(gist(id) %>% star(), "Success, gist starred!")
   expect_message(gist(id) %>% star_check(), "TRUE")
@@ -14,6 +16,8 @@ test_that("star works", {
 })
 
 test_that("star works", {
+  skip_on_cran()
+  
   file <- system.file("examples", "stuff.Rmd", package = "gistr")
   g <- gist_create(file, browse = FALSE)
   expect_is(g, "gist")
