@@ -1,17 +1,19 @@
 gistr 0.3.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
-* Gained new function `gistr_save()` to save gist files to disk easily and optionally open
-them in your editor/R GUI (#47)
-* `gist()` now accepts either a gist ID or full or partial URL's for a gist
+* Gained new function `gistr_save()` to save gist files to disk easily and optionally open them in your editor/R GUI (#47). In addition, files saved to a directory, with the dir named by the gist id (#49)
+* `gist()` now accepts either a gist ID or full or partial URL's for a gist (#48)
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * Can now optionally use `rmarkdown::render()` with `gist_create()` (#52)
+* Explicitly import non-base R pkg functions, so importing from `utils`, `methods`, and `stats` (#53)
+* Can now toggle use of `rmarkdown` package with a parameter in `gist_create()` (#52)
+* Better error messages from the GitHub API (#42)
 
-BUG FIXES
+### BUG FIXES
 
 * Fixed problem with `httr` `v1` where empty list not allowed to pass to 
 the `query` parameter in `GET` (#51)
@@ -19,7 +21,7 @@ the `query` parameter in `GET` (#51)
 gistr 0.2.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * `gistr_create()` can now optionally include source file if `knit=TRUE` using the new
 parameter `include_source` (#19)
@@ -33,7 +35,7 @@ GitHub API is great, but is in nested list format (after conversion from JSON) -
 is rather hard to manipulate. `tabl()` makes a data.frame from output of `gist()`,
 `gists()`, `as.gist()`, and `commits()` (#25)
 
-MINOR IMPROVEMENTS
+### MINOR IMPROVEMENTS
 
 * `gistr_create()` works with `.Rnw` files, and example `.Rnw` file included in the package. (#20)
 * Added ability in `gist_create()` to optionally include the source file passed into
@@ -45,7 +47,7 @@ and embeds links to the images in your document. (#33)
 the returned object says it's truncated. You can download the whole thing using
 the `raw_url`, or for larger than 10 MB to the `git_pull_url`. (#26)
 
-BUG FIXES
+### BUG FIXES
 
 * Fixed unicode problem on Windows (#37)
 * Improved error catching (#28)
@@ -54,6 +56,6 @@ BUG FIXES
 gistr 0.1.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * released to CRAN
