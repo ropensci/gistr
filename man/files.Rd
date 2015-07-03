@@ -26,9 +26,9 @@ Add files to a gist object
 \examples{
 \dontrun{
 add_files("~/stuff.Rmd")
-update_files()
-delete_files()
-rename_files()
+# update_files()
+# delete_files()
+# rename_files()
 }
 }
 

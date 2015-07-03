@@ -122,7 +122,7 @@ gist_create <- function(files=NULL, description = "", public = TRUE, browse = TR
     allfiles <- files
   }
   # is_binary(allfiles)
-  is_dir(allfiles)
+  is_dir(unlist(allfiles))
   body <- creategist(unlist(allfiles), description, public)
   res <- gist_POST(paste0(ghbase(), '/gists'), gist_auth(), ghead(), body, ...)
   gist <- as.gist(res)

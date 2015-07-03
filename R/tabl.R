@@ -33,7 +33,7 @@
 #' ## many
 #' gg <- gists()
 #' (urls <- vapply(gg, "[[", "", "html_url"))
-#' sapply(urls[1:5], as.gist) %>% tabl()
+#' lapply(urls[1:5], as.gist) %>% tabl()
 #' }
 tabl <- function(x, ...) {
   UseMethod("tabl")

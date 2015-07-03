@@ -7,9 +7,9 @@
 #' @template all
 #' @examples \dontrun{
 #' add_files("~/stuff.Rmd")
-#' update_files()
-#' delete_files()
-#' rename_files()
+#' # update_files()
+#' # delete_files()
+#' # rename_files()
 #' }
 
 add_files <- function(gist, ...)

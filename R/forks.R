@@ -27,7 +27,7 @@ forks <- function(gist, page=NULL, per_page=30, ...) {
 #' @export
 #' @param gist A gist object or something coerceable to a gist
 #' @param ... Further named args to \code{\link[httr]{GET}}
-#'#' @return A gist class object
+#' @return A gist class object
 #' @examples \dontrun{
 #' # fork a gist
 #' gists()[[1]] %>% fork()
@@ -38,7 +38,7 @@ forks <- function(gist, page=NULL, per_page=30, ...) {
 #' # extract the last one
 #' gist(id='1642874') %>%
 #'  forks() %>%
-#'  extract(length(.))
+#'  .[length(.)]
 #' }
 
 fork <- function(gist, ...) {
