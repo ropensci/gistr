@@ -14,7 +14,7 @@
 #' 
 #' Using the \code{GITHUB_PAT} is recommended.
 #' 
-#' @importFrom utils browseURL
+#' @importFrom utils browseURL file.edit
 #' @importFrom methods is
 #' @importFrom stats setNames
 #' @name gistr-package
