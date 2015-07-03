@@ -5,37 +5,46 @@
 #' @param description (character) Brief description of gist (optional)
 #' @template all
 #' @examples \dontrun{
+#' file1 <- system.file("examples", "alm.md", package = "gistr")
+#' file2 <- system.file("examples", "zoo.json", package = "gistr")
+#' 
 #' # add new files
 #' gists(what = "minepublic")[[3]] %>%
-#'  add_files("~/zillowstuff.Rmd", "~/zoo.json") %>%
+#'  add_files(file1, file2) %>%
 #'  update()
 #'
 #' # update existing files
 #' ### file name has to match to current name
 #' gists(what = "minepublic")[[3]] %>%
-#'  update_files("~/zillowstuff.Rmd") %>%
+#'  update_files(file1) %>%
 #'  update()
 #'
 #' # delete existing files
 #' ### again, file name has to match to current name
 #' gists(what = "minepublic")[[3]] %>%
-#'  delete_files("~/zillowstuff.Rmd") %>%
+#'  delete_files(file1, file2) %>%
 #'  update()
 #'
 #' # rename existing files
 #' # For some reason, this operation has to upload the content too
 #' ### first name is old file name with path (must match), and second is new file name (w/o path)
+#' ## add first
 #' gists(what = "minepublic")[[3]] %>%
-#'  rename_files(list("~/zillowstuff.Rmd", "zillow_pillow.Rmd")) %>%
+#'  add_files(file1, file2) %>%
+#'  update()
+#' ## then rename
+#' gists(what = "minepublic")[[3]] %>%
+#'  rename_files(list(file1, "newfile.md")) %>%
 #'  update()
 #' ### you can pass in many renames
-#' rename_files(list("~/zillowstuff.Rmd", "zillow_pillow.Rmd"),
-#'              list("~/myfile.Rmd", "herfile.Rmd"))
+#' gists(what = "minepublic")[[3]] %>%
+#'  rename_files(list(file1, "what.md"), list(file2, "new.json")) %>%
+#'  update()
 #' }
 
-update <- function(gist, description = gist$description, ...)
-{
-  files <- list(update=gist$update_files, add=gist$add_files, delete=gist$delete_files, rename=gist$rename_files)
+update <- function(gist, description = gist$description, ...) {
+  files <- list(update = gist$update_files, add = gist$add_files, 
+                delete = gist$delete_files, rename = gist$rename_files)
   body <- payload(filenames = files, description)
   res <- gist_PATCH(gist$id, gist_auth(), ghead(), body, ...)
   as.gist(res)
