@@ -1,6 +1,7 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{gistr vignette}
+%\VignetteEncoding{UTF-8}
 -->
 
 
@@ -83,8 +84,8 @@ rate_limit()
 
 ```
 #> Rate limit: 5000
-#> Remaining:  4956
-#> Resets in:  47 minutes
+#> Remaining:  4908
+#> Resets in:  49 minutes
 ```
 
 
@@ -99,20 +100,20 @@ gists(per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>d88a5676acb507dcbf5c
-#>   URL: https://gist.github.com/d88a5676acb507dcbf5c
-#>   Description: Bootstrap Customizer Config
+#> <gist>9a61e3d5b74722824309
+#>   URL: https://gist.github.com/9a61e3d5b74722824309
+#>   Description: FunctionSet model for Chainer based Convolutional Denoising Autoencoder
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:56:53Z / 2015-06-30T13:56:53Z
-#>   Files: config.json
+#>   Created/Edited: 2015-07-03T00:20:15Z / 2015-07-03T00:20:16Z
+#>   Files: conv_dae.py
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>9618e728a094c0770eec
-#>   URL: https://gist.github.com/9618e728a094c0770eec
+#> <gist>4ae08d3a0bc3ac4862da
+#>   URL: https://gist.github.com/4ae08d3a0bc3ac4862da
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:56:42Z / 2015-06-30T13:56:42Z
+#>   Created/Edited: 2015-07-03T00:19:29Z / 2015-07-03T00:19:29Z
 #>   Files: config.json
 #>   Truncated?: FALSE
 ```
@@ -126,20 +127,20 @@ gists(since = '2014-05-26T00:00:00Z', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>d88a5676acb507dcbf5c
-#>   URL: https://gist.github.com/d88a5676acb507dcbf5c
-#>   Description: Bootstrap Customizer Config
+#> <gist>9a61e3d5b74722824309
+#>   URL: https://gist.github.com/9a61e3d5b74722824309
+#>   Description: FunctionSet model for Chainer based Convolutional Denoising Autoencoder
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:56:53Z / 2015-06-30T13:56:53Z
-#>   Files: config.json
+#>   Created/Edited: 2015-07-03T00:20:15Z / 2015-07-03T00:20:16Z
+#>   Files: conv_dae.py
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>9618e728a094c0770eec
-#>   URL: https://gist.github.com/9618e728a094c0770eec
+#> <gist>4ae08d3a0bc3ac4862da
+#>   URL: https://gist.github.com/4ae08d3a0bc3ac4862da
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:56:42Z / 2015-06-30T13:56:42Z
+#>   Created/Edited: 2015-07-03T00:19:29Z / 2015-07-03T00:19:29Z
 #>   Files: config.json
 #>   Truncated?: FALSE
 ```
@@ -153,20 +154,20 @@ gists('minepublic', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>e91913daaabfc7d94001
-#>   URL: https://gist.github.com/e91913daaabfc7d94001
+#> <gist>4fd5a913e911ad70098c
+#>   URL: https://gist.github.com/4fd5a913e911ad70098c
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:55:39Z / 2015-06-30T13:55:42Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:22Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>fc26e62b6d641340c039
-#>   URL: https://gist.github.com/fc26e62b6d641340c039
+#> <gist>974fd41ff30de9814cc1
+#>   URL: https://gist.github.com/974fd41ff30de9814cc1
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:55:39Z / 2015-06-30T13:55:39Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -211,11 +212,11 @@ gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
 ```
-#> <gist>7358f7874a7b7b92ac1d
-#>   URL: https://gist.github.com/7358f7874a7b7b92ac1d
+#> <gist>f6d0df13305a082f5247
+#>   URL: https://gist.github.com/f6d0df13305a082f5247
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:00Z / 2015-06-30T13:57:00Z
+#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -234,11 +235,11 @@ numbers
 ```
 
 ```
-#> <gist>a9005601f4c95f4c74c0
-#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
+#> <gist>f80330754db203f8bb03
+#>   URL: https://gist.github.com/f80330754db203f8bb03
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:01Z
+#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -284,11 +285,11 @@ run(file, knitopts = list(quiet = TRUE)) %>% gist_create(browse = FALSE)
 ```
 
 ```
-#> <gist>3b912eaa0cf4f466df64
-#>   URL: https://gist.github.com/3b912eaa0cf4f466df64
+#> <gist>f6214845b1f64dac34e9
+#>   URL: https://gist.github.com/f6214845b1f64dac34e9
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:01Z
+#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -322,9 +323,9 @@ gists()[[1]] %>% commits()
 ```
 #> [[1]]
 #> <commit>
-#>   Version: dabb3f6b08a80842df6e77a0b2b48c9a2fb4b274
+#>   Version: aa6fd931a73dee814401790c0367ac672711d975
 #>   User: sckott
-#>   Commited: 2015-06-30T13:57:01Z
+#>   Commited: 2015-07-03T00:20:27Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -342,7 +343,7 @@ gist('7ddb9810fc99c84c65ec') %>% star()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T13:55:41Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T00:19:20Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -359,7 +360,7 @@ gist('7ddb9810fc99c84c65ec') %>% unstar()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T13:57:02Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T00:20:29Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -383,11 +384,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>a9005601f4c95f4c74c0
-#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
+#> <gist>f80330754db203f8bb03
+#>   URL: https://gist.github.com/f80330754db203f8bb03
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:04Z
+#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:29Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -402,11 +403,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>a9005601f4c95f4c74c0
-#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
+#> <gist>f80330754db203f8bb03
+#>   URL: https://gist.github.com/f80330754db203f8bb03
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:04Z
+#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:30Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -428,7 +429,7 @@ gists()[[1]] %>% embed()
 ```
 
 ```
-#> [1] "<script src=\"https://gist.github.com//d5e4ac4ad72be5a03d7e.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/f80330754db203f8bb03.js\"></script>"
 ```
 
 ### List forks
@@ -471,13 +472,13 @@ g <- gists()
 ```
 
 ```
-#> <gist>fec90cd27fc99e6a1cb8
-#>   URL: https://gist.github.com/fec90cd27fc99e6a1cb8
+#> <gist>9eff44494c12fcbc8590
+#>   URL: https://gist.github.com/9eff44494c12fcbc8590
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:05Z / 2015-06-30T13:57:05Z
-#>   Files: gistfile1.txt
-#>   Truncated?: FALSE
+#>   Created/Edited: 2015-07-03T00:20:31Z / 2015-07-03T00:20:31Z
+#>   Files: gistfile1.txt, gistfile2.txt
+#>   Truncated?: FALSE, FALSE
 ```
 
 

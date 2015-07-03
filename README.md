@@ -93,8 +93,8 @@ update(add_files(gists(what = "minepublic")[[1]], file))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4942
-#> Resets in:  56 minutes
+#> Remaining:  4938
+#> Resets in:  50 minutes
 ```
 
 ### List gists
@@ -105,21 +105,21 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>09ec19bcff6ec38966f2
-#>   URL: https://gist.github.com/09ec19bcff6ec38966f2
-#>   Description: Solution to level 18 in Untrusted: http://alex.nisnevich.com/untrusted/
+#> <gist>feae4fee7d1debd13e58
+#>   URL: https://gist.github.com/feae4fee7d1debd13e58
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:29Z / 2015-05-01T03:46:29Z
-#>   Files: untrusted-lvl18-solution.js
+#>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
+#>   Files: gistfile1.txt
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>87192840960671e47e75
-#>   URL: https://gist.github.com/87192840960671e47e75
-#>   Description:  Virtual Joystick input script for mobile game using Unity3D.
+#> <gist>03430047a811520d880c
+#>   URL: https://gist.github.com/03430047a811520d880c
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:09Z / 2015-05-01T03:46:10Z
-#>   Files: VirtualJoystickInput
+#>   Created/Edited: 2015-07-03T00:18:30Z / 2015-07-03T00:18:30Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 ```
 
@@ -129,21 +129,21 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>09ec19bcff6ec38966f2
-#>   URL: https://gist.github.com/09ec19bcff6ec38966f2
-#>   Description: Solution to level 18 in Untrusted: http://alex.nisnevich.com/untrusted/
+#> <gist>feae4fee7d1debd13e58
+#>   URL: https://gist.github.com/feae4fee7d1debd13e58
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:29Z / 2015-05-01T03:46:29Z
-#>   Files: untrusted-lvl18-solution.js
+#>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
+#>   Files: gistfile1.txt
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>87192840960671e47e75
-#>   URL: https://gist.github.com/87192840960671e47e75
-#>   Description:  Virtual Joystick input script for mobile game using Unity3D.
+#> <gist>03430047a811520d880c
+#>   URL: https://gist.github.com/03430047a811520d880c
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:09Z / 2015-05-01T03:46:10Z
-#>   Files: VirtualJoystickInput
+#>   Created/Edited: 2015-07-03T00:18:30Z / 2015-07-03T00:18:30Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 ```
 
@@ -153,22 +153,22 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>1d2ae1b55eaf0b3aca1f
-#>   URL: https://gist.github.com/1d2ae1b55eaf0b3aca1f
+#> <gist>b15270e69c09f3b87589
+#>   URL: https://gist.github.com/b15270e69c09f3b87589
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:43:28Z / 2015-05-01T03:43:29Z
-#>   Files: stuff.md, zoo.json
-#>   Truncated?: FALSE, FALSE
-#> 
-#> [[2]]
-#> <gist>cb3905e302e37cb95bd3
-#>   URL: https://gist.github.com/cb3905e302e37cb95bd3
-#>   Description: gist gist gist
-#>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:38:26Z / 2015-05-01T03:38:26Z
+#>   Created/Edited: 2015-07-03T00:10:39Z / 2015-07-03T00:10:39Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
+#> 
+#> [[2]]
+#> <gist>abbd1a5b0cfc633cfcfd
+#>   URL: https://gist.github.com/abbd1a5b0cfc633cfcfd
+#>   Description: gist gist gist
+#>   Public: TRUE
+#>   Created/Edited: 2015-07-03T00:09:34Z / 2015-07-03T00:09:35Z
+#>   Files: stuff.md, zoo.json
+#>   Truncated?: FALSE, FALSE
 ```
 
 
@@ -194,11 +194,11 @@ You can pass in files
 ```r
 file <- system.file("examples", "stuff.md", package = "gistr")
 gist_create(file, description='a new cool gist', browse = FALSE)
-#> <gist>8e0e4994623a25890852
-#>   URL: https://gist.github.com/8e0e4994623a25890852
+#> <gist>974fd41ff30de9814cc1
+#>   URL: https://gist.github.com/974fd41ff30de9814cc1
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:39Z / 2015-05-01T03:46:39Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -225,11 +225,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>a92ccdbf9ce75d63ea24
-#>   URL: https://gist.github.com/a92ccdbf9ce75d63ea24
+#> <gist>4fd5a913e911ad70098c
+#>   URL: https://gist.github.com/4fd5a913e911ad70098c
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:39Z / 2015-05-01T03:46:39Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -274,11 +274,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>834d10cae4349169978f
-#>   URL: https://gist.github.com/834d10cae4349169978f
+#> <gist>a25bdafc43ee46a98783
+#>   URL: https://gist.github.com/a25bdafc43ee46a98783
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:40Z / 2015-05-01T03:46:40Z
+#>   Created/Edited: 2015-07-03T00:19:19Z / 2015-07-03T00:19:19Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -343,9 +343,9 @@ gist_create(file, knit=TRUE, imgur_inject = TRUE)
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: b14636efd7b6cb89398c3e2f4f5c87cdede8d191
+#>   Version: 1a418fb4968d550f15f75deb5df4d470f00c6663
 #>   User: sckott
-#>   Commited: 2015-05-01T03:46:39Z
+#>   Commited: 2015-07-03T00:19:18Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -360,7 +360,7 @@ gist('7ddb9810fc99c84c65ec') %>% star()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -374,7 +374,7 @@ gist('7ddb9810fc99c84c65ec') %>% unstar()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2014-06-27T17:50:37Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -389,11 +389,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
   update()
-#> <gist>a92ccdbf9ce75d63ea24
-#>   URL: https://gist.github.com/a92ccdbf9ce75d63ea24
+#> <gist>4fd5a913e911ad70098c
+#>   URL: https://gist.github.com/4fd5a913e911ad70098c
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:39Z / 2015-05-01T03:46:42Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:21Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -406,11 +406,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
   update()
-#> <gist>a92ccdbf9ce75d63ea24
-#>   URL: https://gist.github.com/a92ccdbf9ce75d63ea24
+#> <gist>4fd5a913e911ad70098c
+#>   URL: https://gist.github.com/4fd5a913e911ad70098c
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:39Z / 2015-05-01T03:46:43Z
+#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:22Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -429,7 +429,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com//b1984e744fc019b2226c.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/4fd5a913e911ad70098c.js\"></script>"
 ```
 
 ### List forks
@@ -444,7 +444,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1642989
 #>   Description: Spline Transition
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-04-15T10:16:23Z
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-06-11T19:40:48Z
 #>   Files: 
 #>   Truncated?: 
 #> 
@@ -453,7 +453,7 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-04-15T10:16:33Z
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-06-11T19:40:48Z
 #>   Files: 
 #>   Truncated?:
 ```
@@ -466,12 +466,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>98bc1b597b88d90d4e90
-#>   URL: https://gist.github.com/98bc1b597b88d90d4e90
-#>   Description: Solution to level 14 in Untrusted: http://alex.nisnevich.com/untrusted/
+#> <gist>b022baf5c960e864addb
+#>   URL: https://gist.github.com/b022baf5c960e864addb
+#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
 #>   Public: TRUE
-#>   Created/Edited: 2015-05-01T03:46:44Z / 2015-05-01T03:46:44Z
-#>   Files: untrusted-lvl14-solution.js
+#>   Created/Edited: 2015-07-03T00:19:23Z / 2015-07-03T00:19:23Z
+#>   Files: untrusted-lvl1-solution.js
 #>   Truncated?: FALSE
 ```
 

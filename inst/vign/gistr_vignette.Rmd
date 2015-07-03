@@ -1,13 +1,14 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{gistr vignette}
+%\VignetteEncoding{UTF-8}
 -->
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-	message=FALSE,
-	warning=FALSE,
-	comment="#>"
+	message = FALSE,
+	warning = FALSE,
+	comment = "#>"
 )
 ```
 
