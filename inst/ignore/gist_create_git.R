@@ -5,6 +5,8 @@
 #' @param artifacts (logical/character) Include artifacts or not. If \code{TRUE}, 
 #' includes all artifacts. Or you can pass in a file extension to only upload 
 #' artifacts of certain file exensions. Default: \code{FALSE}
+#' @param git_method (character) One of ssh (default) or https. If a remote already
+#' exists, we use that remote, and this parameter is ignored. 
 #' @details Note that when \code{browse=TRUE} there is a slight delay in when 
 #' we open up the gist in your default browser and when the data will display 
 #' in the gist. We could have this function sleep a while and guess when it 
@@ -78,11 +80,14 @@
 gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
   knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
-  artifacts = FALSE, imgur_inject = FALSE, ...) {
+  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
   }
+  
+  # pick git remote method
+  git_method <- match.arg(git_method, c("ssh", "https"))
   
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
@@ -126,10 +131,20 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   # create gist
   gst <- as.gist(cgist(description, public))
   # add remote
-  ra <- tryCatch(git2r::remote_add(git, "gistr", sprintf("git@gist.github.com:/%s.git", gst$id)), error = function(e) e)
+  if (git_method == "ssh") {
+    url <- sprintf("git@gist.github.com:/%s.git", gst$id)
+  } else {
+    url <- sprintf("https://gist.github.com/%s.git", gst$id)
+  }
+  ra <- tryCatch(git2r::remote_add(git, "gistr", url), error = function(e) e)
   if (is(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
   # push up files
-  git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
+  if (git_method == "ssh") {
+    git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
+  } else {
+    cred <- git2r::cred_env("GITHUB_USERNAME", "GITHUB_PAT")
+    git2r::push(git, "gistr", "refs/heads/master", force = TRUE, credentials = cred)
+  }
   # refresh gist metadata
   gst <- gist(gst$id)
   message("The file list for your gist may not be accurate if you are uploading a lot of files")
