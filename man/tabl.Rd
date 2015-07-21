@@ -2,29 +2,48 @@
 % Please edit documentation in R/tabl.R
 \name{tabl}
 \alias{tabl}
+\alias{tabl_data}
 \title{Make a table from gist or commit class or a list of either}
 \usage{
 tabl(x, ...)
+
+tabl_data(x)
 }
 \arguments{
 \item{x}{Either a gist or commit class object or a list of either}
 
 \item{...}{Ignored}
 }
+\value{
+A list of data.frame's. If no forks or history, those slots are NULL.
+}
 \description{
 Make a table from gist or commit class or a list of either
 }
+\details{
+We always return a list so that we are returning data consistently,
+regardless of variable return data. So you can always index to the main data.frame
+with gist metadata and file info by doing \code{result$data}, and likewise for
+forks \code{result$forks} and history \code{result$history}
+}
 \examples{
 \dontrun{
+# from a gist object
 x <- as.gist('f1403260eb92f5dfa7e1')
-tabl(x)
+res <- tabl(x)
+res$data
+res$forks
+res$history
 
 # from a list
 ss <- gists('minepublic')
 tabl(ss[1:3])
+lapply(tabl(ss[1:3]), "[[", "data")
+# index to data slots, but also make single data.frame
+tabl_data(tabl(ss[1:3]))
 ## manipulate with dplyr
 library("dplyr")
-tabl(gists("minepublic")[1:10]) \%>\%
+tabl_data(tabl(ss[1:30])) \%>\%
   select(id, description, owner_login) \%>\%
   filter(grepl("gist gist gist", description))
 
@@ -33,7 +52,7 @@ x <- gists()[[2]] \%>\% commits()
 tabl(x[[1]])
 
 ## many
-x <- sapply(c(gists(), gists()), commits)
+x <- sapply(gists(per_page = 100), commits)
 tabl(x) \%>\%
   select(id, login, change_status.total, url) \%>\%
   filter(change_status.total > 50)
@@ -44,6 +63,13 @@ gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% tabl
 gg <- gists()
 (urls <- vapply(gg, "[[", "", "html_url"))
 lapply(urls[1:5], as.gist) \%>\% tabl()
+
+# gist with forks and history
+gist('1642874') \%>\% tabl
+
+# gist with history, no forks
+gist('030adf9eaa7b9b8c280e') \%>\% tabl
+gist('c96d2e453c95d0166408') \%>\% tabl
 }
 }
 
