@@ -5,8 +5,9 @@
 #' @importFrom jsonlite flatten
 #' @param x Either a gist or commit class object or a list of either
 #' @param ... Ignored
-#' @return A list of data.frame's. If no forks or history, those slots are NULL.
-#' @details We always return a list so that we are returning data consistently, 
+#' @return A data.frame or list of data.frame's
+#' @details For commits we return a single data.frame. For gists, we always 
+#' return a list so that we are returning data consistently, 
 #' regardless of variable return data. So you can always index to the main data.frame
 #' with gist metadata and file info by doing \code{result$data}, and likewise for 
 #' forks \code{result$forks} and history \code{result$history}
