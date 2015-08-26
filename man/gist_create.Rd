@@ -142,6 +142,6 @@ gist_create(file, knit = TRUE, rmarkdown = TRUE, imgur_inject = TRUE,
 }
 }
 \seealso{
-\code{\link{gist_create_obj}}
+\code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
 }
 

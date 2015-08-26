@@ -4,7 +4,7 @@
 #' @importFrom knitr knit
 #' @importFrom rmarkdown render
 #' @template args
-#' @seealso \code{\link{gist_create_obj}}
+#' @seealso \code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')
 #' gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')
@@ -158,7 +158,7 @@ inject_imgur <- function(x, imgur_inject = TRUE) {
   if (!any(grepl("imgur_upload", readLines(x))) && imgur_inject) {
     orig <- readLines(x)
     if (grepl("\\.[rR]md$", x)) {
-      str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
+      str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)\n```\n"
       cat(str, orig, file = x, sep = "\n")
     }
     #     else if(grepl("\\.[rR]nw$", x)) {
@@ -188,10 +188,21 @@ code_handler <- function(x, filename){
     x <- list(x)
   }
   text <- unlist(lapply(x, function(y) gsub("^\\s+|\\s+$|\n\r", "", y)))
-  tmp <- file.path(tempdir(), filename)
+  tdir <- temp_gist_dir()
+  tmp <- file.path(tdir, filename)
   writeLines(text, tmp)
   return(tmp)
 }
+
+temp_gist_dir <- function() {
+  ph <- file.path(Sys.getenv("HOME"), paste0(".gistr_code_", basename(tempfile())))
+  dir.create(ph, showWarnings = FALSE, recursive = TRUE)
+  return(ph)
+}
+
+# rm_temp_gist_dir <- function(x) {
+#   unlink(x)
+# }
  
 # is.binary <- function(x, maximum = 1000) {
 #   if (!is.dir(x)) {
