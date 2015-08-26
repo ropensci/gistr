@@ -17,6 +17,4 @@
 #' \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored 
 #' if the file is a sweave/latex file because the rendered pdf can't be uploaded
 #' anyway. Default: FALSE
-#' @param rmarkdown (logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}} 
-#' instead of \code{\link[knitr]{knit}} to render the document.
 #' @param ... Further args passed on to \code{link[httr]{POST}}

@@ -4,6 +4,8 @@
 #' @importFrom knitr knit
 #' @importFrom rmarkdown render
 #' @template args
+#' @param rmarkdown (logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}} 
+#' instead of \code{\link[knitr]{knit}} to render the document.
 #' @seealso \code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
 #' @examples \dontrun{
 #' gist_create(files="~/stuff.md", description='a new cool gist')

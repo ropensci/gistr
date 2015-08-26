@@ -47,9 +47,6 @@ anyway. Default: FALSE}
 exists, we use that remote, and this parameter is ignored.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
-
-\item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}}
-instead of \code{\link[knitr]{knit}} to render the document.}
 }
 \description{
 Create a gist via git instead of the GitHub Gists HTTP API
