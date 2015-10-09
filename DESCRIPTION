@@ -23,7 +23,6 @@ Imports:
     utils,
     methods,
     stats,
-    git2r,
     jsonlite,
     httr,
     magrittr,
@@ -32,5 +31,5 @@ Imports:
     rmarkdown,
     dplyr
 Suggests:
-    roxygen2,
+    git2r,
     testthat

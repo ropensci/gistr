@@ -17,7 +17,6 @@
 #' @importFrom utils browseURL file.edit
 #' @importFrom methods is
 #' @importFrom stats setNames
-#' @importFrom git2r init add commit remote_add cred_env push
 #' @name gistr-package
 #' @aliases gistr
 #' @docType package
