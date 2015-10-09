@@ -8,6 +8,11 @@
 #' artifacts of certain file exensions. Default: \code{FALSE}
 #' @param git_method (character) One of ssh (default) or https. If a remote already
 #' exists, we use that remote, and this parameter is ignored. 
+#' @param sleep (integer) Seconds to sleep after creating gist, but before 
+#' collecting metadata on the gist. If uploading a lot of stuff, you may want to
+#' set this to a higher value, otherwise, you may not get accurate metadata for
+#' your gist. You can of course always refresh afterwards by calling \code{gist}
+#' with your gist id.
 #' 
 #' @details Note that when \code{browse=TRUE} there is a slight delay in when 
 #' we open up the gist in your default browser and when the data will display 
@@ -118,7 +123,8 @@
 gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
   knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
-  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", ...) {
+  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
+  sleep = 1, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
@@ -199,6 +205,9 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
     }
   }
   
+  # wait a bit before collecting metadata
+  Sys.sleep(sleep)
+  
   # refresh gist metadata
   gst <- gist(gst$id)
   message("The file list for your gist may not be accurate if you are uploading a lot of files")
@@ -225,6 +234,7 @@ makefiles <- function(x) {
 }
 
 unpack <- function(z) {
+  if (!file.exists(z)) stop(sprintf("'%s' does not exist", z), call. = FALSE)
   if (file.info(z)$isdir) {
     list.files(z, full.names = TRUE)
   } else {

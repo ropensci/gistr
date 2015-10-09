@@ -7,7 +7,8 @@
 gist_create_git(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts = list(), renderopts = list(), include_source = FALSE,
-  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", ...)
+  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh",
+  sleep = 1, ...)
 }
 \arguments{
 \item{files}{Files to upload}
@@ -45,6 +46,12 @@ anyway. Default: FALSE}
 
 \item{git_method}{(character) One of ssh (default) or https. If a remote already
 exists, we use that remote, and this parameter is ignored.}
+
+\item{sleep}{(integer) Seconds to sleep after creating gist, but before
+collecting metadata on the gist. If uploading a lot of stuff, you may want to
+set this to a higher value, otherwise, you may not get accurate metadata for
+your gist. You can of course always refresh afterwards by calling \code{gist}
+with your gist id.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
