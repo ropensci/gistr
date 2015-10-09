@@ -1,3 +1,27 @@
+gistr 0.3.4
+===============
+
+### NEW FEATURES
+
+* Gained new function `gist_create_git()` - creates gists using `git` 
+instead of the GitHub Gists HTTP API. Uses the package `git2r` 
+internally to do the `git` things. (#50) This function has been 
+around a while, but not in the CRAN version, so a few other fixes
+of note in case you're interested: (#56) (#57) (#58) (#59) (#61)
+
+### MINOR IMPROVEMENTS
+
+* Added new manual file `?create_gists` with details of the three different
+ways to create gists, how they differ, and why there are three different
+functions to create a gist. (57f13a711fb7a1514caee6a858d4cda31d614e6f)
+
+### BUG FIXES
+
+* Fix to `tabl()` to give back cleaner data output, returning main
+metadata for each gist in a single data.frame, then forks and 
+history in separate data.frame's if they exist. Makes for easier 
+understanding and manipulation downstream. (#54)
+
 gistr 0.3.0
 ===============
 
