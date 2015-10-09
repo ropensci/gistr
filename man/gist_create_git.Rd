@@ -80,10 +80,16 @@ for use cases involving:
 
 Another difference between this function and \code{\link{gist_create}} is that
 this function can collect all artifacts coming out of a knit process.
+
+If a gist is somehow deleted, or the remote changes, when you try to push to the
+same gist again, everything should be fine. We now use \code{tryCatch} on the
+push attempt, and if it fails, we'll add a new remote (which means a new gist),
+and push again.
 }
 \examples{
 \dontrun{
 # prepare a directory and a file
+unlink("~/gitgist", recursive = TRUE)
 dir.create("~/gitgist")
 file <- system.file("examples", "stuff.md", package = "gistr")
 writeLines(readLines(file), con = "~/gitgist/stuff.md")
@@ -92,6 +98,7 @@ writeLines(readLines(file), con = "~/gitgist/stuff.md")
 gist_create_git(files = "~/gitgist/stuff.md")
 
 ## more than one file can be passed in
+unlink("~/gitgist2", recursive = TRUE)
 dir.create("~/gitgist2")
 file.copy(file, "~/gitgist2/")
 cat("hello world", file = "~/gitgist2/hello_world.md")
@@ -99,29 +106,33 @@ list.files("~/gitgist2")
 gist_create_git(c("~/gitgist2/stuff.md", "~/gitgist2/hello_world.md"))
 
 # Include all files in a directory
+unlink("~/gitgist3", recursive = TRUE)
 dir.create("~/gitgist3")
 cat("foo bar", file="~/gitgist3/foobar.txt")
 cat("hello", file="~/gitgist3/hello.txt")
 list.files("~/gitgist3")
-gist_create_git(files = "~/gitgist3")
+gist_create_git("~/gitgist3")
 
 # binary files
 png <- system.file("examples", "file.png", package = "gistr")
+unlink("~/gitgist4", recursive = TRUE)
 dir.create("~/gitgist4")
 file.copy(png, "~/gitgist4/")
 list.files("~/gitgist4")
 gist_create_git(files = "~/gitgist4/file.png")
 
 # knit files first, then push up
-# note: by default we don't upload images, but you can do that, see examples
+# note: by default we don't upload images, but you can do that, see next example
 rmd <- system.file("examples", "plots.Rmd", package = "gistr")
+unlink("~/gitgist5", recursive = TRUE)
 dir.create("~/gitgist5")
 file.copy(rmd, "~/gitgist5/")
 list.files("~/gitgist5")
-gist_create_git(files = "~/gitgist5/plots.Rmd", knit = TRUE)
+gist_create_git("~/gitgist5/plots.Rmd", knit = TRUE)
 
 # collect all/any artifacts from knitting process
 arts <- system.file("examples", "artifacts_eg1.Rmd", package = "gistr")
+unlink("~/gitgist6", recursive = TRUE)
 dir.create("~/gitgist6")
 file.copy(arts, "~/gitgist6/")
 list.files("~/gitgist6")
@@ -139,6 +150,7 @@ numbers
 
 # Use https instead of ssh
 png <- system.file("examples", "file.png", package = "gistr")
+unlink("~/gitgist7", recursive = TRUE)
 dir.create("~/gitgist7")
 file.copy(png, "~/gitgist7/")
 list.files("~/gitgist7")
