@@ -1,20 +1,7 @@
-language: c
-sudo: required
+language: r
 
-before_install:
-  - curl -OL https://raw.githubusercontent.com/metacran/r-builder/master/pkg-build.sh
-  - chmod 755 pkg-build.sh
-  - ./pkg-build.sh bootstrap
-
-install:
-  - ./pkg-build.sh install_deps
-  - ./pkg-build.sh install_github jimhester/covr
-
-script:
-  - ./pkg-build.sh run_tests
-
-after_failure:
-  - ./pkg-build.sh dump_logs
+r_github_packages:
+  - jimhester/covr
 
 after_success:
   - Rscript -e 'covr::codecov()'
@@ -25,11 +12,3 @@ notifications:
     on_failure: change
   slack:
     secure: a/rA4KawTfmMItXyKG8QKb9ISUq1Ow7RM5pW+JFbjUkDHeJHtfGqCqw+fix1j1yxUY2VKtzMXwe5mOk2Guf3L/JF3UjYnel0p2dMVpqEnNZQu3fGbenoibM/WS/fzaFe5prn+Tq3tDLu+I/CijWclZCVD/fxzgjOq5XDL7ZqYwU=
-
-env:
-  matrix:
-    - RVERSION=oldrel
-    - RVERSION=release
-    - RVERSION=devel
-  global:
-    secure: TWQeQDToS8yA/zDmE/0CHC0yn+z7Z1lWCZ1BhpTK8diTXD9MErIh2q6wQOz6ITf8GeQEdk/DN5OBU+ihgantNexzUJ7fAHgqcgXfLWsfvVS2DUSzrNltCSqpvnDrloNwbqI3PHDVWydPr93fZm4OgiGdzJJwnOr5jtXaTs5ukRw=
