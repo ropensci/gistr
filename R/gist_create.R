@@ -1,8 +1,6 @@
 #' Create a gist
 #'
 #' @export
-#' @importFrom knitr knit
-#' @importFrom rmarkdown render
 #' @template args
 #' @param rmarkdown (logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}} 
 #' instead of \code{\link[knitr]{knit}} to render the document.

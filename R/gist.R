@@ -1,7 +1,5 @@
 #' Get a gist
 #'
-#' @importFrom httr GET POST PATCH PUT DELETE content stop_for_status 
-#' add_headers warn_for_status
 #' @export
 #' @param id (character) A gist id, or a gist URL
 #' @param x Object to coerce. Can be an integer (gist id), string

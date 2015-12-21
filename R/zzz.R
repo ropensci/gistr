@@ -1,7 +1,6 @@
 # Function that takes a list of files and creates payload for API
-# @importFrom jsonlite toJSON auto_unbox
-# @param filenames names of files to post
-# @param description brief description of gist (optional)
+# :param filenames names of files to post
+# :param description brief description of gist (optional)
 payload <- function(filenames, description = "") {
   add <- filenames$add
   update <- filenames$update
