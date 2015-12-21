@@ -6,7 +6,7 @@ test_that("fork works", {
   
   forked <- gist(id='1642874') %>% fork()
   
-  expect_equal(length(forked), 16)
+  expect_equal(length(forked), 17)
   expect_is(forked, "gist")
   
   # cleanup
