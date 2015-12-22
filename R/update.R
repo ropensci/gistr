@@ -11,7 +11,7 @@
 #' # add new files
 #' gists(what = "minepublic")[[3]] %>%
 #'  add_files(file1, file2) %>%
-#'  update()
+#'  update(config = verbose())
 #'
 #' # update existing files
 #' ### file name has to match to current name
@@ -46,6 +46,6 @@ update <- function(gist, description = gist$description, ...) {
   files <- list(update = gist$update_files, add = gist$add_files, 
                 delete = gist$delete_files, rename = gist$rename_files)
   body <- payload(filenames = files, description)
-  res <- gist_PATCH(gist$id, gist_auth(), ghead(), body, ...)
+  res <- gist_PATCH(id = gist$id, auth = gist_auth(), headers = ghead(), body, ...)
   as.gist(res)
 }
