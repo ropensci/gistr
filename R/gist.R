@@ -43,7 +43,7 @@
 #' }
 
 gist <- function(id, ...){
-  res <- gist_GET(switch_url('id', normalize_id(id)), gist_auth(), ghead(), ...)
+  res <- gist_GET(switch_url('id', normalize_id(id)), gist_auth(), ghead())
   as.gist(res)
 }
 
@@ -92,13 +92,9 @@ get_gistid <- function(x) {
 }
 
 list2gist <- function(x){
-  # nmz <- c('url','forks_url','commits_url','id','git_pull_url','git_push_url','html_url',
-  #          'files','public','created_at','updated_at','description','comments','user',
-  #          'comments_url','owner','fork_of','forks','history')
   nmz <- c('comments','comments_url','commits_url','created_at','description',
            'files','forks_url','git_pull_url','git_push_url','html_url','id',
-           'owner','public','truncated','updated_at','url','user')
-  # if (!all(sort(names(x)) %in% sort(nmz))) {
+           'public','truncated','updated_at','url','user')
   if (!all(sort(nmz) %in% sort(names(x)))) {
     stop("Not coerceable to a gist", call. = FALSE)
   }

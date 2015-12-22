@@ -7,7 +7,7 @@ test_that("gist works", {
   expect_is(gist(id = 'f1403260eb92f5dfa7e1'), "gist")
 })
 
-test_that("as.gist works", {
+test_that("as.gist works - character gist ID input", {
   skip_on_cran()
   
   expect_is(as.gist('f1403260eb92f5dfa7e1'), "gist")
@@ -15,7 +15,17 @@ test_that("as.gist works", {
   expect_is(as.gist(gist('f1403260eb92f5dfa7e1')), "gist")
 })
 
-test_that("config options work", {
+test_that("as.gist works - on random sample of gist ids", {
+  skip_on_cran()
+  
+  gsts <- gists()
+  ids <- vapply(gsts, "[[", "", "id")
+  invisible(lapply(ids, function(z) {
+    expect_is(as.gist(z), "gist")
+  }))
+})
+
+test_that("httr config options work", {
   skip_on_cran()
   
   library('httr')
