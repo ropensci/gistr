@@ -9,7 +9,7 @@ Description: Work with 'GitHub' 'gists' from 'R' (e.g., http://en.wikipedia.org/
     'gist' 'commits', and get rate limit information when 'authenticated'. Some
     requests require authentication and some do not. 'Gists' website: https://
     gist.github.com/.
-Version: 0.3.5.9000
+Version: 0.3.5.9300
 Authors@R: c(
     person("Ramnath", "Vaidyanathan", role = "aut", email = "ramnath.vaidya@gmail.com"),
     person("Karthik", "Ram", role = "aut", email = "karthik.ram@gmail.com"),
@@ -24,7 +24,7 @@ Imports:
     methods,
     stats,
     jsonlite,
-    httr,
+    httr (>= 1.0.0),
     magrittr,
     assertthat,
     knitr,
