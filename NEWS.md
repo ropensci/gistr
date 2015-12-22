@@ -1,3 +1,17 @@
+gistr 0.3.6
+===============
+
+### MINOR IMPROVEMENTS
+
+* Added more tests for `as.gist()`
+
+### BUG FIXES
+
+* Fix to `as.gist.list()` method to not break sometimes when not all keys
+returned in JSON content from github API (#63)
+* Fix to `update()` to work correctly for deleting files. didn't previously
+set `null`'s correctly (#64)
+
 gistr 0.3.4
 ===============
 
