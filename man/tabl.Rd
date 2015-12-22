@@ -69,7 +69,6 @@ lapply(urls[1:5], as.gist) \%>\% tabl()
 gist('1642874') \%>\% tabl
 
 # gist with history, no forks
-gist('030adf9eaa7b9b8c280e') \%>\% tabl
 gist('c96d2e453c95d0166408') \%>\% tabl 
 }
 }
