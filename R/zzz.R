@@ -89,13 +89,13 @@ gist_DELETE <- function(url, auth, headers, ...){
 process <- function(x){
   stopstatus(x)
   stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
-  temp <- httr::content(x, as = "text")
+  temp <- httr::content(x, as = "text", encoding = "UTF-8")
   jsonlite::fromJSON(temp, FALSE)
 }
 
 stopstatus <- function(x) {
   if (x$status_code > 203) {
-    res <- httr::content(x)
+    res <- jsonlite::fromJSON(httr::content(x, as = "text", encoding = "UTF-8"), FALSE)
     errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", collapse = "\n"))
     stop(res$message, "\n", errs, call. = FALSE)
   }

@@ -65,5 +65,5 @@ get_raw <- function(path, ...){
   res <- GET(path, gist_auth(), ghead(), ...)
   stopifnot(res$headers$`content-type` == 'text/plain')
   warn_for_status(res)
-  content(res, as = "text")
+  content(res, as = "text", encoding = "UTF-8")
 }

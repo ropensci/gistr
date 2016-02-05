@@ -256,7 +256,7 @@ cgist <- function(description, public) {
                       )
                     ), auto_unbox = TRUE)
   )
-  jsonlite::fromJSON(httr::content(res, "text"), FALSE)
+  jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"), FALSE)
 }
 
 all_artifacts <- function(x) {
