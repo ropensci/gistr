@@ -23,6 +23,10 @@
 
 gist_auth <- function(app = gistr_app, reauth = FALSE) {
 
+  if (is.null(getOption("github.username"))) {
+    stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`")
+  }
+  
   if (exists("auth_config", envir = cache) && !reauth) {
     return(cache$auth_config)
   }
