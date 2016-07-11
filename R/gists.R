@@ -37,7 +37,10 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
 }
 
 switch_url <- function(x, id){
-  switch(x,
+  if (identical(x, "mineall") & is.null(getOption("github.username"))) {
+    stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`")
+  }
+  switch(x,         
          public = paste0(ghbase(), '/gists/public'),
          minepublic = paste0(ghbase(), '/gists'),
          mineall = sprintf('%s/users/%s/gists', ghbase(), getOption("github.username")),

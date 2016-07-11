@@ -22,7 +22,7 @@
 #' }
 
 gist_auth <- function(app = gistr_app, reauth = FALSE) {
-
+ 
   if (exists("auth_config", envir = cache) && !reauth) {
     return(cache$auth_config)
   }
