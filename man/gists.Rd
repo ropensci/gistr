@@ -22,6 +22,13 @@ updated at or after this time are returned.}
 \description{
 List public gists, your own public gists, all your gists, by gist id, or query by date.
 }
+\details{
+When \code{what = "mineall"}, we use \code{getOption("github.username")}
+internally to get your GitHub user name. Make sure to set your GitHub user name
+as an R option like \code{options(github.username = "foobar")} in your 
+\code{.Rprofile} file. If we can't find you're user name, we'll stop with an 
+error.
+}
 \examples{
 \dontrun{
 # Public gists

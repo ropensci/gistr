@@ -10,6 +10,11 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. Max 100.
 #' @template all
+#' @details When \code{what = "mineall"}, we use \code{getOption("github.username")}
+#' internally to get your GitHub user name. Make sure to set your GitHub user name
+#' as an R option like \code{options(github.username = "foobar")} in your 
+#' \code{.Rprofile} file. If we can't find you're user name, we'll stop with an 
+#' error.
 #' @examples \dontrun{
 #' # Public gists
 #' gists()
@@ -38,7 +43,7 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
 
 switch_url <- function(x, id){
   if (identical(x, "mineall") & is.null(getOption("github.username"))) {
-    stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`")
+    stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`", call. = FALSE)
   }
   switch(x,         
          public = paste0(ghbase(), '/gists/public'),
