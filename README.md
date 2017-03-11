@@ -107,12 +107,12 @@ gists(per_page = 2)
 #> [[1]]
 #> <gist>feae4fee7d1debd13e58
 #>   URL: https://gist.github.com/feae4fee7d1debd13e58
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
 #>   Files: gistfile1.txt
 #>   Truncated?: FALSE
-#> 
+#>
 #> [[2]]
 #> <gist>03430047a811520d880c
 #>   URL: https://gist.github.com/03430047a811520d880c
@@ -131,12 +131,12 @@ gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
 #> <gist>feae4fee7d1debd13e58
 #>   URL: https://gist.github.com/feae4fee7d1debd13e58
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
 #>   Files: gistfile1.txt
 #>   Truncated?: FALSE
-#> 
+#>
 #> [[2]]
 #> <gist>03430047a811520d880c
 #>   URL: https://gist.github.com/03430047a811520d880c
@@ -160,7 +160,7 @@ gists('minepublic', per_page = 2)
 #>   Created/Edited: 2015-07-03T00:10:39Z / 2015-07-03T00:10:39Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
-#> 
+#>
 #> [[2]]
 #> <gist>abbd1a5b0cfc633cfcfd
 #>   URL: https://gist.github.com/abbd1a5b0cfc633cfcfd
@@ -179,7 +179,7 @@ gists('minepublic', per_page = 2)
 gist(id = 'f1403260eb92f5dfa7e1')
 #> <gist>f1403260eb92f5dfa7e1
 #>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
-#>   Description: Querying bitly from R 
+#>   Description: Querying bitly from R
 #>   Public: TRUE
 #>   Created/Edited: 2014-10-15T20:40:12Z / 2014-10-15T21:54:29Z
 #>   Files: bitly_r.md
@@ -227,7 +227,7 @@ numbers
 '}, browse=FALSE)
 #> <gist>4fd5a913e911ad70098c
 #>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
 #>   Files: code.R
@@ -276,7 +276,7 @@ file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
 #> <gist>a25bdafc43ee46a98783
 #>   URL: https://gist.github.com/a25bdafc43ee46a98783
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:19:19Z / 2015-07-03T00:19:19Z
 #>   Files: stuff.md
@@ -358,7 +358,7 @@ Star
 gist('7ddb9810fc99c84c65ec') %>% star()
 #> <gist>7ddb9810fc99c84c65ec
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
@@ -372,7 +372,7 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 #> <gist>7ddb9810fc99c84c65ec
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
@@ -391,7 +391,7 @@ gists(what = "minepublic")[[1]] %>%
   update()
 #> <gist>4fd5a913e911ad70098c
 #>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:21Z
 #>   Files: alm.md, code.R
@@ -408,7 +408,7 @@ gists(what = "minepublic")[[1]] %>%
   update()
 #> <gist>4fd5a913e911ad70098c
 #>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description: 
+#>   Description:
 #>   Public: TRUE
 #>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:22Z
 #>   Files: code.R
@@ -445,16 +445,16 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   Description: Spline Transition
 #>   Public: TRUE
 #>   Created/Edited: 2012-01-19T21:45:20Z / 2015-06-11T19:40:48Z
-#>   Files: 
-#>   Truncated?: 
-#> 
+#>   Files:
+#>   Truncated?:
+#>
 #> [[2]]
 #> <gist>1643051
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
 #>   Created/Edited: 2012-01-19T21:51:30Z / 2015-06-11T19:40:48Z
-#>   Files: 
+#>   Files:
 #>   Truncated?:
 ```
 
@@ -507,5 +507,6 @@ And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
 * Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
 * License: MIT
 * Get citation information for `gistr` in R doing `citation(package = 'gistr')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
