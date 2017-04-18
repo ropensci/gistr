@@ -13,7 +13,7 @@
 #' gist_map(gist_id)
 #'}
 gist_map <- function(x, browse = TRUE) {
-  assertthat::assert_that(is(x, "gist"))
+  assertthat::assert_that(inherits(x, "gist"))
   file <- names(x$files)
   assertthat::assert_that(has_extension(file, "geojson"))
   render_url <- "https://render.githubusercontent.com/view/geojson/?url=https://gist.githubusercontent.com/"
@@ -24,7 +24,7 @@ gist_map <- function(x, browse = TRUE) {
   actual_commit <- strsplit(commit, "/")[[1]][1]
   path <- paste(render_url, user, actual_commit, "raw", file, sep = "/")
   if (browse) {
-    browseURL(path)
+    utils::browseURL(path)
   } else {
     path
   }

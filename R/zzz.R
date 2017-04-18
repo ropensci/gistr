@@ -11,7 +11,7 @@ payload <- function(filenames, description = "") {
     list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
   # del <- lapply(delete, function(file) structure(list(NULL), names = basename(file)))
-  del <- do.call("c", unname(Map(function(x) setNames(list(NULL), x), sapply(delete, basename))))
+  del <- do.call("c", unname(Map(function(x) stats::setNames(list(NULL), x), sapply(delete, basename))))
   ren <- lapply(rename, function(f) {
     tt <- f[[1]]
     list(filename = basename(f[[2]]),

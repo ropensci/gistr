@@ -22,9 +22,6 @@
 #' @importFrom assertthat assert_that has_extension
 #' @importFrom dplyr bind_rows as_data_frame 
 #' @importFrom jsonlite flatten
-#' @importFrom utils browseURL file.edit
-#' @importFrom methods is
-#' @importFrom stats setNames
 #' @name gistr-package
 #' @aliases gistr
 #' @docType package

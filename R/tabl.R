@@ -66,7 +66,7 @@ tabl.gist <- function(x, ...){
   singles <- repeat_rows(singles, files_n)
   
   owner <- data.frame(others$owner, stringsAsFactors = FALSE)
-  owner <- if (NROW(owner) == 0) owner else setNames(owner, paste0("owner_", names(owner)))
+  owner <- if (NROW(owner) == 0) owner else stats::setNames(owner, paste0("owner_", names(owner)))
   owner <- repeat_rows(owner, files_n)
   
   one <- dplyr::as_data_frame(cbind_fill(singles, files, owner, as_df = TRUE))
@@ -88,7 +88,7 @@ repeat_rows <- function(x, n) {
 #' @export
 #' @rdname tabl
 tabl_data <- function(x) {
-  stopifnot(is(x, "list"))
+  stopifnot(inherits(x, "list"))
   suppressWarnings(dplyr::bind_rows(lapply(x, "[[", "data")))
 }
 
@@ -98,7 +98,7 @@ tabl.list <- function(x, ...) {
     x <- unlist(x, recursive = FALSE)
   }
   res <- lapply(x, tabl)
-  if (is(x[[1]], "commit")) {
+  if (inherits(x[[1]], "commit")) {
     suppressWarnings(dplyr::bind_rows(res))
   } else {
     res
@@ -125,7 +125,7 @@ lappdf <- function(x, prefix = NULL) {
     if (NROW(tmp) == 0) {
       tmp
     } else {
-      setNames( tmp, paste0(prefix, "_", names(tmp)) )
+      stats::setNames( tmp, paste0(prefix, "_", names(tmp)) )
     }
   } else {
     tmp

@@ -25,7 +25,7 @@
 #' }
 
 run <- function(x, filename="code.R", knitopts=list()){
-  if(is(x, "gist")){
+  if(inherits(x, "gist")){
     ff <- check_files(x)
     code <- get_raw(ff$raw_url)
     files <- file.path(tempdir(), ff$filename)
@@ -48,7 +48,7 @@ run <- function(x, filename="code.R", knitopts=list()){
           c(input=files,
             output=sub("\\.Rmd", "\\.md", files),
             knitopts))
-  if(is(x, 'gist')) x %>% update_files(outpath) else outpath
+  if(inherits(x, 'gist')) x %>% update_files(outpath) else outpath
 }
 
 check_files <- function(x){

@@ -171,7 +171,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   git2r::add(git, ftoadd)
   # commit files
   cm <- tryCatch(git2r::commit(git, message = "added files from gistr"), error = function(e) e)
-  if (is(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
+  if (inherits(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
   # create gist
   gst <- as.gist(cgist(description, public))
   # add remote
@@ -181,13 +181,13 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
     url <- sprintf("https://gist.github.com/%s.git", gst$id)
   }
   ra <- tryCatch(git2r::remote_add(git, "gistr", url), error = function(e) e)
-  if (is(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
+  if (inherits(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
   # push up files
   push_msg <- "Old remote not found on GitHub Gists\nAdding new remote\nRe-attempting push"
   if (git_method == "ssh") {
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", force = TRUE), 
                         error = function(e) e)
-    if (is(trypush, "error")) {
+    if (inherits(trypush, "error")) {
       message(push_msg)
       git2r::remote_remove(git, "gistr")
       git2r::remote_add(git, "gistr", url)
@@ -197,7 +197,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
     cred <- git2r::cred_env("GITHUB_USERNAME", "GITHUB_PAT")
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", force = TRUE, credentials = cred),
                         error = function(e) e)
-    if (is(trypush, "error")) {
+    if (inherits(trypush, "error")) {
       message(push_msg)
       git2r::remote_remove(git, "gistr")
       git2r::remote_add(git, "gistr", url)

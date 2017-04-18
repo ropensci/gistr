@@ -54,8 +54,8 @@ g_wrap <- function(..., indent = 0, width = getOption("width")) {
 #' @export
 #' @rdname gist_save
 gist_open <- function(x) {
-  stopifnot(is(x, "gist_files"))
-  invisible(lapply(x, file.edit))
+  stopifnot(inherits(x, "gist_files"))
+  invisible(lapply(x, utils::file.edit))
 }
 
 isDir <- function(path) {
