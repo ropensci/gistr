@@ -2,9 +2,9 @@
 % Please edit documentation in R/add_files.R
 \name{add_files}
 \alias{add_files}
+\alias{update_files}
 \alias{delete_files}
 \alias{rename_files}
-\alias{update_files}
 \title{Add files to a gist object}
 \usage{
 add_files(gist, ...)
@@ -31,4 +31,3 @@ add_files("~/stuff.Rmd")
 # rename_files()
 }
 }
-

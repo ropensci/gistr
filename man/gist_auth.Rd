@@ -31,4 +31,3 @@ Using \code{GITHUB_PAT} is recommended.
 gist_auth()
 }
 }
-

@@ -20,4 +20,3 @@ gists()[[1]] \%>\% embed()
 gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% embed
 }
 }
-

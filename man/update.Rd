@@ -55,4 +55,3 @@ gists(what = "minepublic")[[3]] \%>\%
  update()
 }
 }
-

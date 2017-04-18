@@ -20,7 +20,7 @@
 #' @importFrom httr GET POST PATCH PUT DELETE content stop_for_status 
 #' add_headers warn_for_status
 #' @importFrom assertthat assert_that has_extension
-#' @importFrom dplyr rbind_all as_data_frame 
+#' @importFrom dplyr bind_rows as_data_frame 
 #' @importFrom jsonlite flatten
 #' @importFrom utils browseURL file.edit
 #' @importFrom methods is

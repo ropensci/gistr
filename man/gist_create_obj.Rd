@@ -59,4 +59,3 @@ hey there!", filename = "my_markdown.md")
 \seealso{
 \code{\link{gist_create}}, \code{\link{gist_create_git}}
 }
-

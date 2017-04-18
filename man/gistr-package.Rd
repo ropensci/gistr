@@ -2,8 +2,8 @@
 % Please edit documentation in R/gistr-package.R
 \docType{package}
 \name{gistr-package}
-\alias{gistr}
 \alias{gistr-package}
+\alias{gistr}
 \title{R client for GitHub gists}
 \description{
 R client for GitHub gists.
@@ -31,4 +31,3 @@ Ramnath Vaidyanathan \email{ramnath.vaidya@gmail.com}
 Karthik Ram \email{karthik.ram@gmail.com}
 }
 \keyword{package}
-

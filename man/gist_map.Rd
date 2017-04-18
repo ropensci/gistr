@@ -23,4 +23,3 @@ gist_id <- gist_create(file, browse = FALSE)
 gist_map(gist_id)
 }
 }
-

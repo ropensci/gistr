@@ -2,8 +2,8 @@
 % Please edit documentation in R/star.R
 \name{star}
 \alias{star}
-\alias{star_check}
 \alias{unstar}
+\alias{star_check}
 \title{Star a gist}
 \usage{
 star(gist, ...)
@@ -41,4 +41,3 @@ gist(x) \%>\% star
 gist(x) \%>\% unstar
 }
 }
-

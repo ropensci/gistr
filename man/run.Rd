@@ -39,4 +39,3 @@ x <- letters
 gists('minepublic')[[2]] \%>\% run() \%>\% update()
 }
 }
-

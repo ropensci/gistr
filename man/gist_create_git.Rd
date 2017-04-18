@@ -167,4 +167,3 @@ gist_create_git(files = "~/gitgist7/file.png", git_method = "https")
 \seealso{
 \code{\link{gist_create}}, \code{\link{gist_create_obj}}
 }
-

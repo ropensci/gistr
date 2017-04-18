@@ -14,4 +14,3 @@ browse(gist, what = "html")
 \description{
 Open a gist on GitHub
 }
-

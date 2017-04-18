@@ -49,4 +49,3 @@ gists(per_page=1, config=verbose())
 gists(per_page=1, config=timeout(seconds = 0.5))
 }
 }
-

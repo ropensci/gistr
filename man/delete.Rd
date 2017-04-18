@@ -19,4 +19,3 @@ Delete a gist
 gists("minepublic")[[29]] \%>\% delete()
 }
 }
-

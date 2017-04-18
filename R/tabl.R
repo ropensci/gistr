@@ -89,7 +89,7 @@ repeat_rows <- function(x, n) {
 #' @rdname tabl
 tabl_data <- function(x) {
   stopifnot(is(x, "list"))
-  suppressWarnings(dplyr::rbind_all(lapply(x, "[[", "data")))
+  suppressWarnings(dplyr::bind_rows(lapply(x, "[[", "data")))
 }
 
 #' @export
@@ -99,11 +99,10 @@ tabl.list <- function(x, ...) {
   }
   res <- lapply(x, tabl)
   if (is(x[[1]], "commit")) {
-    suppressWarnings(rbind_all(res))
+    suppressWarnings(dplyr::bind_rows(res))
   } else {
     res
   }
-  # suppressWarnings(rbind_all(lapply(x, tabl)))
 }
 
 #' @export
@@ -119,7 +118,7 @@ snames <- c("url","forks_url", "commits_url", "id", "git_pull_url",
             "updated_at", "description", "comments", "user", "comments_url")
 
 lappdf <- function(x, prefix = NULL) {
-  tmp <- data.frame(rbind_all(lapply(x, function(z) {
+  tmp <- data.frame(dplyr::bind_rows(lapply(x, function(z) {
     data.frame(null2na(z), stringsAsFactors = FALSE)
   })), stringsAsFactors = FALSE)
   if (!is.null(prefix)) {

@@ -28,4 +28,3 @@ creating gists via the HTTP API, git, and from R objects. We could have thrown
 everything into \code{\link{gist_create}}, but it would have been a massive function, 
 with far too many parameters.
 }
-
