@@ -3,11 +3,11 @@
 #' @export
 #' 
 #' @template args
-#' @param artifacts (logical/character) Include artifacts or not. If \code{TRUE}, 
-#' includes all artifacts. Or you can pass in a file extension to only upload 
-#' artifacts of certain file exensions. Default: \code{FALSE}
-#' @param git_method (character) One of ssh (default) or https. If a remote already
-#' exists, we use that remote, and this parameter is ignored. 
+#' @param artifacts (logical/character) Include artifacts or not. 
+#' If \code{TRUE}, includes all artifacts. Or you can pass in a file extension 
+#' to only upload artifacts of certain file exensions. Default: \code{FALSE}
+#' @param git_method (character) One of ssh (default) or https. If a remote 
+#' already exists, we use that remote, and this parameter is ignored. 
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
 #' set this to a higher value, otherwise, you may not get accurate metadata for
@@ -33,20 +33,20 @@
 #' for use cases involving:
 #' 
 #' \itemize{
-#'  \item Big files - The GitHub API allows only files of up to 1 MB in size. Using
-#'  git we can get around that limit.
-#'  \item Binary files - Often artifacts created are binary files like \code{.png}.
-#'  The GitHub API doesn't allow transport of binary files, but we can do that with
-#'  git. 
+#'  \item Big files - The GitHub API allows only files of up to 1 MB in size. 
+#'  Using git we can get around that limit.
+#'  \item Binary files - Often artifacts created are binary files like 
+#'  \code{.png}. The GitHub API doesn't allow transport of binary files, but 
+#'  we can do that with git. 
 #' }
 #' 
-#' Another difference between this function and \code{\link{gist_create}} is that
-#' this function can collect all artifacts coming out of a knit process.
+#' Another difference between this function and \code{\link{gist_create}} is 
+#' that this function can collect all artifacts coming out of a knit process.
 #' 
-#' If a gist is somehow deleted, or the remote changes, when you try to push to the
-#' same gist again, everything should be fine. We now use \code{tryCatch} on the 
-#' push attempt, and if it fails, we'll add a new remote (which means a new gist), 
-#' and push again.
+#' If a gist is somehow deleted, or the remote changes, when you try to push 
+#' to the same gist again, everything should be fine. We now use 
+#' \code{tryCatch} on the  push attempt, and if it fails, we'll add a new 
+#' remote (which means a new gist), and push again.
 #' 
 #' @seealso \code{\link{gist_create}}, \code{\link{gist_create_obj}}
 #' 
@@ -85,7 +85,8 @@
 #' gist_create_git(files = "~/gitgist4/file.png")
 #' 
 #' # knit files first, then push up
-#' # note: by default we don't upload images, but you can do that, see next example
+#' # note: by default we don't upload images, but you can do that, 
+#' # see next example
 #' rmd <- system.file("examples", "plots.Rmd", package = "gistr")
 #' unlink("~/gitgist5", recursive = TRUE)
 #' dir.create("~/gitgist5")
@@ -120,8 +121,8 @@
 #' gist_create_git(files = "~/gitgist7/file.png", git_method = "https")
 #' }
 
-gist_create_git <- function(files = NULL, description = "", public = TRUE, browse = TRUE,
-  knit = FALSE, code = NULL, filename = "code.R",
+gist_create_git <- function(files = NULL, description = "", public = TRUE, 
+  browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
   sleep = 1, ...) {
@@ -170,7 +171,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   ftoadd <- gsub(sprintf("%s/?|\\./", git@path), "", allfiles)
   git2r::add(git, ftoadd)
   # commit files
-  cm <- tryCatch(git2r::commit(git, message = "added files from gistr"), error = function(e) e)
+  cm <- tryCatch(git2r::commit(git, message = "added files from gistr"), 
+                 error = function(e) e)
   if (inherits(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
   # create gist
   gst <- as.gist(cgist(description, public))
@@ -183,10 +185,11 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
   ra <- tryCatch(git2r::remote_add(git, "gistr", url), error = function(e) e)
   if (inherits(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
   # push up files
-  push_msg <- "Old remote not found on GitHub Gists\nAdding new remote\nRe-attempting push"
+  push_msg <- 
+  "Old remote not found on GitHub Gists\nAdding new remote\nRe-attempting push"
   if (git_method == "ssh") {
-    trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", force = TRUE), 
-                        error = function(e) e)
+    trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
+                                    force = TRUE), error = function(e) e)
     if (inherits(trypush, "error")) {
       message(push_msg)
       git2r::remote_remove(git, "gistr")
@@ -195,13 +198,15 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE, brows
     }
   } else {
     cred <- git2r::cred_env("GITHUB_USERNAME", "GITHUB_PAT")
-    trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", force = TRUE, credentials = cred),
+    trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
+                                    force = TRUE, credentials = cred),
                         error = function(e) e)
     if (inherits(trypush, "error")) {
       message(push_msg)
       git2r::remote_remove(git, "gistr")
       git2r::remote_add(git, "gistr", url)
-      git2r::push(git, "gistr", "refs/heads/master", force = TRUE, credentials = cred)
+      git2r::push(git, "gistr", "refs/heads/master", force = TRUE, 
+                  credentials = cred)
     }
   }
   

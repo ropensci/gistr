@@ -12,3 +12,4 @@ figure
 .github
 CONDUCT.md
 
+^cran-comments\.md$

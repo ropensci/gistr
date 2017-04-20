@@ -14,7 +14,8 @@ gist_create_obj(x = NULL, description = "", public = TRUE,
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
-\item{browse}{(logical) To open newly create gist in default browser (default: TRUE)}
+\item{browse}{(logical) To open newly create gist in default browser 
+(default: TRUE)}
 
 \item{pretty}{(logical) For data.frame and matrix objects, create
 a markdown table. If FALSE, pushes up json. (default: TRUE)}
@@ -27,8 +28,8 @@ a markdown table. If FALSE, pushes up json. (default: TRUE)}
 Create a gist from an R object
 }
 \details{
-This function is specifically for going from R objects to a gist, whereas
-\code{\link{gist_create}} is for going from files or executing code
+This function is specifically for going from R objects to a gist, 
+whereas \code{\link{gist_create}} is for going from files or executing code
 }
 \examples{
 \dontrun{

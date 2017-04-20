@@ -1,3 +1,17 @@
+gistr 0.4.0
+===============
+
+### MINOR IMPROVEMENTS
+
+* Change all `dplyr::rbind_all` instances to `dplyr::bind_rows` (#69)
+
+### BUG FIXES
+
+* Fix to `gists()` internals for when `github.username` not set 
+and user selects `what = "mineall"` - now stops with informative
+message about setting `github.username` option (#66) (#67) thanks @sboysel
+
+
 gistr 0.3.6
 ===============
 

@@ -35,17 +35,17 @@ or \code{\link[rmarkdown]{render}}}
 \item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include source file in the
 gist in addition to the knitted output.}
 
-\item{artifacts}{(logical/character) Include artifacts or not. If \code{TRUE}, 
-includes all artifacts. Or you can pass in a file extension to only upload 
-artifacts of certain file exensions. Default: \code{FALSE}}
+\item{artifacts}{(logical/character) Include artifacts or not. 
+If \code{TRUE}, includes all artifacts. Or you can pass in a file extension 
+to only upload artifacts of certain file exensions. Default: \code{FALSE}}
 
 \item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}} into your
 \code{.Rmd} file to upload files to \url{http://imgur.com/}. This will be ignored 
 if the file is a sweave/latex file because the rendered pdf can't be uploaded
 anyway. Default: FALSE}
 
-\item{git_method}{(character) One of ssh (default) or https. If a remote already
-exists, we use that remote, and this parameter is ignored.}
+\item{git_method}{(character) One of ssh (default) or https. If a remote 
+already exists, we use that remote, and this parameter is ignored.}
 
 \item{sleep}{(integer) Seconds to sleep after creating gist, but before 
 collecting metadata on the gist. If uploading a lot of stuff, you may want to
@@ -78,20 +78,20 @@ This function using git is better suited than \code{\link{gist_create}}
 for use cases involving:
 
 \itemize{
- \item Big files - The GitHub API allows only files of up to 1 MB in size. Using
- git we can get around that limit.
- \item Binary files - Often artifacts created are binary files like \code{.png}.
- The GitHub API doesn't allow transport of binary files, but we can do that with
- git. 
+ \item Big files - The GitHub API allows only files of up to 1 MB in size. 
+ Using git we can get around that limit.
+ \item Binary files - Often artifacts created are binary files like 
+ \code{.png}. The GitHub API doesn't allow transport of binary files, but 
+ we can do that with git. 
 }
 
-Another difference between this function and \code{\link{gist_create}} is that
-this function can collect all artifacts coming out of a knit process.
+Another difference between this function and \code{\link{gist_create}} is 
+that this function can collect all artifacts coming out of a knit process.
 
-If a gist is somehow deleted, or the remote changes, when you try to push to the
-same gist again, everything should be fine. We now use \code{tryCatch} on the 
-push attempt, and if it fails, we'll add a new remote (which means a new gist), 
-and push again.
+If a gist is somehow deleted, or the remote changes, when you try to push 
+to the same gist again, everything should be fine. We now use 
+\code{tryCatch} on the  push attempt, and if it fails, we'll add a new 
+remote (which means a new gist), and push again.
 }
 \examples{
 \dontrun{
@@ -129,7 +129,8 @@ list.files("~/gitgist4")
 gist_create_git(files = "~/gitgist4/file.png")
 
 # knit files first, then push up
-# note: by default we don't upload images, but you can do that, see next example
+# note: by default we don't upload images, but you can do that, 
+# see next example
 rmd <- system.file("examples", "plots.Rmd", package = "gistr")
 unlink("~/gitgist5", recursive = TRUE)
 dir.create("~/gitgist5")

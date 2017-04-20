@@ -25,7 +25,7 @@ Star a gist
 }
 \examples{
 \dontrun{
-id <- '7ddb9810fc99c84c65ec'
+id <- '4ac33b9c00751fddc7f8'
 gist(id) \%>\% star()
 gist(id) \%>\% star_check()
 gist(id) \%>\% unstar()

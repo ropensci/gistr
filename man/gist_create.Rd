@@ -39,8 +39,9 @@ gist in addition to the knitted output.}
 if the file is a sweave/latex file because the rendered pdf can't be uploaded
 anyway. Default: FALSE}
 
-\item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}} 
-instead of \code{\link[knitr]{knit}} to render the document.}
+\item{rmarkdown}{(logical) If \code{TRUE}, use 
+\code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to 
+render the document.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
@@ -49,8 +50,15 @@ Create a gist
 }
 \examples{
 \dontrun{
-gist_create(files="~/stuff.md", description='a new cool gist')
-gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')
+file <- tempfile()
+cat("hello world", file = file)
+gist_create(files=file, description='a new cool gist')
+
+file1 <- tempfile()
+file2 <- tempfile()
+cat("foo bar", file = file1)
+cat("foo bar", file = file2)
+gist_create(files=c(file1, file2), description='spocc demo files')
 
 # include any code by passing to the code parameter
 gist_create(code={'
@@ -90,8 +98,9 @@ x <- letters
 
 library('httr')
 base <- "http://pelias.mapzen.com/search"
-res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
-json <- content(res, as = "text")
+res <- httr::GET(base, query = list(input = 'coffee shop', lat = 45.5, 
+lon = -122.6))
+json <- httr::content(res, as = "text")
 gist_create(code = json, filename = "pelias_test.geojson")
 
 # Knit and include source file, so both files are in the gist
@@ -110,9 +119,9 @@ x <- letters
 file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 cat(readLines(file), sep = "\\n") # peek at file
 gist_create(file, knit=TRUE)
-## if not, GitHub doesn't allow upload of binary files via the HTTP API (which gistr uses)
-## but check back later as I'm working on an option to get binary files uploaded,
-## but will involve having to use git
+## if not, GitHub doesn't allow upload of binary files via the HTTP API 
+## (which gistr uses) but check back later as I'm working on an option to 
+## get binary files uploaded, but will involve having to use git
 file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE)
 ## works with ggplot2 as well
@@ -133,7 +142,8 @@ gist_create(files=list(file1, file2), knit = TRUE)
 ### three at once, some .R and some .Rmd
 file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 gist_create(files=list(file1, file2, file3), knit = TRUE)
-gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
+gist_create(files=list(file1, file2, file3), knit = TRUE, 
+  include_source = TRUE)
 
 # Use rmarkdown::render instead of knitr::knit
 file <- system.file("examples", "rmarkdown_eg.Rmd", package = "gistr")

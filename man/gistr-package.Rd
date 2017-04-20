@@ -9,8 +9,8 @@
 R client for GitHub gists.
 }
 \details{
-gistr allows you to peform actions on gists, including listing, forking, starring, creating,
-deleting, updating, etc.
+gistr allows you to peform actions on gists, including listing, forking, 
+starring, creating, deleting, updating, etc.
 
 There are two ways to authorise gistr to work with your GitHub account:
 

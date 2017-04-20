@@ -5,7 +5,7 @@
 #' @template all
 #' @return A message, and a gist object, the same one input to the function.
 #' @examples \dontrun{
-#' id <- '7ddb9810fc99c84c65ec'
+#' id <- '4ac33b9c00751fddc7f8'
 #' gist(id) %>% star()
 #' gist(id) %>% star_check()
 #' gist(id) %>% unstar()
@@ -23,7 +23,8 @@
 
 star <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- gist_PUT(url_star(gist$id), gist_auth(), ghead(), add_headers(`Content-Length` = 0), ...)
+  res <- gist_PUT(url_star(gist$id), gist_auth(), ghead(), 
+                  add_headers(`Content-Length` = 0), ...)
   star_mssg(res, 'Success, gist starred!')
   gist
 }
@@ -42,15 +43,20 @@ unstar <- function(gist, ...){
 star_check <- function(gist, ...){
   gist <- as.gist(gist)
   res <- GET(url_star(gist$id), gist_auth(), ghead(), ...)
-  msg <- if(res$status_code == 204) TRUE else FALSE
+  msg <- if (res$status_code == 204) TRUE else FALSE
   message(msg)
   gist
 }
 
 url_star <- function(x) sprintf('%s/gists/%s/star', ghbase(), x)
 
-star_mssg <- function(x, y) if(x$status_code == 204) message(y) else warn_for_status(x)
+star_mssg <- function(x, y) if (x$status_code == 204) message(y) else 
+  warn_for_status(x)
 
-star_action <- function(x, y){
-  if(x$status_code == 204) switch(y, star="starred", unstar="unstarred") else x$status_code
+star_action <- function(x, y) {
+  if (x$status_code == 204) {
+    switch(y, star = "starred", unstar = "unstarred") 
+  } else {
+    x$status_code
+  }
 }

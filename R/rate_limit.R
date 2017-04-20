@@ -8,7 +8,8 @@
 #' }
 
 rate_limit <- function(...){
-  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), gist_auth(), ghead(), NULL, ...)
+  tmp <- gist_GET(paste0(ghbase(), "/rate_limit"), gist_auth(), ghead(), 
+                  NULL, ...)
   structure(tmp, class = "gist_rate")
 }
 
@@ -16,7 +17,9 @@ rate_limit <- function(...){
 print.gist_rate <- function(x, ...){
   cat("Rate limit: ", x$rate$limit, '\n', sep = "")
   cat("Remaining:  ", x$rate$remaining, '\n', sep = "")
-  diff <- difftime(as.POSIXct(x$rate$reset, "UTC", origin = "1970-01-01 00:00.00"), format(Sys.time(), tz = "UTC"), tz = "UTC", units = "secs")
+  diff <- difftime(as.POSIXct(x$rate$reset, "UTC", 
+                              origin = "1970-01-01 00:00.00"), 
+                   format(Sys.time(), tz = "UTC"), tz = "UTC", units = "secs")
   cat("Resets in:  ", time(diff), "\n", sep = "")
 }
 

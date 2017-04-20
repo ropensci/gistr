@@ -2,11 +2,13 @@
 #'
 #' @export
 #' @param gist A gist object or something coerceable to a gist
-#' @param path Root path to write to, a directory, not a file b/c a gist can contain 
-#' many files. A folder is created with name of the gist id within this root 
-#' directory.  File names will be the same as given in the gist.
-#' @param x An object of class \code{gist_files} (the output from \code{gist_save})
-#' @return An object of class \code{gist_files}, S3 object containing file paths
+#' @param path Root path to write to, a directory, not a file b/c a gist can 
+#' contain  many files. A folder is created with name of the gist id within 
+#' this root directory.  File names will be the same as given in the gist.
+#' @param x An object of class \code{gist_files} (the output from 
+#' \code{gist_save})
+#' @return An object of class \code{gist_files}, S3 object containing file 
+#' paths
 #' @details 
 #' \code{gist_save}: files are written into a new folder, named by the gist id, 
 #' e.g., \code{a65ac7e56b7b3f746913}
@@ -18,7 +20,8 @@
 #' @examples \dontrun{
 #' gist("a65ac7e56b7b3f746913") %>% gist_save()
 #' gist("a65ac7e56b7b3f746913") %>% gist_save() %>% gist_open()
-#' gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% gist_save()
+#' gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% 
+#'   gist_save()
 #' }
 
 gist_save <- function(gist, path = ".") {
@@ -41,8 +44,8 @@ gist_save <- function(gist, path = ".") {
 #' @export
 print.gist_files <- function(x, ...) {
   cat("<gist> ", attr(x, "id"), "\n", sep = "")
-  # cat("  Files: \n", paste0(strx, collapse = "\n"), "\n", sep = "")
-  cat(g_wrap(sprintf("Files:\n %s ...", paste0(x, collapse = "\n")), indent = 3), "\n\n")
+  cat(g_wrap(sprintf("Files:\n %s ...", paste0(x, collapse = "\n")), 
+             indent = 3), "\n\n")
 }
 
 g_wrap <- function(..., indent = 0, width = getOption("width")) {

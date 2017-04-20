@@ -6,9 +6,10 @@
 #' @return A data.frame or list of data.frame's
 #' @details For commits we return a single data.frame. For gists, we always 
 #' return a list so that we are returning data consistently, 
-#' regardless of variable return data. So you can always index to the main data.frame
-#' with gist metadata and file info by doing \code{result$data}, and likewise for 
-#' forks \code{result$forks} and history \code{result$history}
+#' regardless of variable return data. So you can always index to the main 
+#' data.frame with gist metadata and file info by doing \code{result$data}, 
+#' and likewise for  forks \code{result$forks} and history 
+#' \code{result$history}
 #' @examples \dontrun{
 #' # from a gist object
 #' x <- as.gist('f1403260eb92f5dfa7e1')
@@ -62,11 +63,13 @@ tabl.gist <- function(x, ...){
   files <- lappdf(others$files, "files")
   files_n <- NROW(files)
   
-  singles <- move_cols(data.frame(null2na(x[ names(x) %in% snames ]), stringsAsFactors = FALSE), "id")
+  singles <- move_cols(data.frame(null2na(x[ names(x) %in% snames ]), 
+                                  stringsAsFactors = FALSE), "id")
   singles <- repeat_rows(singles, files_n)
   
   owner <- data.frame(others$owner, stringsAsFactors = FALSE)
-  owner <- if (NROW(owner) == 0) owner else stats::setNames(owner, paste0("owner_", names(owner)))
+  owner <- if (NROW(owner) == 0) owner else 
+    stats::setNames(owner, paste0("owner_", names(owner)))
   owner <- repeat_rows(owner, files_n)
   
   one <- dplyr::as_data_frame(cbind_fill(singles, files, owner, as_df = TRUE))
@@ -108,9 +111,11 @@ tabl.list <- function(x, ...) {
 #' @export
 tabl.commit <- function(x, ...){
   as_data_frame(move_cols(
-    do.call("cbind", gist_compact(list(null2na(x$user), 
-                          flatten(data.frame(null2na(pop(unclass(x), "user")), 
-                                             stringsAsFactors = FALSE))))), "id"))
+    do.call("cbind", 
+            gist_compact(
+              list(null2na(x$user), 
+                   flatten(data.frame(null2na(pop(unclass(x), "user")), 
+                                      stringsAsFactors = FALSE))))), "id"))
 }
 
 snames <- c("url","forks_url", "commits_url", "id", "git_pull_url",
@@ -159,7 +164,8 @@ cbind_fill <- function(..., as_df = FALSE) {
 
 move_cols <- function(x, y) {
   if (y %in% names(x)) {
-    x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'), names(x)))]) ]
+    x[ c(y, names(x)[-sapply(y, function(z) grep(paste0('\\b', z, '\\b'),
+                                                 names(x)))]) ]
   } else {
     x
   }

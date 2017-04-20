@@ -27,7 +27,8 @@
 #'
 #' # rename existing files
 #' # For some reason, this operation has to upload the content too
-#' ### first name is old file name with path (must match), and second is new file name (w/o path)
+#' ### first name is old file name with path (must match), and second is 
+#' ### new file name (w/o path)
 #' ## add first
 #' gists(what = "minepublic")[[3]] %>%
 #'  add_files(file1, file2) %>%
@@ -46,6 +47,7 @@ update <- function(gist, description = gist$description, ...) {
   files <- list(update = gist$update_files, add = gist$add_files, 
                 delete = gist$delete_files, rename = gist$rename_files)
   body <- payload(filenames = files, description)
-  res <- gist_PATCH(id = gist$id, auth = gist_auth(), headers = ghead(), body, ...)
+  res <- gist_PATCH(id = gist$id, auth = gist_auth(), headers = ghead(), 
+                    body, ...)
   as.gist(res)
 }

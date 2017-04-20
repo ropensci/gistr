@@ -9,7 +9,8 @@
 
 delete <- function(gist, ...) {
   gist <- as.gist(gist)
-  res <- gist_DELETE(paste0(ghbase(), '/gists/', gist$id), auth = gist_auth(), headers = ghead(), ...)
+  res <- gist_DELETE(paste0(ghbase(), '/gists/', gist$id), 
+                     auth = gist_auth(), headers = ghead(), ...)
   stop_for_status(res)
   message('Your gist has been deleted')
 }

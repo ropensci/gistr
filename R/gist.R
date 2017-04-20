@@ -84,7 +84,8 @@ is_gisturl <- function(x){
 }
 
 is_url <- function(x){
-  grepl("https?://", x, ignore.case = TRUE) || grepl("localhost:[0-9]{4}", x, ignore.case = TRUE)
+  grepl("https?://", x, ignore.case = TRUE) || grepl("localhost:[0-9]{4}", x, 
+                                                     ignore.case = TRUE)
 }
 
 get_gistid <- function(x) {
@@ -108,8 +109,10 @@ print.gist <- function(x, ...){
   cat("  Description: ", x$description, "\n", sep = "")
   cat("  Public: ", x$public, "\n", sep = "")
   cat("  Created/Edited: ", x$created_at, " / ", x$updated_at, "\n", sep = "")
-  cat("  Files: ", paste0(vapply(x$files, "[[", "", "filename"), collapse = ", "), "\n", sep = "")
-  cat("  Truncated?: ", paste0(sapply(x$files, is_trunc), collapse = ", "), "\n", sep = "")
+  cat("  Files: ", paste0(vapply(x$files, "[[", "", "filename"), 
+                          collapse = ", "), "\n", sep = "")
+  cat("  Truncated?: ", paste0(sapply(x$files, is_trunc), collapse = ", "), 
+      "\n", sep = "")
 }
 
 is_trunc <- function(z) {

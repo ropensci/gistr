@@ -7,16 +7,18 @@
 run(x, filename = "code.R", knitopts = list())
 }
 \arguments{
-\item{x}{Input, one of: code wrapped in curly brackets and quotes, a file path to an .Rmd file,
-or a gist.}
+\item{x}{Input, one of: code wrapped in curly brackets and quotes, a file 
+path to an .Rmd file, or a gist.}
 
-\item{filename}{Name of the file to create, only used if \code{code} parameter is used. Default
-to \code{code.R}}
+\item{filename}{Name of the file to create, only used if \code{code} 
+parameter is used. Default to \code{code.R}}
 
-\item{knitopts}{(list) List of variables passed on to \code{link[knitr]{knit}}}
+\item{knitopts}{(list) List of variables passed on to 
+\code{link[knitr]{knit}}}
 }
 \value{
-A path, unless a gist object is passed in, in which case a gist object is returned.
+A path, unless a gist object is passed in, in which case a gist 
+object is returned.
 }
 \description{
 Run a .Rmd file

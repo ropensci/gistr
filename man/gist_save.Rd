@@ -12,14 +12,16 @@ gist_open(x)
 \arguments{
 \item{gist}{A gist object or something coerceable to a gist}
 
-\item{path}{Root path to write to, a directory, not a file b/c a gist can contain 
-many files. A folder is created with name of the gist id within this root 
-directory.  File names will be the same as given in the gist.}
+\item{path}{Root path to write to, a directory, not a file b/c a gist can 
+contain  many files. A folder is created with name of the gist id within 
+this root directory.  File names will be the same as given in the gist.}
 
-\item{x}{An object of class \code{gist_files} (the output from \code{gist_save})}
+\item{x}{An object of class \code{gist_files} (the output from 
+\code{gist_save})}
 }
 \value{
-An object of class \code{gist_files}, S3 object containing file paths
+An object of class \code{gist_files}, S3 object containing file 
+paths
 }
 \description{
 Save gist files to disk
@@ -37,6 +39,7 @@ open in the IDE (I think).
 \dontrun{
 gist("a65ac7e56b7b3f746913") \%>\% gist_save()
 gist("a65ac7e56b7b3f746913") \%>\% gist_save() \%>\% gist_open()
-gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% gist_save()
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% 
+  gist_save()
 }
 }

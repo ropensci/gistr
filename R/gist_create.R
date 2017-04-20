@@ -2,12 +2,20 @@
 #'
 #' @export
 #' @template args
-#' @param rmarkdown (logical) If \code{TRUE}, use \code{\link[rmarkdown]{render}} 
-#' instead of \code{\link[knitr]{knit}} to render the document.
+#' @param rmarkdown (logical) If \code{TRUE}, use 
+#' \code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to 
+#' render the document.
 #' @seealso \code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
 #' @examples \dontrun{
-#' gist_create(files="~/stuff.md", description='a new cool gist')
-#' gist_create(files=c("~/spocc_sp.Rmd","~/spocc_sp.md"), description='spocc demo files')
+#' file <- tempfile()
+#' cat("hello world", file = file)
+#' gist_create(files=file, description='a new cool gist')
+#' 
+#' file1 <- tempfile()
+#' file2 <- tempfile()
+#' cat("foo bar", file = file1)
+#' cat("foo bar", file = file2)
+#' gist_create(files=c(file1, file2), description='spocc demo files')
 #'
 #' # include any code by passing to the code parameter
 #' gist_create(code={'
@@ -47,8 +55,9 @@
 #'
 #' library('httr')
 #' base <- "http://pelias.mapzen.com/search"
-#' res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
-#' json <- content(res, as = "text")
+#' res <- httr::GET(base, query = list(input = 'coffee shop', lat = 45.5, 
+#' lon = -122.6))
+#' json <- httr::content(res, as = "text")
 #' gist_create(code = json, filename = "pelias_test.geojson")
 #'
 #' # Knit and include source file, so both files are in the gist
@@ -67,9 +76,9 @@
 #' file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 #' cat(readLines(file), sep = "\n") # peek at file
 #' gist_create(file, knit=TRUE)
-#' ## if not, GitHub doesn't allow upload of binary files via the HTTP API (which gistr uses)
-#' ## but check back later as I'm working on an option to get binary files uploaded,
-#' ## but will involve having to use git
+#' ## if not, GitHub doesn't allow upload of binary files via the HTTP API 
+#' ## (which gistr uses) but check back later as I'm working on an option to 
+#' ## get binary files uploaded, but will involve having to use git
 #' file <- system.file("examples", "plots.Rmd", package = "gistr")
 #' gist_create(file, knit=TRUE, imgur_inject = TRUE)
 #' ## works with ggplot2 as well
@@ -90,7 +99,8 @@
 #' ### three at once, some .R and some .Rmd
 #' file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 #' gist_create(files=list(file1, file2, file3), knit = TRUE)
-#' gist_create(files=list(file1, file2, file3), knit = TRUE, include_source = TRUE)
+#' gist_create(files=list(file1, file2, file3), knit = TRUE, 
+#'   include_source = TRUE)
 #' 
 #' # Use rmarkdown::render instead of knitr::knit
 #' file <- system.file("examples", "rmarkdown_eg.Rmd", package = "gistr")
@@ -98,9 +108,10 @@
 #'    renderopts = list(output_format = "md_document"))
 #' }
 
-gist_create <- function(files=NULL, description = "", public = TRUE, browse = TRUE, code=NULL,
-  filename="code.R", knit=FALSE, knitopts=list(), renderopts=list(), include_source = FALSE,
-  imgur_inject = FALSE, rmarkdown = FALSE, ...) {
+gist_create <- function(files=NULL, description = "", public = TRUE, 
+  browse = TRUE, code=NULL, filename="code.R", knit=FALSE, knitopts=list(), 
+  renderopts=list(), include_source = FALSE, imgur_inject = FALSE, 
+  rmarkdown = FALSE, ...) {
 
   if (!is.null(code)) files <- code_handler(code, filename)
   if (knit) {
@@ -161,10 +172,6 @@ inject_imgur <- function(x, imgur_inject = TRUE) {
       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)\n```\n"
       cat(str, orig, file = x, sep = "\n")
     }
-    #     else if(grepl("\\.[rR]nw$", x)) {
-    #       str <- "```{r echo=FALSE}\nknitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)\n```\n"
-    #       cat(str, orig, file = x, sep = "\n")
-    #     }
   }
 }
 
@@ -174,11 +181,6 @@ inject_root_dir <- function(x, path) {
               knitr::opts_knit$set(root.dir = \"%s\")
               ```\n", path), orig, file = x, sep = "\n")
 }
-
-# swapfilename <- function(x, filename){
-#   tmp <- strsplit(x, "/")[[1]]
-#   paste0(paste0(tmp[ - length(tmp) ], collapse = "/"), ,filename)
-# }
 
 code_handler <- function(x, filename){
   # Remove surrounding `{`
@@ -195,33 +197,11 @@ code_handler <- function(x, filename){
 }
 
 temp_gist_dir <- function() {
-  ph <- file.path(Sys.getenv("HOME"), paste0(".gistr_code_", basename(tempfile())))
+  ph <- file.path(Sys.getenv("HOME"), paste0(".gistr_code_", 
+                                             basename(tempfile())))
   dir.create(ph, showWarnings = FALSE, recursive = TRUE)
   return(ph)
 }
-
-# rm_temp_gist_dir <- function(x) {
-#   unlink(x)
-# }
- 
-# is.binary <- function(x, maximum = 1000) {
-#   if (!is.dir(x)) {
-#     f <- file(x, "rb", raw = TRUE)
-#     b <- readBin(f, "int", maximum, size = 1, signed = FALSE)
-#     tmp <- suppressWarnings(max(b)) > 128
-#     close.connection(f)
-#     tmp
-#   } else {
-#     FALSE
-#   }
-# }
-# 
-# is_binary <- function(x) {
-#   bin <- vapply(x, is.binary, logical(1))
-#   if (any(bin)) {
-#     stop("Binary files not supported\n", x[bin], call. = FALSE)
-#   }
-# }
 
 is.dir <- function(x) {
   file.info(x)$isdir

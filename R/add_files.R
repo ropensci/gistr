@@ -11,9 +11,7 @@
 #' # delete_files()
 #' # rename_files()
 #' }
-
-add_files <- function(gist, ...)
-{
+add_files <- function(gist, ...) {
   files <- list(...)
   files <- files_exist(files)
   gist$add_files <- files
@@ -22,8 +20,7 @@ add_files <- function(gist, ...)
 
 #' @export
 #' @rdname files
-update_files <- function(gist, ...)
-{
+update_files <- function(gist, ...) {
   files <- list(...)
   files <- files_exist(files)
   gist$update_files <- files
@@ -32,8 +29,7 @@ update_files <- function(gist, ...)
 
 #' @export
 #' @rdname files
-delete_files <- function(gist, ...)
-{
+delete_files <- function(gist, ...) {
   files <- list(...)
   files <- files_exist(files)
   gist$delete_files <- files
@@ -42,17 +38,18 @@ delete_files <- function(gist, ...)
 
 #' @export
 #' @rdname files
-rename_files <- function(gist, ...)
-{
+rename_files <- function(gist, ...) {
   gist$rename_files <- list(...)
   gist
 }
 
 files_exist <- function(x){
   tmp <- sapply(x, file.exists)
-  if(!all(tmp)){
-#     notfound <- paste0(names(tmp[!tmp]), collapse = "\n")
+  if (!all(tmp)) {
     notfound <- paste0(x[!tmp], collapse = "\n")
-    stop(sprintf("These don't exist or can't be found:\n%s", notfound), call. = FALSE)
-  } else { x }
+    stop(sprintf("These don't exist or can't be found:\n%s", notfound), 
+         call. = FALSE)
+  } else { 
+    x 
+  }
 }

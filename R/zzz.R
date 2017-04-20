@@ -11,7 +11,8 @@ payload <- function(filenames, description = "") {
     list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
   # del <- lapply(delete, function(file) structure(list(NULL), names = basename(file)))
-  del <- do.call("c", unname(Map(function(x) stats::setNames(list(NULL), x), sapply(delete, basename))))
+  del <- do.call("c", unname(Map(function(x) stats::setNames(list(NULL), x), 
+                                 sapply(delete, basename))))
   ren <- lapply(rename, function(f) {
     tt <- f[[1]]
     list(filename = basename(f[[2]]),
@@ -26,19 +27,22 @@ payload <- function(filenames, description = "") {
 creategist <- function(filenames, description = "", public = TRUE) {
   filenames <- files_exist(filenames)
   files <- lapply(filenames, function(file) {
-    list(content = paste(readLines(file, warn = FALSE, encoding = "UTF-8"), collapse = "\n"))
+    list(content = paste(readLines(file, warn = FALSE, encoding = "UTF-8"), 
+                         collapse = "\n"))
   })
   names(files) <- sapply(filenames, basename)
   body <- list(description = description, public = public, files = files)
   jsonlite::toJSON(body, auto_unbox = TRUE)
 }
 
-creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE, filename = "file.txt") {
+creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE,
+                           filename = "file.txt") {
   nm <- deparse(substitute(z))
   if (pretty && any(is.data.frame(z) || is.matrix(z))) {
     z <- list(list(content = paste0(knitr::kable(z), collapse = "\n")))
   } else {
-    z <- list(list(content = as.character(jsonlite::toJSON(z, auto_unbox = TRUE))))
+    z <- list(list(content = as.character(jsonlite::toJSON(z, 
+                                                           auto_unbox = TRUE))))
   }
   names(z) <- filename
   body <- list(description = description, public = public, files = z)
@@ -46,7 +50,8 @@ creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE, fi
 }
 
 unl <- function(x) if (!is.null(x)) do.call(c, x) else NULL
-unr <- function(x) if (!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
+unr <- function(x) 
+  if (!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 
 mssg <- function(x, y) if (x) message(y)
 
@@ -60,7 +65,8 @@ gc <- function(x) {
 ghbase <- function() 'https://api.github.com'
 
 ghead <- function(){
-  add_headers(`User-Agent` = "gistr", `Accept` = 'application/vnd.github.v3+json')
+  add_headers(`User-Agent` = "gistr", 
+              `Accept` = 'application/vnd.github.v3+json')
 }
 
 gist_GET <- function(url, auth, headers, args=NULL, ...){
@@ -69,7 +75,8 @@ gist_GET <- function(url, auth, headers, args=NULL, ...){
 }
 
 gist_PATCH <- function(id, auth, headers, body, ...){
-  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, body = body, encode = "json")
+  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, 
+                    body = body, encode = "json")
   process(response)
 }
 
@@ -95,8 +102,10 @@ process <- function(x){
 
 stopstatus <- function(x) {
   if (x$status_code > 203) {
-    res <- jsonlite::fromJSON(httr::content(x, as = "text", encoding = "UTF-8"), FALSE)
-    errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", collapse = "\n"))
+    res <- jsonlite::fromJSON(httr::content(x, as = "text", 
+                                            encoding = "UTF-8"), FALSE)
+    errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", 
+                                                 collapse = "\n"))
     stop(res$message, "\n", errs, call. = FALSE)
   }
 }
