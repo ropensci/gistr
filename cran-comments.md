@@ -16,15 +16,15 @@ File 'LICENSE':
 
 ## Reverse dependencies
 
-* I have run R CMD check on the NUMBER downstream dependencies.
-  (Summary at <>). 
-* FAILURE SUMMARY
-* All revdep maintainers were notified of the release on RELEASE DATE.
+* I have run R CMD check on the 6 downstream dependencies.
+  (Summary at <https://github.com/ropensci/gistr/tree/master/revdep>). 
+* None had problems.
+* All revdep maintainers were notified of the release.
 
 ---
 
-This version fixes a bug and changes function name in from a dependency 
-package in anticipation of new version on CRAN (dplyr).
+This version fixes a bug and changes function name in a dependency 
+package in anticipation of a new version of it on CRAN (dplyr).
 
 
 Thanks!

@@ -2,6 +2,8 @@ Hi,
 
 This is an automated email to let you know about the release of {{{ my_package }}}, which I'll submit to CRAN on ({{{ date }}}).
 
+This release includes only very minor changes that shouldn't effect your package.
+
 To check for potential problems, I ran `R CMD check` on your package {{{your_package}}} ({{{your_version}}}).
 
 I found: {{{your_summary}}}.

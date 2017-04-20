@@ -13,3 +13,4 @@ figure
 CONDUCT.md
 revdep
 ^cran-comments\.md$
+^\.httr-oauth$
