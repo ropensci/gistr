@@ -11,5 +11,5 @@ NEWS.md
 figure
 .github
 CONDUCT.md
-
+revdep
 ^cran-comments\.md$
