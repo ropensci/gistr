@@ -113,6 +113,9 @@ gist_create <- function(files=NULL, description = "", public = TRUE,
   renderopts=list(), include_source = FALSE, imgur_inject = FALSE, 
   rmarkdown = FALSE, ...) {
 
+  if (is.null(files) && is.null(code)) {
+    stop("must use one of 'files' or 'code'", call. = FALSE)
+  }
   if (!is.null(code)) files <- code_handler(code, filename)
   if (knit) {
     allfiles <- list()
