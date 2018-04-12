@@ -9,7 +9,7 @@ Makefile
 vignettes/img
 figure
 .github
-CONDUCT.md
+^CODE_OF_CONDUCT\.md$
 revdep
 ^cran-comments\.md$
 ^\.httr-oauth$
