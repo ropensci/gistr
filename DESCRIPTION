@@ -33,3 +33,6 @@ Suggests:
     git2r,
     testthat
 RoxygenNote: 6.0.1
+X-schema.org-applicationCategory: Web
+X-schema.org-keywords: http, https, API, web-services, GitHub, GitHub API, gist, gists, code, script, snippet
+X-schema.org-isPartOf: https://ropensci.org
