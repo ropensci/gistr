@@ -15,6 +15,7 @@ gistr
 
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+* [gistfo](https://github.com/MilesMcBain/gistfo) for turning your untitled RStudio tabs into gists!
 
 ## Quick start
 
@@ -93,8 +94,8 @@ update(add_files(gists(what = "minepublic")[[1]], file))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4938
-#> Resets in:  50 minutes
+#> Remaining:  4975
+#> Resets in:  56 minutes
 ```
 
 ### List gists
@@ -105,21 +106,21 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>feae4fee7d1debd13e58
-#>   URL: https://gist.github.com/feae4fee7d1debd13e58
-#>   Description:
+#> <gist>6ac700bec42f7563bf809d8d92ae4906
+#>   URL: https://gist.github.com/6ac700bec42f7563bf809d8d92ae4906
+#>   Description: Password Dictionary for Brute force attack
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2018-04-16T21:25:21Z / 2018-04-16T21:25:22Z
+#>   Files: dictionary.txt
 #>   Truncated?: FALSE
-#>
+#> 
 #> [[2]]
-#> <gist>03430047a811520d880c
-#>   URL: https://gist.github.com/03430047a811520d880c
-#>   Description: Bootstrap Customizer Config
+#> <gist>89df33d7a21ed92d2fad5c4cec96f8ae
+#>   URL: https://gist.github.com/89df33d7a21ed92d2fad5c4cec96f8ae
+#>   Description: Export documents to a zip file
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:18:30Z / 2015-07-03T00:18:30Z
-#>   Files: config.json
+#>   Created/Edited: 2018-04-16T21:25:03Z / 2018-04-16T21:25:04Z
+#>   Files: export_zip.xqy
 #>   Truncated?: FALSE
 ```
 
@@ -129,21 +130,21 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>feae4fee7d1debd13e58
-#>   URL: https://gist.github.com/feae4fee7d1debd13e58
-#>   Description:
+#> <gist>6ac700bec42f7563bf809d8d92ae4906
+#>   URL: https://gist.github.com/6ac700bec42f7563bf809d8d92ae4906
+#>   Description: Password Dictionary for Brute force attack
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:18:51Z / 2015-07-03T00:18:52Z
-#>   Files: gistfile1.txt
+#>   Created/Edited: 2018-04-16T21:25:21Z / 2018-04-16T21:25:22Z
+#>   Files: dictionary.txt
 #>   Truncated?: FALSE
-#>
+#> 
 #> [[2]]
-#> <gist>03430047a811520d880c
-#>   URL: https://gist.github.com/03430047a811520d880c
-#>   Description: Bootstrap Customizer Config
+#> <gist>89df33d7a21ed92d2fad5c4cec96f8ae
+#>   URL: https://gist.github.com/89df33d7a21ed92d2fad5c4cec96f8ae
+#>   Description: Export documents to a zip file
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:18:30Z / 2015-07-03T00:18:30Z
-#>   Files: config.json
+#>   Created/Edited: 2018-04-16T21:25:03Z / 2018-04-16T21:25:04Z
+#>   Files: export_zip.xqy
 #>   Truncated?: FALSE
 ```
 
@@ -153,22 +154,22 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>b15270e69c09f3b87589
-#>   URL: https://gist.github.com/b15270e69c09f3b87589
-#>   Description: gist gist gist
+#> <gist>d6c06c121e70016e1caf159c7d7b6aa6
+#>   URL: https://gist.github.com/d6c06c121e70016e1caf159c7d7b6aa6
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:10:39Z / 2015-07-03T00:10:39Z
+#>   Created/Edited: 2018-04-16T21:24:47Z / 2018-04-16T21:24:55Z
+#>   Files: code.R
+#>   Truncated?: FALSE
+#> 
+#> [[2]]
+#> <gist>f271bcf55ad2e17c34f4e99e2458d232
+#>   URL: https://gist.github.com/f271bcf55ad2e17c34f4e99e2458d232
+#>   Description: a new cool gist
+#>   Public: TRUE
+#>   Created/Edited: 2018-04-16T21:24:46Z / 2018-04-16T21:24:46Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
-#>
-#> [[2]]
-#> <gist>abbd1a5b0cfc633cfcfd
-#>   URL: https://gist.github.com/abbd1a5b0cfc633cfcfd
-#>   Description: gist gist gist
-#>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:09:34Z / 2015-07-03T00:09:35Z
-#>   Files: stuff.md, zoo.json
-#>   Truncated?: FALSE, FALSE
 ```
 
 
@@ -179,9 +180,9 @@ gists('minepublic', per_page = 2)
 gist(id = 'f1403260eb92f5dfa7e1')
 #> <gist>f1403260eb92f5dfa7e1
 #>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
-#>   Description: Querying bitly from R
+#>   Description: Querying bitly from R 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-15T20:40:12Z / 2014-10-15T21:54:29Z
+#>   Created/Edited: 2014-10-15T20:40:12Z / 2015-08-29T14:07:43Z
 #>   Files: bitly_r.md
 #>   Truncated?: FALSE
 ```
@@ -194,11 +195,11 @@ You can pass in files
 ```r
 file <- system.file("examples", "stuff.md", package = "gistr")
 gist_create(file, description='a new cool gist', browse = FALSE)
-#> <gist>974fd41ff30de9814cc1
-#>   URL: https://gist.github.com/974fd41ff30de9814cc1
+#> <gist>7563b7654b15a8c4cc9f69880ae78d18
+#>   URL: https://gist.github.com/7563b7654b15a8c4cc9f69880ae78d18
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
+#>   Created/Edited: 2018-04-16T21:25:58Z / 2018-04-16T21:25:58Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -225,11 +226,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>4fd5a913e911ad70098c
-#>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description:
+#> <gist>b7f90fcb99dae005db9d837f1a21ee03
+#>   URL: https://gist.github.com/b7f90fcb99dae005db9d837f1a21ee03
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
+#>   Created/Edited: 2018-04-16T21:26:00Z / 2018-04-16T21:26:00Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -274,11 +275,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>a25bdafc43ee46a98783
-#>   URL: https://gist.github.com/a25bdafc43ee46a98783
-#>   Description:
+#> <gist>5f05cf24cf459e0818ae2e128c14f301
+#>   URL: https://gist.github.com/5f05cf24cf459e0818ae2e128c14f301
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:19Z / 2015-07-03T00:19:19Z
+#>   Created/Edited: 2018-04-16T21:26:01Z / 2018-04-16T21:26:01Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -343,9 +344,9 @@ gist_create(file, knit=TRUE, imgur_inject = TRUE)
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 1a418fb4968d550f15f75deb5df4d470f00c6663
+#>   Version: bf6f7fcb219bed1ac3de465f707d17d344da4c22
 #>   User: sckott
-#>   Commited: 2015-07-03T00:19:18Z
+#>   Commited: 2018-04-16T21:25:59Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -355,28 +356,27 @@ Star
 
 
 ```r
-gist('7ddb9810fc99c84c65ec') %>% star()
-#> <gist>7ddb9810fc99c84c65ec
-#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description:
+gist('cbb0507082bb18ff7e4b') %>% star()
+#> <gist>cbb0507082bb18ff7e4b
+#>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
+#>   Description: This is my technical interview cheat sheet.  Feel free to fork it or do whatever you want with it.  PLEASE let me know if there are any errors or if anything crucial is missing.  I will add more links soon.
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
-#>   Files: code.R, manifest.yml, rrt_manifest.yml
-#>   Truncated?: FALSE, FALSE, FALSE
+#>   Created/Edited: 2014-05-02T19:43:13Z / 2018-04-16T21:11:53Z
+#>   Files: The Technical Interview Cheat Sheet.md
+#>   Truncated?: FALSE
 ```
 
 Unstar
 
-
 ```r
-gist('7ddb9810fc99c84c65ec') %>% unstar()
-#> <gist>7ddb9810fc99c84c65ec
-#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
-#>   Description:
+gist('cbb0507082bb18ff7e4b') %>% unstar()
+#> <gist>cbb0507082bb18ff7e4b
+#>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
+#>   Description: This is my technical interview cheat sheet.  Feel free to fork it or do whatever you want with it.  PLEASE let me know if there are any errors or if anything crucial is missing.  I will add more links soon.
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-02T23:56:27Z
-#>   Files: code.R, manifest.yml, rrt_manifest.yml
-#>   Truncated?: FALSE, FALSE, FALSE
+#>   Created/Edited: 2014-05-02T19:43:13Z / 2018-04-16T21:27:36Z
+#>   Files: The Technical Interview Cheat Sheet.md
+#>   Truncated?: FALSE
 ```
 
 ### Edit a gist
@@ -389,11 +389,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
   update()
-#> <gist>4fd5a913e911ad70098c
-#>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description:
+#> <gist>b7f90fcb99dae005db9d837f1a21ee03
+#>   URL: https://gist.github.com/b7f90fcb99dae005db9d837f1a21ee03
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:21Z
+#>   Created/Edited: 2018-04-16T21:26:00Z / 2018-04-16T21:26:25Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -406,11 +406,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
   update()
-#> <gist>4fd5a913e911ad70098c
-#>   URL: https://gist.github.com/4fd5a913e911ad70098c
-#>   Description:
+#> <gist>b7f90fcb99dae005db9d837f1a21ee03
+#>   URL: https://gist.github.com/b7f90fcb99dae005db9d837f1a21ee03
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:22Z
+#>   Created/Edited: 2018-04-16T21:26:00Z / 2018-04-16T21:26:26Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -429,7 +429,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/4fd5a913e911ad70098c.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/b7f90fcb99dae005db9d837f1a21ee03.js\"></script>"
 ```
 
 ### List forks
@@ -444,17 +444,17 @@ gist(id='1642874') %>% forks(per_page=2)
 #>   URL: https://gist.github.com/1642989
 #>   Description: Spline Transition
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-06-11T19:40:48Z
-#>   Files:
-#>   Truncated?:
-#>
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2018-02-07T07:49:17Z
+#>   Files: 
+#>   Truncated?: 
+#> 
 #> [[2]]
 #> <gist>1643051
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-06-11T19:40:48Z
-#>   Files:
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2016-12-01T07:19:06Z
+#>   Files: 
 #>   Truncated?:
 ```
 
@@ -466,12 +466,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>b022baf5c960e864addb
-#>   URL: https://gist.github.com/b022baf5c960e864addb
-#>   Description: Solution to level 1 in Untrusted: http://alex.nisnevich.com/untrusted/
+#> <gist>ca541fdae95e8a2e009bea872595bd2b
+#>   URL: https://gist.github.com/ca541fdae95e8a2e009bea872595bd2b
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:23Z / 2015-07-03T00:19:23Z
-#>   Files: untrusted-lvl1-solution.js
+#>   Created/Edited: 2018-04-16T21:26:33Z / 2018-04-16T21:26:33Z
+#>   Files: .py
 #>   Truncated?: FALSE
 ```
 

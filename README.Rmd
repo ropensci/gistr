@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
 
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+* [gistfo](https://github.com/MilesMcBain/gistfo) for turning your untitled RStudio tabs into gists!
 
 ## Quick start
 
@@ -251,14 +252,28 @@ gists()[[1]] %>% commits()
 
 Star
 
-```{r}
-gist('7ddb9810fc99c84c65ec') %>% star()
+```{r eval = FALSE}
+gist('cbb0507082bb18ff7e4b') %>% star()
+#> <gist>cbb0507082bb18ff7e4b
+#>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
+#>   Description: This is my technical interview cheat sheet.  Feel free to fork it or do whatever you want with it.  PLEASE let me know if there are any errors or if anything crucial is missing.  I will add more links soon.
+#>   Public: TRUE
+#>   Created/Edited: 2014-05-02T19:43:13Z / 2018-04-16T21:11:53Z
+#>   Files: The Technical Interview Cheat Sheet.md
+#>   Truncated?: FALSE
 ```
 
 Unstar
 
-```{r}
-gist('7ddb9810fc99c84c65ec') %>% unstar()
+```{r eval = FALSE}
+gist('cbb0507082bb18ff7e4b') %>% unstar()
+#> <gist>cbb0507082bb18ff7e4b
+#>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
+#>   Description: This is my technical interview cheat sheet.  Feel free to fork it or do whatever you want with it.  PLEASE let me know if there are any errors or if anything crucial is missing.  I will add more links soon.
+#>   Public: TRUE
+#>   Created/Edited: 2014-05-02T19:43:13Z / 2018-04-16T21:27:36Z
+#>   Files: The Technical Interview Cheat Sheet.md
+#>   Truncated?: FALSE
 ```
 
 ### Edit a gist
