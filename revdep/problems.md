@@ -1,24 +1,23 @@
-# Setup
+# mapr
 
-## Platform
+Version: 0.4.0
 
-|setting  |value                                       |
-|:--------|:-------------------------------------------|
-|version  |R version 3.3.3 Patched (2017-03-15 r72501) |
-|system   |x86_64, darwin13.4.0                        |
-|ui       |RStudio (1.1.204)                           |
-|language |(EN)                                        |
-|collate  |en_US.UTF-8                                 |
-|tz       |America/Vancouver                           |
-|date     |2017-04-20                                  |
+## In both
 
-## Packages
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 164 marked UTF-8 strings
+    ```
 
-|package |*  |version |date       |source                    |
-|:-------|:--|:-------|:----------|:-------------------------|
-|gistr   |   |0.4.0   |2017-04-20 |local (ropensci/gistr@NA) |
+# rbokeh
 
-# Check results
-0 packages with problems
+Version: 0.5.0
 
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘ggplot2’
+      All declared Imports should be used.
+    ```
 

@@ -3,3 +3,6 @@
 .httr-oauth
 .Rhistory
 figure
+revdep/checks.noindex
+revdep/library.noindex
+revdep/data.sqlite

@@ -10,7 +10,7 @@ vignettes/img
 figure
 .github
 ^CODE_OF_CONDUCT\.md$
-revdep
+^revdep$
 ^cran-comments\.md$
 ^\.httr-oauth$
 ^codemeta\.json$
