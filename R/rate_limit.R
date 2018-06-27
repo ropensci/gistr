@@ -4,7 +4,6 @@
 #' @param ... Named args to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' rate_limit()
-#' rate_limit(config=verbose())
 #' }
 
 rate_limit <- function(...){

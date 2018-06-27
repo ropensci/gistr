@@ -24,7 +24,7 @@ file2 <- system.file("examples", "zoo.json", package = "gistr")
 # add new files
 gists(what = "minepublic")[[3]] \%>\%
  add_files(file1, file2) \%>\%
- update(config = verbose())
+ update()
 
 # update existing files
 ### file name has to match to current name

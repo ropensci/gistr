@@ -90,7 +90,9 @@ gist_PUT <- function(url, auth, headers, ...){
 }
 
 gist_DELETE <- function(url, auth, headers, ...){
-  DELETE(url, auth, headers, ...)
+  res <- DELETE(url, auth, headers, ...)
+  stopstatus(res, 204)
+  res
 }
 
 process <- function(x){
@@ -100,8 +102,8 @@ process <- function(x){
   jsonlite::fromJSON(temp, FALSE)
 }
 
-stopstatus <- function(x) {
-  if (x$status_code > 203) {
+stopstatus <- function(x, status_stop = 203) {
+  if (x$status_code > status_stop) {
     res <- jsonlite::fromJSON(httr::content(x, as = "text", 
                                             encoding = "UTF-8"), FALSE)
     errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", 

@@ -15,6 +15,5 @@ Get rate limit information
 \examples{
 \dontrun{
 rate_limit()
-rate_limit(config=verbose())
 }
 }

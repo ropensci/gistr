@@ -263,6 +263,7 @@ cgist <- function(description, public) {
                       )
                     ), auto_unbox = TRUE)
   )
+  stopstatus(res)
   jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"), FALSE)
 }
 

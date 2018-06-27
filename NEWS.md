@@ -1,3 +1,16 @@
+gistr 0.4.2
+===============
+
+### NEW FEATURES
+
+* `gist()` gains a parameter `revision` to request a specific revision of a gists. note that the returned brief print out of the gist in your console may not vary from revision to revision, but the underlying data has the correct data for the revision (#71)
+
+### MINOR IMPROVEMENTS
+
+* affecting all functions that create data `gist_create()`, `gist_create_git()`, `gist_create_obj()`, `update()`, `delete()`: GitHub for good reason gives a 404 when there are authentication issues. A common problem is that a user has incorrect or missing scopes. We now attempt to detect this scope problem specifically and throw a message when that happens (#70)
+* toggle whether we index to a git path with `@` vs. `$` depending on `git2r` package version; for an upcoming version of `git2r` (#74)
+
+
 gistr 0.4.0
 ===============
 
