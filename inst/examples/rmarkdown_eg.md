@@ -20,7 +20,7 @@ ggplot(mtcars, aes(cyl, hp)) +
   theme_grey(base_size = 18)
 ```
 
-![plot of chunk unnamed-chunk-3](http://i.imgur.com/SeIaFEQ.png)
+![plot of chunk unnamed-chunk-3](https://i.imgur.com/qhAguQK.png)
 
 ## Bar plot
 
@@ -31,4 +31,4 @@ ggplot(iris, aes(Species, Sepal.Length)) +
   theme_grey(base_size = 18)
 ```
 
-![plot of chunk unnamed-chunk-4](http://i.imgur.com/Di7yeGJ.png)
+![plot of chunk unnamed-chunk-4](https://i.imgur.com/byOPWhp.png)

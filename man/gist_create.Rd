@@ -70,15 +70,6 @@ numbers <- runif(10)
 numbers
 '})
 
-# or include results if you want, and change the filename in this case
-gist_create(code={'
-x <- letters
-numbers <- runif(8)
-numbers
-
-[1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
-'}, filename="my_cool_code.R")
-
 # Knit an .Rmd file before posting as a gist
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 gist_create(file, description='a new cool gist', knit=TRUE)
@@ -100,11 +91,10 @@ x <- letters
 '}, knit=TRUE)
 
 library('httr')
-base <- "http://pelias.mapzen.com/search"
-res <- httr::GET(base, query = list(input = 'coffee shop', lat = 45.5, 
-lon = -122.6))
+url <- "https://github.com/ropensci/geojsonio/blob/master/inst/examples/zillow_or.geojson"
+res <- httr::GET(url)
 json <- httr::content(res, as = "text")
-gist_create(code = json, filename = "pelias_test.geojson")
+gist_create(code = json, filename = "zillow_or.geojson")
 
 # Knit and include source file, so both files are in the gist
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
@@ -123,8 +113,7 @@ file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 cat(readLines(file), sep = "\\n") # peek at file
 gist_create(file, knit=TRUE)
 ## if not, GitHub doesn't allow upload of binary files via the HTTP API 
-## (which gistr uses) but check back later as I'm working on an option to 
-## get binary files uploaded, but will involve having to use git
+## (which gistr uses) - so see gist_create_git(), which uses git
 file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE)
 ## works with ggplot2 as well

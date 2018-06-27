@@ -106,7 +106,12 @@ stopstatus <- function(x) {
                                             encoding = "UTF-8"), FALSE)
     errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", 
                                                  collapse = "\n"))
-    stop(res$message, "\n", errs, call. = FALSE)
+    # check for possible oauth scope problems
+    scopes_problem <- ""
+    if (is.null(x$`x-oauth-scopes`)) {
+      scopes_problem <- "  GitHub response headers suggest no or insufficient scopes\n  To create gists you need the `gist` OAuth scope on your token."
+    }
+    stop(res$message, "\n", errs, "\n", scopes_problem, call. = FALSE)
   }
 }
 

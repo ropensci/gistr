@@ -7,4 +7,4 @@ And I shall summarize them.
     summary(x)
 
     ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-    ## -3.73500 -0.70820 -0.03440 -0.05312  0.66780  3.22000
+    ## -2.83791 -0.65021  0.06139  0.01810  0.67508  3.02495
