@@ -25,6 +25,22 @@ test_that("as.gist works - on random sample of gist ids", {
   }))
 })
 
+test_that("gist works getting a specific revision", {
+  skip_on_cran()
+  
+  id <- 'c1e2cb547d9f22bd314da50fe9c7b503'
+  rev1 <- gist(id, 'a5bc5c143beb697f23b2c320ff5a8dacf960b0f3')
+  rev2 <- gist(id, 'b70d94a8222a4326dff46fc85bc69d0179bd1da2')
+
+  expect_false(
+    identical(
+      rev1$files$clean_species.R$content,
+      rev2$files$clean_species.R$content
+    )
+  )
+  expect_match(rev1$id, rev2$id)
+})
+
 test_that("httr config options work", {
   skip_on_cran()
   

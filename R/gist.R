@@ -2,6 +2,7 @@
 #'
 #' @export
 #' @param id (character) A gist id, or a gist URL
+#' @param revision (character) A sha. optional
 #' @param x Object to coerce. Can be an integer (gist id), string
 #'   (gist id), a gist, or an list that can be coerced to a gist.
 #' @template all
@@ -17,6 +18,13 @@
 #' as.gist('f1403260eb92f5dfa7e1')
 #' as.gist(10)
 #' as.gist(gist('f1403260eb92f5dfa7e1'))
+#' 
+#' # get a specific revision of a gist
+#' id <- 'c1e2cb547d9f22bd314da50fe9c7b503'
+#' gist(id, 'a5bc5c143beb697f23b2c320ff5a8dacf960b0f3')
+#' gist(id, 'b70d94a8222a4326dff46fc85bc69d0179bd1da2')
+#' gist(id, '648bb44ab9ae59d57b4ea5de7d85e24103717e8b')
+#' gist(id, '0259b13c7653dc95e20193133bcf71811888cbe6')
 #'
 #' # from a url, or partial url
 #' x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
@@ -42,8 +50,10 @@
 #' # httr::GET(url)
 #' }
 
-gist <- function(id, ...){
-  res <- gist_GET(switch_url('id', normalize_id(id)), gist_auth(), ghead(), ...)
+gist <- function(id, revision = NULL, ...){
+  url <- switch_url('id', normalize_id(id))
+  if (!is.null(revision)) url <- file.path(url, revision)
+  res <- gist_GET(url, gist_auth(), ghead(), ...)
   as.gist(res)
 }
 
