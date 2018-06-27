@@ -168,7 +168,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   }
   
   # add files
-  git2r_ver <- unclass(packageVersion('git2r'))[[1]][2]
+  git2r_ver <- unclass(utils::packageVersion('git2r'))[[1]][2]
   patttth <- if (git2r_ver >= 22) git$path else git@path
   ftoadd <- gsub(sprintf("%s/?|\\./", patttth), "", allfiles)
   git2r::add(git, ftoadd)
