@@ -8,6 +8,11 @@
 #' to only upload artifacts of certain file exensions. Default: \code{FALSE}
 #' @param git_method (character) One of ssh (default) or https. If a remote 
 #' already exists, we use that remote, and this parameter is ignored. 
+#' @param host (character) Name of GitHub host, defaults to
+#' \code{"gist.github.com"}. Useful to specify with GitHub Enterprise.
+#' @param env_auth (character) Name of environment variable that contains
+#' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
+#' Useful to specify with GitHub Enterprise. 
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
 #' set this to a higher value, otherwise, you may not get accurate metadata for
@@ -125,7 +130,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
-  sleep = 1, ...) {
+  host = NULL, env_auth = NULL, sleep = 1, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
@@ -133,6 +138,22 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   
   # pick git remote method
   git_method <- match.arg(git_method, c("ssh", "https"))
+  
+  # set host
+  if (is.null(host)) {
+    host <- "gist.github.com"
+  }
+  
+  # set env_auth
+  if (is.null(env_auth)) {
+    env_auth <- "GITHUB_PAT"
+  }
+
+  # validate host, env_auth
+  assertthat::assert_that(
+    assertthat::is.string(host), 
+    assertthat::is.string(env_auth)
+  )
   
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
