@@ -9,10 +9,14 @@
 #' @param git_method (character) One of ssh (default) or https. If a remote 
 #' already exists, we use that remote, and this parameter is ignored. 
 #' @param host (character) Name of GitHub host, defaults to
-#' \code{"gist.github.com"}. Useful to specify with GitHub Enterprise.
+#' \code{"gist.github.com"}. Useful to specify with GitHub Enterprise,
+#' e.g. \code{"gist.github.acme.com"}.
+#' @param url_api (character) Base endpoint for GitHub API, defaults to 
+#' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
+#' e.g. \code{"https://github.acme.com/api/v3"}.
 #' @param env_auth (character) Name of environment variable that contains
 #' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
-#' Useful to specify with GitHub Enterprise. 
+#' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
 #' set this to a higher value, otherwise, you may not get accurate metadata for
@@ -130,7 +134,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
-  host = NULL, env_auth = NULL, sleep = 1, ...) {
+  host = NULL, url_api = NULL, env_auth = NULL, sleep = 1, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
@@ -144,16 +148,22 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     host <- "gist.github.com"
   }
   
-  # set env_auth
+  # set cred_env_auth
+  cred_env_auth <- env_auth
   if (is.null(env_auth)) {
-    env_auth <- "GITHUB_PAT"
+    cred_env_auth <- "GITHUB_PAT"
   }
 
   # validate host, env_auth
   assertthat::assert_that(
     assertthat::is.string(host), 
-    assertthat::is.string(env_auth)
+    assertthat::is.string(cred_env_auth)
   )
+  
+  # set url_api
+  if (identical(host, "gist.github.com")) {
+    url_api <- NULL
+  } 
   
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
@@ -198,12 +208,12 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
                  error = function(e) e)
   if (inherits(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
   # create gist
-  gst <- as.gist(cgist(description, public))
+  gst <- as.gist(cgist(description, public, url_api, env_auth))
   # add remote
   if (git_method == "ssh") {
-    url <- sprintf("git@gist.github.com:/%s.git", gst$id)
+    url <- sprintf("git@%s:/%s.git", host, gst$id)
   } else {
-    url <- sprintf("https://gist.github.com/%s.git", gst$id)
+    url <- sprintf("https://%s/%s.git", host, gst$id)
   }
   ra <- tryCatch(git2r::remote_add(git, "gistr", url), error = function(e) e)
   if (inherits(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
@@ -220,7 +230,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
       git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
     }
   } else {
-    cred <- git2r::cred_env("GITHUB_USERNAME", "GITHUB_PAT")
+    cred <- git2r::cred_env("GITHUB_USERNAME", cred_env_auth)
+    print(cred)
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
                                     force = TRUE, credentials = cred),
                         error = function(e) e)
@@ -232,12 +243,12 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
                   credentials = cred)
     }
   }
-  
+
   # wait a bit before collecting metadata
   Sys.sleep(sleep)
   
   # refresh gist metadata
-  gst <- gist(gst$id)
+  gst <- gist(gst$id, url_api = url_api, env_auth = env_auth)
   message("The file list for your gist may not be accurate if you are uploading a lot of files")
   message("Refresh the gist page if your files aren't there")
   
@@ -270,9 +281,25 @@ unpack <- function(z) {
   }
 }
 
-cgist <- function(description, public) {
-  res <- httr::POST(paste0(ghbase(), '/gists'), 
-                    gist_auth(), 
+cgist <- function(description, public, url_api = NULL, env_auth = NULL) {
+
+  # arguments used for GitHub Enterprise (GHE)
+  # url_api:  GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  # env_auth: name of environment variable to find PAT for GHE 
+  
+  if (is.null(url_api)) {
+    url_api <- ghbase()
+  } 
+  
+  if (is.null(env_auth)) {
+    auth <- gist_auth()
+  } else {
+    pat <- Sys.getenv(env_auth, "")
+    auth <- httr::add_headers(Authorization = paste0("token ", pat)) 
+  }
+  
+  res <- httr::POST(paste0(url_api, '/gists'), 
+                    auth, 
                     encode = "json",
                     body = jsonlite::toJSON(list(
                       description = description,

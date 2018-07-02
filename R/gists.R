@@ -44,17 +44,23 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
   lapply(res, structure, class = "gist")
 }
 
-switch_url <- function(x, id){
+switch_url <- function(x, id, url_api = NULL){
+  
+  # url_api: accomodates GitHub Enterprise
+  if (is.null(url_api)) {
+    url_api <- ghbase()
+  }
+  
   if (identical(x, "mineall") && is.null(getOption("github.username"))) {
     stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`", call. = FALSE)
   }
   switch(
     x,         
-    public = paste0(ghbase(), '/gists/public'),
-    minepublic = paste0(ghbase(), '/gists'),
-    mineall = sprintf('%s/users/%s/gists', ghbase(), 
+    public = paste0(url_api, '/gists/public'),
+    minepublic = paste0(url_api, '/gists'),
+    mineall = sprintf('%s/users/%s/gists', url_api, 
                       getOption("github.username")),
-    starred = paste0(ghbase(), '/gists/starred'),
-    id = sprintf('%s/gists/%s', ghbase(), id)
+    starred = paste0(url_api, '/gists/starred'),
+    id = sprintf('%s/gists/%s', url_api, id)
   )
 }
