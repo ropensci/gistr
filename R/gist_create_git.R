@@ -231,7 +231,6 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     }
   } else {
     cred <- git2r::cred_env("GITHUB_USERNAME", cred_env_auth)
-    print(cred)
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
                                     force = TRUE, credentials = cred),
                         error = function(e) e)
