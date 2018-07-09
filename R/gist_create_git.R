@@ -307,7 +307,7 @@ cgist <- function(description, public, host = NULL, env_pat = NULL) {
   
   auth <- gist_auth(env_pat = env_pat)
   
-  res <- httr::POST(paste0(url_api, '/gists'), 
+  res <- httr::POST(paste0(host, '/gists'), 
                     auth, 
                     encode = "json",
                     body = jsonlite::toJSON(list(
