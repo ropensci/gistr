@@ -295,22 +295,17 @@ unpack <- function(z) {
   }
 }
 
-cgist <- function(description, public, url_api = NULL, env_auth = NULL) {
+cgist <- function(description, public, host = NULL, env_pat = NULL) {
 
   # arguments used for GitHub Enterprise (GHE)
-  # url_api:  GHE api endpoint, e.g. "https://github.acme.com/api/v3"
-  # env_auth: name of environment variable to find PAT for GHE 
+  # host:  GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  # env_pat: name of environment variable to find PAT for GHE 
   
-  if (is.null(url_api)) {
-    url_api <- ghbase()
+  if (is.null(host)) {
+    host <- ghbase()
   } 
   
-  if (is.null(env_auth)) {
-    auth <- gist_auth()
-  } else {
-    pat <- Sys.getenv(env_auth, "")
-    auth <- httr::add_headers(Authorization = paste0("token ", pat)) 
-  }
+  auth <- gist_auth(env_pat = env_pat)
   
   res <- httr::POST(paste0(url_api, '/gists'), 
                     auth, 
