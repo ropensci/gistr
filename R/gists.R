@@ -46,8 +46,9 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
 
 switch_url <- function(x, id, host = NULL){
   
-  # url_api: accomodates GitHub Enterprise
+  # host: accomodates GitHub Enterprise
   if (is.null(host)) {
+    # uses github.com
     host <- ghbase()
   }
   
