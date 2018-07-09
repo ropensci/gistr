@@ -302,13 +302,12 @@ cgist <- function(description, public, host = NULL, env_pat = NULL) {
   # env_pat: name of environment variable to find PAT for GHE 
   
   if (is.null(host)) {
+    # using github.com
     host <- ghbase()
   } 
   
-  auth <- gist_auth(env_pat = env_pat)
-  
   res <- httr::POST(paste0(host, '/gists'), 
-                    auth, 
+                    gist_auth(env_pat = env_pat), 
                     encode = "json",
                     body = jsonlite::toJSON(list(
                       description = description,

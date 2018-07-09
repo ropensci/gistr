@@ -58,9 +58,8 @@
 
 gist <- function(id, revision = NULL, host = NULL, env_pat = NULL, ...){
   url <- switch_url('id', normalize_id(id), host)
-  auth <- gist_auth(env_pat = env_pat)
   if (!is.null(revision)) url <- file.path(url, revision)
-  res <- gist_GET(url, auth, ghead(), ...)
+  res <- gist_GET(url, gist_auth(env_pat = env_pat), ghead(), ...)
   as.gist(res)
 }
 
