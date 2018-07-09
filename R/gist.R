@@ -5,10 +5,10 @@
 #' @param revision (character) A sha. optional
 #' @param x Object to coerce. Can be an integer (gist id), string
 #'   (gist id), a gist, or an list that can be coerced to a gist.
-#' @param url_api (character) Base endpoint for GitHub API, defaults to 
+#' @param host (character) Base endpoint for GitHub API, defaults to 
 #' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
-#' e.g. \code{"https://github.acme.com/api/v3"}.
-#' @param env_auth (character) Name of environment variable that contains
+#' e.g. \code{"https://github.hostname.com/api/v3"}.
+#' @param env_pat (character) Name of environment variable that contains
 #' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
 #' @template all
@@ -56,14 +56,9 @@
 #' # httr::GET(url)
 #' }
 
-gist <- function(id, revision = NULL, url_api = NULL, env_auth = NULL, ...){
-  url <- switch_url('id', normalize_id(id), url_api)
-  if (is.null(env_auth)){
-    auth <- gist_auth()
-  } else {
-    pat <- Sys.getenv(env_auth, "")
-    auth <- httr::add_headers(Authorization = paste0("token ", pat)) 
-  }
+gist <- function(id, revision = NULL, host = NULL, env_pat = NULL, ...){
+  url <- switch_url('id', normalize_id(id), host)
+  auth <- gist_auth(env_pat = env_pat)
   if (!is.null(revision)) url <- file.path(url, revision)
   res <- gist_GET(url, auth, ghead(), ...)
   as.gist(res)

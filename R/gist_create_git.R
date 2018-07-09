@@ -8,15 +8,20 @@
 #' to only upload artifacts of certain file exensions. Default: \code{FALSE}
 #' @param git_method (character) One of ssh (default) or https. If a remote 
 #' already exists, we use that remote, and this parameter is ignored. 
-#' @param host (character) Name of GitHub host, defaults to
-#' \code{"gist.github.com"}. Useful to specify with GitHub Enterprise,
-#' e.g. \code{"gist.github.acme.com"}.
-#' @param url_api (character) Base endpoint for GitHub API, defaults to 
+#' @param host (character) Base endpoint for GitHub API, defaults to 
 #' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
-#' e.g. \code{"https://github.acme.com/api/v3"}.
-#' @param env_auth (character) Name of environment variable that contains
+#' e.g. \code{"https://github.hostname.com/api/v3"}.
+#' @param env_user (character) Name of environment variable that contains
+#' a GitHub user name, defaults to \code{"GITHUB_USERNAME"}. 
+#' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_USERNAME"}.
+#' This is used only if \code{git_method} is \code{"https"}.
+#' @param env_pat (character) Name of environment variable that contains
 #' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
+#' @param gist_host (character) Name of gist host, uses heuristics with
+#' \code{host} to default to \code{"gist.github.com"} or 
+#' \code{"gist.github.hostname.com"}. Override if these heuristics do not 
+#' give the correct result.
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
 #' set this to a higher value, otherwise, you may not get accurate metadata for
@@ -134,7 +139,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
-  host = NULL, url_api = NULL, env_auth = NULL, sleep = 1, ...) {
+  host = NULL, env_user = NULL, env_pat = NULL, gist_host = NULL,
+  sleep = 1, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
     stop("Please install git2r", call. = FALSE)
@@ -145,26 +151,35 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   
   # set host
   if (is.null(host)) {
-    host <- "gist.github.com"
+    # using github.com
+    host <- ghbase()
   }
   
-  # set cred_env_auth
-  cred_env_auth <- env_auth
-  if (is.null(env_auth)) {
-    cred_env_auth <- "GITHUB_PAT"
+  # set gist host
+  if (is.null(gist_host)) {
+    if (identical(host, ghbase())) {
+      # using github.com
+      gist_host <- "gist.github.com"
+    } else {
+      # use heuristics - extract hostname from url and prepend with "gist."
+      hostname <- httr::parse_url(host)$hostname
+      gist_host <- paste0("gist.", hostname)
+      message("Setting `gist_host` to \"", gist_host,"\".")
+    }
+  }
+  
+  # set env_user
+  if (is.null(env_user)) {
+    # using github.com
+    env_pat <- "GITHUB_USERNAME"
+  }
+  
+  # set env_pat
+  if (is.null(env_pat)) {
+    # using github.com
+    env_pat <- "GITHUB_PAT"
   }
 
-  # validate host, env_auth
-  assertthat::assert_that(
-    assertthat::is.string(host), 
-    assertthat::is.string(cred_env_auth)
-  )
-  
-  # set url_api
-  if (identical(host, "gist.github.com")) {
-    url_api <- NULL
-  } 
-  
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
   
@@ -208,12 +223,12 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
                  error = function(e) e)
   if (inherits(cm, "error")) message(strsplit(cm$message, ":")[[1]][[2]])
   # create gist
-  gst <- as.gist(cgist(description, public, url_api, env_auth))
+  gst <- as.gist(cgist(description, public, host, env_pat))
   # add remote
   if (git_method == "ssh") {
-    url <- sprintf("git@%s:/%s.git", host, gst$id)
+    url <- sprintf("git@%s:/%s.git", gist_host, gst$id)
   } else {
-    url <- sprintf("https://%s/%s.git", host, gst$id)
+    url <- sprintf("https://%s/%s.git", gist_host, gst$id)
   }
   ra <- tryCatch(git2r::remote_add(git, "gistr", url), error = function(e) e)
   if (inherits(ra, "error")) message(strsplit(ra$message, ":")[[1]][[2]])
@@ -230,7 +245,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
       git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
     }
   } else {
-    cred <- git2r::cred_env("GITHUB_USERNAME", cred_env_auth)
+    cred <- git2r::cred_env(env_user, env_pat)
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
                                     force = TRUE, credentials = cred),
                         error = function(e) e)
@@ -247,7 +262,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   Sys.sleep(sleep)
   
   # refresh gist metadata
-  gst <- gist(gst$id, url_api = url_api, env_auth = env_auth)
+  gst <- gist(gst$id, host = host, env_pat = env_pat)
   message("The file list for your gist may not be accurate if you are uploading a lot of files")
   message("Refresh the gist page if your files aren't there")
   

@@ -17,16 +17,25 @@
 #' @param app An \code{\link[httr]{oauth_app}} for GitHub. The default uses an 
 #' application \code{gistr_oauth} created by Scott Chamberlain.
 #' @param reauth (logical) Force re-authorization?
+#' @param env_pat (character) Name of environment variable that contains
+#' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
+#' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
 #' @examples \dontrun{
 #' gist_auth()
 #' }
 
-gist_auth <- function(app = gistr_app, reauth = FALSE) {
+gist_auth <- function(app = gistr_app, reauth = FALSE, env_pat = NULL) {
  
   if (exists("auth_config", envir = cache) && !reauth) {
     return(cache$auth_config)
   }
-  pat <- Sys.getenv("GITHUB_PAT", "")
+  
+  is.null(env_pat) {
+    # using github.com
+    env_pat <- "GITHUB_PAT"
+  }
+  
+  pat <- Sys.getenv(env_pat, "")
   if (!identical(pat, "")) {
     auth_config <- httr::add_headers(Authorization = paste0("token ", pat))
   } else if (!interactive()) {
