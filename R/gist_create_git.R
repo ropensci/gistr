@@ -10,7 +10,7 @@
 #' already exists, we use that remote, and this parameter is ignored. 
 #' @param host (character) Base endpoint for GitHub API, defaults to 
 #' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
-#' e.g. \code{"https://github.hostname.com/api/v3"}.
+#' e.g. \code{"https://github.acme.com/api/v3"}.
 #' @param env_user (character) Name of environment variable that contains
 #' a GitHub user name, defaults to \code{"GITHUB_USERNAME"}. 
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_USERNAME"}.
@@ -20,7 +20,7 @@
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
 #' @param gist_host (character) Name of gist host, uses heuristics with
 #' \code{host} to default to \code{"gist.github.com"} or 
-#' \code{"gist.github.hostname.com"}. Override if these heuristics do not 
+#' \code{"gist.github.acme.com"}. Override if these heuristics do not 
 #' give the correct result.
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
@@ -298,7 +298,7 @@ unpack <- function(z) {
 cgist <- function(description, public, host = NULL, env_pat = NULL) {
 
   # arguments used for GitHub Enterprise (GHE)
-  # host:  GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3"
   # env_pat: name of environment variable to find PAT for GHE 
   
   if (is.null(host)) {

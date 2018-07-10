@@ -7,7 +7,7 @@
 #'   (gist id), a gist, or an list that can be coerced to a gist.
 #' @param host (character) Base endpoint for GitHub API, defaults to 
 #' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
-#' e.g. \code{"https://github.hostname.com/api/v3"}.
+#' e.g. \code{"https://github.acme.com/api/v3"}.
 #' @param env_pat (character) Name of environment variable that contains
 #' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
