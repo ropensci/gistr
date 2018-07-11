@@ -4,13 +4,17 @@
 \alias{gist_auth}
 \title{Authorize with GitHub.}
 \usage{
-gist_auth(app = gistr_app, reauth = FALSE)
+gist_auth(app = gistr_app, reauth = FALSE, env_pat = NULL)
 }
 \arguments{
 \item{app}{An \code{\link[httr]{oauth_app}} for GitHub. The default uses an 
 application \code{gistr_oauth} created by Scott Chamberlain.}
 
 \item{reauth}{(logical) Force re-authorization?}
+
+\item{env_pat}{(character) Name of environment variable that contains
+a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
+Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.}
 }
 \description{
 This function is run automatically to allow gistr to access your GitHub 

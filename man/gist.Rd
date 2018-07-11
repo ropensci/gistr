@@ -5,7 +5,7 @@
 \alias{as.gist}
 \title{Get a gist}
 \usage{
-gist(id, revision = NULL, url_api = NULL, env_auth = NULL, ...)
+gist(id, revision = NULL, host = NULL, env_pat = NULL, ...)
 
 as.gist(x)
 }
@@ -14,11 +14,11 @@ as.gist(x)
 
 \item{revision}{(character) A sha. optional}
 
-\item{url_api}{(character) Base endpoint for GitHub API, defaults to 
+\item{host}{(character) Base endpoint for GitHub API, defaults to 
 \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
 e.g. \code{"https://github.acme.com/api/v3"}.}
 
-\item{env_auth}{(character) Name of environment variable that contains
+\item{env_pat}{(character) Name of environment variable that contains
 a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.}
 

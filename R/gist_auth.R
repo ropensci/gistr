@@ -30,7 +30,7 @@ gist_auth <- function(app = gistr_app, reauth = FALSE, env_pat = NULL) {
     return(cache$auth_config)
   }
   
-  is.null(env_pat) {
+  if (is.null(env_pat)) {
     # using github.com
     env_pat <- "GITHUB_PAT"
   }

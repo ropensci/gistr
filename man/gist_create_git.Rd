@@ -8,7 +8,8 @@ gist_create_git(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts = list(), renderopts = list(), include_source = FALSE,
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh",
-  host = NULL, url_api = NULL, env_auth = NULL, sleep = 1, ...)
+  host = NULL, env_user = NULL, env_pat = NULL, gist_host = NULL,
+  sleep = 1, ...)
 }
 \arguments{
 \item{files}{Files to upload. this or \code{code} param must be passed}
@@ -50,17 +51,23 @@ rendered pdf can't be uploaded anyway. Default: FALSE}
 \item{git_method}{(character) One of ssh (default) or https. If a remote 
 already exists, we use that remote, and this parameter is ignored.}
 
-\item{host}{(character) Name of GitHub host, defaults to
-\code{"gist.github.com"}. Useful to specify with GitHub Enterprise,
-e.g. \code{"gist.github.acme.com"}.}
-
-\item{url_api}{(character) Base endpoint for GitHub API, defaults to 
+\item{host}{(character) Base endpoint for GitHub API, defaults to 
 \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
 e.g. \code{"https://github.acme.com/api/v3"}.}
 
-\item{env_auth}{(character) Name of environment variable that contains
+\item{env_user}{(character) Name of environment variable that contains
+a GitHub user name, defaults to \code{"GITHUB_USERNAME"}. 
+Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_USERNAME"}.
+This is used only if \code{git_method} is \code{"https"}.}
+
+\item{env_pat}{(character) Name of environment variable that contains
 a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.}
+
+\item{gist_host}{(character) Name of gist host, uses heuristics with
+\code{host} to default to \code{"gist.github.com"} or 
+\code{"gist.github.acme.com"}. Override if these heuristics do not 
+give the correct result.}
 
 \item{sleep}{(integer) Seconds to sleep after creating gist, but before 
 collecting metadata on the gist. If uploading a lot of stuff, you may want to

@@ -171,7 +171,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   # set env_user
   if (is.null(env_user)) {
     # using github.com
-    env_pat <- "GITHUB_USERNAME"
+    env_user <- "GITHUB_USERNAME"
   }
   
   # set env_pat
@@ -305,7 +305,7 @@ cgist <- function(description, public, host = NULL, env_pat = NULL) {
     # using github.com
     host <- ghbase()
   } 
-  
+
   res <- httr::POST(paste0(host, '/gists'), 
                     gist_auth(env_pat = env_pat), 
                     encode = "json",
