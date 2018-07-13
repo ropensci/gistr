@@ -46,7 +46,7 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
 
 switch_url <- function(x, id, host = NULL){
   
-  # arguments used for GitHub Enterprise
+  # argument used for GitHub Enterprise
   # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
   #            (set in ghbase)
   host <- ghbase(host)

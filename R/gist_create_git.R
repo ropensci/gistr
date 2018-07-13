@@ -150,14 +150,12 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
   #            (set eventually in ghbase)
   # env_user:  environment variable for username, e.g. "GITHUB_ACME_USER" 
-  #            (set here)
   # env_pat:   environment variable for PAT, e.g. "GITHUB_ACME_PAT"
-  #            (set here)
   # gist_host: name of host, e.g, "https://gist.github.acme.com"
-  #            (set here)
   env_user <- env_user %||% "GITHUB_USERNAME"
   env_pat <- env_pat %||% "GITHUB_PAT"
   
+  # set gist_host
   if (is.null(gist_host)) {
     if (identical(ghbase(host), ghbase())) {
       # using github.com
