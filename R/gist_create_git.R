@@ -11,10 +11,6 @@
 #' @param host (character) Base endpoint for GitHub API, defaults to 
 #' \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
 #' e.g. \code{"https://github.acme.com/api/v3"}.
-#' @param env_user (character) Name of environment variable that contains
-#' a GitHub user name, defaults to \code{"GITHUB_USERNAME"}. 
-#' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_USERNAME"}.
-#' This is used only if \code{git_method} is \code{"https"}.
 #' @param env_pat (character) Name of environment variable that contains
 #' a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
 #' Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_PAT"}.
@@ -139,7 +135,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts=list(), renderopts=list(), include_source = FALSE, 
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh", 
-  host = NULL, env_user = NULL, env_pat = NULL, gist_host = NULL,
+  host = NULL, env_pat = NULL, gist_host = NULL,
   sleep = 1, ...) {
   
   if (!requireNamespace("git2r", quietly = TRUE)) {
@@ -149,10 +145,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   # arguments used for GitHub Enterprise
   # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
   #            (set eventually in ghbase)
-  # env_user:  environment variable for username, e.g. "GITHUB_ACME_USER" 
   # env_pat:   environment variable for PAT, e.g. "GITHUB_ACME_PAT"
   # gist_host: name of host, e.g, "https://gist.github.acme.com"
-  env_user <- env_user %||% "GITHUB_USERNAME"
   env_pat <- env_pat %||% "GITHUB_PAT"
   
   # set gist_host
@@ -236,7 +230,7 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
       git2r::push(git, "gistr", "refs/heads/master", force = TRUE)
     }
   } else {
-    cred <- git2r::cred_env(env_user, env_pat)
+    cred <- git2r::cred_token(env_pat)
     trypush <- tryCatch(git2r::push(git, "gistr", "refs/heads/master", 
                                     force = TRUE, credentials = cred),
                         error = function(e) e)

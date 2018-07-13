@@ -8,8 +8,7 @@ gist_create_git(files = NULL, description = "", public = TRUE,
   browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
   knitopts = list(), renderopts = list(), include_source = FALSE,
   artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh",
-  host = NULL, env_user = NULL, env_pat = NULL, gist_host = NULL,
-  sleep = 1, ...)
+  host = NULL, env_pat = NULL, gist_host = NULL, sleep = 1, ...)
 }
 \arguments{
 \item{files}{Files to upload. this or \code{code} param must be passed}
@@ -54,11 +53,6 @@ already exists, we use that remote, and this parameter is ignored.}
 \item{host}{(character) Base endpoint for GitHub API, defaults to 
 \code{"https://api.github.com"}. Useful to specify with GitHub Enterprise,
 e.g. \code{"https://github.acme.com/api/v3"}.}
-
-\item{env_user}{(character) Name of environment variable that contains
-a GitHub user name, defaults to \code{"GITHUB_USERNAME"}. 
-Useful to specify with GitHub Enterprise, e.g. \code{"GITHUB_ACME_USERNAME"}.
-This is used only if \code{git_method} is \code{"https"}.}
 
 \item{env_pat}{(character) Name of environment variable that contains
 a GitHub PAT (Personal Access Token), defaults to \code{"GITHUB_PAT"}.
