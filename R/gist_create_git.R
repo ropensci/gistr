@@ -163,8 +163,8 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     } else {
       # use heuristics - extract hostname from url and prepend with "gist."
       hostname <- httr::parse_url(host)$hostname
-      message("Setting `gist_host` to \"", gist_host,"\".")
       gist_host <- paste0("gist.", hostname)
+      message("Setting `gist_host` to \"", gist_host,"\".")
     }
   }
   
