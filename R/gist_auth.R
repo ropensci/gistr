@@ -30,9 +30,8 @@ gist_auth <- function(app = gistr_app, reauth = FALSE, env_pat = NULL) {
     return(cache$auth_config)
   }
 
-  # argument used for GitHub Enterprise (GHE)
-  # env_pat: name of environment variable to find PAT for GHE 
-  #          (handled here)
+  # argument used for GitHub Enterprise
+  # env_pat:   environment variable for PAT, e.g. "GITHUB_ACME_PAT"
   env_pat <- env_pat %||% "GITHUB_PAT"
 
   pat <- Sys.getenv(env_pat, "")

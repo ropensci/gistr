@@ -146,23 +146,18 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     stop("Please install git2r", call. = FALSE)
   }
   
-  # pick git remote method
-  git_method <- match.arg(git_method, c("ssh", "https"))
-  
-  # arguments used for GitHub Enterprise (GHE)
-  # host:      GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  # arguments used for GitHub Enterprise
+  # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
   #            (set eventually in ghbase)
-  # env_pat:   name of environment variable to find PAT for GHE 
+  # env_user:  environment variable for username, e.g. "GITHUB_ACME_USER" 
   #            (set here)
-  # env_user:  name of environment variable to find username for GHE
+  # env_pat:   environment variable for PAT, e.g. "GITHUB_ACME_PAT"
   #            (set here)
-  # gist_host: name of host
+  # gist_host: name of host, e.g, "https://gist.github.acme.com"
   #            (set here)
-  
   env_user <- env_user %||% "GITHUB_USERNAME"
   env_pat <- env_pat %||% "GITHUB_PAT"
   
-  # set gist host
   if (is.null(gist_host)) {
     if (identical(ghbase(host), ghbase())) {
       # using github.com
@@ -170,10 +165,13 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     } else {
       # use heuristics - extract hostname from url and prepend with "gist."
       hostname <- httr::parse_url(host)$hostname
-      gist_host <- paste0("gist.", hostname)
       message("Setting `gist_host` to \"", gist_host,"\".")
+      gist_host <- paste0("gist.", hostname)
     }
   }
+  
+  # pick git remote method
+  git_method <- match.arg(git_method, c("ssh", "https"))
   
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
@@ -292,12 +290,11 @@ unpack <- function(z) {
 
 cgist <- function(description, public, host = NULL, env_pat = NULL) {
 
-  # arguments used for GitHub Enterprise (GHE)
-  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3"
-  #          (handled in ghbase)
-  # env_pat: name of environment variable to find PAT for GHE 
-  #          (handled in gist_auth)
-  
+  # arguments used for GitHub Enterprise
+  # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
+  #            (set in ghbase)
+  # env_pat:   environment variable for PAT, e.g. "GITHUB_ACME_PAT"
+  #            (set in gist_auth)
   host <- ghbase(host)
 
   res <- httr::POST(paste0(host, '/gists'), 

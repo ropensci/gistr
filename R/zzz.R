@@ -63,8 +63,8 @@ gc <- function(x) {
 }
 
 ghbase <- function(host = NULL) {
-  # argument used for GitHub Enterprise (GHE)
-  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3" 
+  # argument used for GitHub Enterprise
+  # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
   host %||% 'https://api.github.com'
 }
 
