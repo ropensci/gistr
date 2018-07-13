@@ -29,7 +29,8 @@ Imports:
     assertthat,
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    rlang
 Suggests:
     git2r,
     testthat

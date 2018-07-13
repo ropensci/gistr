@@ -62,7 +62,11 @@ gc <- function(x) {
   x[rapply(x, length) != 0]
 }
 
-ghbase <- function() 'https://api.github.com'
+ghbase <- function(host = NULL) {
+  # argument used for GitHub Enterprise (GHE)
+  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3" 
+  host %||% 'https://api.github.com'
+}
 
 ghead <- function(){
   add_headers(`User-Agent` = "gistr", 

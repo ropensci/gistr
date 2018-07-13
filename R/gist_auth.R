@@ -29,12 +29,12 @@ gist_auth <- function(app = gistr_app, reauth = FALSE, env_pat = NULL) {
   if (exists("auth_config", envir = cache) && !reauth) {
     return(cache$auth_config)
   }
-  
-  if (is.null(env_pat)) {
-    # using github.com
-    env_pat <- "GITHUB_PAT"
-  }
-  
+
+  # argument used for GitHub Enterprise (GHE)
+  # env_pat: name of environment variable to find PAT for GHE 
+  #          (handled here)
+  env_pat <- env_pat %||% "GITHUB_PAT"
+
   pat <- Sys.getenv(env_pat, "")
   if (!identical(pat, "")) {
     auth_config <- httr::add_headers(Authorization = paste0("token ", pat))

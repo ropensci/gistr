@@ -6,3 +6,6 @@
 #' @export
 #' @usage lhs \%>\% rhs
 NULL
+
+# for use as an internal function
+`%||%` <- rlang::`%||%`

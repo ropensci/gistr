@@ -57,7 +57,12 @@
 #' }
 
 gist <- function(id, revision = NULL, host = NULL, env_pat = NULL, ...){
-  url <- switch_url('id', normalize_id(id), host)
+  # arguments used for GitHub Enterprise (GHE)
+  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  #          (handled in switch_url -> ghbase)
+  # env_pat: name of environment variable to find PAT for GHE 
+  #          (handled in gist_auth)
+  url <- switch_url('id', normalize_id(id), host = host)
   if (!is.null(revision)) url <- file.path(url, revision)
   res <- gist_GET(url, gist_auth(env_pat = env_pat), ghead(), ...)
   as.gist(res)

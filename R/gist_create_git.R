@@ -149,15 +149,22 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
   # pick git remote method
   git_method <- match.arg(git_method, c("ssh", "https"))
   
-  # set host
-  if (is.null(host)) {
-    # using github.com
-    host <- ghbase()
-  }
+  # arguments used for GitHub Enterprise (GHE)
+  # host:      GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  #            (set eventually in ghbase)
+  # env_pat:   name of environment variable to find PAT for GHE 
+  #            (set here)
+  # env_user:  name of environment variable to find username for GHE
+  #            (set here)
+  # gist_host: name of host
+  #            (set here)
+  
+  env_user <- env_user %||% "GITHUB_USERNAME"
+  env_pat <- env_pat %||% "GITHUB_PAT"
   
   # set gist host
   if (is.null(gist_host)) {
-    if (identical(host, ghbase())) {
+    if (identical(ghbase(host), ghbase())) {
       # using github.com
       gist_host <- "gist.github.com"
     } else {
@@ -168,18 +175,6 @@ gist_create_git <- function(files = NULL, description = "", public = TRUE,
     }
   }
   
-  # set env_user
-  if (is.null(env_user)) {
-    # using github.com
-    env_user <- "GITHUB_USERNAME"
-  }
-  
-  # set env_pat
-  if (is.null(env_pat)) {
-    # using github.com
-    env_pat <- "GITHUB_PAT"
-  }
-
   # code handler
   if (!is.null(code)) files <- code_handler(code, filename)
   
@@ -299,12 +294,11 @@ cgist <- function(description, public, host = NULL, env_pat = NULL) {
 
   # arguments used for GitHub Enterprise (GHE)
   # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  #          (handled in ghbase)
   # env_pat: name of environment variable to find PAT for GHE 
+  #          (handled in gist_auth)
   
-  if (is.null(host)) {
-    # using github.com
-    host <- ghbase()
-  } 
+  host <- ghbase(host)
 
   res <- httr::POST(paste0(host, '/gists'), 
                     gist_auth(env_pat = env_pat), 

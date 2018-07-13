@@ -46,11 +46,9 @@ gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {
 
 switch_url <- function(x, id, host = NULL){
   
-  # host: accomodates GitHub Enterprise
-  if (is.null(host)) {
-    # uses github.com
-    host <- ghbase()
-  }
+  # arguments used for GitHub Enterprise (GHE)
+  # host:    GHE api endpoint, e.g. "https://github.acme.com/api/v3"
+  host <- ghbase(host)
   
   if (identical(x, "mineall") && is.null(getOption("github.username"))) {
     stop("'github.username' is not set.  Please set using `options(github.username = 'your_github_username')`", call. = FALSE)
