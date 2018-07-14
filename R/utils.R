@@ -7,7 +7,5 @@
 #' @usage lhs \%>\% rhs
 NULL
 
-# borrows %||% from Hadley
-`%||%` <- function(x, y) {
-  if (is.null(x)) y else x
-}
+# implements from rlang
+`%||%` <- rlang::`%||%`
