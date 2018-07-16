@@ -7,5 +7,11 @@
 #' @usage lhs \%>\% rhs
 NULL
 
-# implements from rlang
-`%||%` <- rlang::`%||%`
+# Hadley shorthand to handle nulls with defaults
+`%||%` <- function(x, y) {
+  if (is.null(x)) {
+    y 
+  } else {
+    x
+  }
+}
