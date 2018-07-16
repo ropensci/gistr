@@ -69,7 +69,7 @@ ghbase <- function(host = NULL) {
   
   # check that this begins like URL
   assertthat::assert_that(
-    grepl("https?://", host), 
+    grepl("^https?://", host), 
     msg = paste(
       "host:", sQuote(host), "is not a URL.",
       "Please provide a host that begins with", sQuote("https://")

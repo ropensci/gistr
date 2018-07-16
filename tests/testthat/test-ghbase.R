@@ -10,7 +10,7 @@ test_that("ghbase works", {
   
 })
 
-test_that("ghbase errors correctly", {
+test_that("ghbase throws error", {
   
   expect_error(ghbase("github.acme.com"), "not a URL")
   
