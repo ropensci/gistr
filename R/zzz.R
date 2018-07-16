@@ -65,7 +65,18 @@ gc <- function(x) {
 ghbase <- function(host = NULL) {
   # argument used for GitHub Enterprise
   # host:      api endpoint, e.g. "https://github.acme.com/api/v3"
-  host %||% 'https://api.github.com'
+  host <- host %||% 'https://api.github.com'
+  
+  # check that this begins like URL
+  assertthat::assert_that(
+    grepl("https?://", host), 
+    msg = paste(
+      "host:", sQuote(host), "is not a URL.",
+      "Please provide a host that begins with", sQuote("https://")
+    )
+  )
+
+  host
 }
 
 ghead <- function(){
