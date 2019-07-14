@@ -273,7 +273,7 @@ g <- gists()
 gist(forked$id) %>% delete()
 ```
 
-## Example use case
+## Example use cases
 
 _Working with the Mapzen Pelias geocoding API_
 
@@ -296,3 +296,29 @@ gist_create(code = json, filename = "pelias_test.geojson")
 And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
 
 ![](img/gistr_ss.png)
+
+_Round-trip storage of a data frame_
+
+Maybe you want to use a gist to share some data as an alternative to `dput`? We can do this by writing our `data.frame` to a temporary buffer and passing it to `gist_create`. We can read the data back from the gist by passing its content to `read.csv`.
+
+```{r eval=FALSE}
+data(iris)
+
+str <- ''
+tc  <- textConnection('str', 'w', local = TRUE)
+write.csv(iris, file = tc, row.names = FALSE)
+close(tc)
+
+content <- list(content=paste(as.character(str), collapse='\n'))
+
+gistr::gist_create(code = {
+  content$content
+}, description = "using a gist as a data store", 
+filename = "iris.csv")
+
+output <- read.csv(
+  text = gist(gists(what = "minepublic", per_page = 1)[[1]]$id)$
+    files$iris.csv$content)
+
+identical(output, iris)
+```
