@@ -4,7 +4,8 @@
 \alias{gists}
 \title{List gists}
 \usage{
-gists(what = "public", since = NULL, page = NULL, per_page = 30, ...)
+gists(what = "public", since = NULL, page = NULL, per_page = 30,
+  ...)
 }
 \arguments{
 \item{what}{(character) What gists to return. One of public, minepublic, 
