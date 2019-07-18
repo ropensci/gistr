@@ -84,8 +84,8 @@ rate_limit()
 
 ```
 #> Rate limit: 5000
-#> Remaining:  4908
-#> Resets in:  49 minutes
+#> Remaining:  4224
+#> Resets in:  43 minutes
 ```
 
 
@@ -100,22 +100,22 @@ gists(per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>9a61e3d5b74722824309
-#>   URL: https://gist.github.com/9a61e3d5b74722824309
-#>   Description: FunctionSet model for Chainer based Convolutional Denoising Autoencoder
+#> <gist>4baa80440a1e0cdb4b195872762c6251
+#>   URL: https://gist.github.com/4baa80440a1e0cdb4b195872762c6251
+#>   Description: Elimination (PuzzleScript Script)
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:15Z / 2015-07-03T00:20:16Z
-#>   Files: conv_dae.py
-#>   Truncated?: FALSE
+#>   Created/Edited: 2019-07-18T17:39:06Z / 2019-07-18T17:39:06Z
+#>   Files: readme.txt, script.txt
+#>   Truncated?: FALSE, FALSE
 #> 
 #> [[2]]
-#> <gist>4ae08d3a0bc3ac4862da
-#>   URL: https://gist.github.com/4ae08d3a0bc3ac4862da
-#>   Description: Bootstrap Customizer Config
+#> <gist>9f15e4d4c5f02b56cc634c31dd9f4153
+#>   URL: https://gist.github.com/9f15e4d4c5f02b56cc634c31dd9f4153
+#>   Description: rubberduck v1.4.3 - Passed - Package Tests Results
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:29Z / 2015-07-03T00:19:29Z
-#>   Files: config.json
-#>   Truncated?: FALSE
+#>   Created/Edited: 2019-07-18T17:39:05Z / 2019-07-18T17:39:06Z
+#>   Files: 1.RegistrySnapshot.xml, FilesSnapshot.xml, Install.txt, Uninstall.txt, _Summary.md
+#>   Truncated?: FALSE, FALSE, FALSE, FALSE, FALSE
 ```
 
 Since a certain date/time
@@ -127,22 +127,22 @@ gists(since = '2014-05-26T00:00:00Z', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>9a61e3d5b74722824309
-#>   URL: https://gist.github.com/9a61e3d5b74722824309
-#>   Description: FunctionSet model for Chainer based Convolutional Denoising Autoencoder
+#> <gist>4baa80440a1e0cdb4b195872762c6251
+#>   URL: https://gist.github.com/4baa80440a1e0cdb4b195872762c6251
+#>   Description: Elimination (PuzzleScript Script)
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:15Z / 2015-07-03T00:20:16Z
-#>   Files: conv_dae.py
-#>   Truncated?: FALSE
+#>   Created/Edited: 2019-07-18T17:39:06Z / 2019-07-18T17:39:06Z
+#>   Files: readme.txt, script.txt
+#>   Truncated?: FALSE, FALSE
 #> 
 #> [[2]]
-#> <gist>4ae08d3a0bc3ac4862da
-#>   URL: https://gist.github.com/4ae08d3a0bc3ac4862da
-#>   Description: Bootstrap Customizer Config
+#> <gist>9f15e4d4c5f02b56cc634c31dd9f4153
+#>   URL: https://gist.github.com/9f15e4d4c5f02b56cc634c31dd9f4153
+#>   Description: rubberduck v1.4.3 - Passed - Package Tests Results
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:29Z / 2015-07-03T00:19:29Z
-#>   Files: config.json
-#>   Truncated?: FALSE
+#>   Created/Edited: 2019-07-18T17:39:05Z / 2019-07-18T17:39:06Z
+#>   Files: 1.RegistrySnapshot.xml, FilesSnapshot.xml, Install.txt, Uninstall.txt, _Summary.md
+#>   Truncated?: FALSE, FALSE, FALSE, FALSE, FALSE
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -154,21 +154,21 @@ gists('minepublic', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>4fd5a913e911ad70098c
-#>   URL: https://gist.github.com/4fd5a913e911ad70098c
+#> <gist>52f6dab219e0f2ca3f71cf70cafa11a3
+#>   URL: https://gist.github.com/52f6dab219e0f2ca3f71cf70cafa11a3
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:22Z
-#>   Files: code.R
+#>   Created/Edited: 2019-04-24T16:38:20Z / 2019-04-24T16:38:43Z
+#>   Files: crul-eg.R
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>974fd41ff30de9814cc1
-#>   URL: https://gist.github.com/974fd41ff30de9814cc1
-#>   Description: a new cool gist
+#> <gist>79507e3c5b905f605648797d849c1126
+#>   URL: https://gist.github.com/79507e3c5b905f605648797d849c1126
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:19:18Z / 2015-07-03T00:19:18Z
-#>   Files: stuff.md
+#>   Created/Edited: 2019-02-22T20:31:58Z / 2019-02-22T20:31:58Z
+#>   Files: classification_munging.md
 #>   Truncated?: FALSE
 ```
 
@@ -185,7 +185,7 @@ gist(id = 'f1403260eb92f5dfa7e1')
 #>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
 #>   Description: Querying bitly from R 
 #>   Public: TRUE
-#>   Created/Edited: 2014-10-15T20:40:12Z / 2014-10-15T21:54:29Z
+#>   Created/Edited: 2014-10-15T20:40:12Z / 2015-08-29T14:07:43Z
 #>   Files: bitly_r.md
 #>   Truncated?: FALSE
 ```
@@ -212,11 +212,11 @@ gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
 ```
-#> <gist>f6d0df13305a082f5247
-#>   URL: https://gist.github.com/f6d0df13305a082f5247
+#> <gist>9984709a30889023bd79e489a7d50860
+#>   URL: https://gist.github.com/9984709a30889023bd79e489a7d50860
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
+#>   Created/Edited: 2019-07-18T17:39:09Z / 2019-07-18T17:39:09Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -235,11 +235,11 @@ numbers
 ```
 
 ```
-#> <gist>f80330754db203f8bb03
-#>   URL: https://gist.github.com/f80330754db203f8bb03
+#> <gist>46b8f33a29f14f7c71fc409020cd6e43
+#>   URL: https://gist.github.com/46b8f33a29f14f7c71fc409020cd6e43
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
+#>   Created/Edited: 2019-07-18T17:39:11Z / 2019-07-18T17:39:11Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -285,11 +285,11 @@ run(file, knitopts = list(quiet = TRUE)) %>% gist_create(browse = FALSE)
 ```
 
 ```
-#> <gist>f6214845b1f64dac34e9
-#>   URL: https://gist.github.com/f6214845b1f64dac34e9
+#> <gist>43b3e21059b86fef954eb08a3d3286ee
+#>   URL: https://gist.github.com/43b3e21059b86fef954eb08a3d3286ee
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:27Z
+#>   Created/Edited: 2019-07-18T17:39:13Z / 2019-07-18T17:39:13Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -323,10 +323,10 @@ gists()[[1]] %>% commits()
 ```
 #> [[1]]
 #> <commit>
-#>   Version: aa6fd931a73dee814401790c0367ac672711d975
-#>   User: sckott
-#>   Commited: 2015-07-03T00:20:27Z
-#>   Commits [total, additions, deletions]: [5,5,0]
+#>   Version: 470b3fbdf638a083ede94d7ae7fd42f0560180dd
+#>   User: ereastman616
+#>   Commited: 2019-07-18T17:39:13Z
+#>   Commits [total, additions, deletions]: [123,123,0]
 ```
 
 ## Star a gist
@@ -335,34 +335,34 @@ Star
 
 
 ```r
-gist('7ddb9810fc99c84c65ec') %>% star()
+gist('b564093d359eb735138a97258d03f333') %>% star()
 ```
 
 ```
-#> <gist>7ddb9810fc99c84c65ec
-#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
+#> <gist>b564093d359eb735138a97258d03f333
+#>   URL: https://gist.github.com/b564093d359eb735138a97258d03f333
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T00:19:20Z
-#>   Files: code.R, manifest.yml, rrt_manifest.yml
-#>   Truncated?: FALSE, FALSE, FALSE
+#>   Created/Edited: 2018-10-03T19:07:37Z / 2018-10-03T19:07:37Z
+#>   Files: rcrossref-references.md
+#>   Truncated?: FALSE
 ```
 
 Unstar
 
 
 ```r
-gist('7ddb9810fc99c84c65ec') %>% unstar()
+gist('b564093d359eb735138a97258d03f333') %>% unstar()
 ```
 
 ```
-#> <gist>7ddb9810fc99c84c65ec
-#>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
+#> <gist>b564093d359eb735138a97258d03f333
+#>   URL: https://gist.github.com/b564093d359eb735138a97258d03f333
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T00:20:29Z
-#>   Files: code.R, manifest.yml, rrt_manifest.yml
-#>   Truncated?: FALSE, FALSE, FALSE
+#>   Created/Edited: 2018-10-03T19:07:37Z / 2019-07-18T17:39:15Z
+#>   Files: rcrossref-references.md
+#>   Truncated?: FALSE
 ```
 
 ## Update a gist
@@ -384,11 +384,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>f80330754db203f8bb03
-#>   URL: https://gist.github.com/f80330754db203f8bb03
+#> <gist>46b8f33a29f14f7c71fc409020cd6e43
+#>   URL: https://gist.github.com/46b8f33a29f14f7c71fc409020cd6e43
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:29Z
+#>   Created/Edited: 2019-07-18T17:39:11Z / 2019-07-18T17:39:16Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -403,11 +403,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>f80330754db203f8bb03
-#>   URL: https://gist.github.com/f80330754db203f8bb03
+#> <gist>46b8f33a29f14f7c71fc409020cd6e43
+#>   URL: https://gist.github.com/46b8f33a29f14f7c71fc409020cd6e43
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:27Z / 2015-07-03T00:20:30Z
+#>   Created/Edited: 2019-07-18T17:39:11Z / 2019-07-18T17:39:18Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -429,7 +429,7 @@ gists()[[1]] %>% embed()
 ```
 
 ```
-#> [1] "<script src=\"https://gist.github.com/sckott/f80330754db203f8bb03.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/ereastman616/edbc570a99738505d4eef196e4ae7cba.js\"></script>"
 ```
 
 ### List forks
@@ -447,7 +447,7 @@ gist(id = '1642874') %>% forks(per_page = 2)
 #>   URL: https://gist.github.com/1642989
 #>   Description: Spline Transition
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2015-06-11T19:40:48Z
+#>   Created/Edited: 2012-01-19T21:45:20Z / 2019-04-30T00:23:48Z
 #>   Files: 
 #>   Truncated?: 
 #> 
@@ -456,7 +456,7 @@ gist(id = '1642874') %>% forks(per_page = 2)
 #>   URL: https://gist.github.com/1643051
 #>   Description: Line Transition (Broken)
 #>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2015-06-11T19:40:48Z
+#>   Created/Edited: 2012-01-19T21:51:30Z / 2018-09-29T06:16:06Z
 #>   Files: 
 #>   Truncated?:
 ```
@@ -472,18 +472,18 @@ g <- gists()
 ```
 
 ```
-#> <gist>9eff44494c12fcbc8590
-#>   URL: https://gist.github.com/9eff44494c12fcbc8590
+#> <gist>8f9f96b67c67fd4a3a6b352674f95602
+#>   URL: https://gist.github.com/8f9f96b67c67fd4a3a6b352674f95602
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-07-03T00:20:31Z / 2015-07-03T00:20:31Z
-#>   Files: gistfile1.txt, gistfile2.txt
-#>   Truncated?: FALSE, FALSE
+#>   Created/Edited: 2019-07-18T17:39:22Z / 2019-07-18T17:39:22Z
+#>   Files: gistfile1.txt
+#>   Truncated?: FALSE
 ```
 
 
 
-## Example use case
+## Example use cases
 
 _Working with the Mapzen Pelias geocoding API_
 
@@ -507,3 +507,38 @@ gist_create(code = json, filename = "pelias_test.geojson")
 And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
 
 ![](img/gistr_ss.png)
+
+_Round-trip storage of a data frame_
+
+Maybe you want to use a gist to share some data as an alternative to `dput`? We can do this by writing our `data.frame` to a temporary buffer and passing it to `gist_create`. We can read the data back from the gist by passing its content to `read.csv`.
+
+
+```r
+data(iris)
+
+str <- ''
+tc  <- textConnection('str', 'w', local = TRUE)
+write.csv(iris, file = tc, row.names = FALSE)
+close(tc)
+
+content <- list(content=paste(as.character(str), collapse='\n'))
+
+gistr::gist_create(code = {
+  content$content
+}, description = "using a gist as a data store", 
+filename = "iris.csv")
+#> <gist>c7dfe593f4944df4818df884689734f9
+#>   URL: https://gist.github.com/c7dfe593f4944df4818df884689734f9
+#>   Description: using a gist as a data store
+#>   Public: TRUE
+#>   Created/Edited: 2019-07-18T14:23:23Z / 2019-07-18T14:23:23Z
+#>   Files: iris.csv
+#>   Truncated?: FALSE
+
+output <- read.csv(
+  text = gist(gists(what = "minepublic", per_page = 1)[[1]]$id)$
+    files$iris.csv$content)
+
+identical(output, iris)
+#> TRUE
+```

@@ -205,13 +205,13 @@ gists()[[1]] %>% commits()
 Star
 
 ```{r}
-gist('7ddb9810fc99c84c65ec') %>% star()
+gist('b564093d359eb735138a97258d03f333') %>% star()
 ```
 
 Unstar
 
 ```{r}
-gist('7ddb9810fc99c84c65ec') %>% unstar()
+gist('b564093d359eb735138a97258d03f333') %>% unstar()
 ```
 
 ## Update a gist
