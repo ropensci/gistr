@@ -315,10 +315,18 @@ gistr::gist_create(code = {
   content$content
 }, description = "using a gist as a data store", 
 filename = "iris.csv")
+#> <gist>c7dfe593f4944df4818df884689734f9
+#>   URL: https://gist.github.com/c7dfe593f4944df4818df884689734f9
+#>   Description: using a gist as a data store
+#>   Public: TRUE
+#>   Created/Edited: 2019-07-18T14:23:23Z / 2019-07-18T14:23:23Z
+#>   Files: iris.csv
+#>   Truncated?: FALSE
 
 output <- read.csv(
   text = gist(gists(what = "minepublic", per_page = 1)[[1]]$id)$
     files$iris.csv$content)
 
 identical(output, iris)
+#> TRUE
 ```
