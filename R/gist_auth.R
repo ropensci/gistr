@@ -5,9 +5,12 @@
 #'
 #' There are two ways to authorise gistr to work with your GitHub account:
 #' 
-#' - Generate a personal access token at
-#'    <https://help.github.com/articles/creating-an-access-token-for-command-line-use>
-#'    and record in the `GITHUB_PAT` envar.
+#' - Generate a personal access token with the gist scope selected, and set it
+#' as the `GITHUB_PAT` environment variable per session using `Sys.setenv`
+#' or across sessions by adding it to your `.Renviron` file or similar.
+#' See
+#' https://help.github.com/articles/creating-an-access-token-for-command-line-use
+#' for help
 #' - Interactively login into your GitHub account and authorise with OAuth.
 #'
 #' Using `GITHUB_PAT` is recommended.

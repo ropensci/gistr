@@ -19,9 +19,12 @@ account.
 \details{
 There are two ways to authorise gistr to work with your GitHub account:
 \itemize{
-\item Generate a personal access token at
-\url{https://help.github.com/articles/creating-an-access-token-for-command-line-use}
-and record in the \code{GITHUB_PAT} envar.
+\item Generate a personal access token with the gist scope selected, and set it
+as the \code{GITHUB_PAT} environment variable per session using \code{Sys.setenv}
+or across sessions by adding it to your \code{.Renviron} file or similar.
+See
+https://help.github.com/articles/creating-an-access-token-for-command-line-use
+for help
 \item Interactively login into your GitHub account and authorise with OAuth.
 }
 

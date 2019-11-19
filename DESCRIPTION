@@ -10,7 +10,7 @@ Description: Work with 'GitHub' 'gists' from 'R' (e.g.,
     'gist' 'commits', and get rate limit information when 'authenticated'. Some
     requests require authentication and some do not. 'Gists' website: 
     <https://gist.github.com/>.
-Version: 0.4.3.9210
+Version: 0.4.4.9110
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), 
         email = "myrmecocystus@gmail.com", 
