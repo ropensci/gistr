@@ -12,34 +12,34 @@ gist_open(x)
 \arguments{
 \item{gist}{A gist object or something coerceable to a gist}
 
-\item{path}{Root path to write to, a directory, not a file b/c a gist can 
-contain  many files. A folder is created with name of the gist id within 
+\item{path}{Root path to write to, a directory, not a file b/c a gist can
+contain  many files. A folder is created with name of the gist id within
 this root directory.  File names will be the same as given in the gist.}
 
-\item{x}{An object of class \code{gist_files} (the output from 
+\item{x}{An object of class \code{gist_files} (the output from
 \code{gist_save})}
 }
 \value{
-An object of class \code{gist_files}, S3 object containing file 
+An object of class \code{gist_files}, S3 object containing file
 paths
 }
 \description{
 Save gist files to disk
 }
 \details{
-\code{gist_save}: files are written into a new folder, named by the gist id, 
+\code{gist_save}: files are written into a new folder, named by the gist id,
 e.g., \code{a65ac7e56b7b3f746913}
 
-\code{gist_open}: opens files in your editor/R GUI. Internally, uses 
-\code{\link{file.edit}} to open files, using \code{getOption("editor")} to 
-open the files. If you're in R.app or RStudio, or other IDE's, files will 
+\code{gist_open}: opens files in your editor/R GUI. Internally, uses
+\code{\link{file.edit}} to open files, using \code{getOption("editor")} to
+open the files. If you're in R.app or RStudio, or other IDE's, files will
 open in the IDE (I think).
 }
 \examples{
 \dontrun{
-gist("a65ac7e56b7b3f746913") \%>\% gist_save()
-gist("a65ac7e56b7b3f746913") \%>\% gist_save() \%>\% gist_open()
-gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% 
+gist("a65ac7e56b7b3f746913") %>% gist_save()
+gist("a65ac7e56b7b3f746913") %>% gist_save() %>% gist_open()
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% 
   gist_save()
 }
 }

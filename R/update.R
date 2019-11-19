@@ -4,7 +4,7 @@
 #' @param gist A gist object or something coerceable to a gist
 #' @param description (character) Brief description of gist (optional)
 #' @template all
-#' @return 
+#' @return an object of class `gist`
 #' @examples \dontrun{
 #' file1 <- system.file("examples", "alm.md", package = "gistr")
 #' file2 <- system.file("examples", "zoo.json", package = "gistr")

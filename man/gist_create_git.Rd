@@ -4,11 +4,23 @@
 \alias{gist_create_git}
 \title{Create a gist via git instead of the GitHub Gists HTTP API}
 \usage{
-gist_create_git(files = NULL, description = "", public = TRUE,
-  browse = TRUE, knit = FALSE, code = NULL, filename = "code.R",
-  knitopts = list(), renderopts = list(), include_source = FALSE,
-  artifacts = FALSE, imgur_inject = FALSE, git_method = "ssh",
-  sleep = 1, ...)
+gist_create_git(
+  files = NULL,
+  description = "",
+  public = TRUE,
+  browse = TRUE,
+  knit = FALSE,
+  code = NULL,
+  filename = "code.R",
+  knitopts = list(),
+  renderopts = list(),
+  include_source = FALSE,
+  artifacts = FALSE,
+  imgur_inject = FALSE,
+  git_method = "ssh",
+  sleep = 1,
+  ...
+)
 }
 \arguments{
 \item{files}{Files to upload. this or \code{code} param must be passed}
@@ -17,40 +29,40 @@ gist_create_git(files = NULL, description = "", public = TRUE,
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
-\item{browse}{(logical) To open newly create gist in default browser 
+\item{browse}{(logical) To open newly create gist in default browser
 (default: TRUE)}
 
-\item{knit}{(logical) Knit code before posting as a gist? If the file 
-has a \code{.Rmd}  or \code{.Rnw} extension, we run the file with 
-\code{link[knitr]{knit}}, and if it has a \code{.R} extension, then 
+\item{knit}{(logical) Knit code before posting as a gist? If the file
+has a \code{.Rmd}  or \code{.Rnw} extension, we run the file with
+\code{link[knitr]{knit}}, and if it has a \code{.R} extension, then
 we use \code{\link[rmarkdown]{render}}}
 
-\item{code}{Pass in any set of code. This can be a single R object, or 
-many lines of code wrapped in quotes, then curly brackets (see examples 
+\item{code}{Pass in any set of code. This can be a single R object, or
+many lines of code wrapped in quotes, then curly brackets (see examples
 below). this or \code{files} param must be passed}
 
-\item{filename}{Name of the file to create, only used if \code{code} 
+\item{filename}{Name of the file to create, only used if \code{code}
 parameter is used. Default to \code{code.R}}
 
-\item{knitopts, renderopts}{(list) List of variables passed on to 
+\item{knitopts, renderopts}{(list) List of variables passed on to
 \code{link[knitr]{knit}}, or \code{\link[rmarkdown]{render}}}
 
-\item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include 
+\item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include
 source file in the gist in addition to the knitted output.}
 
-\item{artifacts}{(logical/character) Include artifacts or not. 
-If \code{TRUE}, includes all artifacts. Or you can pass in a file extension 
+\item{artifacts}{(logical/character) Include artifacts or not.
+If \code{TRUE}, includes all artifacts. Or you can pass in a file extension
 to only upload artifacts of certain file exensions. Default: \code{FALSE}}
 
-\item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}} 
-into your \code{.Rmd} file to upload files to \url{http://imgur.com/}. 
-This will be ignored  if the file is a sweave/latex file because the 
+\item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}}
+into your \code{.Rmd} file to upload files to \url{http://imgur.com/}.
+This will be ignored  if the file is a sweave/latex file because the
 rendered pdf can't be uploaded anyway. Default: FALSE}
 
-\item{git_method}{(character) One of ssh (default) or https. If a remote 
+\item{git_method}{(character) One of ssh (default) or https. If a remote
 already exists, we use that remote, and this parameter is ignored.}
 
-\item{sleep}{(integer) Seconds to sleep after creating gist, but before 
+\item{sleep}{(integer) Seconds to sleep after creating gist, but before
 collecting metadata on the gist. If uploading a lot of stuff, you may want to
 set this to a higher value, otherwise, you may not get accurate metadata for
 your gist. You can of course always refresh afterwards by calling \code{gist}
@@ -62,38 +74,38 @@ with your gist id.}
 Create a gist via git instead of the GitHub Gists HTTP API
 }
 \details{
-Note that when \code{browse=TRUE} there is a slight delay in when 
-we open up the gist in your default browser and when the data will display 
-in the gist. We could have this function sleep a while and guess when it 
+Note that when \code{browse=TRUE} there is a slight delay in when
+we open up the gist in your default browser and when the data will display
+in the gist. We could have this function sleep a while and guess when it
 will be ready, but instead we open your gist right after we're done sending
-the data to GitHub. Make sure to refresh the page if you don't see your 
+the data to GitHub. Make sure to refresh the page if you don't see your
 content right away.
 
-Likewise, the object that is returned from this function call may not have 
-the updated and correct file information. You can retrieve that easily by 
-calling \code{\link{gist}} with the gist id. 
+Likewise, the object that is returned from this function call may not have
+the updated and correct file information. You can retrieve that easily by
+calling \code{\link{gist}} with the gist id.
 
 This function uses git instead of the HTTP API, and thus requires
-the R package \code{git2r}. If you don't have \code{git2r} installed, and 
+the R package \code{git2r}. If you don't have \code{git2r} installed, and
 try to use this function, it will stop and tell you to install \code{git2r}.
 
 This function using git is better suited than \code{\link{gist_create}}
 for use cases involving:
 
 \itemize{
- \item Big files - The GitHub API allows only files of up to 1 MB in size. 
- Using git we can get around that limit.
- \item Binary files - Often artifacts created are binary files like 
- \code{.png}. The GitHub API doesn't allow transport of binary files, but 
- we can do that with git. 
+\item Big files - The GitHub API allows only files of up to 1 MB in size.
+Using git we can get around that limit.
+\item Binary files - Often artifacts created are binary files like
+\code{.png}. The GitHub API doesn't allow transport of binary files, but
+we can do that with git.
 }
 
-Another difference between this function and \code{\link{gist_create}} is 
+Another difference between this function and \code{\link{gist_create}} is
 that this function can collect all artifacts coming out of a knit process.
 
-If a gist is somehow deleted, or the remote changes, when you try to push 
-to the same gist again, everything should be fine. We now use 
-\code{tryCatch} on the  push attempt, and if it fails, we'll add a new 
+If a gist is somehow deleted, or the remote changes, when you try to push
+to the same gist again, everything should be fine. We now use
+\code{tryCatch} on the  push attempt, and if it fails, we'll add a new
 remote (which means a new gist), and push again.
 }
 \examples{

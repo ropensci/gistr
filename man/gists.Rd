@@ -4,33 +4,32 @@
 \alias{gists}
 \title{List gists}
 \usage{
-gists(what = "public", since = NULL, page = NULL, per_page = 30,
-  ...)
+gists(what = "public", since = NULL, page = NULL, per_page = 30, ...)
 }
 \arguments{
-\item{what}{(character) What gists to return. One of public, minepublic, 
+\item{what}{(character) What gists to return. One of public, minepublic,
 mineall, or starred. If an id is given for a gist, this parameter is ignored.}
 
-\item{since}{(character) A timestamp in ISO 8601 format: 
+\item{since}{(character) A timestamp in ISO 8601 format:
 YYYY-MM-DDTHH:MM:SSZ. Only gists updated at or after this time are returned.}
 
 \item{page}{(integer) Page number to return.}
 
-\item{per_page}{(integer) Number of items to return per page. Default 30. 
+\item{per_page}{(integer) Number of items to return per page. Default 30.
 Max 100.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
-List public gists, your own public gists, all your gists, by gist id, or 
+List public gists, your own public gists, all your gists, by gist id, or
 query by date.
 }
 \details{
-When \code{what = "mineall"}, we use 
-\code{getOption("github.username")} internally to get your GitHub user name. 
+When \code{what = "mineall"}, we use
+\code{getOption("github.username")} internally to get your GitHub user name.
 Make sure to set your GitHub user name
-as an R option like \code{options(github.username = "foobar")} in your 
-\code{.Rprofile} file. If we can't find you're user name, we'll stop with an 
+as an R option like \code{options(github.username = "foobar")} in your
+\code{.Rprofile} file. If we can't find you're user name, we'll stop with an
 error.
 }
 \examples{

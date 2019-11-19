@@ -21,11 +21,11 @@ A data.frame or list of data.frame's
 Make a table from gist or commit class or a list of either
 }
 \details{
-For commits we return a single data.frame. For gists, we always 
-return a list so that we are returning data consistently, 
-regardless of variable return data. So you can always index to the main 
-data.frame with gist metadata and file info by doing \code{result$data}, 
-and likewise for  forks \code{result$forks} and history 
+For commits we return a single data.frame. For gists, we always
+return a list so that we are returning data consistently,
+regardless of variable return data. So you can always index to the main
+data.frame with gist metadata and file info by doing \code{result$data},
+and likewise for  forks \code{result$forks} and history
 \code{result$history}
 }
 \examples{
@@ -45,31 +45,31 @@ lapply(tabl(ss[1:3]), "[[", "data")
 tabl_data(tabl(ss[1:3]))
 ## manipulate with dplyr
 library("dplyr")
-tabl_data(tabl(ss[1:30])) \%>\% 
-  select(id, description, owner_login) \%>\% 
+tabl_data(tabl(ss[1:30])) %>% 
+  select(id, description, owner_login) %>% 
   filter(grepl("gist gist gist", description))
 
 # commits
-x <- gists()[[2]] \%>\% commits()
+x <- gists()[[2]] %>% commits()
 tabl(x[[1]])
 
 ## many
 x <- sapply(gists(per_page = 100), commits)
-tabl(x) \%>\%
-  select(id, login, change_status.total, url) \%>\% 
+tabl(x) %>%
+  select(id, login, change_status.total, url) %>% 
   filter(change_status.total > 50)
   
 # pass in a url
-gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% tabl
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% tabl
 ## many
 gg <- gists()
 (urls <- vapply(gg, "[[", "", "html_url"))
-lapply(urls[1:5], as.gist) \%>\% tabl()
+lapply(urls[1:5], as.gist) %>% tabl()
 
 # gist with forks and history
-gist('1642874') \%>\% tabl
+gist('1642874') %>% tabl
 
 # gist with history, no forks
-gist('c96d2e453c95d0166408') \%>\% tabl 
+gist('c96d2e453c95d0166408') %>% tabl 
 }
 }

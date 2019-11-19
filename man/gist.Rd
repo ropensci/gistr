@@ -23,11 +23,11 @@ as.gist(x)
 Get a gist
 }
 \details{
-If a file is larger than ~1 MB, the content of the file given back 
+If a file is larger than ~1 MB, the content of the file given back
 is truncated, so you won't get the entire contents. In the return S3 object
-that's printed, we tell you at the bottom whether each file is truncated or 
-not. If a file is, simply get the \code{raw_url} URL for the file (see 
-example below), then retrieve from that. If the file is very big, you may 
+that's printed, we tell you at the bottom whether each file is truncated or
+not. If a file is, simply get the \code{raw_url} URL for the file (see
+example below), then retrieve from that. If the file is very big, you may
 need to clone the file using git, etc.
 }
 \examples{
@@ -58,7 +58,7 @@ gist(ids[2])
 gist(ids[3])
 gist(ids[4])
 
-gist(ids[1]) \%>\% browse()
+gist(ids[1]) %>% browse()
 
 ## If a gist file is > a certain size it is truncated
 ## in this case, we let you know in the return object that it is truncated

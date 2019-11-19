@@ -16,6 +16,6 @@ Delete a gist
 }
 \examples{
 \dontrun{
-gists("minepublic")[[29]] \%>\% delete()
+gists("minepublic")[[29]] %>% delete()
 }
 }

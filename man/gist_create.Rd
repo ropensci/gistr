@@ -4,10 +4,21 @@
 \alias{gist_create}
 \title{Create a gist}
 \usage{
-gist_create(files = NULL, description = "", public = TRUE,
-  browse = TRUE, code = NULL, filename = "code.R", knit = FALSE,
-  knitopts = list(), renderopts = list(), include_source = FALSE,
-  imgur_inject = FALSE, rmarkdown = FALSE, ...)
+gist_create(
+  files = NULL,
+  description = "",
+  public = TRUE,
+  browse = TRUE,
+  code = NULL,
+  filename = "code.R",
+  knit = FALSE,
+  knitopts = list(),
+  renderopts = list(),
+  include_source = FALSE,
+  imgur_inject = FALSE,
+  rmarkdown = FALSE,
+  ...
+)
 }
 \arguments{
 \item{files}{Files to upload. this or \code{code} param must be passed}
@@ -16,34 +27,34 @@ gist_create(files = NULL, description = "", public = TRUE,
 
 \item{public}{(logical) Whether gist is public (default: TRUE)}
 
-\item{browse}{(logical) To open newly create gist in default browser 
+\item{browse}{(logical) To open newly create gist in default browser
 (default: TRUE)}
 
-\item{code}{Pass in any set of code. This can be a single R object, or 
-many lines of code wrapped in quotes, then curly brackets (see examples 
+\item{code}{Pass in any set of code. This can be a single R object, or
+many lines of code wrapped in quotes, then curly brackets (see examples
 below). this or \code{files} param must be passed}
 
-\item{filename}{Name of the file to create, only used if \code{code} 
+\item{filename}{Name of the file to create, only used if \code{code}
 parameter is used. Default to \code{code.R}}
 
-\item{knit}{(logical) Knit code before posting as a gist? If the file 
-has a \code{.Rmd}  or \code{.Rnw} extension, we run the file with 
-\code{link[knitr]{knit}}, and if it has a \code{.R} extension, then 
+\item{knit}{(logical) Knit code before posting as a gist? If the file
+has a \code{.Rmd}  or \code{.Rnw} extension, we run the file with
+\code{link[knitr]{knit}}, and if it has a \code{.R} extension, then
 we use \code{\link[rmarkdown]{render}}}
 
-\item{knitopts, renderopts}{(list) List of variables passed on to 
+\item{knitopts, renderopts}{(list) List of variables passed on to
 \code{link[knitr]{knit}}, or \code{\link[rmarkdown]{render}}}
 
-\item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include 
+\item{include_source}{(logical) Only applies if \code{knit=TRUE}. Include
 source file in the gist in addition to the knitted output.}
 
-\item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}} 
-into your \code{.Rmd} file to upload files to \url{http://imgur.com/}. 
-This will be ignored  if the file is a sweave/latex file because the 
+\item{imgur_inject}{(logical) Inject \code{\link[knitr]{imgur_upload}}
+into your \code{.Rmd} file to upload files to \url{http://imgur.com/}.
+This will be ignored  if the file is a sweave/latex file because the
 rendered pdf can't be uploaded anyway. Default: FALSE}
 
-\item{rmarkdown}{(logical) If \code{TRUE}, use 
-\code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to 
+\item{rmarkdown}{(logical) If \code{TRUE}, use
+\code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to
 render the document.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
@@ -110,7 +121,7 @@ x <- letters
 # Uploading images created during knit process
 ## using imgur - if you're file uses imgur or similar, you're good
 file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
-cat(readLines(file), sep = "\\n") # peek at file
+cat(readLines(file), sep = "\n") # peek at file
 gist_create(file, knit=TRUE)
 ## if not, GitHub doesn't allow upload of binary files via the HTTP API 
 ## (which gistr uses) - so see gist_create_git(), which uses git
@@ -122,14 +133,14 @@ gist_create(file, knit=TRUE)
 
 # Render `.R` files
 file <- system.file("examples", "example1.R", package = "gistr")
-cat(readLines(file), sep = "\\n") # peek at file
+cat(readLines(file), sep = "\n") # peek at file
 gist_create(file, knit = TRUE)
 gist_create(file, knit = TRUE, include_source = TRUE)
 ## many files
 (file1 <- system.file("examples", "example1.R", package = "gistr"))
 (file2 <- system.file("examples", "example2.R", package = "gistr"))
-cat(readLines(file1), sep = "\\n") # peek at file
-cat(readLines(file2), sep = "\\n") # peek at file
+cat(readLines(file1), sep = "\n") # peek at file
+cat(readLines(file2), sep = "\n") # peek at file
 gist_create(files=list(file1, file2), knit = TRUE)
 ### three at once, some .R and some .Rmd
 file3 <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
