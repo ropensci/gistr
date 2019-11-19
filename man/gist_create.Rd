@@ -53,9 +53,8 @@ into your \code{.Rmd} file to upload files to \url{http://imgur.com/}.
 This will be ignored  if the file is a sweave/latex file because the
 rendered pdf can't be uploaded anyway. Default: FALSE}
 
-\item{rmarkdown}{(logical) If \code{TRUE}, use
-\code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to
-render the document.}
+\item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown:render]{rmarkdown::render()}} instead of
+\code{\link[knitr:knit]{knitr::knit()}} to render the document.}
 
 \item{...}{Further args passed on to \code{link[httr]{POST}}}
 }
@@ -155,5 +154,5 @@ gist_create(file, knit = TRUE, rmarkdown = TRUE, imgur_inject = TRUE,
 }
 }
 \seealso{
-\code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
+\code{\link[=gist_create_obj]{gist_create_obj()}}, \code{\link[=gist_create_git]{gist_create_git()}}
 }

@@ -14,7 +14,7 @@ path to an .Rmd file, or a gist.}
 parameter is used. Default to \code{code.R}}
 
 \item{knitopts}{(list) List of variables passed on to
-\code{link[knitr]{knit}}}
+\code{\link[knitr:knit]{knitr::knit()}}}
 }
 \value{
 A path, unless a gist object is passed in, in which case a gist

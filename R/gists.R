@@ -12,11 +12,11 @@
 #' @param per_page (integer) Number of items to return per page. Default 30. 
 #' Max 100.
 #' @template all
-#' @details When \code{what = "mineall"}, we use 
-#' \code{getOption("github.username")} internally to get your GitHub user name. 
+#' @details When `what = "mineall"`, we use 
+#' `getOption("github.username")` internally to get your GitHub user name. 
 #' Make sure to set your GitHub user name
-#' as an R option like \code{options(github.username = "foobar")} in your 
-#' \code{.Rprofile} file. If we can't find you're user name, we'll stop with an 
+#' as an R option like `options(github.username = "foobar")` in your 
+#' `.Rprofile` file. If we can't find you're user name, we'll stop with an 
 #' error.
 #' @examples \dontrun{
 #' # Public gists

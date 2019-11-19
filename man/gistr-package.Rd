@@ -13,7 +13,6 @@ gistr allows you to peform actions on gists, including listing, forking,
 starring, creating, deleting, updating, etc.
 
 There are two ways to authorise gistr to work with your GitHub account:
-
 \itemize{
 \item Generate a personal access token (PAT) at
 \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use}

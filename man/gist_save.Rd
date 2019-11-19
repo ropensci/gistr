@@ -17,7 +17,7 @@ contain  many files. A folder is created with name of the gist id within
 this root directory.  File names will be the same as given in the gist.}
 
 \item{x}{An object of class \code{gist_files} (the output from
-\code{gist_save})}
+\code{\link[=gist_save]{gist_save()}}}
 }
 \value{
 An object of class \code{gist_files}, S3 object containing file
@@ -31,7 +31,7 @@ Save gist files to disk
 e.g., \code{a65ac7e56b7b3f746913}
 
 \code{gist_open}: opens files in your editor/R GUI. Internally, uses
-\code{\link{file.edit}} to open files, using \code{getOption("editor")} to
+\code{\link[=file.edit]{file.edit()}} to open files, using \code{getOption("editor")} to
 open the files. If you're in R.app or RStudio, or other IDE's, files will
 open in the IDE (I think).
 }
@@ -39,7 +39,7 @@ open in the IDE (I think).
 \dontrun{
 gist("a65ac7e56b7b3f746913") %>% gist_save()
 gist("a65ac7e56b7b3f746913") %>% gist_save() %>% gist_open()
-gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% 
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>%
   gist_save()
 }
 }

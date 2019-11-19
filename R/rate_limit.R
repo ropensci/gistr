@@ -1,7 +1,7 @@
 #' Get rate limit information
 #'
 #' @export
-#' @param ... Named args to \code{\link[httr]{GET}}
+#' @param ... Named args to [httr::GET()]
 #' @examples \dontrun{
 #' rate_limit()
 #' }

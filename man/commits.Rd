@@ -14,7 +14,7 @@ commits(gist, page = NULL, per_page = 30, ...)
 \item{per_page}{(integer) Number of items to return per page.
 Default 30. Max 100.}
 
-\item{...}{Further named args to \code{\link[httr]{GET}}}
+\item{...}{Further named args to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 List gist commits

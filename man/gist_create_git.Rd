@@ -83,15 +83,14 @@ content right away.
 
 Likewise, the object that is returned from this function call may not have
 the updated and correct file information. You can retrieve that easily by
-calling \code{\link{gist}} with the gist id.
+calling \code{\link[=gist]{gist()}} with the gist id.
 
 This function uses git instead of the HTTP API, and thus requires
 the R package \code{git2r}. If you don't have \code{git2r} installed, and
 try to use this function, it will stop and tell you to install \code{git2r}.
 
-This function using git is better suited than \code{\link{gist_create}}
+This function using git is better suited than \code{\link[=gist_create]{gist_create()}}
 for use cases involving:
-
 \itemize{
 \item Big files - The GitHub API allows only files of up to 1 MB in size.
 Using git we can get around that limit.
@@ -100,7 +99,7 @@ Using git we can get around that limit.
 we can do that with git.
 }
 
-Another difference between this function and \code{\link{gist_create}} is
+Another difference between this function and \code{\link[=gist_create]{gist_create()}} is
 that this function can collect all artifacts coming out of a knit process.
 
 If a gist is somehow deleted, or the remote changes, when you try to push
@@ -181,5 +180,5 @@ gist_create_git(files = "~/gitgist7/file.png", git_method = "https")
 }
 }
 \seealso{
-\code{\link{gist_create}}, \code{\link{gist_create_obj}}
+\code{\link[=gist_create]{gist_create()}}, \code{\link[=gist_create_obj]{gist_create_obj()}}
 }

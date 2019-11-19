@@ -2,10 +2,9 @@
 #'
 #' @export
 #' @template args
-#' @param rmarkdown (logical) If \code{TRUE}, use 
-#' \code{\link[rmarkdown]{render}} instead of \code{\link[knitr]{knit}} to 
-#' render the document.
-#' @seealso \code{\link{gist_create_obj}}, \code{\link{gist_create_git}}
+#' @param rmarkdown (logical) If `TRUE`, use [rmarkdown::render()] instead of
+#' [knitr::knit()] to render the document.
+#' @seealso [gist_create_obj()], [gist_create_git()]
 #' @examples \dontrun{
 #' file <- tempfile()
 #' cat("hello world", file = file)

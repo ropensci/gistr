@@ -7,7 +7,7 @@
 gist_auth(app = gistr_app, reauth = FALSE)
 }
 \arguments{
-\item{app}{An \code{\link[httr]{oauth_app}} for GitHub. The default uses an
+\item{app}{An \code{\link[httr:oauth_app]{httr::oauth_app()}} for GitHub. The default uses an
 application \code{gistr_oauth} created by Scott Chamberlain.}
 
 \item{reauth}{(logical) Force re-authorization?}

@@ -4,18 +4,17 @@
 #' account.
 #'
 #' There are two ways to authorise gistr to work with your GitHub account:
-#' \itemize{
-#'  \item Generate a personal access token at
-#'    \url{https://help.github.com/articles/creating-an-access-token-for-command-line-use} 
-#'    and record in the \code{GITHUB_PAT} envar.
-#'  \item Interactively login into your GitHub account and authorise with OAuth.
-#' }
+#' 
+#' - Generate a personal access token at
+#'    <https://help.github.com/articles/creating-an-access-token-for-command-line-use>
+#'    and record in the `GITHUB_PAT` envar.
+#' - Interactively login into your GitHub account and authorise with OAuth.
 #'
-#' Using \code{GITHUB_PAT} is recommended.
+#' Using `GITHUB_PAT` is recommended.
 #'
 #' @export
-#' @param app An \code{\link[httr]{oauth_app}} for GitHub. The default uses an 
-#' application \code{gistr_oauth} created by Scott Chamberlain.
+#' @param app An [httr::oauth_app()] for GitHub. The default uses an 
+#' application `gistr_oauth` created by Scott Chamberlain.
 #' @param reauth (logical) Force re-authorization?
 #' @examples \dontrun{
 #' gist_auth()

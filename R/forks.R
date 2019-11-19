@@ -5,7 +5,7 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. 
 #' Max 100.
-#' @param ... Further named args to \code{\link[httr]{GET}}
+#' @param ... Further named args to [httr::GET()]
 #' @return A list of gist class objects
 #' @examples \dontrun{
 #' gist(id='1642874') %>% forks(per_page=2)

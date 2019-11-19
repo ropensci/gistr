@@ -4,16 +4,16 @@
 #'
 #' @param x An R object, any of data.frame, matrix, list, character, numeric
 #' @param description (character) Brief description of gist (optional)
-#' @param public (logical) Whether gist is public (default: TRUE)
-#' @param browse (logical) To open newly create gist in default browser 
-#' (default: TRUE)
+#' @param public (logical) Whether gist is public (default: `TRUE`)
+#' @param browse (logical) To open newly create gist in default browser
+#' (default: `TRUE`)
 #' @param pretty (logical) For data.frame and matrix objects, create
-#' a markdown table. If FALSE, pushes up json. (default: TRUE)
-#' @param filename Name of the file to create. Default: \code{file.txt}
-#' @param ... Further args passed on to \code{link[httr]{POST}}
-#' @details This function is specifically for going from R objects to a gist, 
-#' whereas \code{\link{gist_create}} is for going from files or executing code
-#' @seealso \code{\link{gist_create}}, \code{\link{gist_create_git}}
+#' a markdown table. If FALSE, pushes up json. (default: `TRUE`)
+#' @param filename Name of the file to create. Default: `file.txt`
+#' @param ... Further args passed on to [httr::POST()]
+#' @details This function is specifically for going from R objects to a gist,
+#' whereas [gist_create()] is for going from files or executing code
+#' @seealso [gist_create()], [gist_create_git()]
 #' @examples \dontrun{
 #' ## data.frame
 #' ### by default makes pretty table in markdown format
@@ -39,49 +39,49 @@
 #' hey there!", filename = "my_markdown.md")
 #' }
 gist_create_obj <- function(x = NULL, description = "", public = TRUE,
-                            browse = TRUE, pretty = TRUE, 
+                            browse = TRUE, pretty = TRUE,
                             filename = "file.txt", ...) {
   UseMethod("gist_create_obj")
 }
 
 #' @export
 gist_create_obj.data.frame <- function(x = NULL, description = "", public = TRUE,
-                                       browse = TRUE, pretty = TRUE, 
+                                       browse = TRUE, pretty = TRUE,
                                        filename = "file.txt", ...) {
   gc_robjs(x, description, public, browse, pretty, filename, ...)
 }
 
 #' @export
 gist_create_obj.character <- function(x = NULL, description = "", public = TRUE,
-                                      browse = TRUE, pretty = TRUE, 
+                                      browse = TRUE, pretty = TRUE,
                                       filename = "file.txt", ...) {
   gc_robjs(x, description, public, browse, pretty, filename, ...)
 }
 
 #' @export
 gist_create_obj.list <- function(x = NULL, description = "", public = TRUE,
-                                 browse = TRUE, pretty = TRUE, 
+                                 browse = TRUE, pretty = TRUE,
                                  filename = "file.txt", ...) {
   gc_robjs(x, description, public, browse, pretty, filename, ...)
 }
 
 #' @export
 gist_create_obj.matrix <- function(x = NULL, description = "", public = TRUE,
-                                   browse = TRUE, pretty = TRUE, 
+                                   browse = TRUE, pretty = TRUE,
                                    filename = "file.txt", ...) {
   gc_robjs(x, description, public, browse, pretty, filename, ...)
 }
 
 #' @export
 gist_create_obj.numeric <- function(x = NULL, description = "", public = TRUE,
-                                    browse = TRUE, pretty = TRUE, 
+                                    browse = TRUE, pretty = TRUE,
                                     filename = "file.txt", ...) {
   gc_robjs(x, description, public, browse, pretty, filename, ...)
 }
 
 #' @export
 gist_create_obj.json <- function(x = NULL, description = "", public = TRUE,
-                                 browse = TRUE, pretty = TRUE, 
+                                 browse = TRUE, pretty = TRUE,
                                  filename = "file.txt", ...) {
   gc_robjs(unclass(x), description, public, browse, pretty, filename, ...)
 }

@@ -7,9 +7,9 @@
 #' @details For commits we return a single data.frame. For gists, we always 
 #' return a list so that we are returning data consistently, 
 #' regardless of variable return data. So you can always index to the main 
-#' data.frame with gist metadata and file info by doing \code{result$data}, 
-#' and likewise for  forks \code{result$forks} and history 
-#' \code{result$history}
+#' data.frame with gist metadata and file info by doing `result$data`, 
+#' and likewise for  forks `result$forks` and history 
+#' `result$history`
 #' @examples \dontrun{
 #' # from a gist object
 #' x <- as.gist('f1403260eb92f5dfa7e1')

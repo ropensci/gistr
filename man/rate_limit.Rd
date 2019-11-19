@@ -7,7 +7,7 @@
 rate_limit(...)
 }
 \arguments{
-\item{...}{Named args to \code{\link[httr]{GET}}}
+\item{...}{Named args to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 Get rate limit information

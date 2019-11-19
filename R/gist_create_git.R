@@ -4,17 +4,17 @@
 #' 
 #' @template args
 #' @param artifacts (logical/character) Include artifacts or not. 
-#' If \code{TRUE}, includes all artifacts. Or you can pass in a file extension 
-#' to only upload artifacts of certain file exensions. Default: \code{FALSE}
+#' If `TRUE`, includes all artifacts. Or you can pass in a file extension 
+#' to only upload artifacts of certain file exensions. Default: `FALSE`
 #' @param git_method (character) One of ssh (default) or https. If a remote 
 #' already exists, we use that remote, and this parameter is ignored. 
 #' @param sleep (integer) Seconds to sleep after creating gist, but before 
 #' collecting metadata on the gist. If uploading a lot of stuff, you may want to
 #' set this to a higher value, otherwise, you may not get accurate metadata for
-#' your gist. You can of course always refresh afterwards by calling \code{gist}
+#' your gist. You can of course always refresh afterwards by calling `gist`
 #' with your gist id.
 #' 
-#' @details Note that when \code{browse=TRUE} there is a slight delay in when 
+#' @details Note that when `browse=TRUE` there is a slight delay in when 
 #' we open up the gist in your default browser and when the data will display 
 #' in the gist. We could have this function sleep a while and guess when it 
 #' will be ready, but instead we open your gist right after we're done sending
@@ -23,32 +23,30 @@
 #' 
 #' Likewise, the object that is returned from this function call may not have 
 #' the updated and correct file information. You can retrieve that easily by 
-#' calling \code{\link{gist}} with the gist id. 
+#' calling [gist()] with the gist id. 
 #' 
 #' This function uses git instead of the HTTP API, and thus requires
-#' the R package \code{git2r}. If you don't have \code{git2r} installed, and 
-#' try to use this function, it will stop and tell you to install \code{git2r}.
+#' the R package `git2r`. If you don't have `git2r` installed, and 
+#' try to use this function, it will stop and tell you to install `git2r`.
 #' 
-#' This function using git is better suited than \code{\link{gist_create}}
+#' This function using git is better suited than [gist_create()]
 #' for use cases involving:
 #' 
-#' \itemize{
-#'  \item Big files - The GitHub API allows only files of up to 1 MB in size. 
+#' - Big files - The GitHub API allows only files of up to 1 MB in size. 
 #'  Using git we can get around that limit.
-#'  \item Binary files - Often artifacts created are binary files like 
-#'  \code{.png}. The GitHub API doesn't allow transport of binary files, but 
+#' - Binary files - Often artifacts created are binary files like 
+#'  `.png`. The GitHub API doesn't allow transport of binary files, but 
 #'  we can do that with git. 
-#' }
 #' 
-#' Another difference between this function and \code{\link{gist_create}} is 
+#' Another difference between this function and [gist_create()] is 
 #' that this function can collect all artifacts coming out of a knit process.
 #' 
 #' If a gist is somehow deleted, or the remote changes, when you try to push 
 #' to the same gist again, everything should be fine. We now use 
-#' \code{tryCatch} on the  push attempt, and if it fails, we'll add a new 
+#' `tryCatch` on the  push attempt, and if it fails, we'll add a new 
 #' remote (which means a new gist), and push again.
 #' 
-#' @seealso \code{\link{gist_create}}, \code{\link{gist_create_obj}}
+#' @seealso [gist_create()], [gist_create_obj()]
 #' 
 #' @examples \dontrun{
 #' # prepare a directory and a file

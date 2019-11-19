@@ -1,13 +1,13 @@
 #' Run a .Rmd file
 #'
 #' @export
-#' @param x Input, one of: code wrapped in curly brackets and quotes, a file 
+#' @param x Input, one of: code wrapped in curly brackets and quotes, a file
 #' path to an .Rmd file, or a gist.
-#' @param filename Name of the file to create, only used if \code{code} 
-#' parameter is used. Default to \code{code.R}
-#' @param knitopts (list) List of variables passed on to 
-#' \code{link[knitr]{knit}}
-#' @return A path, unless a gist object is passed in, in which case a gist 
+#' @param filename Name of the file to create, only used if `code`
+#' parameter is used. Default to `code.R`
+#' @param knitopts (list) List of variables passed on to
+#' [knitr::knit()]
+#' @return A path, unless a gist object is passed in, in which case a gist
 #' object is returned.
 #' @examples \dontrun{
 #' # run a local file
@@ -33,8 +33,8 @@ run <- function(x, filename="code.R", knitopts=list()){
     files <- file.path(tempdir(), ff$filename)
     writeLines(code, files)
   } else {
-    if (!is.character(x)) { 
-      stop("If not of class gist, input must by of class character") 
+    if (!is.character(x)) {
+      stop("If not of class gist, input must by of class character")
     } else {
       if (file.exists(x)) {
         ext <- tolower(gsub('^.*[.]', "", basename(x)))
