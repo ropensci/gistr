@@ -14,8 +14,8 @@ knitr::opts_chunk$set(
 [![Build Status](https://api.travis-ci.org/ropensci/gistr.png)](https://travis-ci.org/ropensci/gistr)
 [![Build status](https://ci.appveyor.com/api/projects/status/4jmuxbbv8qg4139t/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/gistr/branch/master)
 [![codecov.io](https://codecov.io/github/ropensci/gistr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/gistr?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/gistr)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/gistr)](https://cran.r-project.org/package=gistr)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/gistr)](https://github.com/metacran/cranlogs.app)
+[![cran version](https://www.r-pkg.org/badges/version/gistr)](https://cran.r-project.org/package=gistr)
 
 `gistr` is a light interface to GitHub's gists for R.
 
@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
 
 * [rgithub](https://github.com/cscheid/rgithub) an R client for the Github API by Carlos Scheidegger
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+* [gert](https://github.com/r-lib/gert) Simple git client for R by Jeroen Ooms
 * [gistfo](https://github.com/MilesMcBain/gistfo) for turning your untitled RStudio tabs into gists!
 
 ## Quick start
