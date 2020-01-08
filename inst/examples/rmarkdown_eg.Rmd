@@ -1,12 +1,12 @@
-```{r echo=FALSE}
-knitr::opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
-```
-
 ---
 title: "Some plots and stuff"
 author: "Foo Bar"
 date: "June 30, 2015"
 ---
+
+```{r echo=FALSE}
+knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
+```
 
 ```{r}
 library("ggplot2")
