@@ -10,7 +10,7 @@ Description: Work with 'GitHub' 'gists' from 'R' (e.g.,
     'gist' 'commits', and get rate limit information when 'authenticated'. Some
     requests require authentication and some do not. 'Gists' website: 
     <https://gist.github.com/>.
-Version: 0.4.4.9110
+Version: 0.4.5.92
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), 
         email = "myrmecocystus@gmail.com", 
@@ -37,7 +37,7 @@ Imports:
 Suggests:
     git2r,
     testthat
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 X-schema.org-applicationCategory: Web
 X-schema.org-keywords: http, https, API, web-services, GitHub, GitHub API, gist, gists, code, script, snippet
 X-schema.org-isPartOf: https://ropensci.org

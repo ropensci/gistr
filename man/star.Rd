@@ -26,18 +26,18 @@ Star a gist
 \examples{
 \dontrun{
 id <- '4ac33b9c00751fddc7f8'
-gist(id) %>% star()
-gist(id) %>% star_check()
-gist(id) %>% unstar()
-gist(id) %>% unstar() %>% star()
-gist(id) %>% star_check()
-gist(id) %>%
-  star() %>%
+gist(id) \%>\% star()
+gist(id) \%>\% star_check()
+gist(id) \%>\% unstar()
+gist(id) \%>\% unstar() \%>\% star()
+gist(id) \%>\% star_check()
+gist(id) \%>\%
+  star() \%>\%
   star_check()
   
 # pass in a url
 x <- "https://gist.github.com/expersso/4ac33b9c00751fddc7f8"
-gist(x) %>% star
-gist(x) %>% unstar
+gist(x) \%>\% star
+gist(x) \%>\% unstar
 }
 }

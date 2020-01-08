@@ -24,10 +24,10 @@ List forks on a gist
 }
 \examples{
 \dontrun{
-gist(id='1642874') %>% forks(per_page=2)
-gist(id = "8172796") %>% forks()
+gist(id='1642874') \%>\% forks(per_page=2)
+gist(id = "8172796") \%>\% forks()
 
 # pass in a url
-gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") %>% forks 
+gist("https://gist.github.com/expersso/4ac33b9c00751fddc7f8") \%>\% forks 
 }
 }

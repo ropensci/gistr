@@ -27,7 +27,7 @@ Run a .Rmd file
 \dontrun{
 # run a local file
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file) %>% gist_create
+run(file) \%>\% gist_create
 
 # run code
 run({'
@@ -35,9 +35,9 @@ run({'
 x <- letters
 (numbers <- runif(8))
 ```
-'}) %>% gist_create
+'}) \%>\% gist_create
 
 # run a file from a gist, has to get file first
-gists('minepublic')[[2]] %>% run() %>% update()
+gists('minepublic')[[2]] \%>\% run() \%>\% update()
 }
 }

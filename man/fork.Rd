@@ -20,14 +20,14 @@ Fork a gist
 \examples{
 \dontrun{
 # fork a gist
-gists()[[1]] %>% fork()
+gists()[[1]] \%>\% fork()
 
 # browse to newly forked gist
-gist(id='0831f3fbd83ac4d46451') %>% fork() %>% browse()
+gist(id='0831f3fbd83ac4d46451') \%>\% fork() \%>\% browse()
 
 # extract the last one
-gist(id='1642874') %>%
- forks() %>%
+gist(id='1642874') \%>\%
+ forks() \%>\%
  .[length(.)]
 }
 }

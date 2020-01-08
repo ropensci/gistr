@@ -58,7 +58,7 @@ gist(ids[2])
 gist(ids[3])
 gist(ids[4])
 
-gist(ids[1]) %>% browse()
+gist(ids[1]) \%>\% browse()
 
 ## If a gist file is > a certain size it is truncated
 ## in this case, we let you know in the return object that it is truncated
