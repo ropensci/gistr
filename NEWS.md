@@ -1,3 +1,16 @@
+gistr 0.5.0
+===============
+
+### MINOR IMPROVEMENTS
+
+* vignette gains an example of round-tripping a data.frame to a gist then back from the gist to a data.frame (#78) (#79) thanks @jsta
+* update package docs throughout to tell users to make sure to create a GitHub PAT (personal access token) with gist scope (#80)
+
+### BUG FIXES
+
+* fix to `gist_create()`: fail if both `files` and `code` params are `NULL` (the user should pass something in) (#72) thanks @maelle
+
+
 gistr 0.4.2
 ===============
 
