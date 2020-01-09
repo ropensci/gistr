@@ -96,8 +96,8 @@ update(add_files(gists(what = "minepublic")[[1]], file))
 ```r
 rate_limit()
 #> Rate limit: 5000
-#> Remaining:  4897
-#> Resets in:  55 minutes
+#> Remaining:  4999
+#> Resets in:  60 minutes
 ```
 
 ### List gists
@@ -108,21 +108,21 @@ Limiting to a few results here to keep it brief
 ```r
 gists(per_page = 2)
 #> [[1]]
-#> <gist>d78aa1e84304254cda4629f7b5673d40
-#>   URL: https://gist.github.com/d78aa1e84304254cda4629f7b5673d40
+#> <gist>04b88f61e1e6c457354958c1e47c9bea
+#>   URL: https://gist.github.com/04b88f61e1e6c457354958c1e47c9bea
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:11Z / 2020-01-08T17:03:12Z
-#>   Files: handsontable.full.min.js
+#>   Created/Edited: 2020-01-09T18:02:08Z / 2020-01-09T18:02:09Z
+#>   Files: maestra.blade.php
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>f53546b3fd60a306da6c5068726c5f53
-#>   URL: https://gist.github.com/f53546b3fd60a306da6c5068726c5f53
-#>   Description: 17_webhook.js
+#> <gist>137ec8aa8c62a44d6b25afe94c1572ce
+#>   URL: https://gist.github.com/137ec8aa8c62a44d6b25afe94c1572ce
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:02:55Z / 2020-01-08T17:02:55Z
-#>   Files: 17_webhook.js
+#>   Created/Edited: 2020-01-09T18:01:41Z / 2020-01-09T18:01:42Z
+#>   Files: CalciteLib.java
 #>   Truncated?: FALSE
 ```
 
@@ -132,21 +132,21 @@ Since a certain date/time
 ```r
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
 #> [[1]]
-#> <gist>d78aa1e84304254cda4629f7b5673d40
-#>   URL: https://gist.github.com/d78aa1e84304254cda4629f7b5673d40
+#> <gist>04b88f61e1e6c457354958c1e47c9bea
+#>   URL: https://gist.github.com/04b88f61e1e6c457354958c1e47c9bea
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:11Z / 2020-01-08T17:03:12Z
-#>   Files: handsontable.full.min.js
+#>   Created/Edited: 2020-01-09T18:02:08Z / 2020-01-09T18:02:09Z
+#>   Files: maestra.blade.php
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>f53546b3fd60a306da6c5068726c5f53
-#>   URL: https://gist.github.com/f53546b3fd60a306da6c5068726c5f53
-#>   Description: 17_webhook.js
+#> <gist>137ec8aa8c62a44d6b25afe94c1572ce
+#>   URL: https://gist.github.com/137ec8aa8c62a44d6b25afe94c1572ce
+#>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:02:55Z / 2020-01-08T17:02:55Z
-#>   Files: 17_webhook.js
+#>   Created/Edited: 2020-01-09T18:01:41Z / 2020-01-09T18:01:42Z
+#>   Files: CalciteLib.java
 #>   Truncated?: FALSE
 ```
 
@@ -156,22 +156,22 @@ Request different types of gists, one of public, minepublic, mineall, or starred
 ```r
 gists('minepublic', per_page = 2)
 #> [[1]]
-#> <gist>7b8f60796af0588dfc73576d865e0661
-#>   URL: https://gist.github.com/7b8f60796af0588dfc73576d865e0661
+#> <gist>fc231d025d54c1a1cb3d37f9790b9166
+#>   URL: https://gist.github.com/fc231d025d54c1a1cb3d37f9790b9166
 #>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:00:22Z / 2020-01-08T17:00:23Z
+#>   Created/Edited: 2020-01-08T17:39:13Z / 2020-01-08T17:39:15Z
 #>   Files: stuff.md, zoo.json
 #>   Truncated?: FALSE, FALSE
 #> 
 #> [[2]]
-#> <gist>c7615e91cc895073cd4797f3611d2e76
-#>   URL: https://gist.github.com/c7615e91cc895073cd4797f3611d2e76
-#>   Description: 
+#> <gist>1f5ab3d71680e0d014ead0e8f2cc5b26
+#>   URL: https://gist.github.com/1f5ab3d71680e0d014ead0e8f2cc5b26
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2019-12-09T17:08:30Z / 2019-12-09T17:08:30Z
-#>   Files: pleiades4d094996f27f.geojson
-#>   Truncated?: FALSE
+#>   Created/Edited: 2020-01-08T17:38:24Z / 2020-01-08T17:38:25Z
+#>   Files: stuff.md, zoo.json
+#>   Truncated?: FALSE, FALSE
 ```
 
 
@@ -197,11 +197,11 @@ You can pass in files
 ```r
 file <- system.file("examples", "stuff.md", package = "gistr")
 gist_create(file, description='a new cool gist', browse = FALSE)
-#> <gist>073c7097bb0cad5722ebc13f1c37e4f8
-#>   URL: https://gist.github.com/073c7097bb0cad5722ebc13f1c37e4f8
+#> <gist>c0e374bc494c17cf0cd6bacc3e3ac146
+#>   URL: https://gist.github.com/c0e374bc494c17cf0cd6bacc3e3ac146
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:26Z / 2020-01-08T17:03:26Z
+#>   Created/Edited: 2020-01-09T18:02:40Z / 2020-01-09T18:02:40Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -228,11 +228,11 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>b3da1493d09ba15a5d9695b428219601
-#>   URL: https://gist.github.com/b3da1493d09ba15a5d9695b428219601
+#> <gist>1af2ae5eeccb9fe88391952253f4b9ed
+#>   URL: https://gist.github.com/1af2ae5eeccb9fe88391952253f4b9ed
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:28Z / 2020-01-08T17:03:28Z
+#>   Created/Edited: 2020-01-09T18:02:43Z / 2020-01-09T18:02:43Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -277,11 +277,11 @@ knit a local file
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>cc76dd026ff004b2bc1ec5591d7528e8
-#>   URL: https://gist.github.com/cc76dd026ff004b2bc1ec5591d7528e8
+#> <gist>697796181d98bd0483301171f85f335e
+#>   URL: https://gist.github.com/697796181d98bd0483301171f85f335e
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:30Z / 2020-01-08T17:03:30Z
+#>   Created/Edited: 2020-01-09T18:02:44Z / 2020-01-09T18:02:44Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -346,9 +346,9 @@ gist_create(file, knit=TRUE, imgur_inject = TRUE)
 gists()[[1]] %>% commits()
 #> [[1]]
 #> <commit>
-#>   Version: 06e379abc23086722593c7026f8a169991bb9791
+#>   Version: 120981f13c1406f61f213775ce3677a23a7151e2
 #>   User: sckott
-#>   Commited: 2020-01-08T17:03:27Z
+#>   Commited: 2020-01-09T18:02:42Z
 #>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
@@ -392,11 +392,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
   update()
-#> <gist>b3da1493d09ba15a5d9695b428219601
-#>   URL: https://gist.github.com/b3da1493d09ba15a5d9695b428219601
+#> <gist>1af2ae5eeccb9fe88391952253f4b9ed
+#>   URL: https://gist.github.com/1af2ae5eeccb9fe88391952253f4b9ed
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:28Z / 2020-01-08T17:03:34Z
+#>   Created/Edited: 2020-01-09T18:02:43Z / 2020-01-09T18:02:50Z
 #>   Files: alm.md, code.R
 #>   Truncated?: FALSE, FALSE
 ```
@@ -409,11 +409,11 @@ file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
   update()
-#> <gist>b3da1493d09ba15a5d9695b428219601
-#>   URL: https://gist.github.com/b3da1493d09ba15a5d9695b428219601
+#> <gist>1af2ae5eeccb9fe88391952253f4b9ed
+#>   URL: https://gist.github.com/1af2ae5eeccb9fe88391952253f4b9ed
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:28Z / 2020-01-08T17:03:36Z
+#>   Created/Edited: 2020-01-09T18:02:43Z / 2020-01-09T18:02:52Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -432,7 +432,7 @@ gists()[[1]] %>% browse()
 
 ```r
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/sckott/b3da1493d09ba15a5d9695b428219601.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/1af2ae5eeccb9fe88391952253f4b9ed.js\"></script>"
 ```
 
 ### List forks
@@ -469,12 +469,12 @@ Returns a `gist` object
 ```r
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>2052cabf87af7facf353df7fe0d83ab8
-#>   URL: https://gist.github.com/2052cabf87af7facf353df7fe0d83ab8
-#>   Description: Fetch company details with theirs posts & comments
+#> <gist>93c7894c4eb5b0b9fcfaa1d223d6b46e
+#>   URL: https://gist.github.com/93c7894c4eb5b0b9fcfaa1d223d6b46e
+#>   Description: fsadfds
 #>   Public: TRUE
-#>   Created/Edited: 2020-01-08T17:03:42Z / 2020-01-08T17:03:42Z
-#>   Files: company.js
+#>   Created/Edited: 2020-01-09T18:03:00Z / 2020-01-09T18:03:00Z
+#>   Files: fsdfas
 #>   Truncated?: FALSE
 ```
 
@@ -503,7 +503,7 @@ gist_create(code = json, filename = "pelias_test.geojson")
 
 And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
 
-![pelias img](inst/img/gistr_ss.png)
+![pelias img](man/figures/gistr_ss.png)
 
 ## Meta
 
