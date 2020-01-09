@@ -506,7 +506,7 @@ gist_create(code = json, filename = "pelias_test.geojson")
 
 And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
 
-![](man/figures/gistr_ss.png)
+![](../man/figures/gistr_ss.png)
 
 _Round-trip storage of a data frame_
 
