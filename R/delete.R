@@ -14,3 +14,6 @@ delete <- function(gist, ...) {
   stop_for_status(res)
   message('Your gist has been deleted')
 }
+
+# res <- gist_DELETE(paste0(ghbase(), '/gists/', gist$id, "/2233500e6aac91a32cb84878edfb7a619fd8c56a"), 
+#                      auth = gist_auth(), headers = ghead(), httr::verbose())

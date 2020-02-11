@@ -110,7 +110,7 @@ stopstatus <- function(x, status_stop = 203) {
                                                  collapse = "\n"))
     # check for possible oauth scope problems
     scopes_problem <- ""
-    if (is.null(x$`x-oauth-scopes`)) {
+    if (is.null(x$headers$`x-oauth-scopes`)) {
       scopes_problem <- "  GitHub response headers suggest no or insufficient scopes\n  To create gists you need the `gist` OAuth scope on your token."
     }
     stop(res$message, "\n", errs, "\n", scopes_problem, call. = FALSE)
