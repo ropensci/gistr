@@ -7,7 +7,7 @@
 plot(mpg ~ cyl, data=mtcars)
 ```
 
-![plot of chunk unnamed-chunk-2](https://i.imgur.com/giiuYcd.png)
+![plot of chunk unnamed-chunk-2](https://i.imgur.com/Ux99Wkj.png)
 
 ## Bar plot
 
@@ -16,7 +16,7 @@ plot(mpg ~ cyl, data=mtcars)
 barplot(VADeaths)
 ```
 
-![plot of chunk unnamed-chunk-3](https://i.imgur.com/jL7cJJb.png)
+![plot of chunk unnamed-chunk-3](https://i.imgur.com/IUwySie.png)
 
 ## Histogram
 
@@ -25,4 +25,4 @@ barplot(VADeaths)
 hist(iris$Petal.Length)
 ```
 
-![plot of chunk unnamed-chunk-4](https://i.imgur.com/OcymFMa.png)
+![plot of chunk unnamed-chunk-4](https://i.imgur.com/6bPyEQT.png)

@@ -68,7 +68,7 @@ set this to a higher value, otherwise, you may not get accurate metadata for
 your gist. You can of course always refresh afterwards by calling \code{gist}
 with your gist id.}
 
-\item{...}{Further args passed on to \code{link[httr]{POST}}}
+\item{...}{Further args passed on to \code{\link[crul]{verb-POST}}}
 }
 \description{
 Create a gist via git instead of the GitHub Gists HTTP API

@@ -15,7 +15,7 @@ star_check(gist, ...)
 \arguments{
 \item{gist}{A gist object or something that can be coerced to a gist object.}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[crul]{verb-GET}}}
 }
 \value{
 A message, and a gist object, the same one input to the function.

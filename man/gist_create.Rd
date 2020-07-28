@@ -56,7 +56,7 @@ rendered pdf can't be uploaded anyway. Default: FALSE}
 \item{rmarkdown}{(logical) If \code{TRUE}, use \code{\link[rmarkdown:render]{rmarkdown::render()}} instead of
 \code{\link[knitr:knit]{knitr::knit()}} to render the document.}
 
-\item{...}{Further args passed on to \code{link[httr]{POST}}}
+\item{...}{Further args passed on to \code{\link[crul]{verb-POST}}}
 }
 \description{
 Create a gist

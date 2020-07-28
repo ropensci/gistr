@@ -1,13 +1,10 @@
 PACKAGE := $(shell grep '^Package:' DESCRIPTION | sed -E 's/^Package:[[:space:]]+//')
 RSCRIPT = Rscript --no-init-file
 
-move:
-	cp inst/vign/gistr.md vignettes/
-	cp -rf inst/vign/img/* vignettes/img/
-
-rmd2md:
+vign:
 	cd vignettes;\
-	mv gistr.md gistr.Rmd
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('gistr.Rmd.og', output = 'gistr.Rmd')";\
+	cd ..
 
 install: doc build
 	R CMD INSTALL . && rm *.tar.gz
@@ -28,4 +25,7 @@ check: build
 
 test:
 	${RSCRIPT} -e 'devtools::test()'
+
+readme:
+	${RSCRIPT} -e 'knitr::knit("README.Rmd")'
 

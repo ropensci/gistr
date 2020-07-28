@@ -14,7 +14,7 @@ as.gist(x)
 
 \item{revision}{(character) A sha. optional}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[crul]{verb-GET}}}
 
 \item{x}{Object to coerce. Can be an integer (gist id), string
 (gist id), a gist, or an list that can be coerced to a gist.}

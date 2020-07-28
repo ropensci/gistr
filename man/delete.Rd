@@ -9,7 +9,7 @@ delete(gist, ...)
 \arguments{
 \item{gist}{A gist object or something coerceable to a gist}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[crul]{verb-GET}}}
 }
 \description{
 Delete a gist

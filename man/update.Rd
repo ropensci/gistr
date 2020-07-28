@@ -11,7 +11,7 @@ update(gist, description = gist$description, ...)
 
 \item{description}{(character) Brief description of gist (optional)}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[crul]{verb-GET}}}
 }
 \value{
 an object of class \code{gist}

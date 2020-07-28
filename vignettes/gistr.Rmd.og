@@ -1,7 +1,7 @@
 ---
 title: gistr introduction
 author: Scott Chamberlain
-date: "2020-07-28"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{gistr introduction}
@@ -10,7 +10,14 @@ vignette: >
 ---
 
 
-
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
 
 
 ## Install
@@ -18,22 +25,19 @@ vignette: >
 Stable version from CRAN
 
 
-
-```r
+```{r eval=FALSE}
 install.packages("gistr")
 ```
 
 Development version from GitHub
 
 
-
-```r
+```{r eval=FALSE}
 remotes::install_github("ropensci/gistr")
 ```
 
 
-
-```r
+```{r}
 library("gistr")
 ```
 
@@ -50,8 +54,7 @@ Using the PAT is recommended.
 
 Using the `gist_auth()` function you can authenticate separately first, or if you're not authenticated, this function will run internally with each function call. If you have a PAT, that will be used, if not, OAuth will be used.
 
-
-```r
+```{r eval=FALSE}
 gist_auth()
 ```
 
@@ -59,8 +62,7 @@ gist_auth()
 
 In `gistr` you can use pipes, introduced perhaps first in R in the package `magrittr`, to pass outputs from one function to another. If you have used `dplyr` with pipes you can see the difference, and perhaps the utility, of this workflow over the traditional workflow in R. You can use a non-piping or a piping workflow with `gistr`. Examples below use a mix of both workflows. Here is an example of a piping workflow (with some explanation):
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>% # List my public gists, and index to get just the 1st one
   add_files(file) %>% # Add a new file to that gist
@@ -69,8 +71,7 @@ gists(what = "minepublic")[[1]] %>% # List my public gists, and index to get jus
 
 And a non-piping workflow that does the same exact thing:
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "alm.md", package = "gistr")
 g <- gists(what = "minepublic")[[1]]
 g <- add_files(g, file)
@@ -79,16 +80,14 @@ update(g)
 
 Or you could string them all together in one line (but it's rather difficult to follow what's going on because you have to read from the inside out)
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "alm.md", package = "gistr")
 update(add_files(gists(what = "minepublic")[[1]], file))
 ```
 
 ## Rate limit information
 
-
-```r
+```{r eval=FALSE}
 rate_limit()
 #> Rate limit: 5000
 #> Remaining:  4998
@@ -99,112 +98,41 @@ rate_limit()
 
 Limiting to a few results here to keep it brief
 
-
-```r
+```{r}
 gists(per_page = 2)
-#> [[1]]
-#> <gist>721a433293af4cb1fb0f66d7ccb37339
-#>   URL: https://gist.github.com/721a433293af4cb1fb0f66d7ccb37339
-#>   Description: Atividades 8o Ano
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:22Z / 2020-07-28T20:18:23Z
-#>   Files: 8o_ano.md
-#>   Truncated?: FALSE
-#> 
-#> [[2]]
-#> <gist>d1064ad4f7fa9cd30b4409ade98fbd92
-#>   URL: https://gist.github.com/d1064ad4f7fa9cd30b4409ade98fbd92
-#>   Description: Averdonk Groessen
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:11Z / 2020-07-28T20:18:11Z
-#>   Files: averdonk-groessen.markdown, index.pug, script.js, scripts, style.sass, styles
-#>   Truncated?: FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
 ```
 
 Since a certain date/time
 
-
-```r
+```{r}
 gists(since='2014-05-26T00:00:00Z', per_page = 2)
-#> [[1]]
-#> <gist>721a433293af4cb1fb0f66d7ccb37339
-#>   URL: https://gist.github.com/721a433293af4cb1fb0f66d7ccb37339
-#>   Description: Atividades 8o Ano
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:22Z / 2020-07-28T20:18:23Z
-#>   Files: 8o_ano.md
-#>   Truncated?: FALSE
-#> 
-#> [[2]]
-#> <gist>d1064ad4f7fa9cd30b4409ade98fbd92
-#>   URL: https://gist.github.com/d1064ad4f7fa9cd30b4409ade98fbd92
-#>   Description: Averdonk Groessen
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:11Z / 2020-07-28T20:18:11Z
-#>   Files: averdonk-groessen.markdown, index.pug, script.js, scripts, style.sass, styles
-#>   Truncated?: FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
 
-
-```r
+```{r}
 gists('minepublic', per_page = 2)
-#> [[1]]
-#> <gist>792675323dea1961ce038b2e051d66d4
-#>   URL: https://gist.github.com/792675323dea1961ce038b2e051d66d4
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:17:34Z / 2020-07-28T20:17:42Z
-#>   Files: code.R
-#>   Truncated?: FALSE
-#> 
-#> [[2]]
-#> <gist>98badbaf7334a8a5707418543e178901
-#>   URL: https://gist.github.com/98badbaf7334a8a5707418543e178901
-#>   Description: a new cool gist
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:17:33Z / 2020-07-28T20:17:33Z
-#>   Files: stuff.md
-#>   Truncated?: FALSE
 ```
 
 
 ## List a single commit
 
-
-```r
+```{r}
 gist(id = 'f1403260eb92f5dfa7e1')
-#> <gist>f1403260eb92f5dfa7e1
-#>   URL: https://gist.github.com/f1403260eb92f5dfa7e1
-#>   Description: Querying bitly from R 
-#>   Public: TRUE
-#>   Created/Edited: 2014-10-15T20:40:12Z / 2015-08-29T14:07:43Z
-#>   Files: bitly_r.md
-#>   Truncated?: FALSE
 ```
 
 ## Create gist
 
 You can pass in files
 
-
-```r
+```{r}
 file <- system.file("examples", "stuff.md", package = "gistr")
 gist_create(file, description='a new cool gist', browse = FALSE)
-#> <gist>f7aa5e70e2fb40f4d92e972bcfa6224f
-#>   URL: https://gist.github.com/f7aa5e70e2fb40f4d92e972bcfa6224f
-#>   Description: a new cool gist
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:27Z / 2020-07-28T20:18:27Z
-#>   Files: stuff.md
-#>   Truncated?: FALSE
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, with just the function name, and a `{'` at the start and a `}'` at the end.
 
-
-```r
+```{r eval=FALSE}
 gist_create(code={'
 x <- letters
 numbers <- runif(8)
@@ -214,8 +142,7 @@ numbers
 '})
 ```
 
-
-```r
+```{r}
 gist_create(code={'
 x <- letters
 numbers <- runif(8)
@@ -223,21 +150,13 @@ numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
 '}, browse=FALSE)
-#> <gist>394103ff248f2be67bbccce863a89ca7
-#>   URL: https://gist.github.com/394103ff248f2be67bbccce863a89ca7
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:29Z / 2020-07-28T20:18:29Z
-#>   Files: code.R
-#>   Truncated?: FALSE
 ```
 
 ### knit and create
 
 You can also knit an input file before posting as a gist:
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 gist_create(file, description='a new cool gist', knit=TRUE)
 #> <gist>4162b9c53479fbc298db
@@ -251,8 +170,7 @@ gist_create(file, description='a new cool gist', knit=TRUE)
 
 Or code blocks before (note that code blocks without knitr block demarcations will result in unexecuted code):
 
-
-```r
+```{r eval=FALSE}
 gist_create(code={'
 x <- letters
 (numbers <- runif(8))
@@ -270,25 +188,18 @@ x <- letters
 
 knit a local file
 
-
-```r
+```{r}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
 run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
-#> <gist>ceeddf11ebf775a1fe465f6791e15323
-#>   URL: https://gist.github.com/ceeddf11ebf775a1fe465f6791e15323
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:31Z / 2020-07-28T20:18:31Z
-#>   Files: stuff.md
-#>   Truncated?: FALSE
 ```
 
-
+```{r echo=FALSE}
+gists('minepublic')[[1]] %>% delete
+```
 
 knit a code block (knitr code block notation missing, do add that in) (result not shown)
 
-
-```r
+```{r eval=FALSE}
 run({'
 x <- letters
 (numbers <- runif(8))
@@ -297,8 +208,7 @@ x <- letters
 
 knit a file from a gist, has to get file first (result not shown)
 
-
-```r
+```{r eval=FALSE}
 gists('minepublic')[[1]] %>% run() %>% update()
 ```
 
@@ -310,8 +220,7 @@ If you are using `.Rmd` or `.Rnw` files, you can set `imgur_inject = TRUE` in `g
 
 A file already using imgur
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "plots_imgur.Rmd", package = "gistr")
 gist_create(file, knit=TRUE)
 #> <gist>1a6e7f7d6ddb739fce0b
@@ -324,8 +233,7 @@ gist_create(file, knit=TRUE)
 
 A file _NOT_ already using imgur
 
-
-```r
+```{r eval=FALSE}
 file <- system.file("examples", "plots.Rmd", package = "gistr")
 gist_create(file, knit=TRUE, imgur_inject = TRUE)
 #> <gist>ec9987ad245bbc668c72
@@ -339,23 +247,15 @@ gist_create(file, knit=TRUE, imgur_inject = TRUE)
 
 ## List commits on a gist
 
-
-```r
+```{r}
 gists()[[1]] %>% commits()
-#> [[1]]
-#> <commit>
-#>   Version: b640145362bb2272c5f0a06ae2aee3241b8f6f59
-#>   User: sckott
-#>   Commited: 2020-07-28T20:18:28Z
-#>   Commits [total, additions, deletions]: [5,5,0]
 ```
 
 ## Star a gist
 
 Star
 
-
-```r
+```{r eval = FALSE}
 gist('cbb0507082bb18ff7e4b') %>% star()
 #> <gist>cbb0507082bb18ff7e4b
 #>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
@@ -368,8 +268,7 @@ gist('cbb0507082bb18ff7e4b') %>% star()
 
 Unstar
 
-
-```r
+```{r eval = FALSE}
 gist('cbb0507082bb18ff7e4b') %>% unstar()
 #> <gist>cbb0507082bb18ff7e4b
 #>   URL: https://gist.github.com/cbb0507082bb18ff7e4b
@@ -384,42 +283,25 @@ gist('cbb0507082bb18ff7e4b') %>% unstar()
 
 Add files
 
-
-```r
+```{r}
 file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
   update()
-#> <gist>394103ff248f2be67bbccce863a89ca7
-#>   URL: https://gist.github.com/394103ff248f2be67bbccce863a89ca7
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:29Z / 2020-07-28T20:18:34Z
-#>   Files: alm.md, code.R
-#>   Truncated?: FALSE, FALSE
 ```
 
 Delete files
 
-
-```r
+```{r}
 file <- system.file("examples", "alm.md", package = "gistr")
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
   update()
-#> <gist>394103ff248f2be67bbccce863a89ca7
-#>   URL: https://gist.github.com/394103ff248f2be67bbccce863a89ca7
-#>   Description: 
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:29Z / 2020-07-28T20:18:36Z
-#>   Files: code.R
-#>   Truncated?: FALSE
 ```
 
 ## Open a gist in your default browser
 
-
-```r
+```{r eval=FALSE}
 gists()[[1]] %>% browse()
 ```
 
@@ -427,56 +309,30 @@ gists()[[1]] %>% browse()
 
 ## Get embed script
 
-
-```r
+```{r}
 gists()[[1]] %>% embed()
-#> [1] "<script src=\"https://gist.github.com/anupamgogoi-wso2/9230e4ade0074320ec95992ba2fbf518.js\"></script>"
 ```
 
 ## List forks
 
 Returns a list of `gist` objects, just like `gists()`
 
-
-```r
+```{r}
 gist(id='1642874') %>% forks(per_page=2)
-#> [[1]]
-#> <gist>1642989
-#>   URL: https://gist.github.com/1642989
-#>   Description: Spline Transition
-#>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:45:20Z / 2019-10-23T20:09:07Z
-#>   Files: 
-#>   Truncated?: 
-#> 
-#> [[2]]
-#> <gist>1643051
-#>   URL: https://gist.github.com/1643051
-#>   Description: Line Transition (Broken)
-#>   Public: TRUE
-#>   Created/Edited: 2012-01-19T21:51:30Z / 2019-10-23T20:08:44Z
-#>   Files: 
-#>   Truncated?:
 ```
 
 ## Fork a gist
 
 Returns a `gist` object
 
-
-```r
+```{r}
 g <- gists()
 (forked <- g[[ sample(seq_along(g), 1) ]] %>% fork())
-#> <gist>72a9327aac0cab09900b04a027069ae5
-#>   URL: https://gist.github.com/72a9327aac0cab09900b04a027069ae5
-#>   Description: Rimworld output log published using HugsLib
-#>   Public: TRUE
-#>   Created/Edited: 2020-07-28T20:18:43Z / 2020-07-28T20:18:43Z
-#>   Files: output_log.txt
-#>   Truncated?: FALSE
 ```
 
-
+```{r echo=FALSE}
+gist(forked$id) %>% delete()
+```
 
 
 
@@ -487,8 +343,7 @@ _Round-trip storage of a data frame_
 Maybe you want to use a gist to share some data as an alternative to `dput`? We can do this by writing our `data.frame` to a temporary buffer and passing it to `gist_create`. We can read the data back from the gist by passing its content to `read.csv`.
 
 
-
-```r
+```{r eval=FALSE}
 data(iris)
 
 str <- ''
