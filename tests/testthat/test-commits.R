@@ -2,6 +2,7 @@ context("commits")
 
 test_that("commits works", {
   skip_on_cran()
+  skip_on_ci()
   
   aa <- gists()[[1]] %>% commits()
   expect_is(aa, "list")
