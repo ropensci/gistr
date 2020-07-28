@@ -5,7 +5,7 @@
 #' @param page (integer) Page number to return.
 #' @param per_page (integer) Number of items to return per page. Default 30. 
 #' Max 100.
-#' @param ... Further named args to [httr::GET()]
+#' @param ... Further named args to [crul::verb-GET]
 #' @return A list of gist class objects
 #' @examples \dontrun{
 #' gist(id='1642874') %>% forks(per_page=2)
@@ -28,19 +28,14 @@ forks <- function(gist, page=NULL, per_page=30, ...) {
 #'
 #' @export
 #' @param gist A gist object or something coerceable to a gist
-#' @param ... Further named args to \code{\link[httr]{GET}}
+#' @param ... Further named args to [crul::verb-GET]
 #' @return A gist class object
 #' @examples \dontrun{
 #' # fork a gist
-#' gists()[[1]] %>% fork()
+#' w <- gists()[[1]] %>% fork()
 #'
 #' # browse to newly forked gist
-#' gist(id='0831f3fbd83ac4d46451') %>% fork() %>% browse()
-#'
-#' # extract the last one
-#' gist(id='1642874') %>%
-#'  forks() %>%
-#'  .[length(.)]
+#' browse(w)
 #' }
 
 fork <- function(gist, ...) {

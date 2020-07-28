@@ -29,7 +29,7 @@ a markdown table. If FALSE, pushes up json. (default: \code{TRUE})}
 
 \item{filename}{Name of the file to create. Default: \code{file.txt}}
 
-\item{...}{Further args passed on to \code{\link[httr:POST]{httr::POST()}}}
+\item{...}{Further args passed on to \link[crul:verb-POST]{crul::verb-POST}}
 }
 \description{
 Create a gist from an R object

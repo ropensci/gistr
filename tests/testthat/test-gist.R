@@ -41,11 +41,10 @@ test_that("gist works getting a specific revision", {
   expect_match(rev1$id, rev2$id)
 })
 
-test_that("httr config options work", {
+test_that("curl options work", {
   skip_on_cran()
   
-  library('httr')
-  expect_error(gist(10, config = timeout(0.001)))
+  expect_error(gist(10, timeout_ms = 1))
 })
 
 test_that("passing in a URL or URL fragment", {

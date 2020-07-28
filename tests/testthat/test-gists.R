@@ -8,9 +8,8 @@ test_that("listing gists works", {
   expect_equal(length(gists(per_page=2)), 2)
 })
 
-test_that("config options work", {
+test_that("curl options work", {
   skip_on_cran()
   
-  library('httr')
-  expect_error(gists(config=timeout(0.001)))
+  expect_error(gists(timeout_ms = 1))
 })

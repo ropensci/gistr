@@ -15,7 +15,7 @@ starring, creating, deleting, updating, etc.
 There are two ways to authorise gistr to work with your GitHub account:
 \itemize{
 \item Generate a personal access token (PAT) at
-\url{https://help.github.com/articles/creating-an-access-token-for-command-line-use}
+\url{https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token}
 and record it in the \code{GITHUB_PAT} envar.
 \item Interactively login into your GitHub account and authorise with OAuth.
 }

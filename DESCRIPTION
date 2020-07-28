@@ -1,8 +1,8 @@
 Package: gistr
 Title: Work with 'GitHub' 'Gists'
 Description: Work with 'GitHub' 'gists' from 'R' (e.g., 
-    <http://en.wikipedia.org/wiki/GitHub#Gist>, 
-    <https://help.github.com/articles/about-gists/>). A 'gist'
+    <https://en.wikipedia.org/wiki/GitHub#Gist>, 
+    <https://docs.github.com/en/github/writing-on-github/creating-gists/>). A 'gist'
     is simply one or more files with code/text/images/etc. This package allows
     the user to create new 'gists', update 'gists' with new files, rename files,
     delete files, get and delete 'gists', star and 'un-star' 'gists', fork 'gists',
@@ -10,7 +10,7 @@ Description: Work with 'GitHub' 'gists' from 'R' (e.g.,
     'gist' 'commits', and get rate limit information when 'authenticated'. Some
     requests require authentication and some do not. 'Gists' website: 
     <https://gist.github.com/>.
-Version: 0.5.0.92
+Version: 0.5.1.91
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), 
         email = "myrmecocystus@gmail.com", 
@@ -27,8 +27,9 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
 Imports:
-    jsonlite (>= 1.4),
-    httr (>= 1.2.0),
+    jsonlite,
+    crul,
+    httr,
     magrittr,
     assertthat,
     knitr,
@@ -37,7 +38,7 @@ Imports:
 Suggests:
     git2r,
     testthat
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 X-schema.org-applicationCategory: Web
 X-schema.org-keywords: http, https, API, web-services, GitHub, GitHub API, gist, gists, code, script, snippet
 X-schema.org-isPartOf: https://ropensci.org

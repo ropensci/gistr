@@ -248,21 +248,21 @@ unpack <- function(z) {
 }
 
 cgist <- function(description, public) {
-  res <- httr::POST(paste0(ghbase(), '/gists'), 
-                    gist_auth(), 
-                    encode = "json",
-                    body = jsonlite::toJSON(list(
-                      description = description,
-                      public = public,
-                      files = list(
-                        ".gistr" = list(
-                          content = "gistr"
-                        )
-                      )
-                    ), auto_unbox = TRUE)
+  gist_POST(
+    paste0(ghbase(), '/gists'), 
+    gist_auth(),
+    ghead(),
+    body = jsonlite::toJSON(list(
+      description = description,
+      public = public,
+      files = list(
+        ".gistr" = list(
+          content = "gistr"
+        )
+      )
+    ), auto_unbox = TRUE),
+    encode = "json"
   )
-  stopstatus(res)
-  jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"), FALSE)
 }
 
 all_artifacts <- function(x) {

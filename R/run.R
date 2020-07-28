@@ -59,7 +59,7 @@ run <- function(x, filename="code.R", knitopts=list()){
   if (inherits(x, 'gist')) x %>% update_files(outpath) else outpath
 }
 
-check_files <- function(x){
+check_files <- function(x) {
   if (length(x$files) > 1) {
     stop("You can only feed one file to run()")
   } else {
@@ -67,9 +67,9 @@ check_files <- function(x){
   }
 }
 
-get_raw <- function(path, ...){
-  res <- httr::GET(path, gist_auth(), ghead(), ...)
+get_raw <- function(path, ...) {
+  res <- cVERB("get", path, gist_auth(), ghead(), ...)
+  res$raise_for_status()
   stopifnot(res$headers$`content-type` == 'text/plain; charset=utf-8')
-  warn_for_status(res)
-  httr::content(res, as = "text", encoding = "UTF-8")
+  res$parse("UTF-8")
 }

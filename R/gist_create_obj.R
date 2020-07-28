@@ -10,7 +10,7 @@
 #' @param pretty (logical) For data.frame and matrix objects, create
 #' a markdown table. If FALSE, pushes up json. (default: `TRUE`)
 #' @param filename Name of the file to create. Default: `file.txt`
-#' @param ... Further args passed on to [httr::POST()]
+#' @param ... Further args passed on to [crul::verb-POST]
 #' @details This function is specifically for going from R objects to a gist,
 #' whereas [gist_create()] is for going from files or executing code
 #' @seealso [gist_create()], [gist_create_git()]

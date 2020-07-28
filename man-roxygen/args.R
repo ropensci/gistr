@@ -20,4 +20,4 @@
 #' into your \code{.Rmd} file to upload files to \url{http://imgur.com/}. 
 #' This will be ignored  if the file is a sweave/latex file because the 
 #' rendered pdf can't be uploaded anyway. Default: FALSE
-#' @param ... Further args passed on to \code{link[httr]{POST}}
+#' @param ... Further args passed on to \code{\link[crul]{verb-POST}}

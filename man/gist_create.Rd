@@ -100,10 +100,8 @@ x <- letters
 ```
 '}, knit=TRUE)
 
-library('httr')
-url <- "https://github.com/ropensci/geojsonio/blob/master/inst/examples/zillow_or.geojson"
-res <- httr::GET(url)
-json <- httr::content(res, as = "text")
+url <- "https://raw.githubusercontent.com/ropensci/geojsonio/master/inst/examples/zillow_or.geojson"
+json <- crul::HttpClient$new(url)$get()$parse("UTF-8")
 gist_create(code = json, filename = "zillow_or.geojson")
 
 # Knit and include source file, so both files are in the gist

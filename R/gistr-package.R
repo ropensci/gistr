@@ -6,7 +6,7 @@
 #' There are two ways to authorise gistr to work with your GitHub account:
 #'
 #' - Generate a personal access token (PAT) at
-#'  <https://help.github.com/articles/creating-an-access-token-for-command-line-use>
+#'  <https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token>
 #'  and record it in the `GITHUB_PAT` envar.
 #' - Interactively login into your GitHub account and authorise with OAuth.
 #'
@@ -15,11 +15,11 @@
 #' @importFrom magrittr %>%
 #' @importFrom knitr knit
 #' @importFrom rmarkdown render
-#' @importFrom httr GET POST PATCH PUT DELETE content stop_for_status
-#' add_headers warn_for_status
+#' @importFrom crul HttpClient
+#' @importFrom httr add_headers oauth_endpoints oauth2.0_token config oauth_app
 #' @importFrom assertthat assert_that has_extension
 #' @importFrom dplyr bind_rows as_data_frame
-#' @importFrom jsonlite flatten
+#' @importFrom jsonlite fromJSON flatten
 #' @name gistr-package
 #' @aliases gistr
 #' @docType package

@@ -23,8 +23,8 @@
 
 star <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- gist_PUT(url_star(gist$id), gist_auth(), ghead(), 
-                  add_headers(`Content-Length` = 0), ...)
+  res <- gist_PUT(url_star(gist$id), gist_auth(),
+    c(ghead(), list(`Content-Length` = "0")), ...)
   star_mssg(res, 'Success, gist starred!')
   gist
 }
@@ -42,7 +42,7 @@ unstar <- function(gist, ...){
 #' @rdname star
 star_check <- function(gist, ...){
   gist <- as.gist(gist)
-  res <- GET(url_star(gist$id), gist_auth(), ghead(), ...)
+  res <- cVERB("get", url_star(gist$id), gist_auth(), ghead(), ...)
   msg <- if (res$status_code == 204) TRUE else FALSE
   message(msg)
   gist
@@ -50,8 +50,9 @@ star_check <- function(gist, ...){
 
 url_star <- function(x) sprintf('%s/gists/%s/star', ghbase(), x)
 
-star_mssg <- function(x, y) if (x$status_code == 204) message(y) else 
-  warn_for_status(x)
+star_mssg <- function(x, y) {
+  if (x$status_code == 204) message(y) else warn_status(x)
+}
 
 star_action <- function(x, y) {
   if (x$status_code == 204) {
@@ -59,4 +60,10 @@ star_action <- function(x, y) {
   } else {
     x$status_code
   }
+}
+
+warn_status <- function(x) {
+  if (x$status_code < 300) return(invisible(x))
+  tmp <- x$status_http()
+  warning(sprintf("(HTTP %s) %s", tmp$status_code, tmp$message), call.=FALSE)
 }

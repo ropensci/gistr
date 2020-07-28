@@ -10,8 +10,7 @@ payload <- function(filenames, description = "") {
   add_update <- lapply(c(add, update), function(file) {
     list(content = paste(readLines(file, warn = FALSE), collapse = "\n"))
   })
-  # del <- lapply(delete, function(file) structure(list(NULL), names = basename(file)))
-  del <- do.call("c", unname(Map(function(x) stats::setNames(list(NULL), x), 
+  del <- do.call("c", unname(Map(function(x) stats::setNames(list(NULL), x),
                                  sapply(delete, basename))))
   ren <- lapply(rename, function(f) {
     tt <- f[[1]]
@@ -27,7 +26,7 @@ payload <- function(filenames, description = "") {
 creategist <- function(filenames, description = "", public = TRUE) {
   filenames <- files_exist(filenames)
   files <- lapply(filenames, function(file) {
-    list(content = paste(readLines(file, warn = FALSE, encoding = "UTF-8"), 
+    list(content = paste(readLines(file, warn = FALSE, encoding = "UTF-8"),
                          collapse = "\n"))
   })
   names(files) <- sapply(filenames, basename)
@@ -41,7 +40,7 @@ creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE,
   if (pretty && any(is.data.frame(z) || is.matrix(z))) {
     z <- list(list(content = paste0(knitr::kable(z), collapse = "\n")))
   } else {
-    z <- list(list(content = as.character(jsonlite::toJSON(z, 
+    z <- list(list(content = as.character(jsonlite::toJSON(z,
                                                            auto_unbox = TRUE))))
   }
   names(z) <- filename
@@ -50,7 +49,7 @@ creategist_obj <- function(z, description = "", public = TRUE, pretty = TRUE,
 }
 
 unl <- function(x) if (!is.null(x)) do.call(c, x) else NULL
-unr <- function(x) 
+unr <- function(x)
   if (!is.null(x)) unname(sapply(x, function(z) z[[1]])) else NULL
 
 mssg <- function(x, y) if (x) message(y)
@@ -64,53 +63,63 @@ gc <- function(x) {
 
 ghbase <- function() 'https://api.github.com'
 
-ghead <- function(){
-  add_headers(`User-Agent` = "gistr", 
-              `Accept` = 'application/vnd.github.v3+json')
+ghead <- function() {
+  list(
+    `User-Agent` = "gistr",
+    `Accept` = 'application/vnd.github.v3+json'
+  )
 }
 
-gist_GET <- function(url, auth, headers, args=NULL, ...){
-  response <- GET(url, auth, headers, query = args, ...)
+cVERB <- function(verb, url, auth, headers,
+  args = NULL, body = NULL, encode = NULL, ...) {
+
+  con <- crul::HttpClient$new(url,
+    headers = c(auth, headers),
+    opts = list(...))
+  con$verb(verb, query = args, body = body, encode = encode)
+}
+
+gist_GET <- function(url, auth, headers, args=NULL, ...) {
+  response <- cVERB("get", url, auth, headers, args, ...)
   process(response)
 }
 
-gist_PATCH <- function(id, auth, headers, body, ...){
-  response <- PATCH(paste0(ghbase(), '/gists/', id), auth, headers, 
-                    body = body, encode = "json")
+gist_PATCH <- function(id, auth, headers, body, ...) {
+  response <- cVERB("patch", paste0(ghbase(), '/gists/', id), auth, headers,
+                    body = body, encode = "json", ...)
   process(response)
 }
 
-gist_POST <- function(url, auth, headers, body, ...){
-  response <- POST(url, auth, headers, body = body, encode = "json", ...)
+gist_POST <- function(url, auth, headers, body, encode = "json", ...) {
+  response <- cVERB("post", url, auth, headers,
+    body = body, encode = encode, ...)
   process(response)
 }
 
-gist_PUT <- function(url, auth, headers, ...){
-  PUT(url, auth, headers, ...)
+gist_PUT <- function(url, auth, headers, ...) {
+  cVERB("put", url, auth, headers, ...)
 }
 
-gist_DELETE <- function(url, auth, headers, ...){
-  res <- DELETE(url, auth, headers, ...)
+gist_DELETE <- function(url, auth, headers, ...) {
+  res <- cVERB("delete", url, auth, headers, ...)
   stopstatus(res, 204)
   res
 }
 
-process <- function(x){
+process <- function(x) {
   stopstatus(x)
-  stopifnot(x$headers$`content-type` == 'application/json; charset=utf-8')
-  temp <- httr::content(x, as = "text", encoding = "UTF-8")
-  jsonlite::fromJSON(temp, FALSE)
+  stopifnot(x$response_headers$`content-type` == 'application/json; charset=utf-8')
+  jsonlite::fromJSON(x$parse("UTF-8"), FALSE)
 }
 
 stopstatus <- function(x, status_stop = 203) {
   if (x$status_code > status_stop) {
-    res <- jsonlite::fromJSON(httr::content(x, as = "text", 
-                                            encoding = "UTF-8"), FALSE)
-    errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ", 
+    res <- jsonlite::fromJSON(x$parse("UTF-8"), FALSE)
+    errs <- sapply(res$errors, function(z) paste(names(z), z, sep = ": ",
                                                  collapse = "\n"))
     # check for possible oauth scope problems
     scopes_problem <- ""
-    if (is.null(x$headers$`x-oauth-scopes`)) {
+    if (is.null(x$response_headers$`x-oauth-scopes`)) {
       scopes_problem <- "  GitHub response headers suggest no or insufficient scopes\n  To create gists you need the `gist` OAuth scope on your token."
     }
     stop(res$message, "\n", errs, "\n", scopes_problem, call. = FALSE)

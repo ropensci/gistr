@@ -1,4 +1,3 @@
-# tests for fork
 context("fork")
 
 test_that("fork works", {

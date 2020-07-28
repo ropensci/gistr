@@ -33,8 +33,7 @@
 #' # Your starred gists
 #' gists('starred')
 #' # pass in curl options
-#' gists(per_page=1, config=verbose())
-#' gists(per_page=1, config=timeout(seconds = 0.5))
+#' gists(per_page=1, verbose=TRUE)
 #' }
 
 gists <- function(what='public', since=NULL, page=NULL, per_page=30, ...) {

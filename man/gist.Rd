@@ -66,6 +66,5 @@ gist(ids[1]) \%>\% browse()
 (bigfile <- gist(id = "b74b878fd7d9176a4c52"))
 ## then get the raw_url, and retrieve the file
 url <- bigfile$files$`plossmall.json`$raw_url
-# httr::GET(url)
 }
 }

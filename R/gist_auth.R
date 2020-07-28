@@ -26,7 +26,7 @@
 gist_auth <- function(app = gistr_app, reauth = FALSE) {
  
   if (exists("auth_config", envir = cache) && !reauth) {
-    return(cache$auth_config)
+    return(undo(cache$auth_config$headers))
   }
   pat <- Sys.getenv("GITHUB_PAT", "")
   if (!identical(pat, "")) {
@@ -41,8 +41,10 @@ gist_auth <- function(app = gistr_app, reauth = FALSE) {
     auth_config <- httr::config(token = token)
   }
   cache$auth_config <- auth_config
-  auth_config
+  undo(auth_config$headers)
 }
+
+undo <- function(x) unclass(as.list(unclass(x)))
 
 cache <- new.env(parent = emptyenv())
 

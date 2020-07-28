@@ -1,7 +1,7 @@
 #' Get rate limit information
 #'
 #' @export
-#' @param ... Named args to [httr::GET()]
+#' @param ... Named args to [crul::verb-GET]
 #' @examples \dontrun{
 #' rate_limit()
 #' }

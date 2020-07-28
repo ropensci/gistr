@@ -9,7 +9,7 @@ fork(gist, ...)
 \arguments{
 \item{gist}{A gist object or something coerceable to a gist}
 
-\item{...}{Further named args to \code{\link[httr]{GET}}}
+\item{...}{Further named args to \link[crul:verb-GET]{crul::verb-GET}}
 }
 \value{
 A gist class object
@@ -20,14 +20,9 @@ Fork a gist
 \examples{
 \dontrun{
 # fork a gist
-gists()[[1]] \%>\% fork()
+w <- gists()[[1]] \%>\% fork()
 
 # browse to newly forked gist
-gist(id='0831f3fbd83ac4d46451') \%>\% fork() \%>\% browse()
-
-# extract the last one
-gist(id='1642874') \%>\%
- forks() \%>\%
- .[length(.)]
+browse(w)
 }
 }

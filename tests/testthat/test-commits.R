@@ -1,4 +1,3 @@
-# tests for commits
 context("commits")
 
 test_that("commits works", {
@@ -13,9 +12,8 @@ test_that("commits works", {
   expect_equal(length(bb), 2)
 })
 
-test_that("config options work", {
+test_that("not sure what this test does", {
   skip_on_cran()
   
-  library('httr')
   expect_equal( length(gists()[[1]] %>% commits(page = 454590788)), 0 )
 })
