@@ -10,14 +10,14 @@
 #' parameter is used. Default to \code{code.R}
 #' @param knit (logical) Knit code before posting as a gist? If the file 
 #' has a \code{.Rmd}  or \code{.Rnw} extension, we run the file with 
-#' \code{link[knitr]{knit}}, and if it has a \code{.R} extension, then 
+#' \code{\link[knitr]{knit}}, and if it has a \code{.R} extension, then 
 #' we use \code{\link[rmarkdown]{render}}
 #' @param knitopts,renderopts (list) List of variables passed on to 
-#' \code{link[knitr]{knit}}, or \code{\link[rmarkdown]{render}}
+#' \code{\link[knitr]{knit}}, or \code{\link[rmarkdown]{render}}
 #' @param include_source (logical) Only applies if \code{knit=TRUE}. Include 
 #' source file in the gist in addition to the knitted output.
 #' @param imgur_inject (logical) Inject \code{\link[knitr]{imgur_upload}} 
-#' into your \code{.Rmd} file to upload files to \url{http://imgur.com/}. 
+#' into your \code{.Rmd} file to upload files to \url{https://imgur.com/}. 
 #' This will be ignored  if the file is a sweave/latex file because the 
 #' rendered pdf can't be uploaded anyway. Default: FALSE
 #' @param ... Further args passed on to \code{\link[crul]{verb-POST}}
