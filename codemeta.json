@@ -5,19 +5,18 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "gistr",
-  "description": "Work with 'GitHub' 'gists' from 'R' (e.g., \n    <http://en.wikipedia.org/wiki/GitHub#Gist>, \n    <https://help.github.com/articles/about-gists/>). A 'gist'\n    is simply one or more files with code/text/images/etc. This package allows\n    the user to create new 'gists', update 'gists' with new files, rename files,\n    delete files, get and delete 'gists', star and 'un-star' 'gists', fork 'gists',\n    open a 'gist' in your default browser, get embed code for a 'gist', list\n    'gist' 'commits', and get rate limit information when 'authenticated'. Some\n    requests require authentication and some do not. 'Gists' website: \n    <https://gist.github.com/>.",
+  "description": "Work with 'GitHub' 'gists' from 'R' (e.g., \n    <https://en.wikipedia.org/wiki/GitHub#Gist>, \n    <https://docs.github.com/en/github/writing-on-github/creating-gists/>). A 'gist'\n    is simply one or more files with code/text/images/etc. This package allows\n    the user to create new 'gists', update 'gists' with new files, rename files,\n    delete files, get and delete 'gists', star and 'un-star' 'gists', fork 'gists',\n    open a 'gist' in your default browser, get embed code for a 'gist', list\n    'gist' 'commits', and get rate limit information when 'authenticated'. Some\n    requests require authentication and some do not. 'Gists' website: \n    <https://gist.github.com/>.",
   "name": "gistr: Work with 'GitHub' 'Gists'",
   "codeRepository": "https://github.com/ropensci/gistr",
   "issueTracker": "https://github.com/ropensci/gistr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.5.0",
+  "version": "0.9.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 Patched (2019-12-12 r77564)",
+  "runtimePlatform": "R version 4.0.2 Patched (2020-06-30 r78761)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -83,7 +82,6 @@
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": ">= 1.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -94,9 +92,20 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "crul",
+      "name": "crul",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=crul"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
-      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -166,10 +175,10 @@
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     }
   ],
-  "contIntegration": ["https://travis-ci.org/ropensci/gistr", "https://ci.appveyor.com/project/sckott/gistr/branch/master", "https://codecov.io/github/ropensci/gistr?branch=master"],
+  "contIntegration": "https://codecov.io/github/ropensci/gistr?branch=master",
   "releaseNotes": "https://github.com/ropensci/gistr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/gistr/blob/master/README.md",
-  "fileSize": "1261.977KB",
+  "fileSize": "0KB",
   "applicationCategory": "Web",
   "isPartOf": "https://ropensci.org",
   "keywords": ["http", "https", "API", "web-services", "GitHub", "GitHubAPI", "gist", "gists", "code", "script", "snippet", "github-api", "api-wrapper", "rstats", "r", "github-gist", "r-package"],

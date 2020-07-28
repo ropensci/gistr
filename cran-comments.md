@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.6.2 patched
-* ubuntu 14.04 (on travis-ci), R 3.6.2
+* local OS X install, R 4.0.2 patched
+* ubuntu 14.04 (on travis-ci), R 4.0.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -10,11 +10,11 @@
 
 ## Reverse dependencies
 
-I have run R CMD check on the 8 downstream dependencies. Summary at <https://github.com/ropensci/gistr/tree/master/revdep>. None had problems.
+I have run R CMD check on the 9 downstream dependencies. Summary at <https://github.com/ropensci/gistr/tree/master/revdep>. None had problems.
 
 ---
 
-This version adds a vignette example, improves documentation, and improves a function.
+This version fixes and improves some internals; no user facing changes.
 
 Thanks!
 Scott Chamberlain

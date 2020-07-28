@@ -1,3 +1,13 @@
+gistr 0.9.0
+===============
+
+### MINOR IMPROVEMENTS
+
+* replace httr with crul for all but the oauth handling (#68)
+* fix to internal fxn `stopstatus()` to handle correctly detecting scope header issues (#82)
+* fixed old urls that have changed
+
+
 gistr 0.5.0
 ===============
 
