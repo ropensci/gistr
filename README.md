@@ -12,6 +12,8 @@ gistr
 
 `gistr` is a light interface to GitHub's gists for R.
 
+Get started with the docs: https://docs.ropensci.org/gistr
+
 ## See also:
 
 * [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
