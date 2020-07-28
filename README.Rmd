@@ -333,30 +333,6 @@ g <- gists()
 gist(forked$id) %>% delete()
 ```
 
-## Example use case
-
-_Working with the Mapzen Pelias geocoding API_
-
-The API is described at https://github.com/pelias/pelias, and is still in alpha they say. The steps: get data, make a gist. The data is returned from Mapzen as geojson, so all we have to do is literally push it up to GitHub gists and we're done b/c GitHub renders the map.
-
-```{r eval=FALSE}
-library('httr')
-base <- "http://pelias.mapzen.com/search"
-res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
-json <- content(res, as = "text")
-gist_create(code = json, filename = "pelias_test.geojson")
-#> <gist>017214637bcfeb198070
-#>   URL: https://gist.github.com/017214637bcfeb198070
-#>   Description:
-#>   Public: TRUE
-#>   Created/Edited: 2014-10-28T14:42:36Z / 2014-10-28T14:42:36Z
-#>   Files: pelias_test.geojson
-```
-
-And here's that [gist](https://gist.github.com/sckott/017214637bcfeb198070)
-
-![pelias img](man/figures/gistr_ss.png)
-
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/gistr/issues).
