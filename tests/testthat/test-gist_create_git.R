@@ -2,7 +2,7 @@ context("gist_create_git")
 
 test_that("gist_create_git works", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
   
   unlink("~/gitgist", recursive = TRUE)
   dir.create("~/gitgist")
