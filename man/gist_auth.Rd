@@ -12,6 +12,11 @@ application \code{gistr_oauth} created by Scott Chamberlain.}
 
 \item{reauth}{(logical) Force re-authorization?}
 }
+\value{
+a named list, with a single slot for \code{Authorization}, with a single
+element with the token - this is the expected format needed when passed
+down to the http request
+}
 \description{
 This function is run automatically to allow gistr to access your GitHub
 account.

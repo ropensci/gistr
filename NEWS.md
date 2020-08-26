@@ -1,3 +1,11 @@
+gistr in development
+===============
+
+### BUG FIXES
+
+* fix `gist_auth()`: at some point `httr::oauth2.0_token` stopped returning the token in the `headers` slot; can't figure out when this change happened; fix is to get the token from a different place in the returned object; changes to `gist_auth()` to access that new path to the token (#83)
+
+
 gistr 0.9.0
 ===============
 
