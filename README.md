@@ -15,9 +15,10 @@ Get started with the docs: https://docs.ropensci.org/gistr
 
 ## See also:
 
-* [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
 * [gert](https://github.com/r-lib/gert) Simple git client for R by Jeroen Ooms
 * [gistfo](https://github.com/MilesMcBain/gistfo) for turning your untitled RStudio tabs into gists!
+* [git2r](https://github.com/ropensci/git2r) an R client for the libgit2 C library by Stefan Widgren
+* [git2rdata](https://ropensci.github.io/git2rdata/) for storing data frames efficiently in git
 
 ## Install
 
