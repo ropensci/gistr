@@ -14,3 +14,4 @@ figure
 ^cran-comments\.md$
 ^\.httr-oauth$
 ^codemeta\.json$
+^\.github$
