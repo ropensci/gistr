@@ -1,10 +1,10 @@
 #' Authorize with GitHub.
 #'
-#' This function is run automatically to allow gistr to access your GitHub 
+#' This function is run automatically to allow gistr to access your GitHub
 #' account.
 #'
 #' There are two ways to authorise gistr to work with your GitHub account:
-#' 
+#'
 #' - Generate a personal access token with the gist scope selected, and set it
 #' as the `GITHUB_PAT` environment variable per session using `Sys.setenv`
 #' or across sessions by adding it to your `.Renviron` file or similar.
@@ -16,7 +16,7 @@
 #' Using `GITHUB_PAT` is recommended.
 #'
 #' @export
-#' @param app An [httr::oauth_app()] for GitHub. The default uses an 
+#' @param app An [httr::oauth_app()] for GitHub. The default uses an
 #' application `gistr_oauth` created by Scott Chamberlain.
 #' @param reauth (logical) Force re-authorization?
 #' @return a named list, with a single slot for `Authorization`, with a single
@@ -27,24 +27,33 @@
 #' }
 
 gist_auth <- function(app = gistr_app, reauth = FALSE) {
- 
+
+  #if there is a token cached, use that
   if (exists("auth_config", envir = cache) && !reauth) {
-    return(auth_header(cache$auth_config$auth_token$credentials$access_token))
+    return(auth_header(cache$auth_config$auth_token))
   }
-  pat <- Sys.getenv("GITHUB_PAT", "")
-  if (!identical(pat, "")) {
-    auth_config <- list(auth_token=list(credentials=list(access_token=pat)))
-  } else if (!interactive()) {
+  #if nothing cached, use gitcreds.  gitcreds will retrieve PAT stored as an
+  #GITHUB_PAT environment variable or one set with gitcreds::gitcreds_set()
+  #TODO use tryCatch here to customize error message to be more helpful
+  # cli::cli_alert_warning("Please set {.field GITHUB_PAT} in your {.file .Renviron} or use the {.pkg gitcreds}
+  creds <- try(gitcreds::gitcreds_get())
+  if (!inherits(creds, "try-error")) {
+    token <- creds$password
+  } else if (interactive()) { #if no gitcreds, try interactive authentication
+    # try oauth direct
+    endpt <- httr::oauth_endpoints("github")
+    auth <- httr::oauth2.0_token(endpt, app, scope = "gist", cache = !reauth)
+    token <- auth$credentials$access_token
+  } else {
     stop("In non-interactive environments, please set GITHUB_PAT env to a GitHub",
          " access token (https://help.github.com/articles/creating-an-access-token-for-command-line-use)",
          call. = FALSE)
-  } else  {
-    endpt <- httr::oauth_endpoints("github")
-    token <- httr::oauth2.0_token(endpt, app, scope = "gist", cache = !reauth)
-    auth_config <- httr::config(token = token)
   }
+
+  #cache auth config
+  auth_config <- httr::config(token = token)
   cache$auth_config <- auth_config
-  auth_header(auth_config$auth_token$credentials$access_token)
+  return(auth_header(auth_config$auth_token))
 }
 
 auth_header <- function(x) list(Authorization = paste0("token ", x))

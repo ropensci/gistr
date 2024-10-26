@@ -35,7 +35,8 @@ Imports:
     assertthat,
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    gitcreds
 Suggests:
     git2r,
     testthat
