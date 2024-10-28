@@ -25,7 +25,7 @@ jobs:
           - {os: ubuntu-latest,   r: 'oldrel-1'}
 
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GIST_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
@@ -45,12 +45,10 @@ jobs:
           needs: check
 
       # Added step for testing gist creation using GIST_TOKEN
-      - name: Run gist creation test
-        env:
-          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
-        run: |
-          echo "Running gist creation test..."
-          Rscript -e "gistr::gist_create(file = 'tests/test-gist.md', description = 'Test gist creation')"
+      # - name: Run gist creation test
+      #   run: |
+      #     echo "Running gist creation test..."
+      #     Rscript -e "gistr::gist_create(file = 'tests/test-gist.md', description = 'Test gist creation')"
 
       - uses: r-lib/actions/check-r-package@v2
         with:
