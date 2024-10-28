@@ -22,13 +22,12 @@
 #' @importFrom jsonlite fromJSON flatten
 #' @name gistr-package
 #' @aliases gistr
-#' @docType package
 #' @title R client for GitHub gists
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @author Ramnath Vaidyanathan \email{ramnath.vaidya@@gmail.com}
 #' @author Karthik Ram \email{karthik.ram@@gmail.com}
 #' @keywords package
-NULL
+"_PACKAGE"
 
 #' @title Create gists
 #'
@@ -43,7 +42,7 @@ NULL
 #' - [gist_create_git()] - Create gists from files or code
 #'  blocks, using  git. Because this function uses git, you have more
 #'  flexibility than with the above function: you can include any binary files,
-#'  and can easily upload all artifacts. 
+#'  and can easily upload all artifacts.
 #' - [gist_create_obj()] - Create gists from R objects: data.frame, list,
 #'  character string, matrix, or numeric. Uses the GitHub HTTP API.
 #'

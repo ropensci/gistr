@@ -5,15 +5,15 @@
 #'
 #' There are two ways to authorise gistr to work with your GitHub account:
 #'
-#' - Generate a personal access token with the gist scope selected, and set it
-#' as the `GITHUB_PAT` environment variable per session using `Sys.setenv`
-#' or across sessions by adding it to your `.Renviron` file or similar.
-#' See
+#' - Generate a personal access token with the gist scope selected, and store it
+#' with `gitcreds::gitcreds_set()`. Alternatively you can set it as the
+#' `GITHUB_PAT` environment variable per session using `Sys.setenv()` or across
+#' sessions by adding it to your `.Renviron` file or similar. See
 #' https://help.github.com/articles/creating-an-access-token-for-command-line-use
-#' for help
-#' - Interactively login into your GitHub account and authorise with OAuth.
+#' for help or use `usethis::create_github_token()`.
+#' - Interactively log in into your GitHub account and authorise with OAuth.
 #'
-#' Using `GITHUB_PAT` is recommended.
+#' Using `gitcreds::gitcreds_set()` is recommended.
 #'
 #' @export
 #' @param app An [httr::oauth_app()] for GitHub. The default uses an

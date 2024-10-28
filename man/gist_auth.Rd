@@ -24,16 +24,16 @@ account.
 \details{
 There are two ways to authorise gistr to work with your GitHub account:
 \itemize{
-\item Generate a personal access token with the gist scope selected, and set it
-as the \code{GITHUB_PAT} environment variable per session using \code{Sys.setenv}
-or across sessions by adding it to your \code{.Renviron} file or similar.
-See
+\item Generate a personal access token with the gist scope selected, and store it
+with \code{gitcreds::gitcreds_set()}. Alternatively you can set it as the
+\code{GITHUB_PAT} environment variable per session using \code{Sys.setenv()} or across
+sessions by adding it to your \code{.Renviron} file or similar. See
 https://help.github.com/articles/creating-an-access-token-for-command-line-use
-for help
-\item Interactively login into your GitHub account and authorise with OAuth.
+for help or use \code{usethis::create_github_token()}.
+\item Interactively log in into your GitHub account and authorise with OAuth.
 }
 
-Using \code{GITHUB_PAT} is recommended.
+Using \code{gitcreds::gitcreds_set()} is recommended.
 }
 \examples{
 \dontrun{

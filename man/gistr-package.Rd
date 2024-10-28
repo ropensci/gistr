@@ -22,6 +22,15 @@ and record it in the \code{GITHUB_PAT} envar.
 
 Using the \code{GITHUB_PAT} is recommended.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ropensci/gistr (devel)}
+  \item \url{https://docs.ropensci.org/gistr (website)}
+  \item Report bugs at \url{https://github.com/ropensci/gistr/issues}
+}
+
+}
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 
