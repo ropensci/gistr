@@ -1,3 +1,8 @@
+test_that("gitcreds finds PAT", {
+  expect_equal(gitcreds::gitcreds_get()$password, Sys.getenv("GITHUB_PAT"))
+})
+
+
 test_that("gist_auth finds PAT", {
   skip_on_cran()
   auth <- gist_auth(reauth = TRUE)
