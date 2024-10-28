@@ -44,6 +44,14 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
+      # Added step for testing gist creation using GIST_TOKEN
+      - name: Run gist creation test
+        env:
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+        run: |
+          echo "Running gist creation test..."
+          Rscript -e "gistr::gist_create(file = 'tests/test-gist.md', description = 'Test gist creation')"
+
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
