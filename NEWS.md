@@ -1,6 +1,10 @@
 gistr in development
 ===============
 
+### NEW FEATURES
+
+* `gistr` now uses `gitcreds` to discover GitHub PATs and now recommends you store your PAT using `gitcreds::gitcreds_set()` rather than as the `GITHUB_PAT` environment variable (although this still works).
+
 ### BUG FIXES
 
 * fix `gist_auth()`: at some point `httr::oauth2.0_token` stopped returning the token in the `headers` slot; can't figure out when this change happened; fix is to get the token from a different place in the returned object; changes to `gist_auth()` to access that new path to the token (#83)
