@@ -13,7 +13,8 @@ jobs:
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
+    permissions:
+      gists: write
     strategy:
       fail-fast: false
       matrix:
