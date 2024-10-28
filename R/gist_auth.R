@@ -32,22 +32,29 @@ gist_auth <- function(app = gistr_app, reauth = FALSE) {
   if (exists("auth_config", envir = cache) && !reauth) {
     return(auth_header(cache$auth_config$auth_token))
   }
-  #if nothing cached, use gitcreds.  gitcreds will retrieve PAT stored as an
-  #GITHUB_PAT environment variable or one set with gitcreds::gitcreds_set()
-  #TODO use tryCatch here to customize error message to be more helpful
-  # cli::cli_alert_warning("Please set {.field GITHUB_PAT} in your {.file .Renviron} or use the {.pkg gitcreds}
-  creds <- try(gitcreds::gitcreds_get())
-  if (!inherits(creds, "try-error")) {
-    token <- creds$password
-  } else if (interactive()) { #if no gitcreds, try interactive authentication
-    # try oauth direct
-    endpt <- httr::oauth_endpoints("github")
-    auth <- httr::oauth2.0_token(endpt, app, scope = "gist", cache = !reauth)
-    token <- auth$credentials$access_token
-  } else {
-    stop("In non-interactive environments, please set GITHUB_PAT env to a GitHub",
-         " access token (https://help.github.com/articles/creating-an-access-token-for-command-line-use)",
-         call. = FALSE)
+  #if nothing cached, use gitcreds to retrieve PAT stored as an GITHUB_PAT
+  #environment variable or set with gitcreds::gitcreds_set(). gitcreds_get()
+  #errors when no PAT is found, but we want to try one more method, so silence
+  #this error and return NULL.
+  creds <- tryCatch(
+    error = function(cnd) {
+      return(NULL)
+    },
+    gitcreds::gitcreds_get()
+  )
+  token <- creds$password
+  #TODO would be great to check here that token has "gist" scope
+  #if no token, or invalid token and interactive, try direct oauth
+  if ((is.null(token) | !valid_gh_pat(token))) {
+    if (interactive()) {
+      endpt <- httr::oauth_endpoints("github")
+      auth <- httr::oauth2.0_token(endpt, app, scope = "gist", cache = !reauth)
+      token <- auth$credentials$access_token
+    } else {
+      stop("In non-interactive environments, please set GITHUB_PAT env to a GitHub",
+           " access token (https://help.github.com/articles/creating-an-access-token-for-command-line-use)",
+           call. = FALSE)
+    }
   }
 
   #cache auth config
@@ -65,3 +72,11 @@ gistr_app <- httr::oauth_app(
   "89ecf04527f70e0f9730",
   "77b5970cdeda925513b2cdec40c309ea384b74b7"
 )
+
+# inspired by https://github.com/r-lib/gh/blob/main/R/gh_token.R
+valid_gh_pat <- function(x) {
+  !is.null(x) & (
+    grepl("^(gh[pousr]_[A-Za-z0-9_]{36,251}|github_pat_[A-Za-z0-9_]{36,244})$", x) ||
+      grepl("^[[:xdigit:]]{40}$", x)
+  )
+}
